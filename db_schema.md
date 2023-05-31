@@ -81,6 +81,7 @@
 | column name   | data type | details                   |
 |---------------|-----------|--------------------------------|
 | id            | integer   | not null, primary key     |
+| name          | string (50) | not null
 | userId   | integer   | not null, foreign key      |
 | created_at   | datetime   | not null         |
 | updated_at | datetime   | not null           |
