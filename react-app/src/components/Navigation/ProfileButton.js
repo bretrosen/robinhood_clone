@@ -47,6 +47,7 @@ function ProfileButton({ user }) {
           <>
             <li>{user.username}</li>
             <li>{user.email}</li>
+            <li>{user.buying_power}</li>
             <li>
               <button onClick={handleLogout}>Log Out</button>
             </li>
