@@ -23,3 +23,15 @@
   border-right: 3px solid var(--saffron);
 
 }
+
+.login-signup{
+    background-color: var(--saffron);
+    padding: 14px 28px;
+    border-radius: 27px;
+    font-weight: 600;
+  }
+
+#sign-up{
+  background-color: black;
+  color: white;
+}
