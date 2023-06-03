@@ -16,8 +16,8 @@ class Transaction(db.Model):
     price_sold = db.Column(db.Float)
     purchased = db.Column(db.Boolean, nullable=False)
 
-    user = db.relationship('User', back_populates='transactions')
-    stock = db.relationship('Stock', back_populates='transactions')
+    user = db.Relationship('User', back_populates='transactions')
+    stock = db.Relationship('Stock', back_populates='transactions')
 
 
     def to_dict(self):

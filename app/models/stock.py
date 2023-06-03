@@ -20,8 +20,8 @@ class Stock(db.Model):
     headquarters = db.Column(db.String)
     year_founded = db.Column(db.Integer)
 
-    stock_historys = db.relationship('StockHistory', back_populates='stock')
-    watch_list_items = db.relationship('WatchListItem', back_populates='stock')
+    stock_historys = db.Relationship('StockHistory', back_populates='stock')
+    watch_list_items = db.Relationship('WatchListItem', back_populates='stock')
 
 
     def to_dict(self):
