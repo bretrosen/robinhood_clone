@@ -16,11 +16,13 @@ def generate_transactions():
             # Randomly choose a quantity between 1 and 10
             quantity = fake.random.uniform(1, 10)
             # Randomly choose a buy or sell for transaction
-            purchased = choice[True, False]
+            purchased = choice([True, False])
             if purchased:
                 price_purchased = fake.random.uniform(1, 100)
+                price_sold = 0
             else:
                 price_sold = fake.random.uniform(1, 100)
+                price_purchased = 0
             new_transaction = {
                 'stock_id': stock_id,
                 'user_id': user_id,
