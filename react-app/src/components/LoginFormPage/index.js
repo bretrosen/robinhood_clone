@@ -25,7 +25,7 @@ function LoginFormPage() {
   return (
     <>
       <div className="login-page">
-        <img src="/static/login-image.jpeg" style={{width: "50%"}}></img>
+        <img src="/static/login-image.jpeg" alt="sci-fi world" style={{width: "50%"}}></img>
         <form id="login-form" onSubmit={handleSubmit}>
           <p>Log in to Foxtrot</p>
           <ul>
