@@ -1,0 +1,12 @@
+.landing-header {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 86%;
+    }
+
+.landing-page {
+    background-color: black;
+    color: white;
+}
