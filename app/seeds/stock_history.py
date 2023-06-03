@@ -34,7 +34,7 @@ def seed_stock_history():
 
 def undo_stock_history():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.stock_historys RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM stock_historys"))
 

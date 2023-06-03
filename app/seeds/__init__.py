@@ -24,15 +24,18 @@ def seed():
     seed_transaction()
     seed_watch_lists()
     seed_watch_list_items()
-    seed_stock_history()
     seed_stocks()
+    seed_stock_history()
     # Add other seed functions here
 
 
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
-    undo_stocks()
     undo_stock_history()
+    undo_stocks()
+    undo_watch_list_items()
+    undo_watch_list()
+    undo_transaction()
     undo_users()
     # Add other undo functions here
