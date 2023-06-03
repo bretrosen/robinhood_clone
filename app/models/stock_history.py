@@ -10,9 +10,9 @@ class StockHistory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     stock_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('stocks.id')), nullable = False)
     price = db.Column(db.Float, nullable = False)
-    time_stamp = db.Column(db.Datetime, nullable = False)
+    time_stamp = db.Column(db.DateTime, nullable = False)
 
-    stock = db.Relationship('Stock', back_populates='stock_historys')
+    stock = db.relationship('Stock', back_populates='stock_historys')
 
 
     def to_dict(self):
