@@ -17,7 +17,7 @@ def seed_stocks():
         year_founded = 1976
     )
 
-
+    db.session.add(apple)
     db.session.commit()
 
 
@@ -29,7 +29,7 @@ def seed_stocks():
 # it will reset the primary keys for you as well.
 def undo_stocks():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.stocks RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM stocks"))
 
