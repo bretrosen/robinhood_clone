@@ -3,6 +3,7 @@ import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import './LoginForm.css';
+import { NavLink } from "react-router-dom/cjs/react-router-dom";
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -23,33 +24,52 @@ function LoginFormPage() {
 
   return (
     <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
-      </form>
+      <div className="login-page">
+        <img src="/static/login-image.jpeg" style={{width: "50%"}}></img>
+        <form id="login-form" onSubmit={handleSubmit}>
+          <p>Log in to Foxtrot</p>
+          <ul>
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </ul>
+          <div className="login-inputs">
+
+          <label>
+            Email
+            </label>
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              />
+              </div>
+            <div className="login-inputs">
+
+          <label>
+            Password
+            </label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              />
+          </div>
+          <div>
+          <input type="checkbox"></input>
+          <label>Keep me logged in for up to 30 days</label>
+          </div>
+
+          <div>
+            <p className="forgot-info">Forgot your password?</p>
+            <p className="forgot-info">Forgot your email address?</p>
+          </div>
+          <button type="submit">Log In</button>
+          <p >Not on Foxtrot? <NavLink to="/signup" className="forgot-info">Create an account</NavLink ></p>
+        </form>
+      </div>
     </>
   );
 }

@@ -53,10 +53,37 @@ a {
   gap: 35px;
 }
 
-#signup-form{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    padding: 64px;
-    gap: 18px;
-  }
+#signup-form {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 64px;
+  gap: 18px;
+}
+
+.login-page {
+  display: flex;
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin: 18px auto;
+  gap: 20px;
+}
+
+.login-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.forgot-info{
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.forgot-info:hover{
+  cursor: pointer;
+}
