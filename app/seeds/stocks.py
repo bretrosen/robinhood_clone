@@ -14,7 +14,7 @@ def seed_stocks():
         stock_ceo = "Tim Cook",
         employees = 147000,
         headquarters = "Cupertino, California",
-        year_founded = 1976
+        year_founded = 1976,
         stock_history_id =1
     )
 
