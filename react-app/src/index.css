@@ -1,1 +1,16 @@
 /* TODO Add site wide styles */
+:root{
+    --dark-moss-green: #47632dff;
+        --black-olive: #30341dff;
+        --rufous: #a12d1aff;
+        --saffron: #ffc757ff;
+        --lawn-green: #86ff44ff;
+}
+
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
