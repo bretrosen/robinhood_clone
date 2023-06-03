@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
 import './SignupForm.css';
+import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -35,7 +36,8 @@ function SignupFormPage() {
           <h1>Create your login</h1>
           <p>We'll need your name, email address, and a unique password. You'll use this login to access Robinhood next time.</p>
         </div>
-        <form onSubmit={handleSubmit}>
+        <form id="signup-form" onSubmit={handleSubmit}>
+          <p>Enter your first and last name as they appear on your government ID.</p>
           <ul>
             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
           </ul>
@@ -76,6 +78,13 @@ function SignupFormPage() {
             />
           </label>
           <button type="submit">Sign Up</button>
+          <p>Already started?</p>
+          <NavLink to="/login">Log in to complete your application</NavLink>
+          <p>By continuing, you agree to the
+            Robinhood User Account Agreement
+            and
+            Privacy Policy
+            .</p>
         </form>
       </div>
 
