@@ -17,8 +17,8 @@ class User(db.Model, UserMixin):
     buying_power = db.Column(db.Float, nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    transactions = db.Relationship('Transaction', back_populates='user')
-    watch_lists = db.Relationship('WatchList', back_populates='user')
+    transactions = db.relationship('Transaction', back_populates='user')
+    watch_lists = db.relationship('WatchList', back_populates='user')
 
     @property
     def password(self):
