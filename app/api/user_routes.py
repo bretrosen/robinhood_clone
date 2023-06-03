@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
-from app.models import User, Transaction, WatchList, WatchListItem
+from app.models import User, Transaction, WatchList
 
 user_routes = Blueprint('users', __name__)
 
@@ -50,7 +50,7 @@ def portfolio(id):
     for watch_list in watch_lists:
         watch_list_res = watch_list.to_dict()
         watch_list_res["watch_list_items"] = []
-        print('===> ', watch_list_res)
+
         watch_list_items = WatchListItem.query.filter(WatchListItem.watch_list_id == watch_list_res["id"]).all()
         for watch_list_item in watch_list_items:
             watch_list_res["watch_list_items"].append(watch_list_item.to_dict())

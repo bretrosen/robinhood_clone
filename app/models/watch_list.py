@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .watch_list_item import items
 
 
 class WatchList(db.Model):
@@ -11,7 +12,14 @@ class WatchList(db.Model):
     name = db.Column(db.String(50), nullable = False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable = False)
 
-    watch_list_items = db.relationship('WatchListItem', back_populates='watch_list')
+    # watch_list_items = db.relationship('WatchListItem', back_populates='watch_list')
+
+    stocks = db.relationship(
+        "Stock",
+        secondary=items,
+        back_populates="watch_list_items"
+    )
+
     user = db.relationship('User', back_populates='watch_lists')
 
 
