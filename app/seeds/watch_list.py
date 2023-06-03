@@ -35,7 +35,7 @@ def seed_watch_lists():
     db.session.commit()
 
 
-def undo_watch_list_history():
+def undo_watch_list():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.watch_lists RESTART IDENTITY CASCADE;")
     else:

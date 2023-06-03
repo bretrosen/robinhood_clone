@@ -7,8 +7,8 @@ fake = Faker()
 def generate_list_items():
     list_items = []
     for watch_list_id in range (1, 7): # Generating data for watchlists 1-6
-        for _ in range (round (fake.random.uniform(1, 13), 2)): # Generates a random number of stocks for each watchlist
-            stock_id = round (fake.random.uniform(1, 21), 2) # Generates a random stock id for each item in the watch list
+        for _ in range (round (fake.random.uniform(1, 13))): # Generates a random number of stocks for each watchlist
+            stock_id = round (fake.random.uniform(1, 20)) # Generates a random stock id for each item in the watch list
 
             entry = {
                 'watch_list_id': watch_list_id,
