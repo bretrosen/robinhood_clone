@@ -15,23 +15,40 @@
   border-bottom: 3px solid var(--saffron);
 }
 
-.nav-bar > li, a{
+.nav-bar>li,
+a {
   list-style: none;
   text-decoration: none;
 }
-#logo-li::marker{
+
+#logo-li::marker {
   border-right: 3px solid var(--saffron);
 
 }
 
-.login-signup{
-    background-color: var(--saffron);
-    padding: 14px 28px;
-    border-radius: 27px;
-    font-weight: 600;
-  }
+.login-signup {
+  background-color: var(--saffron);
+  padding: 14px 28px;
+  border-radius: 27px;
+  font-weight: 600;
+}
 
-#sign-up{
+#sign-up {
   background-color: black;
   color: white;
+}
+
+.signup-page {
+  width: 100%;
+  display: flex;
+}
+
+.signup-left {
+  background-color: var(--light-blue);
+  height: 100vh;
+  width: 50%;
+  padding: 36px 46px;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
 }
