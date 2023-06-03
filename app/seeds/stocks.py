@@ -15,6 +15,7 @@ def seed_stocks():
         employees = 147000,
         headquarters = "Cupertino, California",
         year_founded = 1976
+        stock_history_id =1
     )
 
     db.session.add(apple)
