@@ -74,6 +74,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('stock_id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('time_stamp', sa.DateTime(), nullable=False),
     sa.Column('quantity', sa.Float(), nullable=False),
     sa.Column('price_purchased', sa.Float(), nullable=True),
     sa.Column('price_sold', sa.Float(), nullable=True),

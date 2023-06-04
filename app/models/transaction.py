@@ -11,6 +11,7 @@ class Transaction(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     stock_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('stocks.id')), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+    time_stamp = db.Column(db.DateTime, nullable=False)
     quantity = db.Column(db.Float, nullable=False)
     price_purchased = db.Column(db.Float)
     price_sold = db.Column(db.Float)
@@ -25,6 +26,7 @@ class Transaction(db.Model):
             'id': self.id,
             'stock_id': self.stock_id,
             'user_id': self.user_id,
+            'time_stamp': self.time_stamp,
             'quantity': self.quantity,
             'price_purchased': self.price_purchased,
             'price_sold': self.price_sold,
