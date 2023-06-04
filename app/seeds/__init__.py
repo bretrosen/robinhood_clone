@@ -23,7 +23,7 @@ def seed():
     seed_users()
     seed_transaction()
     seed_watch_lists()
-    seed_watch_list_items()
+    # seed_watch_list_items()
     seed_stocks()
     seed_stock_history()
     # Add other seed functions here
@@ -34,7 +34,7 @@ def seed():
 def undo():
     undo_stock_history()
     undo_stocks()
-    undo_watch_list_items()
+    # undo_watch_list_items()
     undo_watch_list()
     undo_transaction()
     undo_users()
