@@ -47,20 +47,20 @@ def portfolio(id):
 
     print('how many lists does user 1 have', len(watch_lists))
 
-    for watch_list in watch_lists:
-        watch_list_res = watch_list.to_dict()
-        watch_list_res["watch_list_items"] = []
+    # for watch_list in watch_lists:
+    #     watch_list_res = watch_list.to_dict()
+    #     watch_list_res["watch_list_items"] = []
 
-        watch_list_items = WatchListItem.query.filter(WatchListItem.watch_list_id == watch_list_res["id"]).all()
-        for watch_list_item in watch_list_items:
-            watch_list_res["watch_list_items"].append(watch_list_item.to_dict())
-
-
-        user_data['watch_lists'].append(watch_list_res)
+    #     watch_list_items = WatchListItem.query.filter(WatchListItem.watch_list_id == watch_list_res["id"]).all()
+    #     for watch_list_item in watch_list_items:
+    #         watch_list_res["watch_list_items"].append(watch_list_item.to_dict())
 
 
-    # for transaction in transactions:
-    #     user_data["transactions"].append(transaction.to_dict())
+        # user_data['watch_lists'].append(watch_list_res)
+
+
+    for transaction in transactions:
+        user_data["transactions"].append(transaction.to_dict())
 
 
 
