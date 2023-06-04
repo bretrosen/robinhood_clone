@@ -21,10 +21,10 @@ def seed():
         # Make sure to add all your other model's undo functions below
         undo_users()
     seed_users()
-    seed_stock_history()
     seed_stocks()
     seed_watch_lists()
     seed_watch_list_items()
+    seed_stock_history()
     seed_transaction()
     # Add other seed functions here
 
@@ -33,9 +33,9 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_transaction()
+    undo_stock_history()
     undo_watch_list_items()
     undo_watch_list()
     undo_stocks()
-    undo_stock_history()
     undo_users()
     # Add other undo functions here
