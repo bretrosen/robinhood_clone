@@ -21,21 +21,21 @@ def seed():
         # Make sure to add all your other model's undo functions below
         undo_users()
     seed_users()
-    seed_transaction()
+    seed_stock_history()
+    seed_stocks()
     seed_watch_lists()
     seed_watch_list_items()
-    seed_stocks()
-    seed_stock_history()
+    seed_transaction()
     # Add other seed functions here
 
 
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
-    undo_stock_history()
-    undo_stocks()
+    undo_transaction()
     undo_watch_list_items()
     undo_watch_list()
-    undo_transaction()
+    undo_stocks()
+    undo_stock_history()
     undo_users()
     # Add other undo functions here

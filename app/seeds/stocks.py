@@ -14,8 +14,7 @@ def seed_stocks():
         stock_ceo="Tim Cook",
         employees=147000,
         headquarters="Cupertino, California",
-        year_founded=1976,
-        stock_history_id=1
+        year_founded=1976
     )
 
     tesla = Stock(
@@ -28,8 +27,7 @@ def seed_stocks():
         stock_ceo="Elon Musk",
         employees=70757,
         headquarters="Palo Alto, California",
-        year_founded=2003,
-        stock_history_id=2
+        year_founded=2003
     )
 
     ibm = Stock(
@@ -42,8 +40,7 @@ def seed_stocks():
         stock_ceo="Arvind Krishna",
         employees=352600,
         headquarters="Armonk, New York",
-        year_founded=1911,
-        stock_history_id=3
+        year_founded=1911
     )
 
     microsoft = Stock(
@@ -56,8 +53,7 @@ def seed_stocks():
         stock_ceo="Satya Nadella",
         employees=181000,
         headquarters="Redmond, Washington",
-        year_founded=1975,
-        stock_history_id=4
+        year_founded=1975
     )
 
     american_airlines = Stock(
@@ -70,8 +66,7 @@ def seed_stocks():
         stock_ceo="Robert Isom",
         employees=88300,
         headquarters="Fort Worth, Texas",
-        year_founded=1930,
-        stock_history_id=5
+        year_founded=1930
     )
 
     gamestop = Stock(
@@ -84,8 +79,7 @@ def seed_stocks():
         stock_ceo="Matt Furlong",
         employees=12000,
         headquarters="Grapevine, Texas",
-        year_founded=1984,
-        stock_history_id=2
+        year_founded=1984
     )
 
     ford = Stock(
@@ -98,8 +92,7 @@ def seed_stocks():
         stock_ceo="Jim Farley",
         employees=186000,
         headquarters="Dearborn, Michigan",
-        year_founded=1903,
-        stock_history_id=3
+        year_founded=1903
     )
 
     nvidia = Stock(
@@ -112,8 +105,7 @@ def seed_stocks():
         stock_ceo="Jensen Huang",
         employees=18717,
         headquarters="Santa Clara, CA",
-        year_founded=1993,
-        stock_history_id=4
+        year_founded=1993
     )
 
     dish_network = Stock(
@@ -126,8 +118,7 @@ def seed_stocks():
         stock_ceo="Charlie Ergen",
         employees=16000,
         headquarters="Englewood, Colorado",
-        year_founded=1980,
-        stock_history_id=5
+        year_founded=1980
     )
 
     amazon = Stock(
@@ -140,9 +131,9 @@ def seed_stocks():
         stock_ceo="Jeff Bezos",
         employees=1335000,
         headquarters="Seattle, Washington",
-        year_founded=1994,
-        stock_history_id=6
+        year_founded=1994
     )
+
     amd = Stock(
         name="Advanced Micro Devices Inc",
         symbol="AMD",
@@ -153,8 +144,7 @@ def seed_stocks():
         stock_ceo="Lisa Su",
         employees=15500,
         headquarters="Santa Clara, California",
-        year_founded=1969,
-        stock_history_id=11
+        year_founded=1969
     )
 
     meta = Stock(
@@ -167,8 +157,7 @@ def seed_stocks():
         stock_ceo="Mark Zuckerberg",
         employees=105000,
         headquarters="Menlo Park, California",
-        year_founded=2004,
-        stock_history_id=12
+        year_founded=2004
     )
 
     jpmorgan = Stock(
@@ -181,8 +170,7 @@ def seed_stocks():
         stock_ceo="Jaime Dimon",
         employees=256105,
         headquarters="New York, New York",
-        year_founded=1871,
-        stock_history_id=13
+        year_founded=1871
     )
 
     alphabet = Stock(
@@ -195,8 +183,7 @@ def seed_stocks():
         stock_ceo="Sundar Pichai",
         employees=135301,
         headquarters="Mountain View, California",
-        year_founded=1998,
-        stock_history_id=14
+        year_founded=1998
     )
 
     visa = Stock(
@@ -209,8 +196,7 @@ def seed_stocks():
         stock_ceo="Alfred F. Kelly Jr.",
         employees=21000,
         headquarters="San Francisco, California",
-        year_founded=1958,
-        stock_history_id=15
+        year_founded=1958
     )
 
     johnson_johnson = Stock(
@@ -223,8 +209,7 @@ def seed_stocks():
         stock_ceo="Alex Gorsky",
         employees=135100,
         headquarters="New Brunswick, New Jersey",
-        year_founded=1886,
-        stock_history_id=16
+        year_founded=1886
     )
 
     pfizer = Stock(
@@ -237,8 +222,7 @@ def seed_stocks():
         stock_ceo="Albert Bourla",
         employees=78000,
         headquarters="New York, New York",
-        year_founded=1849,
-        stock_history_id=17
+        year_founded=1849
     )
 
     pepsico = Stock(
@@ -251,8 +235,7 @@ def seed_stocks():
         stock_ceo="Ramon Laguarta",
         employees=267000,
         headquarters="Purchase, New York",
-        year_founded=1965,
-        stock_history_id=18
+        year_founded=1965
     )
 
     disney = Stock(
@@ -265,8 +248,7 @@ def seed_stocks():
         stock_ceo="Bob Chapek",
         employees=203000,
         headquarters="Burbank, California",
-        year_founded=1923,
-        stock_history_id=19
+        year_founded=1923
     )
 
     netflix = Stock(
@@ -279,8 +261,7 @@ def seed_stocks():
         stock_ceo="Ted Sarandos (Co-CEO)",
         employees=9400,
         headquarters="Los Gatos, California",
-        year_founded=1997,
-        stock_history_id=20
+        year_founded=1997
     )
 
     alibaba = Stock(
@@ -293,8 +274,7 @@ def seed_stocks():
         stock_ceo="Daniel Zhang",
         employees=251000,
         headquarters="Hangzhou, Zhejiang, China",
-        year_founded=1999,
-        stock_history_id=21
+        year_founded=1999
     )
 
     all_stocks = [apple, tesla, ibm, microsoft, american_airlines, gamestop, ford, nvidia, dish_network, amazon, amd, meta, jpmorgan, alphabet, visa, johnson_johnson, pfizer, pepsico, disney, netflix, alibaba]
