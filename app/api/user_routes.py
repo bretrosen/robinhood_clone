@@ -1,6 +1,7 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import db, User, Transaction, WatchList, Stock
+from app.forms.buying_power_form import BuyingPowerForm
 
 user_routes = Blueprint('users', __name__)
 
@@ -41,7 +42,6 @@ def portfolio(id):
     transactions = Transaction.query.filter(Transaction.user_id == id).all()
     watch_lists = WatchList.query.filter(WatchList.user_id == id).all()
 
-
     for watch_list in watch_lists:
         wl = watch_list.to_dict()
         wl["stocks"] = []
@@ -52,8 +52,25 @@ def portfolio(id):
 
         user_data["watch_lists"].append(wl)
 
-
     for transaction in transactions:
         user_data["transactions"].append(transaction.to_dict())
 
     return user_data
+
+
+@user_routes.route('/<int:id>/buying_power_add', methods=['POST'])
+@login_required
+def update_buying_power(id):
+    """
+    Query for current user's buying power and updating with incoming value
+    """
+
+    user = User.query.get(id)
+    form = BuyingPowerForm()
+
+    form['csrf_token'].data = request.cookies['csrf_token'] # Boilerplate code
+    if form.validate_on_submit():
+        user.buying_power = form.data['buying_power'] + user.buying_power
+        db.session.commit()
+
+    return user.to_dict()
