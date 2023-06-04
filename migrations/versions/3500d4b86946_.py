@@ -1,5 +1,6 @@
 """empty message
 
+<<<<<<< HEAD:migrations/versions/20230603_140105_.py
 <<<<<<<< HEAD:migrations/versions/20230604102406_.py
 Revision ID: d917eb475a1c
 Revises:
@@ -9,6 +10,11 @@ Revision ID: 2eb431dc37e6
 Revises: 
 Create Date: 2023-06-03 14:01:05.330602
 >>>>>>>> a07b892c46f1d03c67abd8a71b9085573b01e55b:migrations/versions/20230603_140105_.py
+=======
+Revision ID: 3500d4b86946
+Revises: 
+Create Date: 2023-06-04 11:13:50.987305
+>>>>>>> 582260248333770750f09071b2ac6a6ee63ceba8:migrations/versions/3500d4b86946_.py
 
 """
 from alembic import op
@@ -19,11 +25,15 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
+<<<<<<< HEAD:migrations/versions/20230603_140105_.py
 <<<<<<<< HEAD:migrations/versions/20230604102406_.py
 revision = 'd917eb475a1c'
 ========
 revision = '2eb431dc37e6'
 >>>>>>>> a07b892c46f1d03c67abd8a71b9085573b01e55b:migrations/versions/20230603_140105_.py
+=======
+revision = '3500d4b86946'
+>>>>>>> 582260248333770750f09071b2ac6a6ee63ceba8:migrations/versions/3500d4b86946_.py
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -65,11 +75,12 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('items',
-    sa.Column('watch_list_id', sa.Integer(), nullable=False),
-    sa.Column('stock_id', sa.Integer(), nullable=False),
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('watch_list_id', sa.Integer(), nullable=True),
+    sa.Column('stock_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['stock_id'], ['stocks.id'], ),
     sa.ForeignKeyConstraint(['watch_list_id'], ['watch_lists.id'], ),
-    sa.PrimaryKeyConstraint('watch_list_id', 'stock_id')
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('stock_historys',
     sa.Column('id', sa.Integer(), nullable=False),

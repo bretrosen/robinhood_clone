@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
-from app.models import User, Transaction, WatchList
+from app.models import db, User, Transaction, WatchList, Stock
 
 user_routes = Blueprint('users', __name__)
 
@@ -44,9 +44,13 @@ def portfolio(id):
 
     transactions = Transaction.query.filter(Transaction.user_id == id).all()
     watch_lists = WatchList.query.filter(WatchList.user_id == id).all()
+    # watch_lists = db.session.query(WatchList, Stock).join(Stock).all()
+
+    # wl_items = WatchList.query.join(Stock).filter()
 
     print('how many lists does user 1 have', len(watch_lists))
 
+<<<<<<< HEAD
     # for watch_list in watch_lists:
     #     watch_list_res = watch_list.to_dict()
     #     watch_list_res["watch_list_items"] = []
@@ -54,6 +58,20 @@ def portfolio(id):
     #     watch_list_items = WatchListItem.query.filter(WatchListItem.watch_list_id == watch_list_res["id"]).all()
     #     for watch_list_item in watch_list_items:
     #         watch_list_res["watch_list_items"].append(watch_list_item.to_dict())
+=======
+    for watch_list in watch_lists:
+        wl_stocks = watch_list
+        # wl = watch_list.to_dict()
+        print('is this grabbing the stocks?', watch_list['id'])
+
+        # user_data["watch_lists"].append(wl)
+        # watch_list_res = watch_list.to_dict()
+        # watch_list_res["watch_list_items"] = []
+
+        # watch_list_items = WatchListItem.query.filter(WatchListItem.watch_list_id == watch_list_res["id"]).all()
+        # for watch_list_item in watch_list_items:
+        #     watch_list_res["watch_list_items"].append(watch_list_item.to_dict())
+>>>>>>> 582260248333770750f09071b2ac6a6ee63ceba8
 
 
         # user_data['watch_lists'].append(watch_list_res)
