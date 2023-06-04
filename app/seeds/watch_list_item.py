@@ -1,4 +1,4 @@
-from app.models import db, WatchListItem, environment, SCHEMA
+from app.models import db, environment, SCHEMA
 from faker import Faker
 from sqlalchemy.sql import text
 
