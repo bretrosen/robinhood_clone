@@ -9,7 +9,7 @@ const userPortfolio = (data) => {
     }
 }
 export const fetchPortfolio  = (userId) => async (dispatch) => {
-    const response = await fetch(`/api/users/${userId}/portfolio`)
+    const response = await fetch(`api/users/${userId}/portfolio`)
     const portfolio = await response.json()
     console.log("portfolio insde the user reducer file ==============",portfolio);
     dispatch(userPortfolio(portfolio))
@@ -18,7 +18,7 @@ export const fetchPortfolio  = (userId) => async (dispatch) => {
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_PORTFOLIO:
-            return { user: action.data };
+            return { ...action.data };
         default:
             return state;
     }
