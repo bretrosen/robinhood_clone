@@ -12,7 +12,31 @@ export default function Portfolio() {
     }, [dispatch, sessionUser.id])
     return (
         <div className="portfolio-page">
-            <h1>Portfolio</h1>
+            <div className="portfolio">
+                <img src="/static/stock-dice.svg" alt="dice with stocks on the sides"></img>
+                <h1>Welcome to Foxtrot</h1>
+
+                <div className="transfer">
+                    <div className="tranfer-left">
+
+                    <span>Application in review</span>
+                    <p>Start a transfer so you can invest as soon as your application is approved.</p>
+                    <p className="login-signup">Transer money</p>
+                    </div>
+                    <img src="/static/phone-money.svg" alt="money coming out of phone"></img>
+                </div>
+            </div>
+            <div className="portfolio-watchlist">
+                <div id="watchlists-header">
+                    <p>Lists</p>
+                    <p>+</p>
+                </div>
+                <div className="watchlist">
+                    <span>⚡️</span>
+                    <p>My First List</p>
+                    
+                </div>
+            </div>
         </div>
     )
 }
