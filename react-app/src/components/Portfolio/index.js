@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { fetchPortfolio } from "../store/user";
+import { fetchPortfolio } from "../../store/user";
 
 export default function Portfolio() {
     const { user } = useSelector(state => state)
@@ -9,7 +9,7 @@ export default function Portfolio() {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchPortfolio(sessionUser.id))
-    }, [dispatch])
+    }, [dispatch, sessionUser.id])
     return (
         <div className="portfolio-page">
             <h1>Portfolio</h1>
