@@ -10,7 +10,6 @@ class Stock(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     symbol = db.Column(db.String(10), nullable=False)
-    stock_history_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('stock_historys.id')), nullable=False)
     description = db.Column(db.String)
     market_cap = db.Column(db.Float, nullable=False)
     pe_ratio = db.Column(db.Float, nullable=False)
@@ -20,10 +19,10 @@ class Stock(db.Model):
     headquarters = db.Column(db.String)
     year_founded = db.Column(db.Integer)
 
-    stock_history = db.relationship('StockHistory', foreign_keys=[stock_history_id])
+    stock_history = db.relationship('StockHistory', back_populates='stock')
     transactions = db.relationship('Transaction', back_populates='stock')
-
     watch_list_items = db.relationship('WatchListItem', back_populates='stock')
+
     def to_dict(self):
         return {
             'id': self.id,

@@ -12,7 +12,7 @@ class StockHistory(db.Model):
     price = db.Column(db.Float, nullable=False)
     time_stamp = db.Column(db.DateTime, nullable=False)
 
-    stock = db.relationship('Stock', foreign_keys=[stock_id])
+    stock = db.relationship('Stock', back_populates='stock_history')
 
     def to_dict(self):
         return {
