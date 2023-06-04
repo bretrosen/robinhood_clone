@@ -1,0 +1,15 @@
+.portfolio-page {
+    display: flex;
+    padding-top: 30px;
+    background-color: black;
+    color: white;
+}
+
+.portfolio-watchlist {
+    border: 1px solid var(--border-grey);
+    padding: 20px;
+    border-radius: 4px;
+    height: fit-content;
+    position: fixed;
+    right: 10px;
+}

@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchPortfolio } from "../../store/user";
-
+import "./portfolio.css"
 export default function Portfolio() {
     const { user } = useSelector(state => state)
     const sessionUser = useSelector(state => state.session.user);
