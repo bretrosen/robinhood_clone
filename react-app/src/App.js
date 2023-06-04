@@ -23,7 +23,7 @@ function App() {
 
           <LandingPage/>
           </Route>
-          <Route path="/portfolio/:id">
+          <Route path="/portfolio">
             <Portfolio />
           </Route>
           <Route path="/login" >
