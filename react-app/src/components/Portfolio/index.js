@@ -20,7 +20,7 @@ export default function Portfolio() {
     return (
         <div className="portfolio-page">
             <div className="portfolio">
-                <img src="/static/stock-dice.svg" alt="dice with stocks on the sides"></img>
+                <img src="/static/stock-dice.svg" alt="dice with stocks on the sides" style={{ width: "100%" }}></img>
                 <h1>Welcome to Foxtrot</h1>
 
                 <div className="transfer">
@@ -30,7 +30,7 @@ export default function Portfolio() {
                         <p>Start a transfer so you can invest as soon as your application is approved.</p>
                         <p className="login-signup">Transer money</p>
                     </div>
-                    <img src="/static/phone-money.svg" alt="money coming out of phone"></img>
+                    <img src="/static/phone-money.svg" alt="money coming out of phone" ></img>
                 </div>
             </div>
             <div className="portfolio-watchlist">
@@ -43,8 +43,8 @@ export default function Portfolio() {
                     return (
                     <div className="watchlist" key={`watchlist-index-${index}`}>
                         <div className="watchlist-left">
-                            <span>⚡️</span>
-                                <p>{list.name}</p>
+                            <span className="watchlist-icon">⚡️</span>
+                                <span className="list-name">{list.name}</span>
                         </div>
                         <div>
                             <i className="fa fa-ellipsis-h"></i>
