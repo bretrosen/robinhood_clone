@@ -7,6 +7,8 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
 import Portfolio from "./components/Portfolio";
+import StockDetails from './components/StockDetail'
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -20,11 +22,13 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path="/">
-
           <LandingPage/>
           </Route>
           <Route path="/portfolio">
             <Portfolio />
+          </Route>
+          <Route path="/stocks">
+            <StockDetails />
           </Route>
           <Route path="/login" >
             <LoginFormPage />

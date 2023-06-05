@@ -37,7 +37,6 @@ class Stock(db.Model):
             'id': self.id,
             'name': self.name,
             'symbol': self.symbol,
-            'stock_history_id': self.stock_history_id,
             'description': self.description,
             'market_cap': self.market_cap,
             'pe_ratio': self.pe_ratio,
