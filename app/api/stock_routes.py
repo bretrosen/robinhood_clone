@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import db, User, Transaction, WatchList, Stock
+from app.models import db, User, Transaction, WatchList, Stock, StockHistory
 from app.forms.buy_sell_stock_form import BuySellStockForm
 
 
@@ -14,11 +14,17 @@ def stock_info(id):
     Query for a single stock by symbol and return it in a dictionary
     '''
     stock = Stock.query.get(id)
-    print("stock", stock.to_dict())
-    return stock.to_dict()
+    stock_data = stock.to_dict()
+    stock_data['stock_history'] = []
 
-    # all_stocks = Stock.query.all()
-    # single_stock =
+    history = StockHistory.query.filter(StockHistory.stock_id == id)
+
+    for item in history:
+        stock_data['stock_history'].append(item.to_dict())
+
+    return stock_data
+
+
 @stock_routes.route('/<int:id>/buy_stock', methods=['POST'])
 @login_required
 def buy_stock(id):
