@@ -26,6 +26,17 @@ def stock_info(id):
     return stock_data
 
 
+@stock_routes.route('/')
+@login_required
+def all_stocks():
+    '''
+    Query for all stocks to populate suggested search
+    '''
+
+    all_stocks = Stock.query.all()
+    return {'stocks': [stock.to_dict() for stock in all_stocks]}
+
+
 @stock_routes.route('/<int:id>/buy_stock', methods=['POST'])
 @login_required
 def buy_stock(id):
