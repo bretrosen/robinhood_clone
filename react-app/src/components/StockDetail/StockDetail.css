@@ -1,0 +1,39 @@
+/* TODO: add page styling */
+
+
+
+.about-block {
+    margin-top: 1rem;
+}
+
+.about-fields {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 0;
+    font-size: 14px;
+}
+
+.about-text {
+    margin-top: 3rem;
+    border-bottom: 1px solid lightgrey;
+    padding-bottom: 1rem;
+}
+
+.stock-about {
+    padding-top: 1rem;
+    width: 40rem;
+}
+
+.stock-details-page {
+    display: flex;
+    flex-direction: column;
+    margin: 3rem;
+}
+
+.stock-details-top {
+    width: 40rem;
+}
+
+.stock-label {
+    font-weight: bold;
+}
