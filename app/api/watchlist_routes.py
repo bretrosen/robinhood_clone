@@ -24,4 +24,4 @@ def create_watchlist():
 
     if form.errors:
         print(form.errors)
-        return form.errors
+        return form.errors, 400

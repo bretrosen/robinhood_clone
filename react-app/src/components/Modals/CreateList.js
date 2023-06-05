@@ -1,10 +1,13 @@
 import { useState } from "react"
+import { useDispatch } from "react-redux";
+import { postWatchlist } from "../../store/user";
 
 export default function CreateList() {
     const [listName, setListName] = useState("")
-
+    const dispatch = useDispatch()
     const handleSubmit = () => {
-        
+        console.log('hello world');
+        dispatch(postWatchlist(listName))
     }
     return (
         <div>
@@ -12,7 +15,7 @@ export default function CreateList() {
                 <p>Create list</p>
                 <p>x</p>
             </div>
-            <form onSubmit={handleSubmit}>
+            <form>
                 <div>
                 <p>⚡️</p>
                     <input placeholder="List Name"
@@ -23,7 +26,7 @@ export default function CreateList() {
                 </div>
                 <div>
                     <p className="login-signup">Cancel</p>
-                    <p className="login-signup">Create List</p>
+                    <p className="login-signup" onClick={handleSubmit}>Create List</p>
                 </div>
             </form>
         </div>
