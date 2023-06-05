@@ -3,7 +3,9 @@ from flask_login import login_required, current_user
 from app.models import db, User, Transaction, WatchList, Stock
 from app.forms.buying_power_form import BuyingPowerForm
 
+
 user_routes = Blueprint('users', __name__)
+
 
 
 @user_routes.route('/')
@@ -33,7 +35,7 @@ def portfolio(id):
     Query for all of current user's stock and watchlist information
     """
 
-    user = User.query.get(id)
+    user = current_user
 
     user_data = user.to_dict()
     user_data["transactions"] = []
@@ -65,7 +67,7 @@ def update_buying_power(id):
     Query for current user's buying power and updating with incoming value
     """
 
-    user = User.query.get(id)
+    user = current_user
     form = BuyingPowerForm()
 
     form['csrf_token'].data = request.cookies['csrf_token'] # Boilerplate code
@@ -73,4 +75,6 @@ def update_buying_power(id):
         user.buying_power = form.data['buying_power'] + user.buying_power
         db.session.commit()
 
-    return user.to_dict()
+        return user.to_dict()
+    else:
+        return form.errors
