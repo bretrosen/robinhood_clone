@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import db, User, Transaction, WatchList, Stock, StockHistory
@@ -25,6 +26,17 @@ def stock_info(id):
     return stock_data
 
 
+@stock_routes.route('/')
+@login_required
+def all_stocks():
+    '''
+    Query for all stocks to populate suggested search
+    '''
+
+    all_stocks = Stock.query.all()
+    return {'stocks': [stock.to_dict() for stock in all_stocks]}
+
+
 @stock_routes.route('/<int:id>/buy_stock', methods=['POST'])
 @login_required
 def buy_stock(id):
@@ -44,7 +56,8 @@ def buy_stock(id):
             quantity=form.data['quantity'],
             price_purchased=form.data['price_purchased'],
             price_sold=None,
-            purchased=True
+            purchased=True,
+            time_stamp=datetime.now()
         )
 
         db.session.add(new_transaction) # Add new transaction to DB
@@ -68,6 +81,7 @@ def sell_stock(id):
     form = BuySellStockForm()
 
     form['csrf_token'].data = request.cookies['csrf_token'] # Boilerplate code
+    form.stock_id = id
 
     if form.validate_on_submit():
         new_transaction = Transaction(
@@ -76,7 +90,8 @@ def sell_stock(id):
             quantity=form.data['quantity'],
             price_purchased=None,
             price_sold=form.data['price_sold'],
-            purchased=False
+            purchased=False,
+            time_stamp=datetime.now()
         )
 
         db.session.add(new_transaction) # Add new transaction to DB
