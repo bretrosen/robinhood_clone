@@ -1,8 +1,11 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import db, User, Transaction, WatchList, Stock
+from app.forms.buying_power_form import BuyingPowerForm
+
 
 user_routes = Blueprint('users', __name__)
+
 
 
 @user_routes.route('/')
@@ -32,11 +35,7 @@ def portfolio(id):
     Query for all of current user's stock and watchlist information
     """
 
-    # user_stocks = []
-    # user_transactions = []
-    # user_watchlists = []
-
-    user = User.query.get(id)
+    user = current_user
 
     user_data = user.to_dict()
     user_data["transactions"] = []
@@ -48,30 +47,37 @@ def portfolio(id):
 
     # wl_items = WatchList.query.join(Stock).filter()
 
-    print('how many lists does user 1 have', len(watch_lists))
-
     for watch_list in watch_lists:
-        wl_stocks = watch_list
-        # wl = watch_list.to_dict()
-        print('is this grabbing the stocks?', watch_list['id'])
+        wl = watch_list.to_dict()
+        wl["stocks"] = []
+        stocks = watch_list.stocks  # This is grabbing stocks from watch_list_items join table
 
-        # user_data["watch_lists"].append(wl)
-        # watch_list_res = watch_list.to_dict()
-        # watch_list_res["watch_list_items"] = []
+        for stock in stocks:
+            wl["stocks"].append(stock.to_dict())
 
-        # watch_list_items = WatchListItem.query.filter(WatchListItem.watch_list_id == watch_list_res["id"]).all()
-        # for watch_list_item in watch_list_items:
-        #     watch_list_res["watch_list_items"].append(watch_list_item.to_dict())
-
-
-        # user_data['watch_lists'].append(watch_list_res)
-
+        user_data["watch_lists"].append(wl)
 
     for transaction in transactions:
         user_data["transactions"].append(transaction.to_dict())
 
-
-
-
-
     return user_data
+
+
+@user_routes.route('/<int:id>/buying_power_add', methods=['POST'])
+@login_required
+def update_buying_power(id):
+    """
+    Query for current user's buying power and updating with incoming value
+    """
+
+    user = current_user
+    form = BuyingPowerForm()
+
+    form['csrf_token'].data = request.cookies['csrf_token'] # Boilerplate code
+    if form.validate_on_submit():
+        user.buying_power = form.data['buying_power'] + user.buying_power
+        db.session.commit()
+
+        return user.to_dict()
+    else:
+        return form.errors
