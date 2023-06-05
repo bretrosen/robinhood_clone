@@ -16,7 +16,7 @@ export default function CreateList() {
         <div>
             <div id="create-list">
                 <p>Create list</p>
-                <p>x</p>
+                <p onClick={closeModal}>x</p>
             </div>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -28,7 +28,7 @@ export default function CreateList() {
 
                 </div>
                 <div>
-                    <p className="login-signup">Cancel</p>
+                    <p className="login-signup" onClick={closeModal}>Cancel</p>
                     <p className="login-signup" onClick={handleSubmit}>Create List</p>
                 </div>
             </form>
