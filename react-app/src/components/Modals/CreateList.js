@@ -1,13 +1,16 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux";
 import { postWatchlist } from "../../store/user";
-
+import { useModal } from "../../context/Modal"
 export default function CreateList() {
     const [listName, setListName] = useState("")
+    const { closeModal } = useModal();
     const dispatch = useDispatch()
     const handleSubmit = () => {
         console.log('hello world');
         dispatch(postWatchlist(listName))
+        closeModal()
+        setListName("")
     }
     return (
         <div>
@@ -15,7 +18,7 @@ export default function CreateList() {
                 <p>Create list</p>
                 <p>x</p>
             </div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div>
                 <p>⚡️</p>
                     <input placeholder="List Name"
