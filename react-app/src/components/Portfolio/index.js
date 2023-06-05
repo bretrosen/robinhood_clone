@@ -4,6 +4,8 @@ import { fetchPortfolio } from "../../store/user";
 
 import "./portfolio.css"
 import LineChart from "../LineGraph";
+import OpenModalButton from "../OpenModalButton";
+import CreateList from "../Modals/CreateList";
 export default function Portfolio() {
     const { user } = useSelector(state => state)
     const sessionUser = useSelector(state => state.session.user);
@@ -38,7 +40,9 @@ export default function Portfolio() {
             <div className="portfolio-watchlist">
                 <div id="watchlists-header">
                     <p>Lists</p>
-                    <p>+</p>
+                    <OpenModalButton
+                        buttonText="+"
+                    modalComponent={<CreateList />}/>
                 </div>
                 {watchlists.map((list,  index) => {
 
