@@ -27,7 +27,7 @@ function App() {
           <Route path="/portfolio">
             <Portfolio />
           </Route>
-          <Route path="/stocks/:stockId">
+          <Route path="/stocks">
             <StockDetails />
           </Route>
           <Route path="/login" >
