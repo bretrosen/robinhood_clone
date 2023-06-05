@@ -46,8 +46,14 @@ def generate_transactions():
 
             # Adds initial stock to users dictionary if they have none
             if len(quantity_tracker[new_transaction['user_id']].items()) == 0:
-                new_transaction['purchased'] = True
-                quantity_tracker[new_transaction['user_id']][new_transaction['stock_id']] = new_transaction['quantity']
+                if new_transaction['purchased']:
+                    quantity_tracker[new_transaction['user_id']][new_transaction['stock_id']] = new_transaction['quantity']
+                else:
+                    new_transaction['purchased'] = True
+                    new_transaction['price_purchased'] = new_transaction['price_sold']
+                    new_transaction['price_sold'] = 0
+                    quantity_tracker[new_transaction['user_id']][new_transaction['stock_id']] = new_transaction['quantity']
+
             # Once users in quantity checker all have at least one stock for loop iterates through all their stocks
             else:
                 for stock, quantity_check in quantity_tracker[new_transaction['user_id']].items():
@@ -66,6 +72,8 @@ def generate_transactions():
                             # Changes generated transaction to a buy and adds stock if user doesn't have enough quantity to sell
                             else:
                                 new_transaction['purchased'] = True
+                                new_transaction['price_purchased'] = new_transaction['price_sold']
+                                new_transaction['price_sold'] = 0
                                 quantity_tracker[new_transaction['user_id']][new_transaction['stock_id']] = new_transaction['quantity']
                     # Adds stock to user's dictionary if they don't have stock already
                     elif new_transaction['purchased']:
