@@ -1,14 +1,24 @@
+import { useState } from "react"
+
 export default function CreateList() {
+    const [listName, setListName] = useState("")
+
+    const handleSubmit = () => {
+        
+    }
     return (
         <div>
             <div id="create-list">
                 <p>Create list</p>
                 <p>x</p>
             </div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div>
                 <p>⚡️</p>
-                <input placeholder="List Name"></input>
+                    <input placeholder="List Name"
+                        value={listName}
+                        onChange={e => setListName(e.target.value)}
+                    />
 
                 </div>
                 <div>

@@ -11,7 +11,7 @@ def create_watchlist():
     form = WatchlistFormCreate()
     user = current_user
     form['csrf_token'].data = request.cookies['csrf_token'] # Boilerplate code
-
+    print('we hit the post wathclist route')
     if form.validate_on_submit():
         new_watchlist = WatchList(
             name = form.data["name"],
