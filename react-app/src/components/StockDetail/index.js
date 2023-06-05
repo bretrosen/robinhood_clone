@@ -1,8 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { stockDetailsThunk } from '../../store/stock'
 import './StockDetail.css'
+
+
 
 export default function StockDetails() {
     const dispatch = useDispatch()
