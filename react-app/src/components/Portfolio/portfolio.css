@@ -46,6 +46,11 @@
     height: 30px;
 }
 
+.watchlist-left{
+    color: white
+
+}
+
 .watchlist:hover {
     background-color: var(--border-grey);
 }
@@ -69,7 +74,7 @@
     background-color: #989b9d;
     padding: 20px;
     border-radius: 3px;
-    
+
 }
 
 .transfer-left {

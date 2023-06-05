@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchPortfolio } from "../../store/user";
-
+import { NavLink } from 'react-router-dom';
 import "./portfolio.css"
 import LineChart from "../LineGraph";
 import OpenModalButton from "../OpenModalButton";
@@ -48,10 +48,10 @@ export default function Portfolio() {
 
                     return (
                     <div className="watchlist" key={`watchlist-index-${index}`}>
-                        <div className="watchlist-left">
+                        <NavLink to={`/watchlist/${list.id}`} className="watchlist-left">
                             <span className="watchlist-icon">⚡️</span>
                                 <span className="list-name">{list.name}</span>
-                        </div>
+                        </NavLink>
                         <div>
                             <i className="fa fa-ellipsis-h"></i>
                             <span>^</span>
