@@ -11,14 +11,7 @@ const LineChart = () => {
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderColor: 'rgba(75, 192, 192, 1)',
                 borderWidth: 1,
-            },
-            {
-                label: 'Data 2',
-                data: [5, 8, 2, 4, 9, 6],
-                backgroundColor: 'rgba(192, 75, 192, 0.2)',
-                borderColor: 'rgba(192, 75, 192, 1)',
-                borderWidth: 1,
-            },
+            }
         ],
     };
 
