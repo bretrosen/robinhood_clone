@@ -2,6 +2,7 @@
 const GET_STOCK = '/stock/GET_STOCK'
 const BUY_STOCK = '/stock/BUY_STOCK'
 const SELL_STOCK = '/stock/SELL_STOCK'
+const ALL_STOCKS = '/stocks/ALL_STOCKS'
 
 // action creators
 const stockDetail = (stock) => {
@@ -22,6 +23,13 @@ const sellStock = (stock) => {
     return {
         type: SELL_STOCK,
         stock
+    }
+}
+
+const allStocks = (stocks) => {
+    return {
+        type: ALL_STOCKS,
+        stocks
     }
 }
 
@@ -95,10 +103,22 @@ export const sellStockThunk = (stock) => async (dispatch) => {
     }
 }
 
-const initialState = { stock: null }
+export const fetchAllStocks = () => async (dispatch) => {
+    const response = await fetch(`/api/stocks/`)
+
+    if (response.ok) {
+        const stocks = await response.json()
+        dispatch(allStocks(stocks))
+    }
+}
+
+const initialState = { stock: null,  stocks: {}}
 
 // reducer
 export default function stockReducer(state = initialState, action) {
+
+    let stockState;
+
     switch (action.type) {
         case GET_STOCK:
             return { ...action.stock };
@@ -106,6 +126,17 @@ export default function stockReducer(state = initialState, action) {
             return { ...action.stock };
         case SELL_STOCK:
             return { ...action.stock };
+        case ALL_STOCKS:
+
+            const allStocks = action.stocks.stocks
+            stockState = {...state, stock: {...state.stock}, stocks: {...state.stocks}}
+
+            allStocks.forEach((stock) => {
+                stockState.stocks[stock.id] = stock;
+            });
+
+            return stockState;
+
         default:
             return state;
     }
