@@ -9,6 +9,9 @@
 
 .portfolio {
     width: 65%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 }
 
 .portfolio-watchlist {
@@ -43,7 +46,7 @@
     height: 30px;
 }
 
-.watchlist:hover{
+.watchlist:hover {
     background-color: var(--border-grey);
 }
 
@@ -56,6 +59,20 @@
 }
 
 
-.fa-ellipsis-h{
+.fa-ellipsis-h {
     margin-right: 20px;
+}
+
+.transfer {
+    display: flex;
+
+    background-color: #989b9d;
+    padding: 20px;
+    border-radius: 3px;
+    
+}
+
+.transfer-left {
+    display: flex;
+    flex-direction: column;
 }

@@ -24,7 +24,7 @@ export default function Portfolio() {
                 <h1>Welcome to Foxtrot</h1>
 
                 <div className="transfer">
-                    <div className="tranfer-left">
+                    <div className="transfer-left">
 
                         <span>Application in review</span>
                         <p>Start a transfer so you can invest as soon as your application is approved.</p>
