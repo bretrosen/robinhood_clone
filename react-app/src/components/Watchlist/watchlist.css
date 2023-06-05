@@ -1,0 +1,24 @@
+#watchlist-table {
+    border-collapse: collapse;
+    width: 65%;
+    height: fit-content;
+}
+
+
+
+#watchlist-table td,
+#watchlist-table th {
+    border-bottom: 1px solid #ddd;
+    padding: 16px 0px;
+}
+
+#watchlist-table .table-row:hover {
+    background-color: #898989;
+}
+
+#watchlist-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    color: #898989;
+}
