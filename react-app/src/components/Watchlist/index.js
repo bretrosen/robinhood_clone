@@ -1,4 +1,6 @@
-export default function Watchlist() {
+import WatchlistComponent from "./WatchlistComponent";
+
+export default function WatchlistList() {
     return (
         <div className="portfolio-page">
 
@@ -36,6 +38,7 @@ export default function Watchlist() {
                     </tr>
                 </tbody>
             </table>
+            <WatchlistComponent />
         </div>
     )
 }
