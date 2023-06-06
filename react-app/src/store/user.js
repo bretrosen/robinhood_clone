@@ -97,18 +97,15 @@ export const deleteWatchlist = (id) => async (dispatch) => {
     dispatch(removeWatchlist(id))
 
 }
-export const fetchAddBuyPower = (addedAmount) => async (dispatch) => {
-    console.log('at start of thunk')
-    const add = addedAmount.amount
-    console.log('at start of thunk', add)
-    const response = await fetch(`/api/users/${addedAmount.userId}/buying_power_add`, {
+export const fetchAddBuyPower = (buying_power, userId) => async (dispatch) => {
+    const response = await fetch(`/api/users/${userId}/buying_power_add`, {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({...addedAmount.buying})
+        body: JSON.stringify({buying_power})
     })
-    const newUserAmount = await response.json()
-    console.log('This is in the add buying power thunk', newUserAmount)
-    // dispatch(addBuyingPower())
+        const newUserAmount = await response.json()
+        dispatch(addBuyingPower(newUserAmount.buying_power))
+
 }
 
 export const buyStockThunk = (stock) => async (dispatch) => {
@@ -202,6 +199,10 @@ export default function UserReducer(state = initialState, action) {
             const updatedBuyingPowerSell = state.buying_power + sale;
             const updatedTransactionsSell = [...state.transactions, newTransactionSell]
             return { ...state, transactions: updatedTransactionsSell, buying_power: updatedBuyingPowerSell }
+        case ADD_BUYING_POWER:
+            const updatedUserState = {...state, }
+            updatedUserState.buying_power = action.amount
+            return updatedUserState
         default:
             return state;
     }

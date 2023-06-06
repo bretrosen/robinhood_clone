@@ -1,0 +1,76 @@
+#modal-content {
+    border-radius: 5px;
+}
+
+#transfer-title {
+    border-bottom: .25px lightgray solid;
+    padding: 1.5em 1.5em .9em 1.5em;
+}
+
+.createTransferErrors {
+    color: red;
+    align-self: center;
+    font-weight: 550;
+}
+
+.loginButton {
+    margin-top: .5em;
+    width: 100%;
+    background-color: var(--light-green);
+    border: .5px solid lightgray;
+    box-shadow: 1px 1px 2px 1px lightgray;
+    height: 4em;
+    align-self: center;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.loginButtonDisabled {
+    margin-top: .5em;
+    width: 100%;
+    background-color: var(--border-grey);
+    border: .5px solid lightgray;
+    box-shadow: 1px 1px 2px 1px lightgray;
+    height: 4em;
+    align-self: center;
+    color: white;
+    border-radius: 5px;
+}
+
+.transfer-form {
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+    gap: 1em;
+    padding: 1.5em 1.5em 1.5em 1.5em;
+}
+
+.transfer-form-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.transfer-input {
+    width: 12em;
+    height: 3em;
+    padding-left: 5px;
+    border-radius: 5px;
+    border: .5px solid var(--border-grey);
+}
+
+.transfer-input:focus {
+    outline: none;
+    border: .5px solid var(--light-green);
+    border-radius: 5px;
+}
+
+.transfer-modal {
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+    width: 20em;
+}

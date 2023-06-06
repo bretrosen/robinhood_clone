@@ -1,14 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/session";
 import { useHistory, NavLink } from "react-router-dom";
 import OpenModalButton from '../OpenModalButton/index'
 import TransfersModal from './TransfersModal'
 
 
-function ProfileButton({ user }) {
+
+function ProfileButton() {
   const dispatch = useDispatch();
   const history = useHistory()
+  const sessionUser = useSelector(state => state.user);
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
@@ -49,8 +51,8 @@ function ProfileButton({ user }) {
       <ul className={ulClassName} ref={ulRef}>
 
           <>
-            <li className="user-menu">{user.first_name} {user.last_name}</li>
-            <li className="user-menu user-border">Account Balance: ${user.buying_power}</li>
+            <li className="user-menu">{sessionUser.first_name} {sessionUser.last_name}</li>
+            <li className="user-menu user-border">Account Balance: ${sessionUser.buying_power}</li>
             <li className="user-menu user-border"><NavLink exact to="/portfolio">Portfolio</NavLink></li>
             <li className="user-menu user-border">
 
