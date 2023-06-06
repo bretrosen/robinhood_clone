@@ -17,7 +17,7 @@ function TransfersModal() {
 
         const addedAmount = {
             userId: sessionUser.id,
-            amount: Number(buyingPower)
+            buying_power: Number(buyingPower)
         }
 
         console.log('from the component', addedAmount)
