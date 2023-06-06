@@ -90,3 +90,10 @@
     color: red;
     cursor: pointer;
 }
+
+.lists-modal{
+        background-color: chocolate;
+        position: relative;
+        width: 100%;
+        right: 0;
+    }

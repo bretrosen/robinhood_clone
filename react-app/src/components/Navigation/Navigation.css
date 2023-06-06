@@ -66,6 +66,9 @@ a {
 
 }
 
+.login-signup:hover {
+  cursor: pointer;
+}
 .login-signup {
   background-color: var(--saffron);
   padding: 14px 28px;

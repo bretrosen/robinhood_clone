@@ -6,6 +6,9 @@ import LineChart from '../LineGraph'
 import { BuySomeStock, SellSomeStock } from '../Transaction'
 import { fetchPortfolio } from '../../store/user'
 import './StockDetail.css'
+import OpenModalButton from '../OpenModalButton'
+import WatchlistComponent from '../Watchlist/WatchlistComponent'
+import AddStockModal from '../Watchlist/AddStockModal'
 
 
 
@@ -54,6 +57,7 @@ export default function StockDetails() {
                 <BuySomeStock />
                 <SellSomeStock />
             </div>
+            <OpenModalButton type="watchlist" modalComponent={<AddStockModal />}/>
             <div className='stock-details-page'>
                 <div className='stock-details-top'>
                     <div>
