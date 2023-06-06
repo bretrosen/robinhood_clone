@@ -1,5 +1,45 @@
 .profile-dropdown {
   position: absolute;
+  top: 3em;
+  right: 1.5em;
+  background-color: white;
+  width: 15em;
+  /* height: 10em; */
+  border-radius: 6px;
+  border: .25px lightgray solid;
+  padding: 1em 1.5em 1em 1.5em;
+  z-index: 2;
+}
+
+.account:hover {
+  color: var(--lawn-green);
+}
+
+.profile {
+  font-weight: 600;
+}
+
+#profile-highlight {
+  color: var(--lawn-green);
+  border-bottom: solid 2px var(--lawn-green);
+}
+
+.user-menu {
+  list-style: none;
+  padding: .3em 0 .3em 0;
+}
+
+.user-border {
+  border-bottom: .5px lightgrey solid;
+  margin-bottom: 1em;
+  padding-bottom: .6em;
+}
+
+.nav-button {
+  border: none;
+  background-color: white;
+  font-size: medium;
+  cursor: pointer;
 }
 
 .hidden {

@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { stockDetailsThunk } from '../../store/stock'
 import LineChart from '../LineGraph'
-import { BuySomeStock } from '../Transaction'
+import { BuySomeStock, SellSomeStock } from '../Transaction'
 import { fetchPortfolio } from '../../store/user'
 import './StockDetail.css'
 
@@ -12,10 +12,8 @@ import './StockDetail.css'
 export default function StockDetails() {
     const dispatch = useDispatch()
     const { stockId } = useParams()
-    const stock = useSelector(state => state?.stock)
-    const prices = stock.stock_history
+    const {stock} = useSelector(state => state.stock)
     const sessionUser = useSelector(state => state.session.user);
-    console.log('session user =>', sessionUser)
 
     // trigger thunk dispatch for getting stock and user portfolio
     useEffect(() => {
@@ -23,6 +21,10 @@ export default function StockDetails() {
         dispatch(fetchPortfolio(sessionUser.id))
     }, [dispatch, stockId, sessionUser.id])
 
+    console.log('====>this is stock from stock details', stock)
+
+    const prices = stock?.stock_history
+    console.log('====>this is prices from stock details', prices)
     if (!prices) {
         return <h1>Loading...</h1>
     }
@@ -50,6 +52,7 @@ export default function StockDetails() {
         <div className='stock-details-wrapper'>
             <div className='transactions'>
                 <BuySomeStock />
+                <SellSomeStock />
             </div>
             <div className='stock-details-page'>
                 <div className='stock-details-top'>
