@@ -4,7 +4,7 @@ import { buyStockThunk, sellStockThunk } from '../../store/user'
 
 export const BuySomeStock = () => {
 
-    const [quantity, setQuantity] = useState(0)
+    const [quantity, setQuantity] = useState('')
     const dispatch = useDispatch()
     const stock = useSelector(state => state.stock)
     const marketPrice = stock.stock_history[0].price
@@ -15,11 +15,12 @@ export const BuySomeStock = () => {
         const stockObj = {
             "id": stock.id,
             // convert to number with 2 decimal points
-            "quantity": Number.parseFloat(quantity).toFixed(2),
+            "quantity": Number(quantity),
             "price_purchased": marketPrice
         }
         console.log("dispatching the buy stock thunk from form =>", stockObj)
         await dispatch(buyStockThunk(stockObj))
+        setQuantity(0)
     }
 
     return (
@@ -38,7 +39,7 @@ export const BuySomeStock = () => {
 
 export const SellSomeStock = () => {
 
-    const [quantity, setQuantity] = useState(0)
+    const [quantity, setQuantity] = useState('')
     const dispatch = useDispatch()
     const stock = useSelector(state => state.stock)
     const marketPrice = stock.stock_history[0].price
@@ -49,11 +50,12 @@ export const SellSomeStock = () => {
         const stockObj = {
             "id": stock.id,
             // convert to number with 2 decimal points
-            "quantity": Number.parseFloat(quantity).toFixed(2),
+            "quantity": Number(quantity),
             "price_sold": marketPrice
         }
         console.log("dispatching the sell stock thunk from form =>", stockObj)
         await dispatch(sellStockThunk(stockObj))
+        setQuantity(0)
     }
 
     return (

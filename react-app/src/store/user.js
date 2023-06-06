@@ -120,7 +120,7 @@ export default function UserReducer(state = initialState, action) {
             return { ...state, transactions: updatedTransactions, buying_power: updatedBuyingPower }
         case SELL_STOCK:
             const newTransactionSell = action.stock;
-            const sale = action.stock.price_purchased * action.stock.quantity;
+            const sale = action.stock.price_sold * action.stock.quantity;
             const updatedBuyingPowerSell = state.buying_power + sale;
             const updatedTransactionsSell = [...state.transactions, newTransactionSell]
             return { ...state, transactions: updatedTransactionsSell, buying_power: updatedBuyingPowerSell }
