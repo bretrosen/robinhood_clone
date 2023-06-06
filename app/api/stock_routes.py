@@ -3,6 +3,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import db, User, Transaction, WatchList, Stock, StockHistory
 from app.forms.buy_sell_stock_form import BuySellStockForm
+from sqlalchemy import desc
 
 
 stock_routes = Blueprint('stocks', __name__)
@@ -18,7 +19,7 @@ def stock_info(id):
     stock_data = stock.to_dict()
     stock_data['stock_history'] = []
 
-    history = StockHistory.query.filter(StockHistory.stock_id == id)
+    history = StockHistory.query.filter(StockHistory.stock_id == id).order_by(desc(StockHistory.time_stamp))
 
     for item in history:
         stock_data['stock_history'].append(item.to_dict())

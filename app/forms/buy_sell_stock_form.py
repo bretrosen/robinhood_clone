@@ -18,20 +18,24 @@ def buying_power_check(form, field):
 
 def selling_stock_check(form, field):
     # Checks if user has stock quantity to sell
-    quantity = form.quantity.data
-    user_transactions = Transaction.query.filter(Transaction.user_id == current_user.id, Transaction.stock_id == form.stock_id).all()
-    total_quantity_bought = 0
-    total_quantity_sold = 0
 
-    for transaction in user_transactions:
+    if form.price_sold.data == None:
+        pass
+    else:
+        quantity = form.quantity.data
+        user_transactions = Transaction.query.filter(Transaction.user_id == current_user.id, Transaction.stock_id == form.stock_id).all()
+        total_quantity_bought = 0
+        total_quantity_sold = 0
 
-        if transaction.purchased == True:
-            total_quantity_bought = total_quantity_bought + transaction.quantity
-        else:
-            total_quantity_sold = total_quantity_sold + transaction.quantity
+        for transaction in user_transactions:
 
-    if total_quantity_bought - total_quantity_sold < quantity:
-         raise ValidationError(f'You do not have enough stock quantity for this transaction, you current quantity of stock is {total_quantity_bought - total_quantity_sold}.')
+            if transaction.purchased == True:
+                total_quantity_bought = total_quantity_bought + transaction.quantity
+            else:
+                total_quantity_sold = total_quantity_sold + transaction.quantity
+
+        if total_quantity_bought - total_quantity_sold < quantity:
+            raise ValidationError(f'You do not have enough stock quantity for this transaction, you current quantity of stock is {total_quantity_bought - total_quantity_sold}.')
 
 
 class BuySellStockForm(FlaskForm):

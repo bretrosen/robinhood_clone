@@ -1,3 +1,4 @@
+
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchPortfolio } from "../../store/user";
@@ -5,9 +6,10 @@ import { fetchAllStocks } from '../../store/stock';
 
 import "./portfolio.css"
 import LineChart from "../LineGraph";
-import OpenModalButton from "../OpenModalButton";
-import CreateList from "../Modals/CreateList";
+import WatchlistComponent from "../Watchlist/WatchlistComponent";
+
 export default function Portfolio() {
+
     const { user } = useSelector(state => state)
     const sessionUser = useSelector(state => state.session.user);
     // console.log(sessionUser);
@@ -18,11 +20,6 @@ export default function Portfolio() {
         dispatch(fetchAllStocks())
     }, [dispatch, sessionUser.id])
 
-    if (!watchlists) {
-        return (
-            <h1>Loading...</h1>
-        )
-    }
     return (
         <div className="portfolio-page">
             <div className="portfolio">
@@ -39,29 +36,7 @@ export default function Portfolio() {
                     <img src="/static/phone-money.svg" alt="money coming out of phone" ></img>
                 </div>
             </div>
-            <div className="portfolio-watchlist">
-                <div id="watchlists-header">
-                    <p>Lists</p>
-                    <OpenModalButton
-                        buttonText="+"
-                    modalComponent={<CreateList />}/>
-                </div>
-                {watchlists.map((list,  index) => {
-
-                    return (
-                    <div className="watchlist" key={`watchlist-index-${index}`}>
-                        <div className="watchlist-left">
-                            <span className="watchlist-icon">⚡️</span>
-                                <span className="list-name">{list.name}</span>
-                        </div>
-                        <div>
-                            <i className="fa fa-ellipsis-h"></i>
-                            <span>^</span>
-                        </div>
-                    </div>)
-
-                })}
-            </div>
+            <WatchlistComponent />
         </div>
     )
 }
