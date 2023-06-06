@@ -65,7 +65,7 @@ function Navigation({ isLoaded }){
 						<NavLink exact to="/">Home</NavLink>
 
 						<form onSubmit={handleSubmit}>
-
+							<i className="fas fa-search" />
 							<input
 							className='stockSearch'
 							type="text"
@@ -92,8 +92,8 @@ function Navigation({ isLoaded }){
 							</div>
 						</form>
 					</div>
-
-					<button onClick={handleLogout} className='login-signup'>Log Out</button>
+					<ProfileButton user={sessionUser} />
+					{/* <button onClick={handleLogout} className='login-signup'>Log Out</button> */}
 				</div>}
 
 
