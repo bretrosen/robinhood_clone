@@ -1,19 +1,17 @@
-import { NavLink } from 'react-router-dom';
-import OpenModalButton from "../OpenModalButton";
-import CreateList from "../Modals/CreateList";
+
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { deleteWatchlist, fetchPortfolio } from '../../store/user';
+import { fetchPortfolio } from '../../store/user';
 
 export default function AddStockModal() {
     const { user } = useSelector(state => state)
     const sessionUser = useSelector(state => state.session.user);
-    const [clicked, setClicked] = useState(null)
-    // console.log(sessionUser);
+    const [checkedLists, setCheckedLists] = useState([]);
     const watchlists = user.watch_lists
     const dispatch = useDispatch();
+
     useEffect(() => {
-        console.log("right before dispacth");
+        console.log("right before dispatch");
         dispatch(fetchPortfolio(sessionUser.id))
     }, [dispatch, sessionUser.id])
 
@@ -22,25 +20,24 @@ export default function AddStockModal() {
             <h1>Loading...</h1>
         )
     }
-    const editList = (id) => {
-        if (clicked === id) {
-            setClicked(null);
+
+    const toggleCheckedList = (id) => {
+        if (checkedLists.includes(id)) {
+            setCheckedLists(prevState => prevState.filter(listId => listId !== id));
         } else {
-            setClicked(id);
+            setCheckedLists(prevState => [...prevState, id]);
         }
     };
 
-    const deleteList = () => {
-        console.log(clicked);
-        dispatch(deleteWatchlist(clicked))
-    }
+
+    console.log(checkedLists);
     return (
         <div className="portfolio-watchlist lists-modal">
             <div className='list-modal-title'>
                 <div>
                     Add google to your list
                 </div>
-                <div class="close-modal">×</div>
+                <div className="close-modal">×</div>
             </div>
 
             <div className='all-watchlists-modal'>
@@ -49,22 +46,28 @@ export default function AddStockModal() {
                 </div>
 
                 {watchlists.map((list, index) => {
+                    const isChecked = checkedLists.includes(list.id);
+                    const checkboxClass = `list-checkbox ${isChecked ? 'checked-list' : ''}`;
 
                     return (
-                        <div className="watchlist" key={`watchlist-index-${index}`} id='watchlist-modal'>
-                            <div className='list-checkbox checked-list'>
-                                <i className='fa fa-check'></i>
+                        <div
+                            className="watchlist"
+                            key={`watchlist-index-${index}`}
+                            id='watchlist-modal'
+                            onClick={() => toggleCheckedList(list.id)}
+                        >
+                            <div className={checkboxClass}>
+                                {isChecked && <i className='fa fa-check'></i>}
                             </div>
                             <div className='list-modal'>
                                 <p className='watchlist-med'>{list.name}</p>
                                 <p className='watchlist-sm'>{watchlists.length} items</p>
                             </div>
                         </div>
-                    )
-
+                    );
                 })}
             </div>
             <p className='login-signup save-changes'>Save Changes</p>
         </div>
-    )
+    );
 }
