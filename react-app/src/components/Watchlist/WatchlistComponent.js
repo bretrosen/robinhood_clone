@@ -8,7 +8,7 @@ import { fetchPortfolio } from '../../store/user';
 export default function WatchlistComponent() {
     const { user } = useSelector(state => state)
     const sessionUser = useSelector(state => state.session.user);
-    const [clicked, setClicked] = useState(false)
+    const [clicked, setClicked] = useState(null)
     // console.log(sessionUser);
     const watchlists = user.watch_lists
     const dispatch = useDispatch();
@@ -22,13 +22,15 @@ export default function WatchlistComponent() {
             <h1>Loading...</h1>
         )
     }
-    const editList = () => {
-        if (!clicked) {
-            setClicked(true)
+    const editList = (index) => {
+        if (clicked === index) {
+            setClicked(null); // Reset if the same watchlist is clicked again
         } else {
-            setClicked(false)
+            setClicked(index);
         }
-    }
+    };
+
+
     return (
         <div className="portfolio-watchlist">
             <div id="watchlists-header">
@@ -46,10 +48,12 @@ export default function WatchlistComponent() {
                             <span className="list-name">{list.name}</span>
                         </NavLink>
                         <div>
-                            <i className="fa fa-ellipsis-h" onClick={editList}></i>
+                            <i className="fa fa-ellipsis-h" onClick={() => editList(index)}></i>
+
                             <span>^</span>
                         </div>
-                        <div className={`edit-watchlist`} id={clicked ? "watchlist-clicked" : ""}>
+                        <div className={`edit-watchlist ${index === clicked ? "watchlist-clicked" : ""}`}>
+
                             <div>
                                 <i className='fa fa-cog'></i>
                                 <span>Edit list</span>

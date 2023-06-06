@@ -26,6 +26,6 @@
 .edit-watchlist{
     display: none;
 }
-#watchlist-clicked{
+.watchlist-clicked{
     display: block;
 }
