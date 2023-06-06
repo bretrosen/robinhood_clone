@@ -48,8 +48,7 @@ export const deleteWatchlist = (id) => async (dispatch) => {
     })
     const listDeleted = await response.json();
     console.log(listDeleted);
-    
-
+    dispatch(removeWatchlist(id))
 }
 
 export default function reducer(state = initialState, action) {
@@ -60,6 +59,10 @@ export default function reducer(state = initialState, action) {
             const newWatchlist = action.newWatchlist;
             const updatedWatchlists = [...state.watch_lists, newWatchlist];
             return { ...state, watch_lists: updatedWatchlists };
+        case DELETE_WATCHLIST:
+            const deleteWatchlist = [...state.watch_lists].filter(list => list.id !== action.id)
+            console.log(deleteWatchlist);
+            return {...state, watch_lists: deleteWatchlist}
         default:
             return state;
     }
