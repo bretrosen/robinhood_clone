@@ -25,3 +25,13 @@ def create_watchlist():
     if form.errors:
         print(form.errors)
         return form.errors, 400
+
+@watchlist_routes.route("<int:watchlistId>", methods = ["DELETE"])
+def delete_watchlist(watchlistId):
+    print("this is the watchlistID that will be deleted ===============>", watchlistId)
+
+    list_to_delete = WatchList.query.get(watchlistId)
+    print("this is the watchlist that will be deleted ===============>", list_to_delete)
+    db.session.delete(list_to_delete)
+    db.session.commit()
+    return list_to_delete.to_dict()
