@@ -45,35 +45,26 @@ export default function AddStockModal() {
 
             <div className='all-watchlists-modal'>
                 <div className='create-new-list'>
-                    <span>+</span> <span>Add to List</span>
+                    <span>+</span> <span className='watchlist-med'>Add to List</span>
                 </div>
 
                 {watchlists.map((list, index) => {
 
                     return (
-                        <div className="watchlist" key={`watchlist-index-${index}`}>
-                            <NavLink to={`/watchlists/${list.id}`} className="watchlist-left">
-                                <span className="watchlist-icon">⚡️</span>
-                                <span className="list-name">{list.name}</span>
-                            </NavLink>
-                            <div>
-                                <i className="fa fa-ellipsis-h" onClick={() => editList(list.id)}></i>
-
-                                <span>^</span>
+                        <div className="watchlist" key={`watchlist-index-${index}`} id='watchlist-modal'>
+                            <div className='list-checkbox checked-list'>
+                                <i className='fa fa-check'></i>
                             </div>
-                            <div className={`edit-watchlist ${list.id === clicked ? "watchlist-clicked" : ""}`}>
-
-                                <OpenModalButton buttonText="Edit list" modalComponent={<CreateList type="edit" name={list.name} watchlistId={list.id} />} />
-                                <div className='delete-list' onClick={deleteList}>
-                                    <i className='fa fa-cog edit-icon'></i>
-                                    <span>Delete list</span>
-                                </div>
+                            <div className='list-modal'>
+                                <p className='watchlist-med'>{list.name}</p>
+                                <p className='watchlist-sm'>{watchlists.length} items</p>
                             </div>
                         </div>
                     )
 
                 })}
             </div>
+            <p className='login-signup save-changes'>Save Changes</p>
         </div>
     )
 }

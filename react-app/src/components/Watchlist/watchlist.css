@@ -104,3 +104,41 @@
     align-items: center;
     font-size: 18px;
 }
+
+.list-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--robin-hood-green);
+    position: relative;
+}
+
+.watchlist-med {
+    font-size: 15px;
+}
+
+.watchlist-sm {
+    font-size: 13px;
+}
+
+#watchlist-modal:hover {
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#watchlist-modal {
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.save-changes {
+    text-align: center;
+    background-color: var(--robin-hood-green);
+    color: white;
+}
+
+.checked-list {
+    background-color: var(--robin-hood-green);
+}
+.fa-check{
+    color: white;
+}
