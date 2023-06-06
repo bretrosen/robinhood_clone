@@ -1,15 +1,14 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import WatchlistComponent from "./WatchlistComponent";
 import './watchlist.css'
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+// import { fetchPortfolio } from "../../store/user";
 export default function WatchlistList() {
     const { user } = useSelector(state => state)
     const { watchlistId } = useParams()
     const watch_lists = user.watch_lists
-    console.log("user slice from watchlist =========>", watch_lists);
-    const list = watch_lists.find(list => list.id === parseInt(watchlistId))
-    const stocks = list.stocks
-    console.log("user slice from watchlist =========>", stocks);
+    // console.log("user slice from watchlist =========>", watch_lists);
+    // console.log("user slice from watchlist =========>", stocks);
     function formatLargeNumber(number) {
         const billion = 1000000000;
         const million = 1000000;
@@ -22,7 +21,15 @@ export default function WatchlistList() {
             return `$${number}`;
         }
     }
-
+    // const dispatch = useDispatch()
+    // if (!watch_lists) {
+    //     dispatch(fetchPortfolio())
+    //     return (
+    //         <h2>Loading....</h2>
+    //     )
+    // }
+    const list = watch_lists?.find(list => list.id === parseInt(watchlistId))
+    const stocks = list?.stocks
     return (
         <div className="portfolio-page">
 
@@ -44,7 +51,7 @@ export default function WatchlistList() {
                         <td>+2.5%</td>
                         <td>$1 billion</td>
                     </tr>
-                    {stocks.map((stock, index) => {
+                    {stocks?.map((stock, index) => {
                         return (<tr className="table-row" key={`stock-list-${index}`}>
                             <td>{stock.name}</td>
                             <td>{stock.symbol}</td>

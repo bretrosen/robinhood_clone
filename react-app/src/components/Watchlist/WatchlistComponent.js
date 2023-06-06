@@ -12,6 +12,7 @@ export default function WatchlistComponent() {
     const watchlists = user.watch_lists
     const dispatch = useDispatch();
     useEffect(() => {
+        console.log("right before dispacth");
         dispatch(fetchPortfolio(sessionUser.id))
     }, [dispatch, sessionUser.id])
 
