@@ -74,8 +74,6 @@ export const fetchAddBuyPower = (addedAmount) => async (dispatch) => {
     // dispatch(addBuyingPower())
 }
 
-//Reducer
-
 export const buyStockThunk = (stock) => async (dispatch) => {
     const response = await fetch(`/api/stocks/${stock.id}/buy_stock`, {
         method: 'POST',
@@ -102,6 +100,10 @@ export const buyStockThunk = (stock) => async (dispatch) => {
         return ["An error occurred. Please try again."];
     }
 }
+
+
+//Reducer
+
 
 export const sellStockThunk = (stock) => async (dispatch) => {
     const response = await fetch(`/api/stocks/${stock.id}/sell_stock`, {
