@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
@@ -14,10 +14,10 @@ function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 	const sessionStocksObj = useSelector(state => state.stock.stocks);
 	const [search, setSearch] = useState("");
-
+	const [green, setGreen] = useState(false);
+	const [list, setList] = useState('')
 
 	const stocks = Object.values(sessionStocksObj);
-
 
 	const handleLogout = (e) => {
 		e.preventDefault();
@@ -27,15 +27,13 @@ function Navigation({ isLoaded }){
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-
-
 	};
 
+	// console.log('this is the list', list)
 
+	const showStockClass = "stock-dropdown" + (search.length > 0 ? "show" : " hidden");
 
-	let showStockClass = "stock-dropdown" + (search.length > 0 ? "show" : " hidden");
-
-
+	const showNoItems = "items" + (list.startsWith(search.toUpperCase()) ? "show" : "hidden")
 
 	return (<>
 		{/* // <ul className='nav-bar'>
@@ -61,29 +59,39 @@ function Navigation({ isLoaded }){
 
 			{sessionUser &&
 				<div className='nav-bar'>
-					<NavLink exact to="/">Home</NavLink>
+					<div className='search-home'>
+						<NavLink exact to="/">Home</NavLink>
 
-					<form onSubmit={handleSubmit}>
+						<form onSubmit={handleSubmit}>
 
-						<input id='stockSearch'
-						type="text"
-						value={search}
-						placeholder='Search for stocks'
-						onChange={(e) => setSearch(e.target.value)}
-						/>
-						<div className={showStockClass}>
+							<input
+							className='stockSearch'
+							type="text"
+							value={search}
+							placeholder='Search for stocks'
+							onChange={(e) => setSearch(e.target.value)}
+							/>
+							<div className={showStockClass}>
 
-							<ul className={showStockClass}>
-							{stocks.map((stock)=> (
-								<StockList
-								stock={stock}
-								id={stock.id}
-								search={search}
-								/>
-								))}
-							</ul>
-						</div>
-					</form>
+								<ul className={showStockClass}>
+								{stocks.map((stock)=> (
+									<StockList
+									stock={stock}
+									id={stock.id}
+									search={search}
+									setGreen={setGreen}
+									list={list}
+									setList={setList}
+									/>
+									))}
+								{
+		    						<div id={showNoItems}>Oops, looks like there are not stocks with that symbol...</div>
+								}
+
+								</ul>
+							</div>
+						</form>
+					</div>
 
 					<button onClick={handleLogout} className='login-signup'>Log Out</button>
 				</div>}

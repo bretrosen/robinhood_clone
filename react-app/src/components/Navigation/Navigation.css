@@ -88,9 +88,9 @@ a {
   cursor: pointer;
 }
 
-#stockSearch {
+.stockSearch {
   height: 3em;
-  width: 20em;
+  width: 26em;
   padding-left: 2em;
   border: .25px solid lightgrey;
   border-radius: 5px;
@@ -102,17 +102,45 @@ a {
 }
 
 .stock-dropdownshow {
-  top: 3.7em;
+  top: 4em;
   background-color: white;
-  box-shadow: 0px -1px 3px 3px rgba(211, 211, 211, 0.377);
   padding: 1.5em 1em 1.5em 1em;
   border-radius: 10px;
   position: fixed;
-  left: 15em;
-  width: 14em;
+  left: 19.6em;
+  width: 21.5em;
   display: flex;
   flex-direction: column;
   align-items: left;
   gap: 20px;
   cursor: default;
+}
+
+.search-home {
+  display: flex;
+  align-items: center;
+  gap: 15em;
+}
+
+.search-link {
+  text-decoration: none;
+  color: black;
+}
+
+.make-greenshow::first-letter {
+  color: green;
+  font-weight: 600;
+}
+
+.text {
+  color: black;
+}
+
+.search-res {
+  display: flex;
+  justify-content: space-between;
+}
+
+#itemsshow {
+  display: none;
 }
