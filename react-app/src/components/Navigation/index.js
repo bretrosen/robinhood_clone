@@ -14,8 +14,9 @@ function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 	const sessionStocksObj = useSelector(state => state.stock.stocks);
 	const [search, setSearch] = useState("");
-	const [green, setGreen] = useState(false);
-	const [list, setList] = useState('')
+	const [symbol, setSymbol] = useState('')
+	const [name, setName] = useState('')
+
 
 	const stocks = Object.values(sessionStocksObj);
 
@@ -29,11 +30,12 @@ function Navigation({ isLoaded }){
 		e.preventDefault();
 	};
 
-	// console.log('this is the list', list)
+
 
 	const showStockClass = "stock-dropdown" + (search.length > 0 ? "show" : " hidden");
 
-	const showNoItems = "items" + (list.startsWith(search.toUpperCase()) ? "show" : "hidden")
+	const showNoItems = "items" + (!symbol.startsWith(search.toUpperCase()) && !name.toLowerCase().startsWith(search.toLowerCase()) ? "show" : "hidden")
+
 
 	return (<>
 		{/* // <ul className='nav-bar'>
@@ -77,11 +79,9 @@ function Navigation({ isLoaded }){
 								{stocks.map((stock)=> (
 									<StockList
 									stock={stock}
-									id={stock.id}
 									search={search}
-									setGreen={setGreen}
-									list={list}
-									setList={setList}
+									setName={setName}
+									setSymbol={setSymbol}
 									/>
 									))}
 								{

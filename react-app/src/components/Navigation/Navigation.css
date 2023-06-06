@@ -94,7 +94,12 @@ a {
   padding-left: 2em;
   border: .25px solid lightgrey;
   border-radius: 5px;
+  font-weight: 600;
+}
 
+.stockSearch:focus {
+  outline: none;
+  border: .5px rgb(145, 145, 145) solid;
 }
 
 #hidden-dropdownshow {
@@ -122,17 +127,12 @@ a {
   gap: 15em;
 }
 
-.search-link {
-  text-decoration: none;
-  color: black;
-}
-
 .make-greenshow::first-letter {
-  color: green;
+  color: var(--light-green);
   font-weight: 600;
 }
 
-.text {
+.res-text {
   color: black;
 }
 
@@ -141,6 +141,6 @@ a {
   justify-content: space-between;
 }
 
-#itemsshow {
+#itemshidden {
   display: none;
 }
