@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 import { useHistory } from "react-router-dom";
+import OpenModalButton from '../OpenModalButton/index'
+import SignupFormModal from "../SignupFormModal";
 
 
 function ProfileButton({ user }) {
@@ -49,6 +51,14 @@ function ProfileButton({ user }) {
           <>
             <li className="user-menu">{user.first_name} {user.last_name}</li>
             <li className="user-menu user-border">Account Balance: ${user.buying_power}</li>
+            <div>
+
+              <OpenModalButton
+              itemText="Transfer"
+              onItemClick={closeMenu}
+              modalComponent={<SignupFormModal />}
+              />
+            </div>
 
             <li className="user-menu">
               <button onClick={handleLogout} className="nav-button">Log Out</button>
