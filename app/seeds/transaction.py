@@ -5,12 +5,20 @@ from faker import Faker
 
 fake = Faker()
 
+# Used to make sure all users have positive stock quantity, numbers represent seed users
+quantity_tracker = {
+    1: {},
+    2: {},
+    3: {},
+}
+
+
 def generate_transactions():
     transactions = []
     # Want transaction data for all stocks
     for stock_id in range(1, 21):
         # Seed 20 transactions per stock
-        for _ in range(20):
+        for _ in range(3):
             # Randomly choose a user for a transaction
             user_id = randint(1, 3)
             # Generate a random timestamp within the last year
@@ -34,7 +42,48 @@ def generate_transactions():
                 'price_purchased': price_purchased,
                 'price_sold': price_sold
             }
+
+
+            # Adds initial stock to users dictionary if they have none
+            if len(quantity_tracker[new_transaction['user_id']].items()) == 0:
+                if new_transaction['purchased']:
+                    quantity_tracker[new_transaction['user_id']][new_transaction['stock_id']] = new_transaction['quantity']
+                else:
+                    new_transaction['purchased'] = True
+                    new_transaction['price_purchased'] = new_transaction['price_sold']
+                    new_transaction['price_sold'] = 0
+                    quantity_tracker[new_transaction['user_id']][new_transaction['stock_id']] = new_transaction['quantity']
+
+            # Once users in quantity checker all have at least one stock for loop iterates through all their stocks
+            else:
+                for stock, quantity_check in quantity_tracker[new_transaction['user_id']].items():
+
+                    # Checks if user has generated stock
+                    if stock == new_transaction['stock_id']:
+                        quantity_tracker_stock_id = quantity_tracker[new_transaction['user_id']][new_transaction['stock_id']]
+                        # If stock is purchased, adds quantity to total quantity
+                        if new_transaction['purchased']:
+                            quantity_tracker[new_transaction['user_id']][new_transaction['stock_id']] = new_transaction['quantity'] + quantity_tracker[new_transaction['user_id']][new_transaction['stock_id']]
+                        # If stock is sold...
+                        else:
+                            # Sells stock and lowers quantity if user has enough quantity in tracker
+                            if quantity_tracker[new_transaction['user_id']][new_transaction['stock_id']] > new_transaction['quantity']:
+                                quantity_tracker[new_transaction['user_id']][new_transaction['stock_id']] = quantity_tracker[new_transaction['user_id']][new_transaction['stock_id']] - new_transaction['quantity']
+                            # Changes generated transaction to a buy and adds stock if user doesn't have enough quantity to sell
+                            else:
+                                new_transaction['purchased'] = True
+                                new_transaction['price_purchased'] = new_transaction['price_sold']
+                                new_transaction['price_sold'] = 0
+                                quantity_tracker[new_transaction['user_id']][new_transaction['stock_id']] = new_transaction['quantity']
+                    # Adds stock to user's dictionary if they don't have stock already
+                    elif new_transaction['purchased']:
+                        quantity_tracker[new_transaction['user_id']][new_transaction['stock_id']] = new_transaction['quantity']
+                        break
+
+
             transactions.append(Transaction(**new_transaction))
+
+    print('=======================> this is the quantity tracker', quantity_tracker)
     return transactions
 
 
@@ -42,6 +91,10 @@ def seed_transaction():
     transaction_list = generate_transactions()
     for transaction in transaction_list:
         value = transaction.to_dict()
+
+
+
+
         db.session.add(Transaction( stock_id = value['stock_id'],
                                    user_id = value['user_id'],
                                    quantity = value['quantity'],
