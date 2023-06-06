@@ -23,13 +23,13 @@ export const fetchPortfolio  = (userId) => async (dispatch) => {
     dispatch(userPortfolio(portfolio))
 }
 export const postWatchlist  = (name) => async (dispatch) => {
-    const response = await fetch(`api/watchlists`, {
+    const response = await fetch(`/api/watchlists`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({name})
     })
     const newWatchlist = await response.json()
-    console.log("portfolio insde the user reducer file ==============",newWatchlist);
+    // console.log("portfolio insde the user reducer file ==============",newWatchlist);
     dispatch(createWatchlist(newWatchlist))
 }
 
