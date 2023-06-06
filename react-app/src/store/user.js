@@ -1,6 +1,8 @@
 const initialState = { user: null };
 const GET_PORTFOLIO = "user/GET_PORTFOLIO"
 const POST_WATCHLIST = "user/POST_WATCHLIST"
+const DELETE_WATCHLIST = "user/DELETE_WATCHLIST"
+
 
 
 const userPortfolio = (data) => {
@@ -14,6 +16,12 @@ const createWatchlist = (newWatchlist) => {
     return {
         type: POST_WATCHLIST,
         newWatchlist
+    }
+}
+const removeWatchlist = (id) => {
+    return {
+        type: DELETE_WATCHLIST,
+        id
     }
 }
 export const fetchPortfolio  = (userId) => async (dispatch) => {
@@ -32,6 +40,16 @@ export const postWatchlist  = (name) => async (dispatch) => {
     const newWatchlist = await response.json()
     // console.log("portfolio insde the user reducer file ==============",newWatchlist);
     dispatch(createWatchlist(newWatchlist))
+}
+
+export const deleteWatchlist = (id) => async (dispatch) => {
+    const response = await fetch(`/api/watchlists/${id}`, {
+        method: "DELETE"
+    })
+    const listDeleted = await response.json();
+    console.log(listDeleted);
+    
+
 }
 
 export default function reducer(state = initialState, action) {

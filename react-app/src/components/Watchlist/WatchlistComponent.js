@@ -30,7 +30,9 @@ export default function WatchlistComponent() {
         }
     };
 
-
+    const deleteList = () => {
+        
+    }
     return (
         <div className="portfolio-watchlist">
             <div id="watchlists-header">
@@ -58,7 +60,7 @@ export default function WatchlistComponent() {
                                 <i className='fa fa-cog edit-icon'></i>
                                 <span>Edit list</span>
                             </div>
-                            <div>
+                            <div className='delete-list' onClick={deleteList}>
                                 <i className='fa fa-cog edit-icon'></i>
                                 <span>Delete list</span>
                             </div>

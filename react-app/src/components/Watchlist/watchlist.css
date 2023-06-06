@@ -84,3 +84,8 @@
 .edit-icon {
     margin-right: 5px;
 }
+
+.delete-list:hover{
+    color: red;
+    cursor: pointer;
+}
