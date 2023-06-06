@@ -32,7 +32,7 @@ export default function WatchlistComponent() {
 
                 return (
                     <div className="watchlist" key={`watchlist-index-${index}`}>
-                        <NavLink to={`/watchlist/${list.id}`} className="watchlist-left">
+                        <NavLink to={`/watchlists/${list.id}`} className="watchlist-left">
                             <span className="watchlist-icon">⚡️</span>
                             <span className="list-name">{list.name}</span>
                         </NavLink>
