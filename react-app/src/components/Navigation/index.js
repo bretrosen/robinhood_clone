@@ -75,6 +75,7 @@ function Navigation({ isLoaded }){
 									search={search}
 									setName={setName}
 									setSymbol={setSymbol}
+									setSearch={setSearch}
 									/>
 									))}
 								{

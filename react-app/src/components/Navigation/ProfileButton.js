@@ -53,8 +53,8 @@ function ProfileButton() {
           <>
             <li className="user-menu">{sessionUser.first_name} {sessionUser.last_name}</li>
             <li className="user-menu user-border">Account Balance: ${sessionUser.buying_power}</li>
-            <li className="user-menu user-border"><NavLink exact to="/portfolio">Portfolio</NavLink></li>
-            <li className="user-menu user-border">
+            <li className="user-menu user-menu-nav"><NavLink exact to="/portfolio" onClick={closeMenu}>Portfolio</NavLink></li>
+            <li className="user-menu user-border"  onClick={closeMenu}>
 
               <OpenModalButton
               buttonText="Transfer"
