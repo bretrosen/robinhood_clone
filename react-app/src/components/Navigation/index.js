@@ -20,16 +20,9 @@ function Navigation({ isLoaded }){
 
 	const stocks = Object.values(sessionStocksObj);
 
-	const handleLogout = (e) => {
-		e.preventDefault();
-		dispatch(logout());
-		history.push('/')
-	  };
-
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 	};
-
 
 
 	const showStockClass = "stock-dropdown" + (search.length > 0 ? "show" : " hidden");
