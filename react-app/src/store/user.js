@@ -33,7 +33,6 @@ const updateWatchlist = (name, id) => {
     }
 }
 export const fetchPortfolio  = (userId) => async (dispatch) => {
-
     const response = await fetch(`/api/users/${userId}/portfolio`)
     const portfolio = await response.json()
     console.log("portfolio insde the user reducer file ==============",portfolio);
