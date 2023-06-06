@@ -14,6 +14,7 @@
 
 #watchlist-table .table-row:hover {
     background-color: #898989;
+    cursor: pointer;
 }
 
 #watchlist-table th {
