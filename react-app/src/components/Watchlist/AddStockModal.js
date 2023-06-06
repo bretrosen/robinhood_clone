@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { fetchPortfolio } from '../../store/user';
 
-export default function AddStockModal() {
+export default function AddStockModal({stock}) {
     const { user } = useSelector(state => state)
     const sessionUser = useSelector(state => state.session.user);
     const [checkedLists, setCheckedLists] = useState([]);
@@ -30,12 +30,12 @@ export default function AddStockModal() {
     };
 
 
-    console.log(checkedLists);
+    console.log(stock);
     return (
         <div className="portfolio-watchlist lists-modal">
             <div className='list-modal-title'>
-                <div>
-                    Add google to your list
+                <div className='watchlist-lrg'>
+                    Add {stock.name} to your list
                 </div>
                 <div className="close-modal">×</div>
             </div>

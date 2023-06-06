@@ -57,7 +57,7 @@ export default function StockDetails() {
                 <BuySomeStock />
                 <SellSomeStock />
             </div>
-            <OpenModalButton type="watchlist" modalComponent={<AddStockModal />}/>
+            <OpenModalButton type="watchlist" modalComponent={<AddStockModal stock={stock} />}/>
             <div className='stock-details-page'>
                 <div className='stock-details-top'>
                     <div>

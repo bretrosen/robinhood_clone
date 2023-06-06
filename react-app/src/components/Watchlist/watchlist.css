@@ -119,6 +119,9 @@
 .watchlist-sm {
     font-size: 13px;
 }
+.watchlist-lrg {
+    font-size: 16px;
+}
 
 #watchlist-modal:hover {
     background-color: transparent;
