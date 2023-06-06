@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { stockDetailsThunk } from '../../store/stock'
+import LineChart from '../LineGraph'
 import './StockDetail.css'
 
 
@@ -12,28 +13,54 @@ export default function StockDetails() {
     const stock = useSelector(state => state?.stock)
     const prices = stock.stock_history
 
+
     useEffect(() => {
         dispatch(stockDetailsThunk(stockId));
     }, [dispatch, stockId])
+
+    if (!prices) {
+        return null;
+    }
+    console.log("price object", prices)
+    const newestPrice = prices[0].price;
+    const oldestPrice = prices[prices.length - 1].price;
+    const priceDiff = newestPrice - oldestPrice;
+    console.log("newest price", newestPrice)
+    console.log("oldest price", oldestPrice)
+    let performanceClassName
+
+    if (priceDiff >= 0) {
+        performanceClassName = 'stock-positive';
+    } else {
+        performanceClassName = 'stock-negative'
+    }
+
+    // button click to show more or less of stock description
+    const handleClick = () => {
+        
+    }
 
     return (
         <div className='stock-details-page'>
             <div className='stock-details-top'>
                 <div>
                     <h1>{stock.name}</h1>
-                    {/* wait until after mount to get data*/}
+                    <>
+                        <h1>${newestPrice}</h1>
+                        <div className={performanceClassName}>
+                            ${(newestPrice - oldestPrice).toFixed(2)}
+                            &nbsp;
+                            ({(((newestPrice - oldestPrice) / oldestPrice) * 100).toFixed(2)}%)
 
-                    {prices?.length &&
-                        <>
-                            {/* prices are sorted descending by date*/}
-                            <h1>${prices[0].price}</h1>
-                            {/* currently comparing the oldest and newest values for price and percentage change*/}
-                            {/* may want to change to a more dynamic comparison for adjusting the time scale of the chart*/}
-                            <div>${(prices[prices.length - 1].price - prices[0].price).toFixed(2)} {(((prices[prices.length - 1].price - prices[0].price) / prices[prices.length - 1].price) * 100).toFixed(2)}% Past (time interval)</div>
-                        </>}
+
+                            &nbsp;Past&nbsp;
+                            {((new Date(prices[0].time_stamp) - new Date(prices[prices.length - 1].time_stamp)) / 86400000).toFixed(0)} days
+                        </div>
+                    </>
+
                 </div>
-                <div>
-                    <h1>Graph</h1>
+                <div className='stock-chart'>
+                    <LineChart />
                 </div>
             </div>
             <div className='stock-about'>
