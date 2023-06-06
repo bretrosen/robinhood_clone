@@ -2,6 +2,7 @@ const initialState = { user: null };
 const GET_PORTFOLIO = "user/GET_PORTFOLIO"
 const POST_WATCHLIST = "user/POST_WATCHLIST"
 const DELETE_WATCHLIST = "user/DELETE_WATCHLIST"
+const PUT_WATCHLIST = "user/PUT_WATCHLIST"
 
 
 
@@ -24,6 +25,12 @@ const removeWatchlist = (id) => {
         id
     }
 }
+const updateWatchlist = (name) => {
+    return {
+        type: PUT_WATCHLIST,
+        name
+    }
+}
 export const fetchPortfolio  = (userId) => async (dispatch) => {
 
     const response = await fetch(`/api/users/${userId}/portfolio`)
@@ -40,6 +47,16 @@ export const postWatchlist  = (name) => async (dispatch) => {
     const newWatchlist = await response.json()
     // console.log("portfolio insde the user reducer file ==============",newWatchlist);
     dispatch(createWatchlist(newWatchlist))
+}
+export const putWatchlist  = (name, id) => async (dispatch) => {
+    const response = await fetch(`/api/watchlists/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({name})
+    })
+    const updatedWatchlist = await response.json()
+    console.log("updated watchlist insde the user reducer file ==============> ", updatedWatchlist);
+    dispatch(updateWatchlist(updatedWatchlist))
 }
 
 export const deleteWatchlist = (id) => async (dispatch) => {

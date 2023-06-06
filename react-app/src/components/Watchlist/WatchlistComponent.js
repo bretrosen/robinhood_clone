@@ -57,7 +57,7 @@ export default function WatchlistComponent() {
                         </div>
                         <div className={`edit-watchlist ${list.id === clicked ? "watchlist-clicked" : ""}`}>
 
-                            <OpenModalButton buttonText="Edit list" modalComponent={<CreateList type="edit" name={list.name} />}/>
+                            <OpenModalButton buttonText="Edit list" modalComponent={<CreateList type="edit" name={list.name} watchlistId={list.id} />}/>
                             <div className='delete-list' onClick={deleteList}>
                                 <i className='fa fa-cog edit-icon'></i>
                                 <span>Delete list</span>

@@ -26,12 +26,20 @@ def create_watchlist():
         print(form.errors)
         return form.errors, 400
 
-@watchlist_routes.route("<int:watchlistId>", methods = ["DELETE"])
+@watchlist_routes.route("<int:watchlistId>", methods = ["DELETE", "PUT"])
 def delete_watchlist(watchlistId):
-    print("this is the watchlistID that will be deleted ===============>", watchlistId)
+    if request.method == "PUT":
+        list_to_update = WatchList.query.get(watchlistId)
+        data = request.get_json()
+        print("this is the method ===============>        ", data)
+        list_to_update.name = data['name']
+        db.session.commit()
+        return list_to_update.to_dict()
+
+
 
     list_to_delete = WatchList.query.get(watchlistId)
-    print("this is the watchlist that will be deleted ===============>", list_to_delete)
+    # print("this is the watchlist that will be deleted ===============>", list_to_delete)
     db.session.delete(list_to_delete)
     db.session.commit()
     return list_to_delete.to_dict()
