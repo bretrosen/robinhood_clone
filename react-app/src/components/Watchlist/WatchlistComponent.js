@@ -55,11 +55,11 @@ export default function WatchlistComponent() {
                         <div className={`edit-watchlist ${index === clicked ? "watchlist-clicked" : ""}`}>
 
                             <div>
-                                <i className='fa fa-cog'></i>
+                                <i className='fa fa-cog edit-icon'></i>
                                 <span>Edit list</span>
                             </div>
                             <div>
-                                <i className='fa fa-cancel'></i>
+                                <i className='fa fa-cog edit-icon'></i>
                                 <span>Delete list</span>
                             </div>
                         </div>
