@@ -25,10 +25,11 @@ const removeWatchlist = (id) => {
         id
     }
 }
-const updateWatchlist = (name) => {
+const updateWatchlist = (name, id) => {
     return {
         type: PUT_WATCHLIST,
-        name
+        name,
+        id
     }
 }
 export const fetchPortfolio  = (userId) => async (dispatch) => {
@@ -56,7 +57,7 @@ export const putWatchlist  = (name, id) => async (dispatch) => {
     })
     const updatedWatchlist = await response.json()
     console.log("updated watchlist insde the user reducer file ==============> ", updatedWatchlist);
-    dispatch(updateWatchlist(updatedWatchlist))
+    dispatch(updateWatchlist(updatedWatchlist.name, id))
 }
 
 export const deleteWatchlist = (id) => async (dispatch) => {
@@ -79,7 +80,16 @@ export default function reducer(state = initialState, action) {
         case DELETE_WATCHLIST:
             const deleteWatchlist = [...state.watch_lists].filter(list => list.id !== action.id)
             console.log(deleteWatchlist);
-            return {...state, watch_lists: deleteWatchlist}
+            return { ...state, watch_lists: deleteWatchlist }
+        case PUT_WATCHLIST:
+            const putWatchlist = [...state.watch_lists].filter(list => {
+                if (list.id === action.id) {
+                    list.name = action.name
+                    return list
+                }
+                return list
+            })
+            return {...state, watch_lists : putWatchlist}
         default:
             return state;
     }
