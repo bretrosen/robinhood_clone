@@ -86,14 +86,21 @@
     margin-right: 5px;
 }
 
-.delete-list:hover{
+.delete-list:hover {
     color: red;
     cursor: pointer;
 }
 
-.lists-modal{
-        background-color: chocolate;
-        position: relative;
-        width: 100%;
-        right: 0;
-    }
+.lists-modal {
+    background-color: chocolate;
+    position: relative;
+    width: 100%;
+    right: 0;
+}
+
+.list-modal-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+}

@@ -36,36 +36,44 @@ export default function AddStockModal() {
     }
     return (
         <div className="portfolio-watchlist lists-modal">
-            <div id="watchlists-header">
-                <p>Lists</p>
-                <OpenModalButton
-                    buttonText="+"
-                    modalComponent={<CreateList type='create'/>} />
+            <div className='list-modal-title'>
+                <div>
+                    Add google to your list
+                </div>
+                <div class="close-modal">×</div>
             </div>
-            {watchlists.map((list, index) => {
 
-                return (
-                    <div className="watchlist" key={`watchlist-index-${index}`}>
-                        <NavLink to={`/watchlists/${list.id}`} className="watchlist-left">
-                            <span className="watchlist-icon">⚡️</span>
-                            <span className="list-name">{list.name}</span>
-                        </NavLink>
-                        <div>
-                            <i className="fa fa-ellipsis-h" onClick={() => editList(list.id)}></i>
+            <div className='all-watchlists-modal'>
+                <div className='create-new-list'>
+                    <span>+</span> <span>Add to List</span>
+                </div>
 
-                            <span>^</span>
-                        </div>
-                        <div className={`edit-watchlist ${list.id === clicked ? "watchlist-clicked" : ""}`}>
+                {watchlists.map((list, index) => {
 
-                            <OpenModalButton buttonText="Edit list" modalComponent={<CreateList type="edit" name={list.name} watchlistId={list.id} />}/>
-                            <div className='delete-list' onClick={deleteList}>
-                                <i className='fa fa-cog edit-icon'></i>
-                                <span>Delete list</span>
+                    return (
+                        <div className="watchlist" key={`watchlist-index-${index}`}>
+                            <NavLink to={`/watchlists/${list.id}`} className="watchlist-left">
+                                <span className="watchlist-icon">⚡️</span>
+                                <span className="list-name">{list.name}</span>
+                            </NavLink>
+                            <div>
+                                <i className="fa fa-ellipsis-h" onClick={() => editList(list.id)}></i>
+
+                                <span>^</span>
+                            </div>
+                            <div className={`edit-watchlist ${list.id === clicked ? "watchlist-clicked" : ""}`}>
+
+                                <OpenModalButton buttonText="Edit list" modalComponent={<CreateList type="edit" name={list.name} watchlistId={list.id} />} />
+                                <div className='delete-list' onClick={deleteList}>
+                                    <i className='fa fa-cog edit-icon'></i>
+                                    <span>Delete list</span>
+                                </div>
                             </div>
                         </div>
-                    </div>)
+                    )
 
-            })}
+                })}
+            </div>
         </div>
     )
 }
