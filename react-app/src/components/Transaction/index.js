@@ -22,7 +22,7 @@ export const BuySomeStock = () => {
         await dispatch(buyStockThunk(stockObj))
         setQuantity(0)
     }
-
+    console.log('this is stock', stock)
     return (
         <div>
             <div>Buy {stock.symbol} </div>
@@ -37,12 +37,14 @@ export const BuySomeStock = () => {
 
 }
 
+
+
 export const SellSomeStock = () => {
 
     const [quantity, setQuantity] = useState('')
     const dispatch = useDispatch()
-    const stock = useSelector(state => state.stock)
-    const marketPrice = stock.stock_history[0].price
+    const {stock} = useSelector(state => state.stock)
+    const marketPrice = stock?.stock_history[0].price
     const handleSubmit = async (event) => {
         event.preventDefault()
         // object to match the thunk and backend buy route
