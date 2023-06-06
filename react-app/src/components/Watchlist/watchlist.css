@@ -22,3 +22,10 @@
     text-align: left;
     color: #898989;
 }
+
+.edit-watchlist{
+    display: none;
+}
+#watchlist-clicked{
+    display: block;
+}

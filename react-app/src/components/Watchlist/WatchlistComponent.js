@@ -2,12 +2,13 @@ import { NavLink } from 'react-router-dom';
 import OpenModalButton from "../OpenModalButton";
 import CreateList from "../Modals/CreateList";
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { fetchPortfolio } from '../../store/user';
 
 export default function WatchlistComponent() {
     const { user } = useSelector(state => state)
     const sessionUser = useSelector(state => state.session.user);
+    const [clicked, setClicked] = useState(false)
     // console.log(sessionUser);
     const watchlists = user.watch_lists
     const dispatch = useDispatch();
@@ -20,6 +21,13 @@ export default function WatchlistComponent() {
         return (
             <h1>Loading...</h1>
         )
+    }
+    const editList = () => {
+        if (!clicked) {
+            setClicked(true)
+        } else {
+            setClicked(false)
+        }
     }
     return (
         <div className="portfolio-watchlist">
@@ -38,8 +46,18 @@ export default function WatchlistComponent() {
                             <span className="list-name">{list.name}</span>
                         </NavLink>
                         <div>
-                            <i className="fa fa-ellipsis-h"></i>
+                            <i className="fa fa-ellipsis-h" onClick={editList}></i>
                             <span>^</span>
+                        </div>
+                        <div className={`edit-watchlist`} id={clicked ? "watchlist-clicked" : ""}>
+                            <div>
+                                <i className='fa fa-cog'></i>
+                                <span>Edit list</span>
+                            </div>
+                            <div>
+                                <i className='fa fa-cancel'></i>
+                                <span>Delete list</span>
+                            </div>
                         </div>
                     </div>)
 
