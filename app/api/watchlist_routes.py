@@ -43,3 +43,5 @@ def delete_watchlist(watchlistId):
     db.session.delete(list_to_delete)
     db.session.commit()
     return list_to_delete.to_dict()
+
+@watchlist_routes.route("")
