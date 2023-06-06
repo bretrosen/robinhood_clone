@@ -45,3 +45,5 @@ def delete_watchlist(watchlistId):
     return list_to_delete.to_dict()
 
 @watchlist_routes.route("")
+def quick():
+    pass
