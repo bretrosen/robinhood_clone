@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useDispatch } from "react-redux";
 import { postWatchlist } from "../../store/user";
 import { useModal } from "../../context/Modal"
-export default function CreateList() {
+export default function CreateList({type, name}) {
     const [listName, setListName] = useState("")
     const [errors, setErrors] = useState({})
     const { closeModal } = useModal();
@@ -29,11 +29,12 @@ export default function CreateList() {
         closeModal()
         setListName("")
     }
+    console.log(type);
     return (
         <div>
             {errors.length && <p>{errors.length}</p>}
             <div id="create-list">
-                <p>Create list</p>
+                {type === "create" ? <p>Create list</p> : <p>Edit list</p>}
                 <p onClick={closeModal}>x</p>
             </div>
             <form onSubmit={handleSubmit}>

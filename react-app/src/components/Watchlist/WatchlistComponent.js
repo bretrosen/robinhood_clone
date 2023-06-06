@@ -40,7 +40,7 @@ export default function WatchlistComponent() {
                 <p>Lists</p>
                 <OpenModalButton
                     buttonText="+"
-                    modalComponent={<CreateList />} />
+                    modalComponent={<CreateList type='create'/>} />
             </div>
             {watchlists.map((list, index) => {
 
@@ -57,10 +57,7 @@ export default function WatchlistComponent() {
                         </div>
                         <div className={`edit-watchlist ${list.id === clicked ? "watchlist-clicked" : ""}`}>
 
-                            <div>
-                                <i className='fa fa-cog edit-icon'></i>
-                                <span>Edit list</span>
-                            </div>
+                            <OpenModalButton buttonText="Edit list" modalComponent={<CreateList type="edit" name={list.name} />}/>
                             <div className='delete-list' onClick={deleteList}>
                                 <i className='fa fa-cog edit-icon'></i>
                                 <span>Delete list</span>
