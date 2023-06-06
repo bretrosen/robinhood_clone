@@ -1,12 +1,24 @@
-// import { useEffect } from "react"
-// import { useDispatch, useSelector } from "react-redux"
-// import { fetchPortfolio } from "../../store/user";
+
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { fetchPortfolio } from "../../store/user";
+import { fetchAllStocks } from '../../store/stock';
 
 import "./portfolio.css"
 import LineChart from "../LineGraph";
 import WatchlistComponent from "../Watchlist/WatchlistComponent";
 
 export default function Portfolio() {
+
+    const { user } = useSelector(state => state)
+    const sessionUser = useSelector(state => state.session.user);
+    // console.log(sessionUser);
+    const watchlists = user.watch_lists
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(fetchPortfolio(sessionUser.id))
+        dispatch(fetchAllStocks())
+    }, [dispatch, sessionUser.id])
 
     return (
         <div className="portfolio-page">
