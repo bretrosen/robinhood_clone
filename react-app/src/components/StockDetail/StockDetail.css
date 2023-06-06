@@ -1,7 +1,3 @@
-/* TODO: add page styling */
-
-
-
 .about-block {
     margin-top: 1rem;
 }
@@ -24,6 +20,10 @@
     width: 40rem;
 }
 
+.stock-chart {
+    margin-top: 2rem;
+}
+
 .stock-details-page {
     display: flex;
     flex-direction: column;
@@ -36,4 +36,12 @@
 
 .stock-label {
     font-weight: bold;
+}
+
+.stock-negative {
+    color: red;
+}
+
+.stock-positive {
+    color: var(--lawn-green);
 }
