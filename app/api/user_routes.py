@@ -72,6 +72,7 @@ def update_buying_power(id):
 
     user = current_user
     form = BuyingPowerForm()
+    print('This is in the backend route', form.data['buying_power'])
 
     form['csrf_token'].data = request.cookies['csrf_token'] # Boilerplate code
     if form.validate_on_submit():

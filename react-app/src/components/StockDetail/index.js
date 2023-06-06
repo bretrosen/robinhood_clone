@@ -12,8 +12,7 @@ import './StockDetail.css'
 export default function StockDetails() {
     const dispatch = useDispatch()
     const { stockId } = useParams()
-    const stock = useSelector(state => state?.stock)
-    const prices = stock.stock_history
+    const {stock} = useSelector(state => state.stock)
     const sessionUser = useSelector(state => state.session.user);
     console.log('session user =>', sessionUser)
 
@@ -23,6 +22,10 @@ export default function StockDetails() {
         dispatch(fetchPortfolio(sessionUser.id))
     }, [dispatch, stockId, sessionUser.id])
 
+    console.log('====>this is stock from stock details', stock)
+
+    const prices = stock?.stock_history
+    console.log('====>this is prices from stock details', prices)
     if (!prices) {
         return <h1>Loading...</h1>
     }

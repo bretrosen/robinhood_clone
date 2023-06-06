@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
+import { fetchAddBuyPower } from "../../store/user";
 
 
 
@@ -9,17 +10,23 @@ function TransfersModal() {
 	const [buyingPower, setBuyingPower] = useState("");
 	const [errors, setErrors] = useState([]);
 	const { closeModal } = useModal();
+    const sessionUser = useSelector(state => state.session.user);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-			const data = await dispatch();
-			if (data) {
-				setErrors(data);
-			} else {
-				closeModal();
-			}
+        const addedAmount = {
+            userId: sessionUser.id,
+            amount: Number(buyingPower)
+        }
 
+        console.log('from the component', addedAmount)
+		const data = await dispatch(fetchAddBuyPower(addedAmount));
+		if (data) {
+			setErrors(data);
+		} else {
+			closeModal();
+		}
 	};
 
 	return (

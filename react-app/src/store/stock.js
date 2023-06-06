@@ -116,7 +116,7 @@ export const fetchAllStocks = () => async (dispatch) => {
     }
 }
 
-const initialState = { stock: null,  stocks: {}}
+const initialState = { stock: {},  stocks: {}}
 
 
 // reducer
@@ -126,7 +126,11 @@ export default function stockReducer(state = initialState, action) {
 
     switch (action.type) {
         case GET_STOCK:
-            return { ...action.stock };
+            stockState = {...state, stock: {...state.stock}, stocks: {...state.stocks}}
+
+            stockState.stock = action.stock
+
+            return stockState
 
         case BUY_STOCK:
             return { ...action.stock };

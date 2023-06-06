@@ -6,8 +6,8 @@ export const BuySomeStock = () => {
 
     const [quantity, setQuantity] = useState(0)
     const dispatch = useDispatch()
-    const stock = useSelector(state => state.stock)
-    const marketPrice = stock.stock_history[0].price
+    const {stock} = useSelector(state => state.stock)
+    const marketPrice = stock?.stock_history[0].price
     const handleSubmit = async (event) => {
         event.preventDefault()
         // object to match the thunk and backend buy route
