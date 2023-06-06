@@ -1,7 +1,7 @@
 // action type constants
-const GET_STOCK = '/stock/GET_STOCK'
-const BUY_STOCK = '/stock/BUY_STOCK'
-const SELL_STOCK = '/stock/SELL_STOCK'
+const GET_STOCK = 'stock/GET_STOCK'
+const BUY_STOCK = 'stock/BUY_STOCK'
+const SELL_STOCK = 'stock/SELL_STOCK'
 
 // action creators
 const stockDetail = (stock) => {
@@ -51,7 +51,8 @@ export const buyStockThunk = (stock) => async (dispatch) => {
     const response = await fetch(`/api/stocks/${stock.id}/buy_stock`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(stock)
+        body: JSON.stringify({"quantity": stock.quantity,
+               "price_purchased": stock.price_purchased})
     })
     console.log('sending buy stock thunk', response)
 
@@ -95,16 +96,12 @@ export const sellStockThunk = (stock) => async (dispatch) => {
     }
 }
 
-const initialState = { stock: null }
+const initialState = { stock: null, user: null}
 
 // reducer
 export default function stockReducer(state = initialState, action) {
     switch (action.type) {
         case GET_STOCK:
-            return { ...action.stock };
-        case BUY_STOCK:
-            return { ...action.stock };
-        case SELL_STOCK:
             return { ...action.stock };
         default:
             return state;

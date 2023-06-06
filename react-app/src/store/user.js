@@ -17,7 +17,7 @@ const createWatchlist = (newWatchlist) => {
     }
 }
 export const fetchPortfolio  = (userId) => async (dispatch) => {
-    const response = await fetch(`api/users/${userId}/portfolio`)
+    const response = await fetch(`/api/users/${userId}/portfolio`)
     const portfolio = await response.json()
     console.log("portfolio insde the user reducer file ==============",portfolio);
     dispatch(userPortfolio(portfolio))
@@ -38,7 +38,7 @@ export default function reducer(state = initialState, action) {
         case GET_PORTFOLIO:
             return { ...action.data };
         case POST_WATCHLIST:
-            const newWatchlist = action.newWatchlist; 
+            const newWatchlist = action.newWatchlist;
             const updatedWatchlists = [...state.watch_lists, newWatchlist];
             return { ...state, watch_lists: updatedWatchlists };
         default:
