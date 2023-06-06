@@ -3,7 +3,7 @@ import OpenModalButton from "../OpenModalButton";
 import CreateList from "../Modals/CreateList";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { fetchPortfolio } from '../../store/user';
+import { deleteWatchlist, fetchPortfolio } from '../../store/user';
 
 export default function WatchlistComponent() {
     const { user } = useSelector(state => state)
@@ -22,16 +22,17 @@ export default function WatchlistComponent() {
             <h1>Loading...</h1>
         )
     }
-    const editList = (index) => {
-        if (clicked === index) {
-            setClicked(null); // Reset if the same watchlist is clicked again
+    const editList = (id) => {
+        if (clicked === id) {
+            setClicked(null);
         } else {
-            setClicked(index);
+            setClicked(id);
         }
     };
 
     const deleteList = () => {
-        
+        console.log(clicked);
+        dispatch(deleteWatchlist(clicked))
     }
     return (
         <div className="portfolio-watchlist">
@@ -50,11 +51,11 @@ export default function WatchlistComponent() {
                             <span className="list-name">{list.name}</span>
                         </NavLink>
                         <div>
-                            <i className="fa fa-ellipsis-h" onClick={() => editList(index)}></i>
+                            <i className="fa fa-ellipsis-h" onClick={() => editList(list.id)}></i>
 
                             <span>^</span>
                         </div>
-                        <div className={`edit-watchlist ${index === clicked ? "watchlist-clicked" : ""}`}>
+                        <div className={`edit-watchlist ${list.id === clicked ? "watchlist-clicked" : ""}`}>
 
                             <div>
                                 <i className='fa fa-cog edit-icon'></i>
