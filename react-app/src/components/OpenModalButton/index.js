@@ -14,9 +14,17 @@ function OpenModalButton({
     setModalContent(modalComponent);
     if (onButtonClick) onButtonClick();
   };
+  if (buttonText === "Edit list") {
+    return (
+      <div onClick={onClick}>
+        <i className='fa fa-cog edit-icon'></i>
+        <span>Edit list</span>
+      </div>
+    )
+  }
 
   return (
-    <button onClick={onClick}>{buttonText}</button>
+    <button onClick={onClick} className='nav-button'>{buttonText}</button>
   );
 }
 

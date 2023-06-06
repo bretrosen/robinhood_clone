@@ -281,6 +281,7 @@ def seed_stocks():
 
     [db.session.add(stock) for stock in all_stocks]
     db.session.commit()
+    return all_stocks
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't

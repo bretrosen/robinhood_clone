@@ -19,11 +19,15 @@ def seed():
         # command, which will  truncate all tables prefixed with
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
+        undo_transaction()
+        undo_stock_history()
+        undo_watch_list_items()
+        undo_watch_list()
+        undo_stocks()
         undo_users()
     seed_users()
-    seed_stocks()
-    seed_watch_lists()
-    seed_watch_list_items()
+    all_stocks = seed_stocks()
+    seed_watch_lists(all_stocks)
     seed_stock_history()
     seed_transaction()
     # Add other seed functions here
