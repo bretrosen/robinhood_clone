@@ -1,21 +1,28 @@
 import React, {useState} from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 import ProfileButton from './ProfileButton';
+import StockList from './StockList';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
 	const dispatch = useDispatch();
+	const history = useHistory()
 	const sessionUser = useSelector(state => state.session.user);
-	const sessionStocks = useSelector(state => state.stock.stocks);
+	const sessionStocksObj = useSelector(state => state.stock.stocks);
 	const [search, setSearch] = useState("");
+
+
+	const stocks = Object.values(sessionStocksObj);
 
 
 	const handleLogout = (e) => {
 		e.preventDefault();
 		dispatch(logout());
+		history.push('/')
 	  };
 
 	const handleSubmit = async (e) => {
@@ -24,17 +31,27 @@ function Navigation({ isLoaded }){
 
 	};
 
-	return (
-		<ul className='nav-bar'>
-			<li>
-				<NavLink exact to="/">Home</NavLink>
-			</li>
+
+
+	let showStockClass = "stock-dropdown" + (search.length > 0 ? "show" : " hidden");
+
+
+
+	return (<>
+		{/* // <ul className='nav-bar'>
+		// 	<li>
+		// 		<NavLink exact to="/">Home</NavLink>
+		// 	</li> */}
 			{/* {isLoaded && (
 				<li>
-					<ProfileButton user={sessionUser} />
+				<ProfileButton user={sessionUser} />
 				</li>
 			)} */}
 			{!sessionUser && <ul className='nav-bar'>
+				<li>
+					<NavLink exact to="/">Home</NavLink>
+				</li>
+
 				<li >
 					<NavLink to="/login" className='login-signup' id='log-in'>Log in</NavLink></li>
 				<li >
@@ -43,21 +60,37 @@ function Navigation({ isLoaded }){
 			}
 
 			{sessionUser &&
-				<div className='user-nav-bar'>
+				<div className='nav-bar'>
+					<NavLink exact to="/">Home</NavLink>
 
 					<form onSubmit={handleSubmit}>
-						<input
+
+						<input id='stockSearch'
 						type="text"
 						value={search}
+						placeholder='Search for stocks'
 						onChange={(e) => setSearch(e.target.value)}
 						/>
+						<div className={showStockClass}>
+
+							<ul className={showStockClass}>
+							{stocks.map((stock)=> (
+								<StockList
+								stock={stock}
+								id={stock.id}
+								search={search}
+								/>
+								))}
+							</ul>
+						</div>
 					</form>
 
 					<button onClick={handleLogout} className='login-signup'>Log Out</button>
 				</div>}
 
 
-		</ul>
+		{/* // </ul> */}
+		</>
 	);
 }
 
