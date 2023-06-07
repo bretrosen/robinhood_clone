@@ -41,7 +41,6 @@ const LineChart = () => {
                 initialValue += item.quantity * item.price_purchased
             } else {
                 totalQuantity -= item.quantity
-                initialValue -= item.quantity * item.price_sold
             }
 
             let date = Date.parse(item.time_stamp)
@@ -126,8 +125,8 @@ const LineChart = () => {
     }
 
 
-    const vals = findStockValue(user, 1)
-    const dates = findStockDates(user, 1)
+    const vals = findStockValue(user, 3)
+    const dates = findStockDates(user, 3)
 
 
 
