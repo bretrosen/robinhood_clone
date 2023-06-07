@@ -2,14 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Line } from 'react-chartjs-2'
 
+
 const DailyStockChart = () => {
-    const [chartData, setChartData] = useState({})
+    const [auto, setAuto] = useState(false)
     const { stock } = useSelector(state => state.stock)
     const priceHistory = stock?.stock_history
     const lastPrice = priceHistory[0].price.toFixed(2)
     const dailyPrices = [Number(lastPrice)]
     const labels = [1]
     let count = 2;
+
+    const toggleAuto = () => {
+        setAuto(!auto)
+    }
 
     const getDelta = async () => {
         const response = await fetch(`/api/stocks/get_price`)
@@ -28,35 +33,28 @@ const DailyStockChart = () => {
 
     }
 
-    const chart = () => {
-        setChartData({
-            labels: labels,
-            datasets: [
-                {
-                    label: 'Stock Price',
-                    data: dailyPrices,
-                    borderColor: 'rgba(0,200,5, 1)',
-                    borderWidth: 1,
-                }
-            ]
-        })
-    }
-
-
     useEffect(() => {
-        chart()
-        const timer = setInterval(() => getDelta(), 10000)
-        return () => clearInterval(timer)
-    }, [dailyPrices])
+        console.log("use effect in daily stock chart ran")
+        const timer1 = setInterval(() => getDelta(), 10000)
+        const timer2 = setInterval(() => toggleAuto(), 10000)
+        const cancelIntervals = () => {
+            clearInterval(timer1)
+            clearInterval(timer2)
+        }
+        return () => cancelIntervals()
+    }, [auto])
 
-    // setTimeout(() => getDelta(), 10000)
-
-
-    // useEffect(() => {
-    //     chart()
-    // }, [dailyPrices])
-
-
+    const data = {
+        labels: labels,
+        datasets: [
+            {
+                label: 'Stock Price',
+                data: dailyPrices,
+                borderColor: 'rgba(0,200,5, 1)',
+                borderWidth: 1
+            }
+        ]
+    }
 
     const options = {
         responsive: true,
@@ -90,7 +88,7 @@ const DailyStockChart = () => {
 
     return (
         <div>
-            <Line data={chartData} options={options} />
+            <Line data={data} options={options} />
         </div>
     );
 }
