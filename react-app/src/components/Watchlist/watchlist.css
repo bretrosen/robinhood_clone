@@ -17,6 +17,18 @@
     cursor: pointer;
 }
 
+.table-row {
+    position: relative;
+}
+
+.delete-stock {
+    position: absolute;
+    right: 10px;
+}
+
+.fa-trash:hover{
+    color: red;
+}
 #watchlist-table th {
     padding-top: 12px;
     padding-bottom: 12px;
@@ -119,6 +131,7 @@
 .watchlist-sm {
     font-size: 13px;
 }
+
 .watchlist-lrg {
     font-size: 16px;
 }
@@ -142,6 +155,7 @@
 .checked-list {
     background-color: var(--robin-hood-green);
 }
-.fa-check{
+
+.fa-check {
     color: white;
 }

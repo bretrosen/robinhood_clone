@@ -34,6 +34,9 @@ export default function WatchlistList() {
     }
     const list = watch_lists?.find(list => list.id === parseInt(watchlistId))
     const stocks = list?.stocks
+    const deleteStock = (stocklistId, watchlistId) => {
+
+    }
     return (
         <div className="portfolio-page">
 
@@ -48,13 +51,7 @@ export default function WatchlistList() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr className="table-row">
-                        <td>Company A</td>
-                        <td>$10.00</td>
-                        <td>$10.00</td>
-                        <td>+2.5%</td>
-                        <td>$1 billion</td>
-                    </tr>
+
                     {stocks?.map((stock, index) => {
                         return (<tr className="table-row" key={`stock-list-${index}`} onClick={() => viewStockDetial(stock.id)}>
                             <td>{stock.name}</td>
@@ -62,6 +59,7 @@ export default function WatchlistList() {
                             <td>$15.75</td>
                             <td>+0.8%</td>
                             <td>{formatLargeNumber(stock.market_cap)}</td>
+                            <td className="delete-stock" onClick={() => deleteStock(stock.id, watchlistId)}><i className="fa fa-trash"></i></td>
                         </tr>)
 
                     })}
