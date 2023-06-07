@@ -44,12 +44,21 @@ def delete_watchlist(watchlistId):
     db.session.commit()
     return list_to_delete.to_dict()
 
-@watchlist_routes.route("add/<int:watchlistId>", methods = ["POST"])
+@watchlist_routes.route("list/<int:watchlistId>", methods = ["POST", "DELETE"])
 def add_stock_to_list(watchlistId):
     data = request.get_json()
     stockId = int(data['stock'])
     stock = Stock.query.get(stockId)
     list = WatchList.query.get(watchlistId)
+
+    if request.method == "DELETE":
+        # all_stocks = [stock.to_dict() for stock in list.stocks]
+        # print("all stocks  ==========>  ", all_stocks)
+        list.stocks = [stock for stock in list.stocks if stock.to_dict()["id"] != stockId]
+        db.session.commit()
+
+        return list.to_dict()
+
     # print("this is the stockid ===============>   ", stockId)
     list.stocks.append(stock)
     db.session.commit()
