@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
+import { fetchAllStocks } from '../../store/stock';
 import ProfileButton from './ProfileButton';
 import StockList from './StockList';
 import './Navigation.css';
@@ -24,6 +25,10 @@ function Navigation({ isLoaded }){
 		e.preventDefault();
 	};
 
+	useEffect(() => {
+		dispatch(fetchAllStocks())
+	}, [])
+
 
 	const showStockClass = "stock-dropdown" + (search.length > 0 ? "show" : " hidden");
 
@@ -42,20 +47,21 @@ function Navigation({ isLoaded }){
 			)} */}
 			{!sessionUser && <ul className='nav-bar'>
 				<li>
-					<NavLink exact to="/">Home</NavLink>
+					<NavLink exact to="/">FOXTROT</NavLink>
 				</li>
-
-				<li >
-					<NavLink to="/login" className='login-signup' id='log-in'>Log in</NavLink></li>
-				<li >
-					<NavLink to="signup" className='login-signup' id='sign-up'>Sign up</NavLink></li>
+				<div className='nav-login-signup'>
+					<li className='remove-dot'>
+						<NavLink to="/login" className='login-signup' id='log-in'>Log in</NavLink></li>
+					<li className='remove-dot'>
+						<NavLink to="signup" className='login-signup' id='sign-up'>Sign up</NavLink></li>
+				</div>
 			</ul>
 			}
 
 			{sessionUser &&
 				<div className='nav-bar'>
 					<div className='search-home'>
-						<NavLink exact to="/">Home</NavLink>
+						<NavLink exact to="/">FOXTROT</NavLink>
 
 						<form onSubmit={handleSubmit}>
 							<i className="fas fa-search" />

@@ -2,7 +2,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchPortfolio } from "../../store/user";
-import { fetchAllStocks } from '../../store/stock';
+
 
 import "./portfolio.css"
 import LineChart from "../LineGraph";
@@ -17,7 +17,7 @@ export default function Portfolio() {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchPortfolio(sessionUser.id))
-        dispatch(fetchAllStocks())
+
     }, [dispatch, sessionUser.id])
 
     return (
