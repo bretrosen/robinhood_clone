@@ -20,12 +20,12 @@ export default function LandingPage() {
 
                     <img src="/static/cellphone.png" alt="cellphone surrounded by 3d shapes" style={{width : "50%"}}></img>
                     <div className="build-right">
-                        <h1>Investing
-                            Build your portfolio starting with just $1
+                        <h1 className="huge-font">Investing<br />
+                            Build your <br />portfolio starting with just $1
                         </h1>
-                        <p>Invest in stocks, options, and ETFs at your pace and commission-free.</p>
-                        <p>Inves Disclosures</p>
-                        <NavLink to="/signup" className="login-signup">Learn more</NavLink>
+                        <p style={{fontSize: "18px"}}>Invest in stocks, options, and ETFs at your pace and commission-free.</p>
+                        <p style={{ fontSize: "15px" }}><i className="fa fa-info-circle"></i>Investing Disclosures</p>
+                        <NavLink to="/signup" className="login-signup" id="landing-info" >Learn more</NavLink>
                     </div>
                 </div>
             </div>
