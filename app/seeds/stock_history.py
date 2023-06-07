@@ -19,7 +19,7 @@ def generate_price_history():
         for num in range(100):  # Generate 100 price history entries per stock_id
             price += round(choice(progression) * uniform(-5, 5), 2)  # Generate a random price change from the overall trend
             today = datetime.now()
-            d = timedelta(days = num)
+            d = timedelta(days = 100 - num)
             time_stamp = today - d  # Generate timestamps for the last 100 days
             entry = {
                 'stock_id': stock_id,

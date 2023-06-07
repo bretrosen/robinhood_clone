@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { Line } from 'react-chartjs-2';
 
 const StockChart = () => {
-    const {stock} = useSelector(state => state.stock)
+    const { stock } = useSelector(state => state.stock)
     const priceArray = stock?.stock_history
     console.log("priceArray from chart ==>", priceArray)
 
@@ -18,7 +18,7 @@ const StockChart = () => {
     // }
 
     const labels = []
-    for (let i = 0; i < priceArray.length; i++) {
+    for (let i = priceArray.length - 1; i >= 0; i--) {
         labels.push(priceArray[i].time_stamp)
     }
 
@@ -27,9 +27,9 @@ const StockChart = () => {
         datasets: [
             {
                 label: '',
-                data: prices,
-                backgroundColor: 'rgba(75, 192, 192, 0)',
-                borderColor: 'rgba(75, 192, 192, 1)',
+                data: prices.reverse(),
+                // backgroundColor: 'rgba(75, 192, 192, 0)',
+                borderColor: 'rgba(134, 255, 68, 1)',
                 borderWidth: 1,
             }
         ]
@@ -37,13 +37,31 @@ const StockChart = () => {
 
     const options = {
         responsive: true,
-        legend: {
-            display: false
+        plugins: {
+            legend: {
+                display: false
+            }
         },
         scales: {
             y: {
+                ticks: {
+                    display: false
+                },
                 beginAtZero: false,
+                grid: {
+                    drawBorder: false,
+                    display: false
+                }
             },
+            x: {
+                ticks: {
+                    display: false
+                },
+                grid: {
+                    drawBorder: false,
+                    display: false
+                }
+            }
         },
     };
 
