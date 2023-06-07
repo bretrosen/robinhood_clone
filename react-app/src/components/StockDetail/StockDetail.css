@@ -34,6 +34,11 @@
     width: 40rem;
 }
 
+.stock-details-wrapper {
+    display: flex;
+    margin: 2rem;
+}
+
 .stock-label {
     font-weight: bold;
 }
@@ -44,6 +49,17 @@
 
 .stock-positive {
     color: var(--robin-hood-green);
+}
+
+.transactions {
+    padding: 1rem;
+    margin-top: 3rem;
+    background-color: white;
+    height: 20rem;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px lightgray;
+    z-index: 10;
 }
 
 #add-to-list{

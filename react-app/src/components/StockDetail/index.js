@@ -3,9 +3,10 @@ import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { stockDetailsThunk } from '../../store/stock'
 import StockChart from './StockChart'
-import { TransactStock, BuySomeStock, SellSomeStock } from '../Transaction'
+import { TransactStock } from '../Transaction'
 import { fetchPortfolio } from '../../store/user'
 import './StockDetail.css'
+import '../Transaction/Transaction.css'
 import OpenModalButton from '../OpenModalButton'
 import WatchlistComponent from '../Watchlist/WatchlistComponent'
 import AddStockModal from '../Watchlist/AddStockModal'
@@ -53,12 +54,7 @@ export default function StockDetails() {
 
     return (
         <div className='stock-details-wrapper'>
-            <div className='transactions'>
-                {/* <BuySomeStock />
-                <SellSomeStock /> */}
-                <TransactStock />
-            </div>
-            <OpenModalButton type="watchlist" modalComponent={<AddStockModal stock={stock} />}/>
+
             <div className='stock-details-page'>
                 <div className='stock-details-top'>
                     <div>
@@ -123,6 +119,11 @@ export default function StockDetails() {
                     </div>
                 </div>
             </div>
+            <div className='transactions'>
+                <TransactStock />
+                <OpenModalButton type="watchlist" modalComponent={<AddStockModal stock={stock} />}/>
+            </div>
+
         </div>
     )
 }
