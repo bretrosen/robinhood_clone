@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import WatchlistComponent from "./WatchlistComponent";
 import './watchlist.css'
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { removeStockFromList } from "../../store/user";
 // import { fetchPortfolio } from "../../store/user";
 export default function WatchlistList() {
     const { user } = useSelector(state => state)
@@ -34,8 +35,10 @@ export default function WatchlistList() {
     }
     const list = watch_lists?.find(list => list.id === parseInt(watchlistId))
     const stocks = list?.stocks
-    const deleteStock = (stocklistId, watchlistId) => {
-        
+    const dispatch = useDispatch()
+    const deleteStock = (stockId, watchlistId, e) => {
+        e.stopPropagation()
+        dispatch(removeStockFromList(stockId, watchlistId))
     }
     return (
         <div className="portfolio-page">
@@ -59,7 +62,7 @@ export default function WatchlistList() {
                             <td>$15.75</td>
                             <td>+0.8%</td>
                             <td>{formatLargeNumber(stock.market_cap)}</td>
-                            <td className="delete-stock" onClick={() => deleteStock(stock.id, watchlistId)}><i className="fa fa-trash"></i></td>
+                            <td className="delete-stock" onClick={(e) => deleteStock(stock.id, watchlistId,  e)}><i className="fa fa-trash"></i></td>
                         </tr>)
 
                     })}

@@ -122,7 +122,7 @@ export const removeStockFromList  = (id, watchlistId) => async (dispatch) => {
     })
     const removedStock = await response.json()
     console.log("updated watchlist insde the user reducer file ==============> ", removedStock);
-    dispatch(updateWatchlist(removedStock.name, id))
+    dispatch(remove_from_watchlist(id))
 }
 
 export const deleteWatchlist = (id) => async (dispatch) => {
