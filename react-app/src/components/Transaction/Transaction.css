@@ -1,4 +1,25 @@
+.transact-button {
+    margin: 1rem 0;
+    padding: 14px 28px;
+    font-weight: 600;
+    background: var(--robin-hood-green);
+    color: black;
+    border: 0px;
+    border-radius: 27px;
+    height: 3rem;
+    width: fit-content;
+}
+
+.transact-button:hover {
+    cursor: pointer;
+}
+
+.transact-field {
+    margin-top: 1rem;
+}
+
 .transact-form {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: flex-start;
 }
