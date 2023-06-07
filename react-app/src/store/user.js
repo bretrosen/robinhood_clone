@@ -223,7 +223,9 @@ export default function UserReducer(state = initialState, action) {
                 }
                 return list
             })
-            return {...state, watch_lists : putWatchlist}
+            return { ...state, watch_lists: putWatchlist }
+        case REMOVE_FROM_WATCHLIST:
+            const removedStock = [...state.watch_lists.stocks]
         case BUY_STOCK:
             const newTransaction = action.stock;
             const purchase = action.stock.price_purchased * action.stock.quantity;
