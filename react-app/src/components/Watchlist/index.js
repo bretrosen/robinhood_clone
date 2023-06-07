@@ -35,7 +35,7 @@ export default function WatchlistList() {
     const list = watch_lists?.find(list => list.id === parseInt(watchlistId))
     const stocks = list?.stocks
     const deleteStock = (stocklistId, watchlistId) => {
-
+        
     }
     return (
         <div className="portfolio-page">

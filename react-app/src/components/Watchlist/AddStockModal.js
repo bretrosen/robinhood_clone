@@ -1,7 +1,7 @@
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { fetchPortfolio } from '../../store/user';
+import { addStockToWatchlist, fetchPortfolio } from '../../store/user';
 
 export default function AddStockModal({stock}) {
     const { user } = useSelector(state => state)
@@ -30,7 +30,11 @@ export default function AddStockModal({stock}) {
     };
 
 
-    console.log(stock);
+    // console.log(stock);
+    const saveChanges = () => {
+        console.log(checkedLists);
+        dispatch(addStockToWatchlist(checkedLists, stock.id ))
+    }
     return (
         <div className="portfolio-watchlist lists-modal">
             <div className='list-modal-title'>
@@ -67,7 +71,7 @@ export default function AddStockModal({stock}) {
                     );
                 })}
             </div>
-            <p className='login-signup save-changes'>Save Changes</p>
+            <p className='login-signup save-changes' onClick={saveChanges}>Save Changes</p>
         </div>
     );
 }
