@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-export default function StockList ({stock, search, setList, setSymbol, setName}) {
+export default function StockList ({stock, search, setSearch, setSymbol, setName}) {
 
     if (stock.symbol.startsWith(search.toUpperCase())) {
         setSymbol(stock.symbol)
@@ -15,6 +15,8 @@ export default function StockList ({stock, search, setList, setSymbol, setName})
         setName('')
     }
 
+    const closeMenu = () => setSearch("");
+
     return (
         <>
         {(stock.symbol.startsWith(search.toUpperCase()) ||
@@ -22,9 +24,9 @@ export default function StockList ({stock, search, setList, setSymbol, setName})
         &&
         <div className='search-res'>
 
-            <NavLink className='make-greenshow res-text' exact to={`/stocks/${stock.id}` }>{stock.symbol}</NavLink>
+            <NavLink className='make-greenshow res-text' exact to={`/stocks/${stock.id}`} onClick={closeMenu}>{stock.symbol}</NavLink>
 
-            <NavLink className='make-greenshow res-text' exact to={`/stocks/${stock.id}` }>{stock.name}</NavLink>
+            <NavLink className='make-greenshow res-text' exact to={`/stocks/${stock.id}`} onClick={closeMenu}>{stock.name}</NavLink>
         </div>
         }
 
