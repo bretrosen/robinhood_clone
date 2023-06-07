@@ -159,3 +159,13 @@
 .fa-check {
     color: white;
 }
+
+
+.watchlist-page-header{
+    color: white;
+    background-color: black;
+    padding: 30px 0px 0px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

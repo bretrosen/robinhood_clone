@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import WatchlistComponent from "./WatchlistComponent";
 import './watchlist.css'
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { removeStockFromList } from "../../store/user";
 // import { fetchPortfolio } from "../../store/user";
 export default function WatchlistList() {
     const { user } = useSelector(state => state)
@@ -34,38 +35,51 @@ export default function WatchlistList() {
     }
     const list = watch_lists?.find(list => list.id === parseInt(watchlistId))
     const stocks = list?.stocks
-    const deleteStock = (stocklistId, watchlistId) => {
-        
+    const dispatch = useDispatch()
+    const deleteStock = (stockId, watchlistId, e) => {
+        e.stopPropagation()
+        dispatch(removeStockFromList(stockId, watchlistId))
     }
+    // console.log(list);
     return (
-        <div className="portfolio-page">
 
-            <table id="watchlist-table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Symbol</th>
-                        <th>Price</th>
-                        <th>Today</th>
-                        <th>Market Cap</th>
-                    </tr>
-                </thead>
-                <tbody>
+        <div>
+            <div className="watchlist-page-header">
+                <p style={{fontSize: "40px"}}>
+                    ⚡️
+                </p>
+                <p>{list?.name}</p>
+                <p style={{color: "#898989", fontSize: "13px"}}>{list?.stocks.length} items</p>
+            </div>
+            <div className="portfolio-page">
 
-                    {stocks?.map((stock, index) => {
-                        return (<tr className="table-row" key={`stock-list-${index}`} onClick={() => viewStockDetial(stock.id)}>
-                            <td>{stock.name}</td>
-                            <td>{stock.symbol}</td>
-                            <td>$15.75</td>
-                            <td>+0.8%</td>
-                            <td>{formatLargeNumber(stock.market_cap)}</td>
-                            <td className="delete-stock" onClick={() => deleteStock(stock.id, watchlistId)}><i className="fa fa-trash"></i></td>
-                        </tr>)
+                <table id="watchlist-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Symbol</th>
+                            <th>Price</th>
+                            <th>Today</th>
+                            <th>Market Cap</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-                    })}
-                </tbody>
-            </table>
-            <WatchlistComponent />
+                        {stocks?.map((stock, index) => {
+                            return (<tr className="table-row" key={`stock-list-${index}`} onClick={() => viewStockDetial(stock.id)}>
+                                <td>{stock.name}</td>
+                                <td>{stock.symbol}</td>
+                                <td>$15.75</td>
+                                <td>+0.8%</td>
+                                <td>{formatLargeNumber(stock.market_cap)}</td>
+                                <td className="delete-stock" onClick={(e) => deleteStock(stock.id, watchlistId, e)}><i className="fa fa-trash"></i></td>
+                            </tr>)
+
+                        })}
+                    </tbody>
+                </table>
+                <WatchlistComponent />
+            </div>
         </div>
     )
 }

@@ -69,7 +69,7 @@ export default function AddStockModal({stock}) {
                             </div>
                             <div className='list-modal'>
                                 <p className='watchlist-med'>{list.name}</p>
-                                <p className='watchlist-sm'>{watchlists.length} items</p>
+                                <p className='watchlist-sm'>{list.stocks.length} items</p>
                             </div>
                         </div>
                     );
