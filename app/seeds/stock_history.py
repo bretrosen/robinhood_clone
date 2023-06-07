@@ -16,11 +16,11 @@ def generate_price_history():
         sigma = 100  # Standard deviation of 100
         price = round(gauss(mu, sigma), 2) # Start with a normally distributed random price
         progression = choice(TREND)  # Each stock will trend upward or downward
-        for num in range(100):  # Generate 100 price history entries per stock_id
+        for num in range(91):  # Generate 90 price history entries per stock_id
             price += round(choice(progression) * uniform(-5, 5), 2)  # Generate a random price change from the overall trend
             today = datetime.now()
-            d = timedelta(days = 100 - num)
-            time_stamp = today - d  # Generate timestamps for the last 100 days
+            d = timedelta(days = 91 - num)
+            time_stamp = today - d  # Timestamps corresponding to one price per day for the last 90 days
             entry = {
                 'stock_id': stock_id,
                 'price': abs(price),  # Ensure the stock price is positive

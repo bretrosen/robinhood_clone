@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { stockDetailsThunk } from '../../store/stock'
 import StockChart from './StockChart'
-import { BuySomeStock, SellSomeStock } from '../Transaction'
+import { TransactStock, BuySomeStock, SellSomeStock } from '../Transaction'
 import { fetchPortfolio } from '../../store/user'
 import './StockDetail.css'
 
@@ -53,6 +53,7 @@ export default function StockDetails() {
             <div className='transactions'>
                 <BuySomeStock />
                 <SellSomeStock />
+                {/* <TransactStock /> */}
             </div>
             <div className='stock-details-page'>
                 <div className='stock-details-top'>
