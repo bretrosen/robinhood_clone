@@ -20,6 +20,8 @@ export default function Portfolio() {
 
     }, [dispatch, sessionUser.id])
 
+    if (Object.values(user).length === 1) return false
+
     return (
         <div className="portfolio-page">
             <div className="portfolio">
