@@ -45,6 +45,12 @@ const add_to_watchlist = (stock) => {
         stock
     }
 }
+const remove_from_watchlist = (id) => {
+    return {
+        type: REMOVE_FROM_WATCHLIST,
+        id
+    }
+}
 
 const addBuyingPower = (amount) => {
     return {
@@ -107,6 +113,16 @@ export const putWatchlist  = (name, id) => async (dispatch) => {
     const updatedWatchlist = await response.json()
     console.log("updated watchlist insde the user reducer file ==============> ", updatedWatchlist);
     dispatch(updateWatchlist(updatedWatchlist.name, id))
+}
+export const removeStockFromList  = (id, watchlistId) => async (dispatch) => {
+    const response = await fetch(`/api/watchlists/list/${watchlistId}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({stock : id})
+    })
+    const removedStock = await response.json()
+    console.log("updated watchlist insde the user reducer file ==============> ", removedStock);
+    dispatch(updateWatchlist(removedStock.name, id))
 }
 
 export const deleteWatchlist = (id) => async (dispatch) => {
