@@ -167,6 +167,7 @@ a {
   align-items: left;
   gap: 20px;
   cursor: default;
+  z-index: 1000000;
 }
 
 .search-home {
