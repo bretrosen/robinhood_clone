@@ -53,8 +53,9 @@ def add_stock_to_list(watchlistId):
 
     if request.method == "DELETE":
         # all_stocks = [stock.to_dict() for stock in list.stocks]
-        # print("all stocks  ==========>  ", all_stocks)
+        print("all stocks  ==========>  ", list.stocks)
         list.stocks = [stock for stock in list.stocks if stock.to_dict()["id"] != stockId]
+        print("all stocks  ==========>  ", list.stocks)
         db.session.commit()
 
         return list.to_dict()

@@ -1,7 +1,8 @@
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { fetchPortfolio } from '../../store/user';
+import { addStockToWatchlist, fetchPortfolio } from '../../store/user';
+import { useModal } from '../../context/Modal';
 
 export default function AddStockModal({stock}) {
     const { user } = useSelector(state => state)
@@ -9,6 +10,7 @@ export default function AddStockModal({stock}) {
     const [checkedLists, setCheckedLists] = useState([]);
     const watchlists = user.watch_lists
     const dispatch = useDispatch();
+    const { closeModal } = useModal();
 
     useEffect(() => {
         console.log("right before dispatch");
@@ -26,11 +28,17 @@ export default function AddStockModal({stock}) {
             setCheckedLists(prevState => prevState.filter(listId => listId !== id));
         } else {
             setCheckedLists(prevState => [...prevState, id]);
+
         }
     };
 
 
-    console.log(stock);
+    // console.log(stock);
+    const saveChanges = () => {
+        console.log(checkedLists);
+        dispatch(addStockToWatchlist(checkedLists, stock.id))
+        closeModal()
+    }
     return (
         <div className="portfolio-watchlist lists-modal">
             <div className='list-modal-title'>
@@ -67,7 +75,7 @@ export default function AddStockModal({stock}) {
                     );
                 })}
             </div>
-            <p className='login-signup save-changes'>Save Changes</p>
+            <p className='login-signup save-changes' onClick={saveChanges}>Save Changes</p>
         </div>
     );
 }

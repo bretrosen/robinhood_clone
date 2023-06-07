@@ -3,6 +3,8 @@ const GET_PORTFOLIO = "user/GET_PORTFOLIO"
 const POST_WATCHLIST = "user/POST_WATCHLIST"
 const DELETE_WATCHLIST = "user/DELETE_WATCHLIST"
 const PUT_WATCHLIST = "user/PUT_WATCHLIST"
+const ADD_TO_WATCHLIST = "user/ADD_TO_WATCHLIST"
+const REMOVE_FROM_WATCHLIST = "user/REMOVE_FROM_WATCHLIST"
 
 const ADD_BUYING_POWER = "user/POST_ADD_BUYING_POWER"
 const BUY_STOCK = 'user/BUY_STOCK'
@@ -37,6 +39,18 @@ const updateWatchlist = (name, id) => {
     }
 }
 
+const add_to_watchlist = (stock) => {
+    return {
+        type: ADD_TO_WATCHLIST,
+        stock
+    }
+}
+const remove_from_watchlist = (id) => {
+    return {
+        type: REMOVE_FROM_WATCHLIST,
+        id
+    }
+}
 
 const addBuyingPower = (amount) => {
     return {
@@ -77,6 +91,19 @@ export const postWatchlist = (name) => async (dispatch) => {
     // console.log("portfolio insde the user reducer file ==============",newWatchlist);
     dispatch(createWatchlist(newWatchlist))
 }
+export const addStockToWatchlist = (watchlistArray, stockId ) => async (dispatch) => {
+    const allStocks = await Promise.all(
+        watchlistArray.map(async list => {
+            const addStock = await fetch(`/api/watchlists/list/${list}`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ stock: stockId })
+            });
+            return addStock;
+        })
+    );
+    console.log("this the allStocks post request response =======> ", allStocks);
+}
 export const putWatchlist  = (name, id) => async (dispatch) => {
     const response = await fetch(`/api/watchlists/${id}`, {
         method: "PUT",
@@ -86,6 +113,16 @@ export const putWatchlist  = (name, id) => async (dispatch) => {
     const updatedWatchlist = await response.json()
     console.log("updated watchlist insde the user reducer file ==============> ", updatedWatchlist);
     dispatch(updateWatchlist(updatedWatchlist.name, id))
+}
+export const removeStockFromList  = (id, watchlistId) => async (dispatch) => {
+    const response = await fetch(`/api/watchlists/list/${watchlistId}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({stock : id})
+    })
+    const removedStock = await response.json()
+    console.log("updated watchlist insde the user reducer file ==============> ", removedStock);
+    dispatch(updateWatchlist(removedStock.name, id))
 }
 
 export const deleteWatchlist = (id) => async (dispatch) => {
