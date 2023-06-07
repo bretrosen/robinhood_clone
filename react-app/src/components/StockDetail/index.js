@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { stockDetailsThunk } from '../../store/stock'
-import LineChart from '../LineGraph'
+import StockChart from './StockChart'
 import { BuySomeStock, SellSomeStock } from '../Transaction'
 import { fetchPortfolio } from '../../store/user'
 import './StockDetail.css'
@@ -73,7 +73,7 @@ export default function StockDetails() {
 
                     </div>
                     <div className='stock-chart'>
-                        <LineChart />
+                        <StockChart />
                     </div>
                 </div>
                 <div className='stock-about'>
