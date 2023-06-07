@@ -14,8 +14,21 @@
 
 #watchlist-table .table-row:hover {
     background-color: #898989;
+    cursor: pointer;
 }
 
+.table-row {
+    position: relative;
+}
+
+.delete-stock {
+    position: absolute;
+    right: 10px;
+}
+
+.fa-trash:hover{
+    color: red;
+}
 #watchlist-table th {
     padding-top: 12px;
     padding-bottom: 12px;
@@ -85,7 +98,74 @@
     margin-right: 5px;
 }
 
-.delete-list:hover{
+.delete-list:hover {
     color: red;
     cursor: pointer;
+}
+
+.lists-modal {
+    background-color: chocolate;
+    position: relative;
+    width: 100%;
+    right: 0;
+}
+
+.list-modal-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+}
+
+.list-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--robin-hood-green);
+    position: relative;
+}
+
+.watchlist-med {
+    font-size: 15px;
+}
+
+.watchlist-sm {
+    font-size: 13px;
+}
+
+.watchlist-lrg {
+    font-size: 16px;
+}
+
+#watchlist-modal:hover {
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#watchlist-modal {
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.save-changes {
+    text-align: center;
+    background-color: var(--robin-hood-green);
+    color: white;
+}
+
+.checked-list {
+    background-color: var(--robin-hood-green);
+}
+
+.fa-check {
+    color: white;
+}
+
+
+.watchlist-page-header{
+    color: white;
+    background-color: black;
+    padding: 30px 0px 0px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }

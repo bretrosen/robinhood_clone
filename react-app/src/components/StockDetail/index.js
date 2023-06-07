@@ -2,10 +2,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { stockDetailsThunk } from '../../store/stock'
-import LineChart from '../LineGraph'
-import { BuySomeStock, SellSomeStock } from '../Transaction'
+import StockChart from './StockChart'
+import DailyStockChart from './DailyStockChart'
+import { TransactStock } from '../Transaction'
 import { fetchPortfolio } from '../../store/user'
 import './StockDetail.css'
+import '../Transaction/Transaction.css'
+import OpenModalButton from '../OpenModalButton'
+import WatchlistComponent from '../Watchlist/WatchlistComponent'
+import AddStockModal from '../Watchlist/AddStockModal'
 
 
 
@@ -30,8 +35,8 @@ export default function StockDetails() {
     }
 
     console.log("price object", prices)
-    const newestPrice = prices[0].price;
-    const oldestPrice = prices[prices.length - 1].price;
+    const newestPrice = prices[0].price.toFixed(2);
+    const oldestPrice = prices[prices.length - 1].price.toFixed(2);
     const priceDiff = newestPrice - oldestPrice;
     console.log("newest price", newestPrice)
     console.log("oldest price", oldestPrice)
@@ -50,10 +55,7 @@ export default function StockDetails() {
 
     return (
         <div className='stock-details-wrapper'>
-            <div className='transactions'>
-                <BuySomeStock />
-                <SellSomeStock />
-            </div>
+
             <div className='stock-details-page'>
                 <div className='stock-details-top'>
                     <div>
@@ -73,7 +75,8 @@ export default function StockDetails() {
 
                     </div>
                     <div className='stock-chart'>
-                        <LineChart />
+                        <StockChart />
+                        {/* <DailyStockChart /> */}
                     </div>
                 </div>
                 <div className='stock-about'>
@@ -118,6 +121,11 @@ export default function StockDetails() {
                     </div>
                 </div>
             </div>
+            <div className='transactions'>
+                <TransactStock />
+                <OpenModalButton type="watchlist" modalComponent={<AddStockModal stock={stock} />}/>
+            </div>
+
         </div>
     )
 }

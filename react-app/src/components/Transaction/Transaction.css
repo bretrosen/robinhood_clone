@@ -1,0 +1,61 @@
+.buying-power {
+    text-align: center;
+    padding: 1rem;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 1rem;
+}
+
+.estimated-cost {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.market-price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1rem 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+.market-price-label {
+    color: var(--robin-hood-green)
+}
+
+.transact-button {
+    margin: 1rem 0;
+    padding: 14px 28px;
+    font-weight: 600;
+    font-size: 16px;
+    background: var(--robin-hood-green);
+    color: white;
+    border: 0px;
+    border-radius: 27px;
+    height: 3rem;
+    width: 100%;
+}
+
+.transact-button:hover {
+    cursor: pointer;
+}
+
+.transact-field {
+    margin-top: 1rem;
+}
+
+.transact-field-heading {
+    padding-bottom: 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+.transact-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+

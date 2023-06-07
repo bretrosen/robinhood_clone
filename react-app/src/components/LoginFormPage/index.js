@@ -1,18 +1,27 @@
 import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import './LoginForm.css';
 import { NavLink } from "react-router-dom/cjs/react-router-dom";
 
 function LoginFormPage() {
   const dispatch = useDispatch();
+  const history = useHistory()
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return <Redirect to="/portfolio" />;
+
+  const demoOne = async (e) => {
+    e.preventDefault();
+    let email = 'demo@aa.io'
+    let password = 'password'
+    await dispatch(login(email, password))
+    history.push('/portfolio');
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -69,6 +78,7 @@ function LoginFormPage() {
           </div>
           <button type="submit">Log In</button>
           <p >Not on Foxtrot? <NavLink to="/signup" className="forgot-info">Create an account</NavLink ></p>
+          <p onClick={demoOne} className="demo-login">Log in as Demo User 01</p>
         </form>
       </div>
     </>

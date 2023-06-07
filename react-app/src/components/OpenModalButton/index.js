@@ -2,6 +2,7 @@ import React from 'react';
 import { useModal } from '../../context/Modal';
 
 function OpenModalButton({
+  type,
   modalComponent, // component to render inside the modal
   buttonText, // text of the button that opens the modal
   onButtonClick, // optional: callback function that will be called once the button that opens the modal is clicked
@@ -14,6 +15,12 @@ function OpenModalButton({
     setModalContent(modalComponent);
     if (onButtonClick) onButtonClick();
   };
+
+  if (type === "watchlist") {
+    return (
+      <p className='login-signup round-buttons' id='add-to-list' onClick={onClick}>Add to list</p>
+    )
+  }
   if (buttonText === "Edit list") {
     return (
       <div onClick={onClick}>

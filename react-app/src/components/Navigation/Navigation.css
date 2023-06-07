@@ -3,7 +3,7 @@
   top: 3em;
   right: 1.5em;
   background-color: white;
-  width: 15em;
+  width: 18em;
   /* height: 10em; */
   border-radius: 6px;
   border: .25px lightgray solid;
@@ -53,6 +53,7 @@
   padding: 0px 24px;
   height: 65px;
   border-bottom: 3px solid var(--saffron);
+  background-color: black;
 }
 
 .nav-bar>li,
@@ -66,6 +67,9 @@ a {
 
 }
 
+.login-signup:hover {
+  cursor: pointer;
+}
 .login-signup {
   background-color: var(--saffron);
   padding: 14px 28px;
@@ -74,8 +78,9 @@ a {
 }
 
 #sign-up {
-  background-color: black;
-  color: white;
+  background-color: var(--saffron);
+  color: black;
+  font-size: 13px;
 }
 
 .signup-page {
@@ -130,7 +135,7 @@ a {
 
 .stockSearch {
   height: 3em;
-  width: 26em;
+  width: 30em;
   padding-left: 2.5em;
   border: .25px solid lightgrey;
   border-radius: 5px;
@@ -147,13 +152,13 @@ a {
 }
 
 .stock-dropdownshow {
-  top: 4em;
+  top: 3.5em;
   background-color: white;
   padding: 1.5em 1em 1.5em 1em;
   border-radius: 10px;
   position: fixed;
-  left: 19.6em;
-  width: 21.5em;
+  left: 12.1em;
+  width: 25.2em;
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -164,7 +169,7 @@ a {
 .search-home {
   display: flex;
   align-items: center;
-  gap: 14em;
+  gap: 5em;
 }
 
 .make-greenshow::first-letter {
@@ -190,4 +195,43 @@ a {
   left: 1.5em;
   top: 1px;
   color: rgb(118 , 118, 118);
+}
+
+.user-menu-nav {
+  color: black;
+  text-decoration: none;
+}
+
+.nav-login-signup {
+  display: flex;
+  justify-content: right;
+  gap: 1em;
+}
+
+.remove-dot {
+  list-style-type: none;
+}
+#nav-logo{
+  color: var(--saffron) !important;
+  font-weight: 500;
+  position: relative;
+}
+
+#fox-image{
+  width: 30px;
+  position: absolute;
+  bottom: -5px;
+  right: -40px;
+}
+
+#nav-login{
+  color: var(--saffron) !important;
+  background-color: transparent;
+  border: 1px solid var(--saffron);
+  font-size: 13px;
+}
+
+#landing-four{
+  color: var(--saffron);
+  font-weight: 600;
 }

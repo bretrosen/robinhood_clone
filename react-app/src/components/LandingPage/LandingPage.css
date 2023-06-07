@@ -32,10 +32,40 @@
     text-align: center;
 }
 
-.build-portfolio{
+.build-portfolio {
     background-color: var(--light-green);
 }
+
 .build-portfolio-top {
     display: flex;
     width: 100%;
+}
+
+
+.build-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.huge-font{
+    font-size: 52px;
+    font-weight: 400;
+}
+
+.fa-info-circle {
+    margin-right: 10px;
+}
+
+#landing-info{
+    width: fit-content;
+    background-color: transparent;
+    border: 1px solid black;
+    color: black !important;
+
+}
+
+#log-in{
+    color: black !important;
+
 }

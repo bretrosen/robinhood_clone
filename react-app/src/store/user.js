@@ -3,6 +3,8 @@ const GET_PORTFOLIO = "user/GET_PORTFOLIO"
 const POST_WATCHLIST = "user/POST_WATCHLIST"
 const DELETE_WATCHLIST = "user/DELETE_WATCHLIST"
 const PUT_WATCHLIST = "user/PUT_WATCHLIST"
+const ADD_TO_WATCHLIST = "user/ADD_TO_WATCHLIST"
+const REMOVE_FROM_WATCHLIST = "user/REMOVE_FROM_WATCHLIST"
 
 const ADD_BUYING_POWER = "user/POST_ADD_BUYING_POWER"
 const BUY_STOCK = 'user/BUY_STOCK'
@@ -37,6 +39,19 @@ const updateWatchlist = (name, id) => {
     }
 }
 
+const add_to_watchlist = (stock) => {
+    return {
+        type: ADD_TO_WATCHLIST,
+        stock
+    }
+}
+const remove_from_watchlist = (stockId, watchlistId) => {
+    return {
+        type: REMOVE_FROM_WATCHLIST,
+        stockId,
+        watchlistId
+    }
+}
 
 const addBuyingPower = (amount) => {
     return {
@@ -77,6 +92,19 @@ export const postWatchlist = (name) => async (dispatch) => {
     // console.log("portfolio insde the user reducer file ==============",newWatchlist);
     dispatch(createWatchlist(newWatchlist))
 }
+export const addStockToWatchlist = (watchlistArray, stockId ) => async (dispatch) => {
+    const allStocks = await Promise.all(
+        watchlistArray.map(async list => {
+            const addStock = await fetch(`/api/watchlists/list/${list}`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ stock: stockId })
+            });
+            return addStock;
+        })
+    );
+    console.log("this the allStocks post request response =======> ", allStocks);
+}
 export const putWatchlist  = (name, id) => async (dispatch) => {
     const response = await fetch(`/api/watchlists/${id}`, {
         method: "PUT",
@@ -86,6 +114,16 @@ export const putWatchlist  = (name, id) => async (dispatch) => {
     const updatedWatchlist = await response.json()
     console.log("updated watchlist insde the user reducer file ==============> ", updatedWatchlist);
     dispatch(updateWatchlist(updatedWatchlist.name, id))
+}
+export const removeStockFromList  = (stockId, watchlistId) => async (dispatch) => {
+    const response = await fetch(`/api/watchlists/list/${watchlistId}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({stock : stockId})
+    })
+    const removedStock = await response.json()
+    console.log("updated watchlist insde the user reducer file ==============> ", removedStock);
+    dispatch(remove_from_watchlist(stockId, watchlistId))
 }
 
 export const deleteWatchlist = (id) => async (dispatch) => {
@@ -97,18 +135,15 @@ export const deleteWatchlist = (id) => async (dispatch) => {
     dispatch(removeWatchlist(id))
 
 }
-export const fetchAddBuyPower = (addedAmount) => async (dispatch) => {
-    console.log('at start of thunk')
-    const add = addedAmount.amount
-    console.log('at start of thunk', add)
-    const response = await fetch(`/api/users/${addedAmount.userId}/buying_power_add`, {
+export const fetchAddBuyPower = (buying_power, userId) => async (dispatch) => {
+    const response = await fetch(`/api/users/${userId}/buying_power_add`, {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({...addedAmount.buying})
+        body: JSON.stringify({buying_power})
     })
-    const newUserAmount = await response.json()
-    console.log('This is in the add buying power thunk', newUserAmount)
-    // dispatch(addBuyingPower())
+        const newUserAmount = await response.json()
+        dispatch(addBuyingPower(newUserAmount.buying_power))
+
 }
 
 export const buyStockThunk = (stock) => async (dispatch) => {
@@ -189,7 +224,23 @@ export default function UserReducer(state = initialState, action) {
                 }
                 return list
             })
-            return {...state, watch_lists : putWatchlist}
+            return { ...state, watch_lists: putWatchlist }
+        case REMOVE_FROM_WATCHLIST:
+            const stockId = action.stockId
+            const watchlistId = parseInt(action.watchlistId)
+
+            let watchlist = state.watch_lists.find(list => list.id === watchlistId)
+            const listWithremovedStock = watchlist.stocks.filter(stock => stock.id !== stockId)
+
+            watchlist.stocks = listWithremovedStock
+            const watchlistArray = state.watch_lists.map(list => {
+                if (list.id === watchlistId) {
+                    list.stocks = listWithremovedStock
+                    return list
+                }
+                return list
+            })
+            return {...state, watch_lists: watchlistArray}
         case BUY_STOCK:
             const newTransaction = action.stock;
             const purchase = action.stock.price_purchased * action.stock.quantity;
@@ -202,6 +253,10 @@ export default function UserReducer(state = initialState, action) {
             const updatedBuyingPowerSell = state.buying_power + sale;
             const updatedTransactionsSell = [...state.transactions, newTransactionSell]
             return { ...state, transactions: updatedTransactionsSell, buying_power: updatedBuyingPowerSell }
+        case ADD_BUYING_POWER:
+            const updatedUserState = {...state, }
+            updatedUserState.buying_power = action.amount
+            return updatedUserState
         default:
             return state;
     }

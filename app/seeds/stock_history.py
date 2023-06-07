@@ -1,20 +1,29 @@
 from faker import Faker
-from datetime import datetime
-from random import randint
+from datetime import datetime, timedelta
+from random import choice, uniform, gauss
 from app.models import db, StockHistory, environment, SCHEMA
 from sqlalchemy.sql import text
 
-fake = Faker()
+ASCENDING = [1, 1, -1, 1, 1, -1]
+DESCENDING = [-1, -1, 1, -1, -1, 1]
+TREND = [ASCENDING, DESCENDING]
 
 def generate_price_history():
     price_history = []
-    for stock_id in range(1, 21):  # Generate data for stock_id 1 to 20
-        for _ in range(100):  # Generate 100 price history entries per stock_id
-            price = round(fake.random.uniform(1, 100), 2)  # Generate a random price between 1 and 100
-            time_stamp = fake.date_time_between(start_date='-1y', end_date='now')  # Generate a random timestamp within the past year
+
+    for stock_id in range(1, 22):  # Generate data for stock_id 1 to 21
+        mu = 150  # Mean of 150
+        sigma = 100  # Standard deviation of 100
+        price = round(gauss(mu, sigma), 2) # Start with a normally distributed random price
+        progression = choice(TREND)  # Each stock will trend upward or downward
+        for num in range(91):  # Generate 90 price history entries per stock_id
+            price += round(choice(progression) * uniform(-5, 5), 2)  # Generate a random price change from the overall trend
+            today = datetime.now()
+            d = timedelta(days = 91 - num)
+            time_stamp = today - d  # Timestamps corresponding to one price per day for the last 90 days
             entry = {
                 'stock_id': stock_id,
-                'price': price,
+                'price': abs(price),  # Ensure the stock price is positive
                 'time_stamp': time_stamp
             }
             price_history.append(StockHistory(**entry))
