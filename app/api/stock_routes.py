@@ -4,6 +4,7 @@ from flask_login import login_required, current_user
 from app.models import db, User, Transaction, WatchList, Stock, StockHistory
 from app.forms.buy_sell_stock_form import BuySellStockForm
 from sqlalchemy import desc
+from random import gauss
 
 
 stock_routes = Blueprint('stocks', __name__)
@@ -103,3 +104,16 @@ def sell_stock(id):
 
     else:
         return form.errors
+
+@stock_routes.route('/get_price')
+@login_required
+def get_price():
+    '''
+    Generates a random (slightly upward-trending) delta to add to/subtract from the most recent price to get an updated stock price
+    '''
+
+    mu = 0.1
+    sigma = 1
+    delta = round(gauss(mu, sigma), 2)
+
+    return str(delta)

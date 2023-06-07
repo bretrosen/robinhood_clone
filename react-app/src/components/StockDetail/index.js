@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { stockDetailsThunk } from '../../store/stock'
 import StockChart from './StockChart'
+import DailyStockChart from './DailyStockChart'
 import { TransactStock } from '../Transaction'
 import { fetchPortfolio } from '../../store/user'
 import './StockDetail.css'
@@ -75,6 +76,7 @@ export default function StockDetails() {
                     </div>
                     <div className='stock-chart'>
                         <StockChart />
+                        {/* <DailyStockChart /> */}
                     </div>
                 </div>
                 <div className='stock-about'>
