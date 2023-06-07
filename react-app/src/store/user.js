@@ -45,10 +45,11 @@ const add_to_watchlist = (stock) => {
         stock
     }
 }
-const remove_from_watchlist = (id) => {
+const remove_from_watchlist = (stockId, watchlistId) => {
     return {
         type: REMOVE_FROM_WATCHLIST,
-        id
+        stockId,
+        watchlistId
     }
 }
 
@@ -114,15 +115,15 @@ export const putWatchlist  = (name, id) => async (dispatch) => {
     console.log("updated watchlist insde the user reducer file ==============> ", updatedWatchlist);
     dispatch(updateWatchlist(updatedWatchlist.name, id))
 }
-export const removeStockFromList  = (id, watchlistId) => async (dispatch) => {
+export const removeStockFromList  = (stockId, watchlistId) => async (dispatch) => {
     const response = await fetch(`/api/watchlists/list/${watchlistId}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({stock : id})
+        body: JSON.stringify({stock : stockId})
     })
     const removedStock = await response.json()
     console.log("updated watchlist insde the user reducer file ==============> ", removedStock);
-    dispatch(remove_from_watchlist(id))
+    dispatch(remove_from_watchlist(stockId, watchlistId))
 }
 
 export const deleteWatchlist = (id) => async (dispatch) => {
@@ -225,7 +226,21 @@ export default function UserReducer(state = initialState, action) {
             })
             return { ...state, watch_lists: putWatchlist }
         case REMOVE_FROM_WATCHLIST:
-            const removedStock = [...state.watch_lists.stocks]
+            const stockId = action.stockId
+            const watchlistId = parseInt(action.watchlistId)
+
+            let watchlist = state.watch_lists.find(list => list.id === watchlistId)
+            const listWithremovedStock = watchlist.stocks.filter(stock => stock.id !== stockId)
+
+            watchlist.stocks = listWithremovedStock
+            const watchlistArray = state.watch_lists.map(list => {
+                if (list.id === watchlistId) {
+                    list.stocks = listWithremovedStock
+                    return list
+                }
+                return list
+            })
+            return {...state, watch_lists: watchlistArray}
         case BUY_STOCK:
             const newTransaction = action.stock;
             const purchase = action.stock.price_purchased * action.stock.quantity;
