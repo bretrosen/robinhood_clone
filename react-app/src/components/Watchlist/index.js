@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import WatchlistComponent from "./WatchlistComponent";
 import './watchlist.css'
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 // import { fetchPortfolio } from "../../store/user";
 export default function WatchlistList() {
     const { user } = useSelector(state => state)
@@ -9,6 +9,7 @@ export default function WatchlistList() {
     const watch_lists = user.watch_lists
     // console.log("user slice from watchlist =========>", watch_lists);
     // console.log("user slice from watchlist =========>", stocks);
+    const history = useHistory()
     function formatLargeNumber(number) {
         const billion = 1000000000;
         const million = 1000000;
@@ -28,8 +29,14 @@ export default function WatchlistList() {
     //         <h2>Loading....</h2>
     //     )
     // }
+    const viewStockDetial = (id) => {
+        history.push(`/stocks/${id}`)
+    }
     const list = watch_lists?.find(list => list.id === parseInt(watchlistId))
     const stocks = list?.stocks
+    const deleteStock = (stocklistId, watchlistId) => {
+
+    }
     return (
         <div className="portfolio-page">
 
@@ -44,20 +51,15 @@ export default function WatchlistList() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr className="table-row">
-                        <td>Company A</td>
-                        <td>$10.00</td>
-                        <td>$10.00</td>
-                        <td>+2.5%</td>
-                        <td>$1 billion</td>
-                    </tr>
+
                     {stocks?.map((stock, index) => {
-                        return (<tr className="table-row" key={`stock-list-${index}`}>
+                        return (<tr className="table-row" key={`stock-list-${index}`} onClick={() => viewStockDetial(stock.id)}>
                             <td>{stock.name}</td>
                             <td>{stock.symbol}</td>
                             <td>$15.75</td>
                             <td>+0.8%</td>
                             <td>{formatLargeNumber(stock.market_cap)}</td>
+                            <td className="delete-stock" onClick={() => deleteStock(stock.id, watchlistId)}><i className="fa fa-trash"></i></td>
                         </tr>)
 
                     })}

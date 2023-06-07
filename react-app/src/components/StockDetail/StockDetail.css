@@ -43,5 +43,9 @@
 }
 
 .stock-positive {
-    color: var(--lawn-green);
+    color: var(--robin-hood-green);
+}
+
+#add-to-list{
+    background-color: var(--robin-hood-green);
 }

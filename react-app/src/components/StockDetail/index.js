@@ -6,6 +6,9 @@ import StockChart from './StockChart'
 import { TransactStock, BuySomeStock, SellSomeStock } from '../Transaction'
 import { fetchPortfolio } from '../../store/user'
 import './StockDetail.css'
+import OpenModalButton from '../OpenModalButton'
+import WatchlistComponent from '../Watchlist/WatchlistComponent'
+import AddStockModal from '../Watchlist/AddStockModal'
 
 
 
@@ -55,6 +58,7 @@ export default function StockDetails() {
                 <SellSomeStock />
                 {/* <TransactStock /> */}
             </div>
+            <OpenModalButton type="watchlist" modalComponent={<AddStockModal stock={stock} />}/>
             <div className='stock-details-page'>
                 <div className='stock-details-top'>
                     <div>
