@@ -15,6 +15,7 @@ export const TransactStock = () => {
 
     const marketPrice = stock?.stock_history[0].price.toFixed(2)
     const buyingPower = user?.buying_power
+    const estimatedCost = quantity * marketPrice
     console.log("user", user)
     console.log("market price", marketPrice)
     console.log("buying power", buyingPower)
@@ -25,7 +26,7 @@ export const TransactStock = () => {
         const newErrors = {}
 
         // if (!quantity) newErrors['quantity'] = 'Quantity is required'
-        if (quantity * marketPrice > buyingPower) newErrors['funds'] = "You don't have enough buying power to place this order."
+        if (transactionType === 'Buy' && estimatedCost > buyingPower) newErrors['funds'] = "You don't have enough buying power to place this order."
         console.log("buying power check in useEffect", buyingPower - quantity * marketPrice)
         setErrors(newErrors)
     }, [quantity, marketPrice, buyingPower])
@@ -38,7 +39,7 @@ export const TransactStock = () => {
         if (!Object.values(errors).length) {
 
             if (transactionType === 'Buy') {
-                 // object to match the thunk and backend buy route
+                // object to match the thunk and backend buy route
                 const buyStockObj = {
                     "id": stock.id,
                     "quantity": Number(quantity),
@@ -64,7 +65,7 @@ export const TransactStock = () => {
 
     return (
         <div className='transact-form-container'>
-            <div className='transact-field'>{stock.symbol} </div>
+            <div className='transact-field-heading'>{stock.symbol} </div>
             <form className='transact-form' onSubmit={handleSubmit}>
                 <div className='transact-error'>
                     {hasSubmitted && errors.funds && (
@@ -86,7 +87,26 @@ export const TransactStock = () => {
                 <input className='transact-field' placeholder="Shares"
                     value={quantity}
                     onChange={e => setQuantity(e.target.value)} />
+                <div className='market-price'>
+                    <div className='market-price-label'>
+                        Market Price
+                    </div>
+                    <div className='market-price-number'>
+                        ${marketPrice}
+                    </div>
+                </div>
+                <div className='estimated-cost'>
+                    <div className='estimated-cost-label'>
+                        Estimated Cost
+                    </div>
+                    <div className='estimated-cost-number'>
+                        ${estimatedCost.toFixed(2)}
+                    </div>
+                </div>
                 <button className='transact-button'>Place Order</button>
+                <div className='buying-power'>
+                    ${buyingPower?.toFixed(2)} buying power available
+                </div>
             </form>
         </div>
     )
