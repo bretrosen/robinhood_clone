@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
+import { fetchAllStocks } from '../../store/stock';
 import ProfileButton from './ProfileButton';
 import StockList from './StockList';
 import './Navigation.css';
@@ -23,6 +24,10 @@ function Navigation({ isLoaded }){
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 	};
+
+	useEffect(() => {
+		dispatch(fetchAllStocks())
+	}, [])
 
 
 	const showStockClass = "stock-dropdown" + (search.length > 0 ? "show" : " hidden");

@@ -133,7 +133,7 @@ a {
 
 .stockSearch {
   height: 3em;
-  width: 26em;
+  width: 30em;
   padding-left: 2.5em;
   border: .25px solid lightgrey;
   border-radius: 5px;
@@ -150,13 +150,13 @@ a {
 }
 
 .stock-dropdownshow {
-  top: 4em;
+  top: 3.5em;
   background-color: white;
   padding: 1.5em 1em 1.5em 1em;
   border-radius: 10px;
   position: fixed;
-  left: 19.6em;
-  width: 21.5em;
+  left: 12.1em;
+  width: 25.2em;
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -167,7 +167,7 @@ a {
 .search-home {
   display: flex;
   align-items: center;
-  gap: 14em;
+  gap: 5em;
 }
 
 .make-greenshow::first-letter {
