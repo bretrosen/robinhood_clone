@@ -53,6 +53,7 @@
   padding: 0px 24px;
   height: 65px;
   border-bottom: 3px solid var(--saffron);
+  background-color: black;
 }
 
 .nav-bar>li,
@@ -77,8 +78,9 @@ a {
 }
 
 #sign-up {
-  background-color: black;
-  color: white;
+  background-color: var(--saffron);
+  color: black;
+  font-size: 13px;
 }
 
 .signup-page {
@@ -208,4 +210,28 @@ a {
 
 .remove-dot {
   list-style-type: none;
+}
+#nav-logo{
+  color: var(--saffron) !important;
+  font-weight: 500;
+  position: relative;
+}
+
+#fox-image{
+  width: 30px;
+  position: absolute;
+  bottom: -5px;
+  right: -40px;
+}
+
+#nav-login{
+  color: var(--saffron) !important;
+  background-color: transparent;
+  border: 1px solid var(--saffron);
+  font-size: 13px;
+}
+
+#landing-four{
+  color: var(--saffron);
+  font-weight: 600;
 }
