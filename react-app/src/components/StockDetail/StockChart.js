@@ -29,7 +29,7 @@ const StockChart = () => {
                 label: '',
                 data: prices.reverse(),
                 // backgroundColor: 'rgba(75, 192, 192, 0)',
-                borderColor: 'rgba(134, 255, 68, 1)',
+                borderColor: 'rgba(0,200,5, 1)',
                 borderWidth: 1,
             }
         ]
