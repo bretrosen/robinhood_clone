@@ -5,8 +5,8 @@ items = db.Table(
     'items',
     db.Model.metadata,
     db.Column("id", db.Integer, primary_key=True),
-    db.Column("watch_list_id", db.Integer, db.ForeignKey("watch_lists.id")),
-    db.Column("stock_id", db.Integer, db.ForeignKey("stocks.id"))
+    db.Column("watch_list_id", db.Integer, db.ForeignKey(add_prefix_for_prod("watch_lists.id"))),
+    db.Column("stock_id", db.Integer, db.ForeignKey(add_prefix_for_prod("stocks.id")))
 )
 
 
