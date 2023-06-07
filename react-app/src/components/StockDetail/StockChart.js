@@ -26,9 +26,9 @@ const StockChart = () => {
         labels: labels,
         datasets: [
             {
-                label: 'Stock Price',
-                data: prices.reverse(),
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                label: '',
+                data: prices,
+                backgroundColor: 'rgba(75, 192, 192, 0)',
                 borderColor: 'rgba(75, 192, 192, 1)',
                 borderWidth: 1,
             }
@@ -37,16 +37,18 @@ const StockChart = () => {
 
     const options = {
         responsive: true,
+        legend: {
+            display: false
+        },
         scales: {
             y: {
-                beginAtZero: true,
+                beginAtZero: false,
             },
         },
     };
 
     return (
         <div>
-            <h2>Stock Prices</h2>
             <Line data={data} options={options} />
         </div>
     );

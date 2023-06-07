@@ -30,8 +30,8 @@ export default function StockDetails() {
     }
 
     console.log("price object", prices)
-    const newestPrice = prices[0].price;
-    const oldestPrice = prices[prices.length - 1].price;
+    const newestPrice = prices[0].price.toFixed(2);
+    const oldestPrice = prices[prices.length - 1].price.toFixed(2);
     const priceDiff = newestPrice - oldestPrice;
     console.log("newest price", newestPrice)
     console.log("oldest price", oldestPrice)
