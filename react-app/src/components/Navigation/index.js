@@ -53,7 +53,7 @@ function Navigation({ isLoaded }) {
 			</li>
 			<div className='nav-login-signup'>
 				<li className='remove-dot'>
-					<NavLink to="/login" className='login-signup' id='log-in'>Log in</NavLink></li>
+					<NavLink to="/login" className='login-signup' id='nav-login'>Log in</NavLink></li>
 				<li className='remove-dot'>
 					<NavLink to="signup" className='login-signup' id='sign-up'>Sign up</NavLink></li>
 			</div>

@@ -78,8 +78,9 @@ a {
 }
 
 #sign-up {
-  background-color: black;
-  color: white;
+  background-color: var(--saffron);
+  color: black;
+  font-size: 13px;
 }
 
 .signup-page {
@@ -221,4 +222,16 @@ a {
   position: absolute;
   bottom: -5px;
   right: -40px;
+}
+
+#nav-login{
+  color: var(--saffron) !important;
+  background-color: transparent;
+  border: 1px solid var(--saffron);
+  font-size: 13px;
+}
+
+#landing-four{
+  color: var(--saffron);
+  font-weight: 600;
 }
