@@ -277,7 +277,59 @@ def seed_stocks():
         year_founded=1999
     )
 
-    all_stocks = [apple, tesla, ibm, microsoft, american_airlines, gamestop, ford, nvidia, dish_network, amazon, amd, meta, jpmorgan, alphabet, visa, johnson_johnson, pfizer, pepsico, disney, netflix, alibaba]
+    qualcomm = Stock(
+        name="QUALCOMM, Inc.",
+        symbol="QCOM",
+        description="QUALCOMM, Inc. engages in the development, design, and provision of digital telecommunications products and services. It operates through the following segments: Qualcomm CDMA Technologies (QCT), Qualcomm Technology Licensing (QTL), and Qualcomm Strategic Initiatives (QSI). The QCT segment develops and supplies integrated circuits and system software based on technologies for the use in voice and data communications, networking, application processing, multimedia, and global positioning system products. The QTL segment grants licenses and provides rights to use portions of the firm's intellectual property portfolio. The QSI segment focuses on opening new or expanding opportunities for its technologies and supporting the design and introduction of new products and services for voice and data communications. The company was founded by Franklin P. Antonio, Adelia A. Coffman, Andrew Cohen, Klein Gilhousen, Irwin Mark Jacobs, Andrew J. Viterbi, and Harvey P. White in July 1985 and is headquartered in San Diego, CA. The listed name for QCOM is QUALCOMM Incorporated Common Stock.",
+        market_cap=129610000000,
+        pe_ratio=12.36,
+        dividend=2.65,
+        stock_ceo="Cristiano R. Amon",
+        employees=51000,
+        headquarters="San Diego, California",
+        year_founded=1985
+    )
+
+    wells_fargo = Stock(
+        name="Wells Fargo & Co.",
+        symbol="WFC",
+        description="Wells Fargo & Co. is a diversified, community-based financial services company. It is engaged in the provision of banking, insurance, investments, mortgage products and services, and consumer and commercial finance. It operates through the following segments: Consumer Banking and Lending, Commercial Banking, Corporate and Investment Banking, and Wealth & Investment Management. The Consumer Banking and Lending segment offers consumer and small business banking, home lending, credit cards, auto, and personal lending. The Commercial Banking segment offers banking and credit products across multiple industry sectors and municipalities, secured lending and lease products, and treasury management. The Corporate and Investment Banking segment offers corporate banking, investment banking, treasury management, commercial real estate lending and servicing, equity and fixed income solutions, as well as sales, trading, and research capabilities. The Wealth & Investment Management segment provides personalized wealth management, brokerage, financial planning, lending, private banking, trust and fiduciary products and services to affluent, high-net worth and ultra-high-net worth clients. The company was founded by Henry Wells and William G. Fargo on March 18, 1852 and is headquartered in San Francisco, CA. The listed name for WFC is Wells Fargo & Co.",
+        market_cap=158940000000,
+        pe_ratio=12.01,
+        dividend=2.85,
+        stock_ceo="Charles William Scharf",
+        employees=238000,
+        headquarters="San Francisco, California",
+        year_founded=1852
+    )
+
+    walmart = Stock(
+        name="Walmart, Inc.",
+        symbol="WMT",
+        description="Walmart, Inc. engages in retail and wholesale business. The company offers an assortment of merchandise and services at everyday low prices. It operates through the following business segments: Walmart U.S., Walmart International, and Sam's Club. The Walmart U.S. segment operates as a merchandiser of consumer products, operating under the Walmart, Wal-Mart, and Walmart Neighborhood Market brands, as well as walmart.com and other eCommerce brands. The Walmart International segment manages supercenters, supermarkets, hypermarkets, warehouse clubs, and cash and carry outside of the United States. The Sam's Club segment consists of membership-only warehouse clubs and samsclubs.com. The company was founded by Samuel Moore Walton and James Lawrence Walton in 1945 and is headquartered in Bentonville, AR. The listed name for WMT is Walmart Inc.",
+        market_cap=409800000000,
+        pe_ratio=36.15,
+        dividend=1.51,
+        stock_ceo="C. Douglas McMillon",
+        employees=2100000,
+        headquarters="Bentonville, Arkansas",
+        year_founded=1945
+    )
+
+    eni = Stock(
+        name="Eni SpA",
+        symbol="E",
+        description="Eni SpA engages in the exploration, production, refining, and sale of oil, gas, electricity, and chemicals. It operates through the following segments: Exploration and Production, Global Gas and LNG Portfolio, Refining & Marketing and Chemicals, Power & Renewables, and Corporate and Other Activities. The Exploration and Production segment engages in research, development and production of oil, condensates and natural gas, forestry conservation (REDD+) and CO2 capture and storage projects. The Global Gas and LNG Portfolio segment refers to the supply and sale of wholesale natural gas by pipeline, international transport and purchase and marketing of LNG, which includes gas trading activities finalized to hedging and stabilizing the trade margins, as well as optimizing the gas asset portfolio. The Refining & Marketing and Chemicals segment engages in supply, processing, distribution, and marketing of fuels and chemicals. The Corporate and Other Activities segment includes the main business support functions in particular holding, central treasury, IT, human resources, real estate services, captive insurance activities, research and development, new technologies, business digitalization, and environmental activities. The company was founded on February 10, 1953 and is headquartered in Rome, Italy. The listed name for E is ENI S.p.A. ",
+        market_cap=409800000000,
+        pe_ratio=36.15,
+        dividend=1.51,
+        stock_ceo="C. Douglas McMillon",
+        employees=2100000,
+        headquarters="Bentonville, Arkansas",
+        year_founded=1945
+    )
+
+    all_stocks = [apple, tesla, ibm, microsoft, american_airlines, gamestop, ford, nvidia, dish_network, amazon, amd, meta, jpmorgan, alphabet, visa, johnson_johnson, pfizer, pepsico, disney, netflix, alibaba, qualcomm, wells_fargo, walmart]
 
     [db.session.add(stock) for stock in all_stocks]
     db.session.commit()

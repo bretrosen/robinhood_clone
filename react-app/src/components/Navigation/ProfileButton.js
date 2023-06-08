@@ -10,7 +10,7 @@ import TransfersModal from './TransfersModal'
 function ProfileButton() {
   const dispatch = useDispatch();
   const history = useHistory()
-  const sessionUser = useSelector(state => state.user);
+  const sessionUser = useSelector(state => state.session.user);
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
@@ -42,6 +42,7 @@ function ProfileButton() {
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const profileHighlight = "profile-highlight" + (showMenu ? "" : null);
   const closeMenu = () => setShowMenu(false);
+  console.log('whats going on with the session user?', sessionUser)
 
   return (
     <>
@@ -54,7 +55,7 @@ function ProfileButton() {
 
           <>
             <li className="user-menu">{sessionUser.first_name} {sessionUser.last_name}</li>
-            <li className="user-menu user-border">Account Balance: ${ new Intl.NumberFormat('en-IN').format(sessionUser.buying_power.toFixed(2))}</li>
+            <li className="user-menu user-border">Account Balance: ${ new Intl.NumberFormat('en-IN').format(sessionUser.buying_power?.toFixed(2))}</li>
             <li className="user-menu user-menu-nav"><NavLink exact to="/portfolio" className="user-menu-nav" onClick={closeMenu}>Portfolio</NavLink></li>
             <li className="user-menu user-menu-nav"><NavLink exact to="/transactions" className="user-menu-nav" onClick={closeMenu}>Transactions</NavLink></li>
             <li className="user-menu user-border"  onClick={closeMenu}>
