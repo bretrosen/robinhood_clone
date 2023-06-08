@@ -120,7 +120,7 @@ export default function StockDetails() {
                             </div>
                             <div>
                                 <div className='stock-label'>Employees</div>
-                                <div>{stock.employees}</div>
+                                <div>{new Intl.NumberFormat('en-IN').format(stock.employees)}</div>
                             </div>
                             <div>
                                 <div className='stock-label'>Headquarters</div>

@@ -29,7 +29,6 @@ def stock_info(id):
 
 
 @stock_routes.route('/')
-@login_required
 def all_stocks():
     '''
     Query for all stocks to populate suggested search
