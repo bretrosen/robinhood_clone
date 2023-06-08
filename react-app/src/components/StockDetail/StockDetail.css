@@ -23,6 +23,7 @@ h2 {
     padding-bottom: 1rem;
 }
 
+
 .stock-about {
     padding-top: 1rem;
     width: 100%;
@@ -78,15 +79,15 @@ h2 {
     cursor: pointer;
 }
 
-.transactions {
+ .transactions {
     position: sticky;
     top: 5rem;
     align-self: flex-start;
-    color: white;
-    padding: 1rem;
+    /* color: white; */
+    /* padding: 1rem; */
     margin: 1rem;
-    background-color: rgb(25, 25, 25);
-    height: 30rem;
+    /* background-color: rgb(25, 25, 25); */
+    height: 25rem;
     border: 1px solid var(--border-grey);
     border-radius: 5px;
     box-shadow: 1px 1px 1px var(--border-grey);
