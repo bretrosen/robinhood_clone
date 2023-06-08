@@ -60,6 +60,7 @@
     justify-content: space-between;
     padding-bottom: 20px;
     border-bottom: var(--border-grey) 1px solid;
+    position: relative;
 }
 
 .list-name {
@@ -256,4 +257,9 @@
     cursor: pointer;
     background-color: #e0e0e0;
     border-radius: 4px;
+}
+
+#user-name{
+    font-size: 20px;
+
 }

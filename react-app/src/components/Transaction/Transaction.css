@@ -86,3 +86,13 @@
     background-color: black;
     height: 100vh;
 }
+ #purchased-stock{
+    color: red;
+ }
+#sold-stock{
+    color: var(--robin-hood-green);
+}
+
+#stock-emoji{
+    rotate: x -180deg;
+}
