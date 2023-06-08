@@ -45,7 +45,7 @@ export default function AddStockModal({stock}) {
                 <div className='watchlist-lrg'>
                     Add {stock.name} to your list
                 </div>
-                <i className='fa fa-times' id='close-create-list'></i>
+                <i className='fa fa-times' id='close-create-list' onClick={closeModal}></i>
             </div>
 
             <div className='all-watchlists-modal'>
