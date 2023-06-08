@@ -23,6 +23,14 @@ export default function TransactionsPage() {
     }
     const transactions = user.transactions
     const stocks = stock.stocks
+    function formatNumber(number) {
+        if (Number.isInteger(number)) {
+            return number;
+        } else {
+            return number.toFixed(1);
+        }
+    }
+
     return (
         <div className="transactions-page">
             <div>
@@ -63,8 +71,8 @@ export default function TransactionsPage() {
                                     return (<tr className="table-row" key={`transaction-list-${index}`} >
                                         <td>{stocks[stockId].name}</td>
                                         <td id={transaction.purchased ? "purchased-stock" : "sold-stock"}>${cost()}</td>
-                                        <td>{transaction.quantity}</td>
-                                        <td>{transaction.time_stamp}</td>
+                                        <td>{formatNumber(transaction.quantity)}</td>
+                                        <td>{(transaction.time_stamp).split(', ')[1]}</td>
                                         <td>{boughtSold}</td>
                                     </tr>)
 
