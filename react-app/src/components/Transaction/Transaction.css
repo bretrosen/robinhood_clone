@@ -80,3 +80,19 @@
 
 
 /* Transactions page */
+
+.transactions-page{
+    color: white;
+    background-color: black;
+    height: fit-content;
+}
+ #purchased-stock{
+    color: red;
+ }
+#sold-stock{
+    color: var(--robin-hood-green);
+}
+
+#stock-emoji{
+    rotate: x -180deg;
+}

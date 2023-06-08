@@ -16,7 +16,7 @@ export default function Portfolio() {
     const { user } = useSelector(state => state)
     const {history} = useSelector(state => state.history)
     const sessionUser = useSelector(state => state.session.user);
-    const watchlists = user.watch_lists
+    // const watchlists = user.watch_lists
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchPortfolio(sessionUser.id))
