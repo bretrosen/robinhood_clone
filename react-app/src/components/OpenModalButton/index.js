@@ -32,6 +32,9 @@ function OpenModalButton({
   if (type === 'create') {
     return (<i style={{color: "white"}} className='fa fa-plus' onClick={onClick}></i>)
   }
+  if (type === 'transfer') {
+    return (<p className="login-signup watchlist-sm" id="transfer-money-btn" onClick={onClick}>Transer money</p>)
+  }
 
   return (
     <button onClick={onClick} className='nav-button'>{buttonText}</button>

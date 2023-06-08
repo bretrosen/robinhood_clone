@@ -7,6 +7,8 @@ import { fetchPortfolio } from "../../store/user";
 import "./portfolio.css"
 import LineChart from "../LineGraph";
 import WatchlistComponent from "../Watchlist/WatchlistComponent";
+import OpenModalButton from "../OpenModalButton";
+import TransfersModal from "../Navigation/TransfersModal";
 
 export default function Portfolio() {
 
@@ -33,7 +35,7 @@ export default function Portfolio() {
 
                         <span className="watchlist-med">Unlock your free stock</span>
                         <p className="watchlist-lrg">Add funds to claim your free stock. Limitations apply.</p>
-                        <p className="login-signup watchlist-sm" id="transfer-money-btn">Transer money</p>
+                        <OpenModalButton type="transfer" modalComponent={<TransfersModal />}/>
                     </div>
                     <img src="/static/phone-money.svg" alt="money coming out of phone" id="transfer-img"></img>
                 </div>
