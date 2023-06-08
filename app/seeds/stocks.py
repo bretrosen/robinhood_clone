@@ -472,7 +472,228 @@ def seed_stocks():
         year_founded=1957
     )
 
-    all_stocks = [apple, tesla, ibm, microsoft, american_airlines, gamestop, ford, nvidia, dish_network, amazon, amd, meta, jpmorgan, alphabet, visa, johnson_johnson, pfizer, pepsico, disney, netflix, alibaba, qualcomm, wells_fargo, walmart, eni, roku, regeneron, raytheon_technologies, yum, unity_software, unitedhealth, uber, ulta, oracle, occidental_petroleum, oreilly]
+    sentinelone = Stock(
+        name="SentinelOne, Inc.",
+        symbol="S",
+        description="SentinelOne, Inc. engages in the provision of endpoint security software that detects, models, and predicts threat behavior to block attacks on any computing device. Its services include vigilance, support, and training. The company was founded by Tomer Weingarten and Almog Cohen in 2013 and is headquartered in Mountain View, CA. The listed name for S is SentinelOne, Inc.",
+        market_cap=4360000000,
+        pe_ratio=-9.77,
+        dividend=0,
+        stock_ceo="Tomer Weingarten",
+        employees=2100,
+        headquarters="Mountain View, California",
+        year_founded=2013
+    )
+
+    shopify = Stock(
+        name="Shopify, Inc.",
+        symbol="SHOP",
+        description="Shopify, Inc. operates a cloud-based commerce platform designed for small and medium-sized businesses. Its software is used by merchants to run business across all sales channels, including web, tablet and mobile storefronts, social media storefronts, and brick-and-mortar and pop-up shops. The firm's platform provides merchants with a single view of business and customers and enables them to manage products and inventory, process orders and payments, build customer relationships and leverage analytics and reporting. It focuses on merchant and subscription solutions. The company was founded on September 28, 2004 and is headquartered in Ottawa, Canada. The listed name for SHOP is Shopify Inc. Class A subordinate voting shares.",
+        market_cap=75840000000,
+        pe_ratio=-39.29,
+        dividend=0,
+        stock_ceo="Tobias Albin Lütke",
+        employees=11600,
+        headquarters="Ottawa, Ontario",
+        year_founded=2004
+    )
+
+    hyatt = Stock(
+        name="Hyatt Hotels Corp.",
+        symbol="H",
+        description="Hyatt Hotels Corp. engages in the development and management of resort and hotel chains. It operates through the following segments: Owned and Leased Hotels, Americas Management and Franchising, ASPAC Management and Franchising, EAME/SW Asia Management and Franchising, and Apple Leisure Group. The Owned and Leased Hotels segment offers hospitality services and hotels. The Americas Management and Franchising segment consists of properties located in the United States, Latin America, Canada, and the Caribbean. The ASPAC Management and Franchising segment consists of the management and franchising of properties located in Southeast Asia, Greater China, Australia, South Korea, Japan, and Micronesia. The EAME/SW Asia Management segment consists of its management and franchising of properties located primarily in Europe, Africa, the Middle East, India, Central Asia, and Nepal. The Apple Leisure Group segment consists of management and marketing of primarily all-inclusive resorts within the AMR Collection in Latin America The company was founded by Thomas Jay Pritzker in 1957 and is headquartered in Chicago, IL. The listed name for H is Hyatt Hotels Corporation.",
+        market_cap=12270000000,
+        pe_ratio=21.94,
+        dividend=0.13,
+        stock_ceo="Mark Samuel Hoplamazian",
+        employees=50000,
+        headquarters="Chicago, Illinois",
+        year_founded=1957
+    )
+
+    home_depot = Stock(
+        name="The Home Depot, Inc.",
+        symbol="HD",
+        description="The Home Depot, Inc. engages in the sale of building materials and home improvement products. Its products include building materials, home improvement products, lawn and garden products and decor products. The firm operates through the following geographical segments: U.S., Canada and Mexico. It offers home improvement installation services, and tool and equipment rental. The company was founded by Bernard Marcus, Arthur M. Blank, Kenneth Gerald Langone and Pat Farrah on June 29, 1978, and is headquartered at Atlanta, GA. The listed name for HD is Home Depot, Inc.",
+        market_cap=302720000000,
+        pe_ratio=18.38,
+        dividend=2.65,
+        stock_ceo="Edward P. Decker",
+        employees=471600,
+        headquarters="Atlanta, Georgia",
+        year_founded=1978
+    )
+
+    horizon_therapeutics = Stock(
+        name="Horizon Therapeutics Plc",
+        symbol="HZNP",
+        description="Horizon Therapeutics Plc is a biopharmaceutical company, which engages in the research, development, and marketing of pharmaceutical products. It operates through the Orphan and Inflammation segments. The Orphan segment consists of medicines KRYSTEXXA, RAVICTI, PROCYSBI, ACTIMMUNE, BUPHENYL, QUINSAIR, and RAYOS. The Inflammation segment comprises medicines PENNSAID 2%, DUEXIS, and VIMOVO. The company was founded in 2008 and is headquartered in Dublin, Ireland. The listed name for HZNP is Horizon Therapeutics Public Limited Company Ordinary Shares.",
+        market_cap=22730000000,
+        pe_ratio=62.70,
+        dividend=0,
+        stock_ceo="Timothy P. Walbert",
+        employees=2115,
+        headquarters="Dublin, Dublin",
+        year_founded=2008
+    )
+
+    kellogg = Stock(
+        name="Kellogg Co.",
+        symbol="K",
+        description="Kellogg Co. engages in the manufacturing, marketing, and distribution of ready-to-eat cereal and convenience foods. It operates through the following segments: North America, Europe, Latin America, and Asia Middle East Africa. The North America segment includes the U.S. businesses and Canada. The Europe segment consists of European countries. The Latin America segment focuses on Central and South America, and Mexico. The Asia Middle East Africa segment is involved in Africa, Middle East, Australia, and Other Asian and Pacific markets. The company was founded by Will Keith Kellogg in 1906 and is headquartered in Battle Creek, MI. The listed name for K is Kellogg Company.",
+        market_cap=22820000000,
+        pe_ratio=27.30,
+        dividend=3.56,
+        stock_ceo="Steven A. Cahillane",
+        employees=30000,
+        headquarters="Battle Creek, Michigan",
+        year_founded=1906
+    )
+
+    kroger = Stock(
+        name="The Kroger Co.",
+        symbol="KR",
+        description="The Kroger Co. engages in the operation of supermarkets and multi-department stores. Its brands include Big K, Check This Out?, Heritage Farm, Simple Truth, and Simple Truth Organic. The company was founded by Barney Kroger in 1883 and is headquartered in Cincinnati, OH. The listed name for KR is The Kroger Co.",
+        market_cap=32830000000,
+        pe_ratio=14.86,
+        dividend=2.29,
+        stock_ceo="W. Rodney McMullen",
+        employees=430000,
+        headquarters="Cincinnati, Ohio",
+        year_founded=1883
+    )
+
+    kohls = Stock(
+        name="Kohl's Corp.",
+        symbol="KSS",
+        description="Kohl's Corp. engages in the operation of family-oriented department stores. Its business line includes apparel, footwear, and accessories for women, men, and children, home products, beauty products, and accessories. The stores generally carry a consistent merchandise assortment with some differences attributable to regional preferences. The company was founded in 1962 and is headquartered in Menomonee Falls, WI. The listed name for KSS is Kohl's Corporation.",
+        market_cap=2440000000,
+        pe_ratio=-51.94,
+        dividend=9.10,
+        stock_ceo="Thomas A. Kingsbury",
+        employees=97000,
+        headquarters="Menomonee Falls, Wisconsin",
+        year_founded=1962
+    )
+
+    lowes = Stock(
+        name="Lowe's Cos., Inc.",
+        symbol="LOW",
+        description="Lowe's Cos., Inc. engages in the retail sale of home improvement products. The firm offers products for maintenance, repair, remodeling, home decorating and property maintenance. It also provides home improvement products in the following categories: appliances, bathroom, building supply, electrical, flooring, hardware, paint, kitchen, plumbing, lighting & fans, outdoor living, windows and doors. The company was founded in 1946 and is headquartered in Mooresville, NC. The listed name for LOW is Lowe's Companies Inc.",
+        market_cap=123340000000,
+        pe_ratio=20.57,
+        dividend=1.99,
+        stock_ceo="Marvin R. Ellison",
+        employees=307000,
+        headquarters="Mooresville, North Carolina",
+        year_founded=1946
+    )
+
+    lam = Stock(
+        name="Lam Research Corp.",
+        symbol="LRCX",
+        description="Lam Research Corp. engages in manufacturing and servicing of wafer processing semiconductor manufacturing equipment. It operates through the following geographical segments: the United States, China, Europe, Japan, Korea, Southeast Asia, and Taiwan. It offers thin film deposition, plasma etch, photoresist strip, and wafer cleaning. The company was founded by David K. Lam on January 21, 1980, and is headquartered in Fremont, CA. The listed name for LRCX is Lam Research Corporation Common Stock.",
+        market_cap=82600000000,
+        pe_ratio=17.01,
+        dividend=1.09,
+        stock_ceo="Timothy M. Archer",
+        employees=17700,
+        headquarters="Fremont, California",
+        year_founded=1980
+    )
+
+    zoom = Stock(
+        name="Zoom Video Communications, Inc.",
+        symbol="ZM",
+        description="Zoom Video Communications, Inc. engages in the provision of video-first communications platform. The firm offers meetings, chat, rooms and workspaces, phone systems, video webinars, marketplace, and developer platform products. It serves the education, finance, government, and healthcare industries. Its platform helps people to connect through voice, chat, content sharing, and face-to-face video experiences. The company was founded by Eric S. Yuan in 2011 and is headquartered in San Jose, CA. The listed name for ZM is Zoom Video Communications, Inc. Class A Common Stock.",
+        market_cap=19860000000,
+        pe_ratio=14150,
+        dividend=0,
+        stock_ceo="Eric S. Yuan",
+        employees=8484,
+        headquarters="San Jose, California",
+        year_founded=2011
+    )
+
+    zillow = Stock(
+        name="Zillow Group, Inc.",
+        symbol="Z",
+        description="Zillow Group, Inc. engages in the provision of real estate and home-related information marketplaces on mobile and the web. It operates through the following segments: Internet, Media, and Technology (IMT), Mortgages, and Homes. The IMT segment includes premier agent, rentals marketplaces, and new construction marketplaces, and sale of other advertising and business technology solutions for real estate professionals. The Mortgages segment is involved in mortgage originations through Zillow Home Loans and advertising sold to mortgage lenders and other mortgage professionals. The Homes segment focuses on providing title and escrow services performed by Zillow Closing Services. The company was founded by Richard N. Barton and Lloyd D. Frink in December 2004 and is headquartered in Seattle, WA. The listed name for Z is Zillow Group, Inc. Class C Capital Stock.",
+        market_cap=10890000000,
+        pe_ratio=-79.33,
+        dividend=0,
+        stock_ceo="Richard N. Barton",
+        employees=5724,
+        headquarters="Seattle, Washington",
+        year_founded=2004
+    )
+
+    us_steel = Stock(
+        name="United States Steel Corp.",
+        symbol="X",
+        description="United States Steel Corp. engages in the manufacturing and selling of steel products. It operates through the following business segments: Flat-Rolled Products, Mini Mill, U.S. Steel Europe, and Tubular Products. The Flat-Rolled Products segment includes managing steel plants and production facilities that manufacture steel slabs, rounds, strip mill plates, sheets, tin mill, iron ore, and coke. The Mini Mill segment produces hot-rolled, cold-rolled and coated sheets. The U.S. Steel Europe segment produces and markets strip mill plates, spiral welded pipe, heating radiators, refractory ceramic materials. The Tubular Products segment manufactures and trades seamless and electric resistance welded steel casing and tubing, line pipe, and mechanical tubing. The company was founded in 1901 and is headquartered in Pittsburgh, PA. The listed name for X is United States Steel Corporation.",
+        market_cap=5150000000,
+        pe_ratio=3.38,
+        dividend=0.88,
+        stock_ceo="David B. Burritt",
+        employees=22740,
+        headquarters="Pittsburgh, Pennsylvania",
+        year_founded=1901
+    )
+
+    xylem = Stock(
+        name="Xylem, Inc.",
+        symbol="XYL",
+        description="Xylem, Inc. engages in the design, manufacture, and application of engineered technologies for the water industry. It operates through the following business segments: Water Infrastructure, Applied Water, and Measurement and Control Solutions. The Water Infrastructure segment focuses on the transportation, treatment and testing of water. The Applied Water segment encompasses the uses of water and focuses on the commercial, residential, and industrial end markets. The Measurement and Control Solutions segment focuses on developing technology solutions that enable intelligent use and conservation of critical water and energy resources as well as analytical instrumentation used in the testing of water. The company was founded in 2011 and is headquartered in Washington, DC. The listed name for XYL is Xylem Inc.",
+        market_cap=26110000000,
+        pe_ratio=52.13,
+        dividend=1.18,
+        stock_ceo="Patrick K. Decker",
+        employees=17800,
+        headquarters="Washington, District of Columbia",
+        year_founded=2011
+    )
+
+    chevron = Stock(
+        name="Chevron Corp.",
+        symbol="CVX",
+        description="Chevron Corp. engages in the provision of administrative, financial management, and technology support for energy and chemical operations. It operates through the Upstream and Downstream segments. The Upstream segment consists of the exploration, development, and production of crude oil and natural gas, the liquefaction, transportation, and regasification associated with liquefied natural gas, the transporting of crude oil by major international oil export pipelines, the processing, transporting, storage, and marketing of natural gas, and a gas-to-liquids plant. The Downstream segment consists of the refining of crude oil into petroleum products, the marketing of crude oil and refined products, the transporting of crude oil and refined products by pipeline, marine vessel, motor equipment, and rail car, and the manufacturing and marketing of commodity petrochemicals and plastics for industrial uses and fuel & lubricant additives. The company was founded in 1906 and is headquartered in San Ramon, CA. The listed name for CVX is Chevron Corporation.",
+        market_cap=301700000000,
+        pe_ratio=8.64,
+        dividend=3.67,
+        stock_ceo="Michael K. Wirth",
+        employees=43846,
+        headquarters="San Ramon, California",
+        year_founded=1906
+    )
+
+    costco = Stock(
+        name="Costco Wholesale Corp.",
+        symbol="COST",
+        description="Costco Wholesale Corp. engages in the operation of membership warehouses through wholly owned subsidiaries. It operates through the following geographical segments: United States, Canada, and Other International Operations. The company was founded by James D. Sinegal and Jeffrey H. Brotman in 1983 and is headquartered in Issaquah, WA. The listed name for COST is Costco Wholesale Corporation Common Stock.",
+        market_cap=230450000000,
+        pe_ratio=37.88,
+        dividend=0.73,
+        stock_ceo="Walter Craig Jelinek",
+        employees=304000,
+        headquarters="Issaquah, Washington",
+        year_founded=1983
+    )
+
+    cisco = Stock(
+        name="Cisco Systems, Inc.",
+        symbol="CSCO",
+        description="Cisco Systems, Inc. engages in the design, manufacture, and sale of Internet Protocol-based networking products and services related to the communications and information technology industry. The firm operates through the following geographical segments: the Americas, EMEA, and APJC. Its products include the following categories: Switches, Routers, Wireless, Network Management Interfaces and Modules, Optical Networking, Access Points, Outdoor and Industrial Access Points, Next-Generation Firewalls, Advanced Malware Protection, VPN Security Clients, Email, and Web Security. The company was founded by Sandra Lerner and Leonard Bosack on December 10, 1984 and is headquartered in San Jose, CA. The listed name for CSCO is Cisco Systems, Inc. Common Stock (DE).",
+        market_cap=202370000000,
+        pe_ratio=17.88,
+        dividend=3.07,
+        stock_ceo="Charles H. Robbins",
+        employees=83300,
+        headquarters="San Jose, California",
+        year_founded=1984
+    )
+
+    all_stocks = [apple, tesla, ibm, microsoft, american_airlines, gamestop, ford, nvidia, dish_network, amazon, amd, meta, jpmorgan, alphabet, visa, johnson_johnson, pfizer, pepsico, disney, netflix, alibaba, qualcomm, wells_fargo, walmart, eni, roku, regeneron, raytheon_technologies, yum, unity_software, unitedhealth, uber, ulta, oracle, occidental_petroleum, oreilly, sentinelone, shopify, hyatt, home_depot, horizon_therapeutics, kellogg, kroger, kohls, lowes, lam, zoom, zillow, us_steel, xylem, chevron, costco, cisco]
 
     [db.session.add(stock) for stock in all_stocks]
     db.session.commit()
