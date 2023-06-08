@@ -22,21 +22,20 @@ export const TransactStock = () => {
     console.log("market price", marketPrice)
     console.log("buying power", buyingPower)
 
-    //getting the stocks a user owns to display
+    //getting the quantity of the stock a user owns to display
     const transactions = user.transactions
     const { stockId } = useParams()
-    console.log("stock id =>", stockId)
-    console.log("user transactions", transactions)
-    console.log("transaction 10 stock id", transactions[10].stock_id)
-    const relevantTransactions = []
+    let stockOwned = 0
     if (transactions) {
         for (let i = 0; i < Object.values(transactions).length; i++) {
-            if (transactions[i].stock_id === parseInt(stockId)) {
-                relevantTransactions.push(transactions[i])
+            if (transactions[i].stock_id === parseInt(stockId) && transactions[i].purchased) {
+                stockOwned += transactions[i].quantity
+            }
+            if (transactions[i].stock_id === parseInt(stockId) && !transactions[i].purchased) {
+                stockOwned -= transactions[i].quantity
             }
         }
     }
-    console.log("relevant transactions", relevantTransactions)
 
     // error handling
     useEffect(() => {
@@ -124,6 +123,13 @@ export const TransactStock = () => {
                 <div className='buying-power'>
                     ${buyingPower?.toFixed(2)} buying power available
                 </div>
+                {stockOwned > 0 && <div className='stock-owned'>
+                    You have {stockOwned.toFixed(2)} shares of {stock.symbol}
+                </div>}
+                {!stockOwned && <div className='stock-owned'>
+                    You have no shares of {stock.symbol}
+                </div>}
+
             </form>
         </div>
     )
