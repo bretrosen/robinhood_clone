@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { stockDetailsThunk } from '../../store/stock'
 import StockChart from './StockChart'
@@ -11,6 +11,7 @@ import '../Transaction/Transaction.css'
 import OpenModalButton from '../OpenModalButton'
 import WatchlistComponent from '../Watchlist/WatchlistComponent'
 import AddStockModal from '../Watchlist/AddStockModal'
+import dailyPrices from './DailyStockChart'
 
 
 
@@ -19,6 +20,8 @@ export default function StockDetails() {
     const { stockId } = useParams()
     const {stock} = useSelector(state => state.stock)
     const sessionUser = useSelector(state => state.session.user);
+    const [fullDescription, setFullDescription] = useState(true)
+    const [dailyView, setDailyView] = useState(false)
 
     // trigger thunk dispatch for getting stock and user portfolio
     useEffect(() => {
@@ -35,7 +38,8 @@ export default function StockDetails() {
     }
 
     console.log("price object", prices)
-    const newestPrice = prices[0].price.toFixed(2);
+    let newestPrice = prices[0].price.toFixed(2);
+
     const oldestPrice = prices[prices.length - 1].price.toFixed(2);
     const priceDiff = newestPrice - oldestPrice;
     console.log("newest price", newestPrice)
@@ -48,9 +52,14 @@ export default function StockDetails() {
         performanceClassName = 'stock-negative'
     }
 
-    // button click to show more or less of stock description
-    const handleClick = () => {
+    // button toggle to show more or less of stock description
+    const toggleDescription = () => {
+        setFullDescription(!fullDescription)
+    }
 
+    // button toggle to show daily or 90 day stock view
+    const toggleView = () => {
+        setDailyView(!dailyView)
     }
 
     return (
@@ -75,14 +84,34 @@ export default function StockDetails() {
 
                     </div>
                     <div className='stock-chart'>
+                        {dailyView &&
+                        <>
+                        <DailyStockChart />
+                        <br></br>
+                        <button className='toggle-view' onClick={toggleView}> Daily View</button>
+                        </>
+                        }
+                        {!dailyView &&
+                        <>
                         <StockChart />
-                        {/* <DailyStockChart /> */}
+                        <br></br>
+                        <button className='toggle-view' onClick={toggleView}> 90 Day View</button>
+                        </>}
                     </div>
                 </div>
                 <div className='stock-about'>
                     <h2 className='about-text'>About</h2>
                     <div className='about-block'>
+                        {fullDescription &&
+                        <>
                         <p>{stock.description}</p>
+                        <button className='toggle-description' onClick={toggleDescription}>Show less</button>
+                        </>}
+                        {!fullDescription &&
+                        <>
+                        <p>{stock.description.split('.').slice(0,2)}.</p>
+                        <button className='toggle-description' onClick={toggleDescription}>Show more</button>
+                        </>}
                         <div className='about-fields'>
                             <div>
                                 <div className='stock-label'>CEO</div>
