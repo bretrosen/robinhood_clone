@@ -33,12 +33,27 @@
     display: flex;
 
     background-color: #989b9d;
-    padding: 20px;
+    padding: 15px;
     border-radius: 3px;
+    position: relative;
 
 }
 
 .transfer-left {
     display: flex;
     flex-direction: column;
+    gap: 1px;
+}
+
+#transfer-img {
+    position: absolute;
+    right: 0px;
+    bottom: 15px;
+    width: 95px;
+}
+
+#transfer-money-btn {
+    width: fit-content;
+    padding: 6px 12px;
+    margin-top: 20px;
 }

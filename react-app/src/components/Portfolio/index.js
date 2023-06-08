@@ -31,11 +31,11 @@ export default function Portfolio() {
                 <div className="transfer">
                     <div className="transfer-left">
 
-                        <span>Application in review</span>
-                        <p>Start a transfer so you can invest as soon as your application is approved.</p>
-                        <p className="login-signup">Transer money</p>
+                        <span className="watchlist-med">Unlock your free stock</span>
+                        <p className="watchlist-lrg">Add funds to claim your free stock. Limitations apply.</p>
+                        <p className="login-signup watchlist-sm" id="transfer-money-btn">Transer money</p>
                     </div>
-                    <img src="/static/phone-money.svg" alt="money coming out of phone" ></img>
+                    <img src="/static/phone-money.svg" alt="money coming out of phone" id="transfer-img"></img>
                 </div>
             </div>
             <WatchlistComponent />
