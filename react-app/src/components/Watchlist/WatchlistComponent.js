@@ -59,7 +59,7 @@ export default function WatchlistComponent() {
                         <div>
                             <i className="fa fa-ellipsis-h" onClick={() => editList(list.id)}></i>
 
-                            <span>^</span>
+                           
                         </div>
                         <div className={`edit-watchlist ${list.id === clicked ? "watchlist-clicked" : ""}`}>
 
