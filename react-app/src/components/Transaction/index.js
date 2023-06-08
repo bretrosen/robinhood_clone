@@ -63,7 +63,7 @@ export const TransactStock = () => {
                 }
                 console.log("dispatching the buy stock thunk from form =>", buyStockObj)
                 await dispatch(buyStockThunk(buyStockObj))
-                history.push('/portfolio')
+                history.push('/transactions')
             }
 
             if (transactionType === 'Sell') {
@@ -74,7 +74,7 @@ export const TransactStock = () => {
                 }
                 console.log("dispatching the sell stock thunk from form =>", sellStockObj)
                 await dispatch(sellStockThunk(sellStockObj))
-                history.push('/portfolio')
+                history.push('/transactions')
             }
         }
     }
