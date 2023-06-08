@@ -193,8 +193,7 @@ const LineChart = ({dates, vals}) => {
     let oldestPrice = valData[0]
     let newestPrice = valData[valData.length - 1]
 
-    console.log('lp', oldestPrice)
-    console.log('np', newestPrice)
+
     const priceDiff = valData[valData.length - 1] - valData[0];
     let performanceClassName;
 
@@ -208,7 +207,7 @@ const LineChart = ({dates, vals}) => {
     return (
         <div>
             <div className={performanceClassName}>
-                ${(newestPrice - oldestPrice).toFixed(2)}
+                ${new Intl.NumberFormat('en-IN').format((newestPrice - oldestPrice).toFixed(2))}
                 &nbsp;
                 ({(((newestPrice - oldestPrice) / oldestPrice) * 100).toFixed(2)}%)
 

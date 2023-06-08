@@ -277,7 +277,202 @@ def seed_stocks():
         year_founded=1999
     )
 
-    all_stocks = [apple, tesla, ibm, microsoft, american_airlines, gamestop, ford, nvidia, dish_network, amazon, amd, meta, jpmorgan, alphabet, visa, johnson_johnson, pfizer, pepsico, disney, netflix, alibaba]
+    qualcomm = Stock(
+        name="QUALCOMM, Inc.",
+        symbol="QCOM",
+        description="QUALCOMM, Inc. engages in the development, design, and provision of digital telecommunications products and services. It operates through the following segments: Qualcomm CDMA Technologies (QCT), Qualcomm Technology Licensing (QTL), and Qualcomm Strategic Initiatives (QSI). The QCT segment develops and supplies integrated circuits and system software based on technologies for the use in voice and data communications, networking, application processing, multimedia, and global positioning system products. The QTL segment grants licenses and provides rights to use portions of the firm's intellectual property portfolio. The QSI segment focuses on opening new or expanding opportunities for its technologies and supporting the design and introduction of new products and services for voice and data communications. The company was founded by Franklin P. Antonio, Adelia A. Coffman, Andrew Cohen, Klein Gilhousen, Irwin Mark Jacobs, Andrew J. Viterbi, and Harvey P. White in July 1985 and is headquartered in San Diego, CA. The listed name for QCOM is QUALCOMM Incorporated Common Stock.",
+        market_cap=129610000000,
+        pe_ratio=12.36,
+        dividend=2.65,
+        stock_ceo="Cristiano R. Amon",
+        employees=51000,
+        headquarters="San Diego, California",
+        year_founded=1985
+    )
+
+    wells_fargo = Stock(
+        name="Wells Fargo & Co.",
+        symbol="WFC",
+        description="Wells Fargo & Co. is a diversified, community-based financial services company. It is engaged in the provision of banking, insurance, investments, mortgage products and services, and consumer and commercial finance. It operates through the following segments: Consumer Banking and Lending, Commercial Banking, Corporate and Investment Banking, and Wealth & Investment Management. The Consumer Banking and Lending segment offers consumer and small business banking, home lending, credit cards, auto, and personal lending. The Commercial Banking segment offers banking and credit products across multiple industry sectors and municipalities, secured lending and lease products, and treasury management. The Corporate and Investment Banking segment offers corporate banking, investment banking, treasury management, commercial real estate lending and servicing, equity and fixed income solutions, as well as sales, trading, and research capabilities. The Wealth & Investment Management segment provides personalized wealth management, brokerage, financial planning, lending, private banking, trust and fiduciary products and services to affluent, high-net worth and ultra-high-net worth clients. The company was founded by Henry Wells and William G. Fargo on March 18, 1852 and is headquartered in San Francisco, CA. The listed name for WFC is Wells Fargo & Co.",
+        market_cap=158940000000,
+        pe_ratio=12.01,
+        dividend=2.85,
+        stock_ceo="Charles William Scharf",
+        employees=238000,
+        headquarters="San Francisco, California",
+        year_founded=1852
+    )
+
+    walmart = Stock(
+        name="Walmart, Inc.",
+        symbol="WMT",
+        description="Walmart, Inc. engages in retail and wholesale business. The company offers an assortment of merchandise and services at everyday low prices. It operates through the following business segments: Walmart U.S., Walmart International, and Sam's Club. The Walmart U.S. segment operates as a merchandiser of consumer products, operating under the Walmart, Wal-Mart, and Walmart Neighborhood Market brands, as well as walmart.com and other eCommerce brands. The Walmart International segment manages supercenters, supermarkets, hypermarkets, warehouse clubs, and cash and carry outside of the United States. The Sam's Club segment consists of membership-only warehouse clubs and samsclubs.com. The company was founded by Samuel Moore Walton and James Lawrence Walton in 1945 and is headquartered in Bentonville, AR. The listed name for WMT is Walmart Inc.",
+        market_cap=409800000000,
+        pe_ratio=36.15,
+        dividend=1.51,
+        stock_ceo="C. Douglas McMillon",
+        employees=2100000,
+        headquarters="Bentonville, Arkansas",
+        year_founded=1945
+    )
+
+    eni = Stock(
+        name="Eni SpA",
+        symbol="E",
+        description="Eni SpA engages in the exploration, production, refining, and sale of oil, gas, electricity, and chemicals. It operates through the following segments: Exploration and Production, Global Gas and LNG Portfolio, Refining & Marketing and Chemicals, Power & Renewables, and Corporate and Other Activities. The Exploration and Production segment engages in research, development and production of oil, condensates and natural gas, forestry conservation (REDD+) and CO2 capture and storage projects. The Global Gas and LNG Portfolio segment refers to the supply and sale of wholesale natural gas by pipeline, international transport and purchase and marketing of LNG, which includes gas trading activities finalized to hedging and stabilizing the trade margins, as well as optimizing the gas asset portfolio. The Refining & Marketing and Chemicals segment engages in supply, processing, distribution, and marketing of fuels and chemicals. The Corporate and Other Activities segment includes the main business support functions in particular holding, central treasury, IT, human resources, real estate services, captive insurance activities, research and development, new technologies, business digitalization, and environmental activities. The company was founded on February 10, 1953 and is headquartered in Rome, Italy. The listed name for E is ENI S.p.A. ",
+        market_cap=47570000000,
+        pe_ratio=3.74,
+        dividend=4.56,
+        stock_ceo="Claudio Descalzi",
+        employees=32188,
+        headquarters="Rome, Rome",
+        year_founded=1953
+    )
+
+    roku = Stock(
+        name="Roku, Inc.",
+        symbol="ROKU",
+        description="Roku, Inc. engages in the provision of a streaming platform for television. It operates through the Platform and Devices segments. The Platform segment includes digital advertising and related services including the demand-side platform and content distribution services such as subscription and transaction revenue shares, media and entertainment promotional spending, the sale of premium subscriptions, and the sale of branded channel buttons on remote controls. The Devices segment is involved in the sale of streaming players, audio products, smart home products, and accessories that are sold through retailers and distributors, as well as directly to customers through the company’s website. The company was founded by Anthony J. Wood in October 2002 and is headquartered in San Jose, CA. The listed name for ROKU is Roku, Inc. Class A Common Stock.",
+        market_cap=9730000000,
+        pe_ratio=-14.23,
+        dividend=0,
+        stock_ceo="Anthony J. Wood",
+        employees=3600,
+        headquarters="San Jose, California",
+        year_founded=2002
+    )
+
+    regeneron = Stock(
+        name="Regeneron Pharmaceuticals, Inc.",
+        symbol="REGN",
+        description="Regeneron Pharmaceuticals, Inc. is a biotechnology company, which engages in the discovery, invention, development, manufacture, and commercialization of medicines. Its product portfolio includes the following brands: EYLEA, Dupixent, Praluent, Kevzara, Libtayo, ARCALYST, and ZALTRAP. The firm accelerates the traditional drug development process through its proprietary VelociSuite technologies such as VelocImmune, which uses unique genetically-humanized mice to produce optimized fully-human antibodies and bispecific antibodies. The company was founded by Alferd G. Gilman, Leonard S. Schleifer, and Eric M. Shooter on January 8, 1988, and is headquartered in Tarrytown, NY. The listed name for REGN is Regeneron Pharmaceuticals, Inc. Common Stock.",
+        market_cap=82260000000,
+        pe_ratio=20.06,
+        dividend=0,
+        stock_ceo="Leonard S. Schleifer",
+        employees=11851,
+        headquarters="Tarrytown, New York",
+        year_founded=1988
+    )
+
+    raytheon_technologies = Stock(
+        name="Raytheon Technologies Corp.",
+        symbol="RTX",
+        description="Raytheon Technologies Corp. is an aerospace and defense company, which engages in the provision of aerospace and defense systems and services for commercial, military, and government customers. It operates through the following segments: Collins Aerospace Systems (Collins), Pratt and Whitney, Raytheon Intelligence and Space (RIS), and Raytheon Missiles and Defense (RMD). The Collins segment manufactures and sells aero structures, avionics, interiors, mechanical systems, mission systems, and power controls. The Pratt and Whitney segment includes the design and manufacture of aircraft engines and auxiliary power systems for commercial, military, and business aircraft. The RIS segment is involved in the development of sensors, training, and cyber and software solutions. The RMD segment offers end-to-end solutions to detect, track, and engage threats. The company was founded in 1922 and is headquartered in Arlington, VA. The listed name for RTX is Raytheon Technologies Corporation.",
+        market_cap=144780000000,
+        pe_ratio=26.34,
+        dividend=2.27,
+        stock_ceo="Gregory J. Hayes",
+        employees=182000,
+        headquarters="Arlington, Virginia",
+        year_founded=1922
+    )
+
+    yum = Stock(
+        name="Yum! Brands, Inc.",
+        symbol="YUM",
+        description="Yum! Brands, Inc. operates as a service restaurant company. The firm engages in the development, operation, franchise, and licenses of a system of restaurants. It operates through the following segments: KFC Division, Pizza Hut Division, Taco Bell Division, and Habit Burger Grill Division. The KFC Division segment consists of all operations of the KFC concept. The Pizza Hut Division segment operates the Pizza Hut concept. The Taco Bell Division segment includes all operations of the Taco Bell concept. The Habit Burger Grill Division segment includes its worldwide operations of the Habit Burger Grill concept. The company was founded in 1997 and is headquartered in Louisville, KY. The listed name for YUM is Yum! Brands, Inc.",
+        market_cap=37310000000,
+        pe_ratio=31.07,
+        dividend=1.77,
+        stock_ceo="David W. Gibbs",
+        employees=36000,
+        headquarters="Louisville, Kentucky",
+        year_founded=1997
+    )
+
+    unity_software = Stock(
+        name="Unity Software, Inc.",
+        symbol="U",
+        description="Unity Software, Inc. engages in the developing video gaming software. It also provides software solutions to create, run and monetize interactive, real-time two-dimensional and three-dimensional content for mobile phones, tablets, consoles, and augmented and virtual reality devices. Its platform is used by developers, artists, and designers to build content for gaming, film, retail, automotive, architecture, engineering, and construction industries. The company was founded by Joachim Ante and David Helgason in 2004 and is headquartered in San Francisco, CA. The listed name for U is Unity Software Inc.",
+        market_cap=13730000000,
+        pe_ratio=-11.49,
+        dividend=0,
+        stock_ceo="John Salvatore Riccitiello",
+        employees=7703,
+        headquarters="San Francisco, California",
+        year_founded=2004
+    )
+
+    unitedhealth = Stock(
+        name="UnitedHealth Group, Inc.",
+        symbol="UNH",
+        description="UnitedHealth Group, Inc. engages in the provision of health care coverage, software, and data consultancy services. It operates through the following segments: UnitedHealthcare, OptumHealth, OptumInsight, and OptumRx. The UnitedHealthcare segment utilizes Optum's capabilities to help coordinate patient care, improve affordability of medical care, analyze cost trends, manage pharmacy benefits, work with care providers more effectively, and create a simpler consumer experience. The OptumHealth segment provides health and wellness care, serving the broad health care marketplace including payers, care providers, employers, government, life sciences companies, and consumers. The OptumInsight segment focuses on data and analytics, technology, and information to help major participants in the healthcare industry. The OptumRx segment offers pharmacy care services. The company was founded by Richard T. Burke in January 1977 and is headquartered in Minnetonka, MN. The listed name for UNH is UNITEDHEALTH GROUP INCORPORATED (Delaware).",
+        market_cap=456440000000,
+        pe_ratio=22.05,
+        dividend=1.37,
+        stock_ceo="Sir Andrew Philip Witty",
+        employees=400000,
+        headquarters="Minnetonka, Minnesota",
+        year_founded=1977
+    )
+
+    uber = Stock(
+        name="Uber Technologies, Inc.",
+        symbol="UBER",
+        description="Uber Technologies, Inc. is a technology platform, which engages in the development and operation of technology applications, network, and product to power movement from point A to point B. The firm offers ride services and merchants delivery service providers for meal preparation, grocery and other delivery services. It operates through the following segments: Mobility, Delivery and Freight. The Mobility segment refers to products that connect consumers with Mobility Drivers who provide rides in a variety of vehicles, such as cars, auto rickshaws, motorbikes, minibuses, or taxis. The Delivery segment offers consumers to search for and discover local restaurants, order a meal, and either pick-up at the restaurant or have the meal delivered and, in certain markets, Delivery also includes offerings for grocery, alcohol and convenience store delivery and other goods. The Freight segment leverages proprietary technology, brand awareness, and experience revolutionizing industries to connect carriers with shippers on Uber’s platform, and gives carriers upfront, transparent pricing and the ability to book a shipment. The company was founded by Oscar Salazar Gaitan, Travis Kalanick and Garrett Camp in 2009 and is headquartered in San Francisco, CA. The listed name for UBER is Uber Technologies, Inc.",
+        market_cap=81480000000,
+        pe_ratio=-22.68,
+        dividend=0,
+        stock_ceo="Dara Khosrowshahi",
+        employees=32800,
+        headquarters="San Francisco, California",
+        year_founded=2009
+    )
+
+    ulta = Stock(
+        name="Ulta Beauty, Inc.",
+        symbol="ULTA",
+        description="Ulta Beauty, Inc. engages in the retail of beauty products. The company has one reportable segment, which includes retail stores, salon services, and e-commerce. Its products include makeup, skin care, tools and brushes, fragrance, and bath and body. Ulta was founded on January 9, 1990, and is headquartered in Bolingbrook, IL. The listed name for ULTA is Ulta Beauty, Inc. Common Stock.",
+        market_cap=20860000000,
+        pe_ratio=16.89,
+        dividend=0,
+        stock_ceo="David C. Kimbell",
+        employees=53000,
+        headquarters="Bolingbrook, Illinois",
+        year_founded=1990
+    )
+
+    oracle = Stock(
+        name="Oracle Corp.",
+        symbol="ORCL",
+        description="Oracle Corp. engages in the provision of products and services that address all aspects of corporate information technology environments. It operates through the following business segments: Cloud and License, Hardware, and Services. The Cloud and License segment markets, sells, and delivers applications, platform, and infrastructure technologies. The Hardware segment provides hardware products and hardware-related software products including Oracle Engineered Systems, servers, storage, industry-specific hardware, operating systems, virtualization, management and other hardware related software, and related hardware support. The Services segment offers consulting, advanced support, and education services. The company was founded by Lawrence Joseph Ellison, Robert Nimrod Miner, and Edward A. Oates on June 16, 1977, and is headquartered in Austin, TX. The listed name for ORCL is Oracle Corp.",
+        market_cap=290120000000,
+        pe_ratio=34.58,
+        dividend=1.29,
+        stock_ceo="Safra Ada Catz",
+        employees=143000,
+        headquarters="Austin, Texas",
+        year_founded=1977
+    )
+
+    occidental_petroleum = Stock(
+        name="Occidental Petroleum Corp.",
+        symbol="OXY",
+        description="Occidental Petroleum Corp. engages in the exploration and production of oil and natural gas. It operates through the following segments: Oil and Gas, Chemical, and Midstream and Marketing. The Oil and Gas segment explores for, develops and produces oil and condensate, natural gas liquids and natural gas. The Chemical segment manufactures and markets basic chemicals and vinyls. The Midstream and Marketing segment purchases, markets, gathers, processes, transports and stores oil, condensate, natural gas liquids, natural gas, carbon dioxide, and power. The company was founded in 1920 and is headquartered in Houston, TX. The listed name for OXY is Occidental Petroleum Corporation.",
+        market_cap=53250000000,
+        pe_ratio=6.88,
+        dividend=0.95,
+        stock_ceo="Vicki A. Hollub",
+        employees=11973,
+        headquarters="Houston, Texas",
+        year_founded=1920
+    )
+
+    oreilly = Stock(
+        name="O'Reilly Automotive, Inc.",
+        symbol="ORLY",
+        description="O'Reilly Automotive, Inc. owns and operates retail outlets in the United States. It engages in the distribution and retailing of automotive aftermarket parts, tools, supplies, equipment, and accessories in the U.S., serving both professional installers and do-it-yourself customers. It provides new and remanufactured automotive hard parts, including alternators, starters, fuel pumps, water pumps, brake system components, batteries, belts, hoses, temperature controls, chassis parts and engine parts, maintenance items consisting of oil, antifreeze products, fluids, filters, lighting products, engine additives, and appearance products, and accessories, such as floor mats, seat covers, and truck accessories. Its stores offer auto body paint and related materials, automotive tools, and professional service provider service equipment. The firm stores also offer enhanced services and programs consisting of used oil, oil filter and battery recycling, battery, wiper, and bulb replacement, battery diagnostic testing, electrical and module testing, check engine light code extraction, a loaner tool program, drum and rotor resurfacing, custom hydraulic hoses, professional paint shop mixing and related materials, and machine shops. O'Reilly Automotive stores provide do-it-yourself and professional service provider customers a selection of brand name, house brands, and private label products for domestic and imported automobiles, vans, and trucks. The company was founded by Charles F. O'Reilly and Charles H. O'Reilly in November 1957 and is headquartered in Springfield, MO. The listed name for ORLY is O'Reilly Automotive, Inc. Common Stock.",
+        market_cap=55200000000,
+        pe_ratio=25.52,
+        dividend=0,
+        stock_ceo="Gregory D. Johnson",
+        employees=87745,
+        headquarters="Springfield, Missouri",
+        year_founded=1957
+    )
+
+    all_stocks = [apple, tesla, ibm, microsoft, american_airlines, gamestop, ford, nvidia, dish_network, amazon, amd, meta, jpmorgan, alphabet, visa, johnson_johnson, pfizer, pepsico, disney, netflix, alibaba, qualcomm, wells_fargo, walmart, eni, roku, regeneron, raytheon_technologies, yum, unity_software, unitedhealth, uber, ulta, oracle, occidental_petroleum, oreilly]
 
     [db.session.add(stock) for stock in all_stocks]
     db.session.commit()
