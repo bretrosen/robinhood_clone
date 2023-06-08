@@ -67,9 +67,10 @@
     gap: .2em;
 }
 
-.table-container{
+.table-container {
     height: 600px;
-        overflow: scroll;
-        width: 65%;
-        /* scroll-behavior: smooth; */
+    overflow: scroll;
+    width: 65%;
+    /* scroll-behavior: smooth; */
 }
+
