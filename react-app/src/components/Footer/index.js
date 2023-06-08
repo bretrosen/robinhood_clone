@@ -12,17 +12,17 @@ export default function Footer() {
             <div>
                 <p className="footer-headings">Github</p>
                 <div className="footer-links">
-                    <a href="#">Bret's Github</a>
-                    <a href="#">Michaels's Github</a>
-                    <a href="#">Nick's Github</a>
+                    <a href="https://github.com/bretrosen">Bret's Github</a>
+                    <a href="https://github.com/michael-carvajal">Michaels's Github</a>
+                    <a href="https://github.com/snydernb1">Nick's Github</a>
 
                 </div>
             </div>
             <div>
                 <p className="footer-headings">Linkin</p>
                 <div className="footer-links">
-                    <a href="#">Bret's Linkedin</a>
-                    <a href="#">Michaels's Linkedin</a>
+                    <a href="https://www.linkedin.com/in/bret-rosen-147a281b7/">Bret's Linkedin</a>
+                    <a href="https://www.linkedin.com/in/michael-carvajal-326683203/">Michaels's Linkedin</a>
                     <a href="#">Nick's Linkedin</a>
 
                 </div>
