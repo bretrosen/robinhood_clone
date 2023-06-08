@@ -43,7 +43,7 @@ export default function WatchlistList() {
     // console.log(list);
     return (
 
-        <div>
+        <div className="foxtrot-lists">
             <div className="watchlist-page-header">
                 <p style={{fontSize: "40px"}}>
                     ⚡️

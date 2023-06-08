@@ -23,7 +23,7 @@ export default function Footer() {
                 <div className="footer-links">
                     <a href="https://www.linkedin.com/in/bret-rosen-147a281b7/">Bret's Linkedin</a>
                     <a href="https://www.linkedin.com/in/michael-carvajal-326683203/">Michaels's Linkedin</a>
-                    <a href="#">Nick's Linkedin</a>
+                    <a href="https://www.linkedin.com/in/nicholas-snyder-2714a5a1/">Nick's Linkedin</a>
 
                 </div>
             </div>
