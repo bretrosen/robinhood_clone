@@ -12,6 +12,7 @@ import OpenModalButton from '../OpenModalButton'
 import WatchlistComponent from '../Watchlist/WatchlistComponent'
 import AddStockModal from '../Watchlist/AddStockModal'
 import dailyPrices from './DailyStockChart'
+import { FetchNews } from './StockNews'
 
 
 
@@ -61,6 +62,12 @@ export default function StockDetails() {
     const toggleView = () => {
         setDailyView(!dailyView)
     }
+
+    // const symbol = 'AAPL'
+    // const start= '2023-06-01'
+    // const end = '2023-06-07'
+    // const API_KEY = 'ci139b1r01qikcusfrt0ci139b1r01qikcusfrtg'
+    // const news = FetchNews(symbol, start, end, API_KEY)
 
     return (
         <div className='stock-details-wrapper'>
