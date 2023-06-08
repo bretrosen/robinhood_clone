@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { buyStockThunk, sellStockThunk } from '../../store/user'
 
 export const TransactStock = () => {
@@ -22,6 +22,21 @@ export const TransactStock = () => {
     console.log("market price", marketPrice)
     console.log("buying power", buyingPower)
 
+    //getting the stocks a user owns to display
+    const transactions = user.transactions
+    const { stockId } = useParams()
+    console.log("stock id =>", stockId)
+    console.log("user transactions", transactions)
+    console.log("transaction 10 stock id", transactions[10].stock_id)
+    const relevantTransactions = []
+    if (transactions) {
+        for (let i = 0; i < Object.values(transactions).length; i++) {
+            if (transactions[i].stock_id === parseInt(stockId)) {
+                relevantTransactions.push(transactions[i])
+            }
+        }
+    }
+    console.log("relevant transactions", relevantTransactions)
 
     // error handling
     useEffect(() => {
@@ -86,7 +101,7 @@ export const TransactStock = () => {
                         </select>
                     </label>
                 </div>
-                <input className='transact-field' type= 'number' placeholder="Shares"
+                <input className='transact-field' type='number' placeholder="Shares"
                     value={quantity}
                     onChange={e => setQuantity(e.target.value)} />
                 <div className='market-price'>
