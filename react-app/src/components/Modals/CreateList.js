@@ -43,14 +43,14 @@ export default function CreateList({ type, name, watchlistId }) {
         setClicked("")
     }
     return (
-        <div>
+        <div className="create-list-container">
             {errors.length && <p>{errors.length}</p>}
             <div id="create-list">
-                {type === "create" ? <p>Create list</p> : <p>Edit list</p>}
-                <p onClick={closeModal}>x</p>
+                {type === "create" ? <p style={{fontWeight: "500"}}>Create list</p> : <p style={{fontWeight: "500"}}>Edit list</p>}
+                <p onClick={closeModal}><i className="fa fa-times"></i></p>
             </div>
             <form onSubmit={type === "create" ? handleSubmit : (e) => editList(e)}>
-                <div>
+                <div className="list-input">
                     <p>⚡️</p>
                     <input placeholder="List Name"
                         value={listName}
@@ -58,11 +58,11 @@ export default function CreateList({ type, name, watchlistId }) {
                     />
 
                 </div>
-                <div>
-                    <p className="login-signup" onClick={closeModal}>Cancel</p>
+                <div className="list-btns">
+                    <p className="login-signup watchlist-sm" id="list-cancel" onClick={closeModal}>Cancel</p>
 
-                    {type === "edit" && <p className="login-signup" onClick={(e) => editList(e)}>Edit List</p>}
-                    {type === "create" && <p className="login-signup" onClick={handleSubmit}>Create List</p>}
+                    {type === "edit" && <p className="login-signup save-changes watchlist-sm" onClick={(e) => editList(e)}>Edit List</p>}
+                    {type === "create" && <p className="login-signup save-changes watchlist-sm" onClick={handleSubmit}>Create List</p>}
                 </div>
             </form>
         </div>

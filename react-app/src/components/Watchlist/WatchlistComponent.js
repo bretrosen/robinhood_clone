@@ -38,11 +38,11 @@ export default function WatchlistComponent() {
         dispatch(deleteWatchlist(clicked))
     }
 
-    
+
     return (
         <div className="portfolio-watchlist">
             <div id="watchlists-header">
-                <p>Lists</p>
+                <p>Your Watchlists</p>
                 <OpenModalButton
                     buttonText="+"
                     type="create"
