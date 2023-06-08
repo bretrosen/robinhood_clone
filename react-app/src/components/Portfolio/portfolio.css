@@ -9,12 +9,20 @@
 
 
 }
+#only-portfolio{
+    height: fit-content;
+}
+#only-portfolio-{
+    height: fit-content;
+    margin-bottom: 30px;
+}
 
 .portfolio {
     width: 65%;
     display: flex;
     flex-direction: column;
     gap: 40px;
+    height: 900px;
 }
 
 .portfolio-watchlist {
