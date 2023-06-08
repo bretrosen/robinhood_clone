@@ -34,42 +34,45 @@ export default function TransactionsPage() {
                     <p style={{ color: "#898989", fontSize: "13px" }}>{transactions?.length} Transactions</p>
                 </div>
                 <div className="portfolio-page">
+                    <div className="table-container">
 
-                    <table id="watchlist-table">
-                        <thead>
-                            <tr>
-                                <th>Stock</th>
-                                <th>Cost</th>
-                                <th>Quantity</th>
-                                <th>Date</th>
-                                <th>Type</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                        <table id="watchlist-table">
+                            <thead>
+                                <tr>
+                                    <th>Stock</th>
+                                    <th>Cost</th>
+                                    <th>Quantity</th>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                            {transactions?.map((transaction, index) => {
-                                let boughtSold = ""
-                                const cost = () => {
-                                    if (transaction.purchased) {
-                                        boughtSold = "Purchased"
-                                        return (transaction.quantity * transaction.price_purchased).toFixed(2)
+                                {transactions?.map((transaction, index) => {
+                                    let boughtSold = ""
+                                    const cost = () => {
+                                        if (transaction.purchased) {
+                                            boughtSold = "Purchased"
+                                            return (transaction.quantity * transaction.price_purchased).toFixed(2)
+                                        }
+                                        boughtSold = "Sold"
+                                        return (transaction.quantity * transaction.price_sold).toFixed(2)
                                     }
-                                    boughtSold = "Sold"
-                                    return (transaction.quantity * transaction.price_sold).toFixed(2)
-                                }
-                                const stockId = transaction.stock_id
+                                    const stockId = transaction.stock_id
 
-                                return (<tr className="table-row" key={`transaction-list-${index}`} >
-                                    <td>{stocks[stockId].name}</td>
-                                    <td id={transaction.purchased ? "purchased-stock" : "sold-stock"}>${cost()}</td>
-                                    <td>{transaction.quantity}</td>
-                                    <td>{transaction.time_stamp}</td>
-                                    <td>{boughtSold}</td>
-                                </tr>)
+                                    return (<tr className="table-row" key={`transaction-list-${index}`} >
+                                        <td>{stocks[stockId].name}</td>
+                                        <td id={transaction.purchased ? "purchased-stock" : "sold-stock"}>${cost()}</td>
+                                        <td>{transaction.quantity}</td>
+                                        <td>{transaction.time_stamp}</td>
+                                        <td>{boughtSold}</td>
+                                    </tr>)
 
-                            })}
-                        </tbody>
-                    </table>
+                                })}
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
                 <WatchlistComponent />
 

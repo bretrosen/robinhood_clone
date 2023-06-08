@@ -6,6 +6,8 @@
     width: 100%;
     padding-left: 20px;
     height: 100vh;
+
+
 }
 
 .portfolio {
@@ -63,4 +65,11 @@
     display: flex;
     flex-direction: column;
     gap: .2em;
+}
+
+.table-container{
+    height: 600px;
+        overflow: scroll;
+        width: 65%;
+        /* scroll-behavior: smooth; */
 }
