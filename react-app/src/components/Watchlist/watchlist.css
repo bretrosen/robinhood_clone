@@ -197,6 +197,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    position: relative;
 }
 
 .list-input > input{
@@ -232,3 +233,15 @@
     color: var(--robin-hood-green);
 }
 
+.fa-times{
+    padding: 10px;
+    position: absolute;
+    right: 0px;
+    top: -10px;
+
+}
+.fa-times:hover{
+    cursor: pointer;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+}
