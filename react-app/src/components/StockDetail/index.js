@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { stockDetailsThunk } from '../../store/stock'
 import StockChart from './StockChart'
@@ -19,6 +19,10 @@ export default function StockDetails() {
     const { stockId } = useParams()
     const {stock} = useSelector(state => state.stock)
     const sessionUser = useSelector(state => state.session.user);
+    const [fullDescription, setFullDescription] = useState(true)
+    // const description = stock?.description
+    // const descriptionSentences = description?.split('.')
+    // descriptionSentences && descriptionSentences.slice(0,2)
 
     // trigger thunk dispatch for getting stock and user portfolio
     useEffect(() => {
@@ -48,10 +52,15 @@ export default function StockDetails() {
         performanceClassName = 'stock-negative'
     }
 
-    // button click to show more or less of stock description
-    const handleClick = () => {
-
+    // button toggle to show more or less of stock description
+    const toggleDescription = () => {
+        setFullDescription(!fullDescription)
     }
+
+    // slice off the first sentence for the abbreviated description
+    // if (!fullDescription) {
+    //     descriptionSentences.slice(0,2)
+    // }
 
     return (
         <div className='stock-details-wrapper'>
@@ -82,7 +91,17 @@ export default function StockDetails() {
                 <div className='stock-about'>
                     <h2 className='about-text'>About</h2>
                     <div className='about-block'>
+                        {fullDescription &&
+                        <>
                         <p>{stock.description}</p>
+                        <button className='toggle-description' onClick={() => toggleDescription()}>Show less</button>
+                        </>}
+                        {!fullDescription &&
+                        <>
+                        <p>{stock.description.split('.').slice(0,2)}.</p>
+                        <button className='toggle-description' onClick={() => toggleDescription()}>Show more</button>
+                        </>}
+                        {/* <button className='toggle-description' onClick={() => toggleDescription()}>Toggle</button> */}
                         <div className='about-fields'>
                             <div>
                                 <div className='stock-label'>CEO</div>
