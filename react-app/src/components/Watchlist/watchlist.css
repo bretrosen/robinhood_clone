@@ -106,11 +106,12 @@
 }
 
 .lists-modal {
-    background-color: chocolate;
-    width: 300px;
+    background-color: #1E2124;
+    width: 400px;
     position: relative;
     top: 0px;
     right: 0px;
+    color: white;
 }
 
 .list-modal-title {
@@ -125,6 +126,10 @@
     height: 20px;
     border: 1px solid var(--robin-hood-green);
     position: relative;
+}
+#close-create-list{
+    position: relative;
+    top: 0;
 }
 
 .watchlist-med {
@@ -142,6 +147,12 @@
 #watchlist-modal:hover {
     background-color: transparent;
     cursor: pointer;
+}
+
+.all-watchlists-modal{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 #watchlist-modal {
