@@ -84,7 +84,7 @@
 .transactions-page{
     color: white;
     background-color: black;
-    height: 100vh;
+    height: fit-content;
 }
  #purchased-stock{
     color: red;

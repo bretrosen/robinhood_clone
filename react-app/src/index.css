@@ -22,3 +22,12 @@
 .round-buttons {
     width: fit-content;
 }
+
+.pawprints {
+    background-repeat: repeat;
+    background-size: contain;
+    width: 100%;
+    /* adjust the width of the div as needed */
+    height: 200px;
+    /* adjust the height of the div as needed */
+}

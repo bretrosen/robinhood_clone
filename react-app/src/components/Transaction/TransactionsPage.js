@@ -2,6 +2,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { fetchPortfolio } from "../../store/user";
 import { useEffect } from "react";
 import WatchlistComponent from "../Watchlist/WatchlistComponent";
+import pawprintImage from '../../static/pawprint.png';
+
 
 export default function TransactionsPage() {
     const { user } = useSelector(state => state)
@@ -15,6 +17,7 @@ export default function TransactionsPage() {
         return (
             <div>
                 <h1>Loading...</h1>
+                <div className="pawprints" style={{ backgroundImage: `url(${pawprintImage})` }}></div>
             </div>
         )
     }
@@ -69,6 +72,7 @@ export default function TransactionsPage() {
                     </table>
                 </div>
                 <WatchlistComponent />
+
 
             </div>
         </div>
