@@ -26,9 +26,10 @@
     right: 10px;
 }
 
-.fa-trash:hover{
+.fa-trash:hover {
     color: red;
 }
+
 #watchlist-table th {
     padding-top: 12px;
     padding-bottom: 12px;
@@ -57,6 +58,7 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+    padding-bottom: 20px;
     border-bottom: var(--border-grey) 1px solid;
 }
 
@@ -161,11 +163,85 @@
 }
 
 
-.watchlist-page-header{
+.watchlist-page-header {
     color: white;
     background-color: black;
     padding: 30px 0px 0px 20px;
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.fa-plus:hover {
+    cursor: pointer;
+    color: var(--robin-hood-green) !important;
+}
+
+.fa-ellipsis-h:hover {
+    cursor: pointer;
+}
+
+#edit-list:hover {
+    cursor: pointer;
+}
+
+.create-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    width: 400px;
+}
+
+#create-list{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.list-input > input{
+    border: none;
+    background-color: #eeeeeeae;
+    padding: 5px;
+    border-radius: 4px;
+    width: 100%;
+}
+.list-input > p{
+    padding: 3px 6px;
+    margin-right: 10px;
+    border: 1px #e0e0e0 solid;
+    border-radius: 5px;
+}
+.list-input{
+    display: flex;
+    width: 90%;
+    margin: 10px auto;
+}
+
+.list-btns{
+    display: flex;
+    width: 90%;
+    margin: 0px auto;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+#list-cancel{
+    background-color: transparent;
+    border: 1px solid var(--robin-hood-green);
+    color: var(--robin-hood-green);
+}
+
+.fa-times{
+    padding: 10px;
+    position: absolute;
+    right: 0px;
+    top: -10px;
+
+}
+.fa-times:hover{
+    cursor: pointer;
+    background-color: #e0e0e0;
+    border-radius: 4px;
 }

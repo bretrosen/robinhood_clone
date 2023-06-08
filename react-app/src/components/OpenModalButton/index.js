@@ -23,11 +23,17 @@ function OpenModalButton({
   }
   if (buttonText === "Edit list") {
     return (
-      <div onClick={onClick}>
+      <div onClick={onClick} id='edit-list'>
         <i className='fa fa-cog edit-icon'></i>
         <span>Edit list</span>
       </div>
     )
+  }
+  if (type === 'create') {
+    return (<i style={{color: "white"}} className='fa fa-plus' onClick={onClick}></i>)
+  }
+  if (type === 'transfer') {
+    return (<p className="login-signup watchlist-sm" id="transfer-money-btn" onClick={onClick}>Transer money</p>)
   }
 
   return (
