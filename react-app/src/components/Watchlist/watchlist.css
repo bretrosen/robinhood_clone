@@ -107,9 +107,10 @@
 
 .lists-modal {
     background-color: chocolate;
+    width: 300px;
     position: relative;
-    width: 100%;
-    right: 0;
+    top: 0px;
+    right: 0px;
 }
 
 .list-modal-title {
