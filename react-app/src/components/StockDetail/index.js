@@ -57,11 +57,6 @@ export default function StockDetails() {
         setFullDescription(!fullDescription)
     }
 
-    // slice off the first sentence for the abbreviated description
-    // if (!fullDescription) {
-    //     descriptionSentences.slice(0,2)
-    // }
-
     return (
         <div className='stock-details-wrapper'>
 
@@ -94,14 +89,13 @@ export default function StockDetails() {
                         {fullDescription &&
                         <>
                         <p>{stock.description}</p>
-                        <button className='toggle-description' onClick={() => toggleDescription()}>Show less</button>
+                        <button className='toggle-description' onClick={toggleDescription}>Show less</button>
                         </>}
                         {!fullDescription &&
                         <>
                         <p>{stock.description.split('.').slice(0,2)}.</p>
-                        <button className='toggle-description' onClick={() => toggleDescription()}>Show more</button>
+                        <button className='toggle-description' onClick={toggleDescription}>Show more</button>
                         </>}
-                        {/* <button className='toggle-description' onClick={() => toggleDescription()}>Toggle</button> */}
                         <div className='about-fields'>
                             <div>
                                 <div className='stock-label'>CEO</div>
