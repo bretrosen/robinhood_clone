@@ -4,11 +4,14 @@ import CreateList from "../Modals/CreateList";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { deleteWatchlist, fetchPortfolio } from '../../store/user';
+import UserContextHook from '../../context/UserContext';
 
 export default function WatchlistComponent() {
     const { user } = useSelector(state => state)
     const sessionUser = useSelector(state => state.session.user);
-    const [clicked, setClicked] = useState(null)
+
+    const { clicked, setClicked } = UserContextHook()
+
     // console.log(sessionUser);
     const watchlists = user.watch_lists
     const dispatch = useDispatch();
@@ -34,6 +37,8 @@ export default function WatchlistComponent() {
         console.log(clicked);
         dispatch(deleteWatchlist(clicked))
     }
+
+    
     return (
         <div className="portfolio-watchlist">
             <div id="watchlists-header">

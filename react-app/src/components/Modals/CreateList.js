@@ -2,10 +2,12 @@ import { useState } from "react"
 import { useDispatch } from "react-redux";
 import { postWatchlist, putWatchlist } from "../../store/user";
 import { useModal } from "../../context/Modal"
+import UserContextHook from "../../context/UserContext";
 export default function CreateList({ type, name, watchlistId }) {
     const [listName, setListName] = useState(name ? name : "")
     const [errors, setErrors] = useState({})
     const { closeModal } = useModal();
+    const {setClicked} = UserContextHook()
     const dispatch = useDispatch()
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -38,6 +40,7 @@ export default function CreateList({ type, name, watchlistId }) {
         dispatch(putWatchlist(listName, id))
         closeModal()
         setListName("")
+        setClicked("")
     }
     return (
         <div>
@@ -58,7 +61,7 @@ export default function CreateList({ type, name, watchlistId }) {
                 <div>
                     <p className="login-signup" onClick={closeModal}>Cancel</p>
 
-                    {type === "edit" && <p className="login-signup" onClick={(e) => editList(watchlistId, e)}>Edit List</p>}
+                    {type === "edit" && <p className="login-signup" onClick={(e) => editList(e)}>Edit List</p>}
                     {type === "create" && <p className="login-signup" onClick={handleSubmit}>Create List</p>}
                 </div>
             </form>
