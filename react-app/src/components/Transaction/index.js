@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { buyStockThunk, sellStockThunk } from '../../store/user'
 
 export const TransactStock = () => {
@@ -22,6 +22,20 @@ export const TransactStock = () => {
     console.log("market price", marketPrice)
     console.log("buying power", buyingPower)
 
+    //getting the quantity of the stock a user owns to display
+    const transactions = user.transactions
+    const { stockId } = useParams()
+    let stockOwned = 0
+    if (transactions) {
+        for (let i = 0; i < Object.values(transactions).length; i++) {
+            if (transactions[i].stock_id === parseInt(stockId) && transactions[i].purchased) {
+                stockOwned += transactions[i].quantity
+            }
+            if (transactions[i].stock_id === parseInt(stockId) && !transactions[i].purchased) {
+                stockOwned -= transactions[i].quantity
+            }
+        }
+    }
 
     // error handling
     useEffect(() => {
@@ -86,7 +100,7 @@ export const TransactStock = () => {
                         </select>
                     </label>
                 </div>
-                <input className='transact-field' type= 'number' placeholder="Shares"
+                <input className='transact-field' type='number' placeholder="Shares"
                     value={quantity}
                     onChange={e => setQuantity(e.target.value)} />
                 <div className='market-price'>
@@ -109,6 +123,13 @@ export const TransactStock = () => {
                 <div className='buying-power'>
                     ${buyingPower?.toFixed(2)} buying power available
                 </div>
+                {stockOwned > 0 && <div className='stock-owned'>
+                    You have {stockOwned.toFixed(2)} shares of {stock.symbol}
+                </div>}
+                {!stockOwned && <div className='stock-owned'>
+                    You have no shares of {stock.symbol}
+                </div>}
+
             </form>
         </div>
     )
