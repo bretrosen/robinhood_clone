@@ -16,7 +16,7 @@ quantity_tracker = {
 def generate_transactions():
     transactions = []
     # Want transaction data for all stocks
-    for stock_id in range(1, 37):
+    for stock_id in range(1, 54):
         # Seed 20 transactions per stock
         for _ in range(3):
             # Randomly choose a user for a transaction
