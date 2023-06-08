@@ -50,9 +50,11 @@ function ProfileButton() {
       </button>
       <ul className={ulClassName} ref={ulRef}>
 
+
+
           <>
             <li className="user-menu">{sessionUser.first_name} {sessionUser.last_name}</li>
-            <li className="user-menu user-border">Account Balance: ${sessionUser.buying_power}</li>
+            <li className="user-menu user-border">Account Balance: ${ new Intl.NumberFormat('en-IN').format(sessionUser.buying_power.toFixed(2))}</li>
             <li className="user-menu user-menu-nav"><NavLink exact to="/portfolio" className="user-menu-nav" onClick={closeMenu}>Portfolio</NavLink></li>
             <li className="user-menu user-menu-nav"><NavLink exact to="/transactions" className="user-menu-nav" onClick={closeMenu}>Transactions</NavLink></li>
             <li className="user-menu user-border"  onClick={closeMenu}>

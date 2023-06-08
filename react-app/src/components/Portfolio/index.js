@@ -29,7 +29,7 @@ export default function Portfolio() {
 //============================================Function for calculating portfolio value START
 
 
-
+// Takes the user transaction data and filters it to an object with the key as stock id and values as transactions
 const transactionSort = (trans) => {
     let res = {}
     for (let item of trans) {
@@ -42,6 +42,7 @@ const transactionSort = (trans) => {
     return res
 }
 
+// Iterates through the transaction object and returns a new object with the key as stock id and values at the total quantity of user stock
 const quantityCalc = (trans) => {
     const stocksArr = Object.keys(trans)
     // console.log('all trans after buy', trans)
@@ -77,6 +78,7 @@ const quantityCalc = (trans) => {
 
 }
 
+// Iterates through all stock history and organizes data in an object by stock id then returns an object of all stock history filtered by user's stocks
 const filterHistory = (history, stockIdArr) => {
     // console.log('this should be an arr of keys', stockIdArr)
     const organizedHistory = {};
@@ -104,6 +106,7 @@ const filterHistory = (history, stockIdArr) => {
 
 }
 
+// Calls all functions above, iterates through the filtered stock history and determines the total stock val (quantity * daily val) of all user's stocks. Returns either an arr or daily values or an array of dates based on the res argument being true/false
 const findAllStockValue = (user, res) => {
     const transactions = user.transactions
     const organizedTrans = transactionSort(transactions)
@@ -151,7 +154,7 @@ return (
 
                 <div className="portfolio-graph-data">
                     <h2>{user.first_name}'s Portfolio</h2>
-                    <h3>${vals[vals.length - 1]}</h3>
+                    <h3>${new Intl.NumberFormat('en-IN').format(vals[vals.length - 1].toFixed(2))}</h3>
                     <LineChart dates={dates} vals={vals}/>
                 </div>
 
