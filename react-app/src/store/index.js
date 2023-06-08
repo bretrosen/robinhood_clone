@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import user from './user'
 import stock from './stock'
+import history from './stockHistory'
 
 const rootReducer = combineReducers({
   session,
   user,
-  stock
+  stock,
+  history
 });
 
 
