@@ -12,8 +12,7 @@ import OpenModalButton from '../OpenModalButton'
 import WatchlistComponent from '../Watchlist/WatchlistComponent'
 import AddStockModal from '../Watchlist/AddStockModal'
 import dailyPrices from './DailyStockChart'
-import { FetchNews } from './StockNews'
-
+import FetchNews from './StockNews'
 
 
 export default function StockDetails() {
@@ -23,6 +22,7 @@ export default function StockDetails() {
     const sessionUser = useSelector(state => state.session.user);
     const [fullDescription, setFullDescription] = useState(true)
     const [dailyView, setDailyView] = useState(false)
+
 
     // trigger thunk dispatch for getting stock and user portfolio
     useEffect(() => {
@@ -63,11 +63,8 @@ export default function StockDetails() {
         setDailyView(!dailyView)
     }
 
-    // const symbol = 'AAPL'
-    // const start= '2023-06-01'
-    // const end = '2023-06-07'
-    // const API_KEY = 'ci139b1r01qikcusfrt0ci139b1r01qikcusfrtg'
-    // const news = FetchNews(symbol, start, end, API_KEY)
+
+
 
     return (
         <div className='stock-details-wrapper'>
@@ -157,10 +154,11 @@ export default function StockDetails() {
                         }
                     </div>
                 </div>
-            </div>
-            <div className='transactions'>
-                <TransactStock />
-                <OpenModalButton type="watchlist" modalComponent={<AddStockModal stock={stock} />} />
+
+                <div className='transactions'>
+                    <TransactStock />
+                    <OpenModalButton type="watchlist" modalComponent={<AddStockModal stock={stock} />} />
+                </div>
             </div>
         </div>
     )

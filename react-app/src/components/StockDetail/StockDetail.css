@@ -1,3 +1,7 @@
+a {
+    color: white;
+}
+
 h1 {
     font-weight: 500;
 }
@@ -57,6 +61,11 @@ h2 {
 
 .stock-negative {
     color: red;
+}
+
+.stock-news {
+    border-bottom: 1px solid white;
+    margin: 1rem 0;
 }
 
 .stock-positive {
