@@ -169,3 +169,7 @@
     flex-direction: column;
     gap: 10px;
 }
+
+.fa-plus:hover {
+    cursor: pointer;
+}

@@ -40,6 +40,7 @@ export default function WatchlistComponent() {
                 <p>Lists</p>
                 <OpenModalButton
                     buttonText="+"
+                    type="create"
                     modalComponent={<CreateList type='create'/>} />
             </div>
             {watchlists.map((list, index) => {

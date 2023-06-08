@@ -29,6 +29,9 @@ function OpenModalButton({
       </div>
     )
   }
+  if (type === 'create') {
+    return (<i style={{color: "white"}} className='fa fa-plus' onClick={onClick}></i>)
+  }
 
   return (
     <button onClick={onClick} className='nav-button'>{buttonText}</button>
