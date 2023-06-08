@@ -31,3 +31,59 @@
     height: 200px;
     /* adjust the height of the div as needed */
 }
+
+footer {
+    display: flex;
+    padding: 10px;
+    background-color: var(--saffron);
+    gap: 90px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.footer-links>*,
+a {
+    color: grey;
+    font-size: 13px;
+}
+
+.footer-links>a:hover {
+    color: var(--robin-hood-green);
+    text-decoration: underline;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.footer-headings {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+#robin-hood-link:hover {
+    color: var(--robin-hood-green);
+    text-decoration: underline;
+
+}
+
+.footer-divider {
+    width: 4px;
+    background-color: #bfbdbd;
+    border-radius: 10px;
+}
+#fox-footer{
+    width: 60px;
+    position: relative;
+    right: 30px;
+}
+
+#footer-logo{
+    font-weight: 600;
+    font-size: 16px;
+    color: black;
+    position: relative;
+    right: 40px;
+}
