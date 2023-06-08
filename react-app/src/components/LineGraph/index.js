@@ -1,125 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { useDispatch, useSelector } from "react-redux"
-import { stockDetailsThunk } from '../../store/stock';
-import { fetchAllHistory } from '../../store/stockHistory';
+import './linegraph.css'
 
-const LineChart = () => {
-    const { user } = useSelector(state => state)
+
+
+const LineChart = ({dates, vals}) => {
+    // console.log('valData', data)
+
     const {stock} = useSelector(state => state.stock)
     const {history} = useSelector(state => state.history)
-    const dispatch = useDispatch()
 
-    // console.log('Is this history from comp?', history)
+    const [dateData, setDateData] = useState(dates?.slice(61,91))
+    const [valData, setValData] = useState(vals?.slice(61,91))
+    const [days, setdays] = useState(30)
 
-    useEffect(()=> {
-        dispatch(stockDetailsThunk(4))
-        dispatch(fetchAllHistory())
-    }, [dispatch])
-
-
-    if (Object.values(stock).length === 0) return false
-
-
-    const transactionSort = (trans) => {
-        let res = {}
-        for (let item of trans) {
-            if (!res[item.stock_id]) {
-                res[item.stock_id] = [item]
-            } else {
-                res[item.stock_id] = [item, ...res[item.stock_id]]
-            }
-        }
-        return res
-    }
-
-    const quantityCalc = (trans) => {
-        const stocksArr = Object.keys(trans)
-        // console.log('all keys', stocksArr)
-        const quantities = {}
-
-        for (let stock of stocksArr) {
-            // console.log('this should key into the array', trans[Number(stock)])
-            for (let item of trans[Number(stock)]) {
-                // console.log('this is the item in the loop', item)
-                // console.log('this is the stock in the loop', stock)
-                if (!quantities.stock) {
-                    if (item.purchased === true) {
-                        quantities[stock] = item.quantity
-                    } else {
-                        quantities[stock] = -item.quantity
-                    }
-                } else {
-                    if (item.purchased === true) {
-                        quantities[stock] += item.quantity
-                    } else {
-                        quantities[stock] -= item.quantity
-                    }
-                }
-            }
-        }
-
-        // console.log('did this work right?', quantities)
-        return quantities
-
-    }
-
-    const filterHistory = (history, stockIdArr) => {
-        // console.log('this should be an arr of keys', stockIdArr)
-        const organizedHistory = {};
-        const filterStocks = {};
-        const historyKeys = Object.keys(history)
-
-        // Sorts history by stock id
-        for (let key of historyKeys) {
-            // console.log('test',history[key].stock_id)
-            if (!organizedHistory[history[key].stock_id]) {
-                organizedHistory[history[key].stock_id] = [history[key]]
-            } else {
-                organizedHistory[history[key].stock_id] = [history[key], ...organizedHistory[history[key].stock_id]]
-            }
-        }
-
-        // console.log('This should be the sorted histroy by stock', organizedHistory)
-
-        for (let id of stockIdArr) {
-            filterStocks[id] = organizedHistory[id]
-        }
-
-        // console.log('This should be the filtered stocks', filterStocks)
-        return filterStocks
-
-    }
-
-    const findAllStockValue = (user) => {
-        const transactions = user.transactions
-        const organizedTrans = transactionSort(transactions)
-        const stockQuantities = quantityCalc(organizedTrans)
-        // console.log('these are the stock quantities',stockQuantities)
-        const stockHistory = filterHistory(history, Object.keys(stockQuantities))
-        // console.log('StockHistory ==>', stockHistory)
-
-        const stockKeys = Object.keys(stockQuantities)
-        const stockVals = [];
-        const dates = [];
-
-        for (let key of stockKeys) {
-            for (let i in stockHistory[key]) {
-                if (key === stockKeys[0]) {
-                    stockVals.push(stockHistory[key][i].price * stockQuantities[key])
-                    dates.push(stockHistory[key][i].time_stamp)
-                } else {
-                    let val = stockHistory[key][i].price * stockQuantities[key]
-                    stockVals[i] = stockVals[i] + val
-                }
-            }
-        }
-
-        console.log('This should be 91 instances of add stock...',stockVals)
-        console.log('This should be 91 instances of dates...',dates)
-
-
-    }
 
     const findSingleStockValue = (user, stockId) => {
         const transactions = user.transactions
@@ -230,23 +125,36 @@ const LineChart = () => {
     }
 
 
-    const vals = findSingleStockValue(user, 4)
-    const dates = findSingleStockDates(user, 4)
-    const test = findAllStockValue(user)
+    // const vals = findSingleStockValue(user, 4)
+    // const dates = findSingleStockDates(user, 4)
 
 
 
-
+    const oneMonth = () => {
+        setDateData(dates.slice(61,91))
+        setValData(vals.slice(61,91))
+        setdays(30)
+    }
+    const twoMonth = () => {
+        setDateData(dates.slice(31,91))
+        setValData(vals.slice(31,91))
+        setdays(60)
+    }
+    const threeMonth = () => {
+        setDateData(dates.slice(0,91))
+        setValData(vals.slice(0,91))
+        setdays(90)
+    }
 
 
     const data = {
-        labels: dates,
+        labels: dateData,
         datasets: [
             {
                 label: 'Value',
-                data: vals,
+                data: valData,
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: vals[0] < vals[vals.length - 1] ? 'green' : 'red',
+                borderColor: valData[0] < valData[valData.length - 1] ? 'green' : 'red',
                 borderWidth: 1,
             }
         ],
@@ -261,15 +169,58 @@ const LineChart = () => {
 
         scales: {
             y: {
-                beginAtZero: true,
+                // ticks: {
+                //     display: false
+                // },
+                beginAtZero: false,
+                grid: {
+                    drawBorder: false,
+                    display: false
+                }
             },
+            x: {
+                ticks: {
+                    display: false
+                },
+                grid: {
+                    drawBorder: false,
+                    display: false
+                }
+            }
         },
     };
 
+    let oldestPrice = valData[0]
+    let newestPrice = valData[valData.length - 1]
+
+    console.log('lp', oldestPrice)
+    console.log('np', newestPrice)
+    const priceDiff = valData[valData.length - 1] - valData[0];
+    let performanceClassName;
+
+    if (priceDiff >= 0) {
+        performanceClassName = 'stock-positive';
+    } else {
+        performanceClassName = 'stock-negative';
+    }
+
+
     return (
         <div>
-            <h2>Line Chart Example</h2>
-            <Line data={data} options={options} />
+            <div className={performanceClassName}>
+                ${(newestPrice - oldestPrice).toFixed(2)}
+                &nbsp;
+                ({(((newestPrice - oldestPrice) / oldestPrice) * 100).toFixed(2)}%)
+
+
+                &nbsp;Past&nbsp;{days} days
+            </div>
+            <Line data={data} options={options} className='graph'/>
+            <div className='portfolio-view-buttons'>
+                <button className='toggle-view' onClick={oneMonth}>30 Day View</button>
+                <button className='toggle-view' onClick={twoMonth}>60 Day View</button>
+                <button className='toggle-view' onClick={threeMonth}>90 Day View</button>
+            </div>
 
         </div>
     );
