@@ -9,6 +9,7 @@ import LandingPage from "./components/LandingPage";
 import Portfolio from "./components/Portfolio";
 import StockDetails from './components/StockDetail'
 import Watchlist from "./components/Watchlist";
+import TransactionsPage from "./components/Transaction/TransactionsPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route path="/portfolio">
             <Portfolio />
+          </Route>
+          <Route path="/transactions">
+            <TransactionsPage />
           </Route>
           <Route path="/watchlists/:watchlistId">
             <Watchlist />
