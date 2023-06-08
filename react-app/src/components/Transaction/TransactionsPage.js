@@ -3,12 +3,14 @@ import { fetchPortfolio } from "../../store/user";
 import { useEffect } from "react";
 import WatchlistComponent from "../Watchlist/WatchlistComponent";
 import pawprintImage from '../../static/pawprint.png';
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
 export default function TransactionsPage() {
     const { user } = useSelector(state => state)
     const { stock } = useSelector(state => state)
     const sessionUser = useSelector(state => state.session.user);
+    const history = useHistory()
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchPortfolio(sessionUser.id))
@@ -29,6 +31,9 @@ export default function TransactionsPage() {
         } else {
             return number.toFixed(1);
         }
+    }
+    const viewStockDetial = (id) => {
+        history.push(`/stocks/${id}`)
     }
 
     return (
@@ -68,7 +73,7 @@ export default function TransactionsPage() {
                                     }
                                     const stockId = transaction.stock_id
 
-                                    return (<tr className="table-row" key={`transaction-list-${index}`} >
+                                    return (<tr className="table-row" key={`transaction-list-${index}`} onClick={() => viewStockDetial(stockId)} >
                                         <td>{stocks[stockId].name}</td>
                                         <td id={transaction.purchased ? "purchased-stock" : "sold-stock"}>${cost()}</td>
                                         <td>{formatNumber(transaction.quantity)}</td>
