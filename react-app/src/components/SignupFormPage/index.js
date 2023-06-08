@@ -41,7 +41,7 @@ function SignupFormPage() {
         <form id="signup-form" onSubmit={handleSubmit}>
           <p>Enter your first and last name as they appear on your government ID.</p>
           <ul>
-            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            {errors.map((error, idx) => <li key={idx} style={{color: "red"}}>{error}</li>)}
           </ul>
           <label>
             First name
@@ -64,7 +64,7 @@ function SignupFormPage() {
           <label>
             Email
             <input
-              type="text"
+              type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
