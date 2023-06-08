@@ -8,8 +8,7 @@ const DailyStockChart = () => {
     const priceHistory = stock?.stock_history
     const lastPrice = priceHistory[0].price.toFixed(2)
     const [dailyPrices, setDailyPrices] = useState([Number(lastPrice)])
-    const [labels, setLabels] = useState([])
-    let count = 1
+    const [labels, setLabels] = useState([new Date()])
 
     const getDelta = async () => {
         const response = await fetch(`/api/stocks/get_price`)
@@ -17,8 +16,7 @@ const DailyStockChart = () => {
         const newPrice = Number(dailyPrices[dailyPrices.length - 1]) + delta
         console.log("new price in daily chart", newPrice)
         setDailyPrices(dailyPrices => [...dailyPrices, newPrice])
-        setLabels(labels => [...labels, count])
-        count++
+        setLabels(labels => [...labels, new Date()])
         console.log("price array", dailyPrices)
 
     }
