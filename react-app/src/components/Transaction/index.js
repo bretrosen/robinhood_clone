@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { buyStockThunk, sellStockThunk } from '../../store/user'
 
 export const TransactStock = () => {
     const dispatch = useDispatch()
+    const history = useHistory()
 
     const [quantity, setQuantity] = useState('')
     const [transactionType, setTransactionType] = useState('Buy')
@@ -25,7 +27,7 @@ export const TransactStock = () => {
     useEffect(() => {
         const newErrors = {}
 
-        // if (!quantity) newErrors['quantity'] = 'Quantity is required'
+        if (!quantity) newErrors['quantity'] = 'Quantity is required'
         if (transactionType === 'Buy' && estimatedCost > buyingPower) newErrors['funds'] = "You don't have enough buying power to place this order."
         console.log("buying power check in useEffect", buyingPower - quantity * marketPrice)
         setErrors(newErrors)
@@ -47,7 +49,7 @@ export const TransactStock = () => {
                 }
                 console.log("dispatching the buy stock thunk from form =>", buyStockObj)
                 await dispatch(buyStockThunk(buyStockObj))
-                setQuantity(0)
+                history.push('/portfolio')
             }
 
             if (transactionType === 'Sell') {
@@ -58,7 +60,7 @@ export const TransactStock = () => {
                 }
                 console.log("dispatching the sell stock thunk from form =>", sellStockObj)
                 await dispatch(sellStockThunk(sellStockObj))
-                setQuantity(0)
+                history.push('/portfolio')
             }
         }
     }
@@ -84,7 +86,7 @@ export const TransactStock = () => {
                         </select>
                     </label>
                 </div>
-                <input className='transact-field' placeholder="Shares"
+                <input className='transact-field' type= 'number' placeholder="Shares"
                     value={quantity}
                     onChange={e => setQuantity(e.target.value)} />
                 <div className='market-price'>
