@@ -27,6 +27,10 @@
     color: var(--robin-hood-green)
 }
 
+.stock-owned {
+    text-align: center;
+}
+
 .transact-button {
     margin: 1rem 0;
     padding: 14px 28px;
@@ -66,7 +70,7 @@
     padding: 1rem;
     margin-bottom: 1rem;
     background-color: rgb(25, 25, 25);
-    height: 25rem;
+    height: 26rem;
     border: 1px solid var(--border-grey);
     border-radius: 5px;
     box-shadow: 1px 1px 1px var(--border-grey);
