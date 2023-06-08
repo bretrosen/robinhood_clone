@@ -29,7 +29,6 @@ def stock_info(id):
 
 
 @stock_routes.route('/')
-@login_required
 def all_stocks():
     '''
     Query for all stocks to populate suggested search
@@ -37,6 +36,16 @@ def all_stocks():
 
     all_stocks = Stock.query.all()
     return {'stocks': [stock.to_dict() for stock in all_stocks]}
+
+
+@stock_routes.route('/all_history')
+def all_stock_history():
+    '''
+    Query for all stock history
+    '''
+
+    all_history = StockHistory.query.all()
+    return {'history': [item.to_dict() for item in all_history]}
 
 
 @stock_routes.route('/<int:id>/buy_stock', methods=['POST'])

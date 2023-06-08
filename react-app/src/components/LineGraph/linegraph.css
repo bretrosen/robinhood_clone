@@ -1,0 +1,9 @@
+.portfolio-view-buttons {
+    padding-top: 1em;
+    display: flex;
+    gap: 1em;
+}
+
+.graph {
+    margin-top: 2em;
+}

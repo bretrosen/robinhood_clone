@@ -5,7 +5,9 @@
     color: white;
     width: 100%;
     padding-left: 20px;
-    height: 100vh;
+    height: 700px;
+
+
 }
 
 .portfolio {
@@ -22,6 +24,7 @@
     height: fit-content;
     position: fixed;
     right: 20px;
+    top: 100px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -33,12 +36,40 @@
     display: flex;
 
     background-color: #989b9d;
-    padding: 20px;
+    padding: 15px;
     border-radius: 3px;
+    position: relative;
 
 }
 
 .transfer-left {
     display: flex;
     flex-direction: column;
+    gap: 1px;
+}
+
+#transfer-img {
+    position: absolute;
+    right: 0px;
+    bottom: 15px;
+    width: 95px;
+}
+
+#transfer-money-btn {
+    width: fit-content;
+    padding: 6px 12px;
+    margin-top: 20px;
+}
+
+.portfolio-graph-data {
+    display: flex;
+    flex-direction: column;
+    gap: .2em;
+}
+
+.table-container {
+    height: 600px;
+    overflow: scroll;
+    width: 65%;
+    /* scroll-behavior: smooth; */
 }

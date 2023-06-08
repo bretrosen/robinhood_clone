@@ -45,7 +45,7 @@ export default function AddStockModal({stock}) {
                 <div className='watchlist-lrg'>
                     Add {stock.name} to your list
                 </div>
-                <div className="close-modal">×</div>
+                <i className='fa fa-times' id='close-create-list' onClick={closeModal}></i>
             </div>
 
             <div className='all-watchlists-modal'>
@@ -69,7 +69,7 @@ export default function AddStockModal({stock}) {
                             </div>
                             <div className='list-modal'>
                                 <p className='watchlist-med'>{list.name}</p>
-                                <p className='watchlist-sm'>{list.stocks.length} items</p>
+                                <p className='watchlist-sm' style={{ color: "#eeeeeeae"}}>{list.stocks.length} items</p>
                             </div>
                         </div>
                     );

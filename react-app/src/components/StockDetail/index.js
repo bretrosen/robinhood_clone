@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { stockDetailsThunk } from '../../store/stock'
 import StockChart from './StockChart'
@@ -11,14 +11,18 @@ import '../Transaction/Transaction.css'
 import OpenModalButton from '../OpenModalButton'
 import WatchlistComponent from '../Watchlist/WatchlistComponent'
 import AddStockModal from '../Watchlist/AddStockModal'
+import dailyPrices from './DailyStockChart'
+import { FetchNews } from './StockNews'
 
 
 
 export default function StockDetails() {
     const dispatch = useDispatch()
     const { stockId } = useParams()
-    const {stock} = useSelector(state => state.stock)
+    const { stock } = useSelector(state => state.stock)
     const sessionUser = useSelector(state => state.session.user);
+    const [fullDescription, setFullDescription] = useState(true)
+    const [dailyView, setDailyView] = useState(false)
 
     // trigger thunk dispatch for getting stock and user portfolio
     useEffect(() => {
@@ -35,7 +39,8 @@ export default function StockDetails() {
     }
 
     console.log("price object", prices)
-    const newestPrice = prices[0].price.toFixed(2);
+    let newestPrice = prices[0].price.toFixed(2);
+
     const oldestPrice = prices[prices.length - 1].price.toFixed(2);
     const priceDiff = newestPrice - oldestPrice;
     console.log("newest price", newestPrice)
@@ -48,10 +53,21 @@ export default function StockDetails() {
         performanceClassName = 'stock-negative'
     }
 
-    // button click to show more or less of stock description
-    const handleClick = () => {
-
+    // button toggle to show more or less of stock description
+    const toggleDescription = () => {
+        setFullDescription(!fullDescription)
     }
+
+    // button toggle to show daily or 90 day stock view
+    const toggleView = () => {
+        setDailyView(!dailyView)
+    }
+
+    // const symbol = 'AAPL'
+    // const start= '2023-06-01'
+    // const end = '2023-06-07'
+    // const API_KEY = 'ci139b1r01qikcusfrt0ci139b1r01qikcusfrtg'
+    // const news = FetchNews(symbol, start, end, API_KEY)
 
     return (
         <div className='stock-details-wrapper'>
@@ -62,6 +78,7 @@ export default function StockDetails() {
                         <h1>{stock.name}</h1>
                         <>
                             <h1>${newestPrice}</h1>
+                            <h2>{dailyPrices}</h2>
                             <div className={performanceClassName}>
                                 ${(newestPrice - oldestPrice).toFixed(2)}
                                 &nbsp;
@@ -75,14 +92,34 @@ export default function StockDetails() {
 
                     </div>
                     <div className='stock-chart'>
-                        <StockChart />
-                        {/* <DailyStockChart /> */}
+                        {dailyView &&
+                            <>
+                                <DailyStockChart />
+                                <br></br>
+                                <button className='toggle-view' onClick={toggleView}> Daily View</button>
+                            </>
+                        }
+                        {!dailyView &&
+                            <>
+                                <StockChart />
+                                <br></br>
+                                <button className='toggle-view' onClick={toggleView}> 90 Day View</button>
+                            </>}
                     </div>
                 </div>
                 <div className='stock-about'>
                     <h2 className='about-text'>About</h2>
                     <div className='about-block'>
-                        <p>{stock.description}</p>
+                        {fullDescription &&
+                            <>
+                                <p>{stock.description}</p>
+                                <button className='toggle-description' onClick={toggleDescription}>Show less</button>
+                            </>}
+                        {!fullDescription &&
+                            <>
+                                <p>{stock.description.split('.').slice(0, 2)}.</p>
+                                <button className='toggle-description' onClick={toggleDescription}>Show more</button>
+                            </>}
                         <div className='about-fields'>
                             <div>
                                 <div className='stock-label'>CEO</div>
@@ -90,7 +127,7 @@ export default function StockDetails() {
                             </div>
                             <div>
                                 <div className='stock-label'>Employees</div>
-                                <div>{stock.employees}</div>
+                                <div>{new Intl.NumberFormat('en-IN').format(stock.employees)}</div>
                             </div>
                             <div>
                                 <div className='stock-label'>Headquarters</div>
@@ -123,9 +160,8 @@ export default function StockDetails() {
             </div>
             <div className='transactions'>
                 <TransactStock />
-                <OpenModalButton type="watchlist" modalComponent={<AddStockModal stock={stock} />}/>
+                <OpenModalButton type="watchlist" modalComponent={<AddStockModal stock={stock} />} />
             </div>
-
         </div>
     )
 }

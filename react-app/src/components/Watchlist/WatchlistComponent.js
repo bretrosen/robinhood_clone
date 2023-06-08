@@ -4,11 +4,14 @@ import CreateList from "../Modals/CreateList";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { deleteWatchlist, fetchPortfolio } from '../../store/user';
+import UserContextHook from '../../context/UserContext';
 
 export default function WatchlistComponent() {
     const { user } = useSelector(state => state)
     const sessionUser = useSelector(state => state.session.user);
-    const [clicked, setClicked] = useState(null)
+
+    const { clicked, setClicked } = UserContextHook()
+
     // console.log(sessionUser);
     const watchlists = user.watch_lists
     const dispatch = useDispatch();
@@ -34,12 +37,15 @@ export default function WatchlistComponent() {
         console.log(clicked);
         dispatch(deleteWatchlist(clicked))
     }
+
+
     return (
         <div className="portfolio-watchlist">
             <div id="watchlists-header">
-                <p>Lists</p>
+                <p>Your Watchlists</p>
                 <OpenModalButton
                     buttonText="+"
+                    type="create"
                     modalComponent={<CreateList type='create'/>} />
             </div>
             {watchlists.map((list, index) => {
@@ -53,13 +59,13 @@ export default function WatchlistComponent() {
                         <div>
                             <i className="fa fa-ellipsis-h" onClick={() => editList(list.id)}></i>
 
-                            <span>^</span>
+                           
                         </div>
                         <div className={`edit-watchlist ${list.id === clicked ? "watchlist-clicked" : ""}`}>
 
                             <OpenModalButton buttonText="Edit list" modalComponent={<CreateList type="edit" name={list.name} watchlistId={list.id} />}/>
                             <div className='delete-list' onClick={deleteList}>
-                                <i className='fa fa-cog edit-icon'></i>
+                                <i className='fa fa-trash edit-icon'></i>
                                 <span>Delete list</span>
                             </div>
                         </div>

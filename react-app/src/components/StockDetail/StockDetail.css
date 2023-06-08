@@ -1,3 +1,11 @@
+h1 {
+    font-weight: 500;
+}
+
+h2 {
+    font-weight: 500;
+}
+
 .about-block {
     margin-top: 1rem;
 }
@@ -15,9 +23,10 @@
     padding-bottom: 1rem;
 }
 
+
 .stock-about {
     padding-top: 1rem;
-    width: 40rem;
+    width: 100%;
 }
 
 .stock-chart {
@@ -25,18 +34,21 @@
 }
 
 .stock-details-page {
+    color: white;
     display: flex;
     flex-direction: column;
-    margin: 3rem;
+    margin: 1rem;
+    width: 640px;
 }
 
 .stock-details-top {
-    width: 40rem;
+    width: 100%;
 }
 
 .stock-details-wrapper {
+    background-color: black;
     display: flex;
-    margin: 2rem;
+    padding: 1rem;
 }
 
 .stock-label {
@@ -51,15 +63,36 @@
     color: var(--robin-hood-green);
 }
 
-.transactions {
-    padding: 1rem;
-    margin-top: 3rem;
-    background-color: white;
-    height: 30rem;
-    border: 1px solid lightgray;
+.toggle-description {
+    color: var(--robin-hood-green);
+    background: none;
+    border:none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.toggle-view {
+    color: var(--robin-hood-green);
+    background: none;
+    border:none;
+    padding: 0;
+    cursor: pointer;
+}
+
+ .transactions {
+    position: sticky;
+    top: 5rem;
+    align-self: flex-start;
+    /* color: white; */
+    /* padding: 1rem; */
+    margin: 1rem;
+    /* background-color: rgb(25, 25, 25); */
+    height: 26rem;
+    border: 1px solid var(--border-grey);
     border-radius: 5px;
-    box-shadow: 1px 1px 1px lightgray;
-    width: 22rem;
+    box-shadow: 1px 1px 1px var(--border-grey);
+    width: 17rem;
+    font-size: 14px;
 }
 
 #add-to-list{

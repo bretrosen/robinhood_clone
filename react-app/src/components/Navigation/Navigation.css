@@ -10,6 +10,9 @@
   padding: 1em 1.5em 1em 1.5em;
   z-index: 2;
 }
+.account{
+  color: white;
+}
 
 .account:hover {
   color: var(--lawn-green);
@@ -37,7 +40,7 @@
 
 .nav-button {
   border: none;
-  background-color: white;
+  background-color: transparent;
   font-size: medium;
   cursor: pointer;
 }
@@ -164,6 +167,7 @@ a {
   align-items: left;
   gap: 20px;
   cursor: default;
+  z-index: 1000000;
 }
 
 .search-home {
@@ -234,4 +238,8 @@ a {
 #landing-four{
   color: var(--saffron);
   font-weight: 600;
+}
+
+#dropdown-links-{
+  font-size: 16px;
 }

@@ -1,23 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { useDispatch, useSelector } from "react-redux"
-import { stockDetailsThunk } from '../../store/stock';
+import './linegraph.css'
 
-const LineChart = () => {
-    const { user } = useSelector(state => state)
+
+
+const LineChart = ({dates, vals}) => {
+    // console.log('valData', data)
+
     const {stock} = useSelector(state => state.stock)
-    const dispatch = useDispatch()
+    const {history} = useSelector(state => state.history)
 
-    // console.log('Is this apple?', stock.stock_history)
+    const [dateData, setDateData] = useState(dates?.slice(61,91))
+    const [valData, setValData] = useState(vals?.slice(61,91))
+    const [days, setdays] = useState(30)
 
-    useEffect(()=> {
-        dispatch(stockDetailsThunk(1))
-    }, [dispatch])
 
-    // console.log('what is stock', Object.values(stock))
-    if (Object.values(stock).length === 0) return false
-
-    const findStockValue = (user, stockId) => {
+    const findSingleStockValue = (user, stockId) => {
         const transactions = user.transactions
         let filterStockTransactions = []
         let totalQuantity = 0;
@@ -75,7 +74,8 @@ const LineChart = () => {
 
     }
 
-    const findStockDates = (user, stockId) => {
+
+    const findSingleStockDates = (user, stockId) => {
         const transactions = user.transactions
         let filterStockTransactions = []
         let earliestDate = 0;
@@ -120,27 +120,41 @@ const LineChart = () => {
             let dateFormat = new Date(date)
             resDateArr.push(dateFormat.getDate() + '/' + dateFormat.getMonth() + '/' + dateFormat.getFullYear())
         }
-        console.log('Should be all dates', resDateArr)
+        // console.log('Should be all dates', resDateArr)
         return resDateArr
     }
 
 
-    const vals = findStockValue(user, 3)
-    const dates = findStockDates(user, 3)
+    // const vals = findSingleStockValue(user, 4)
+    // const dates = findSingleStockDates(user, 4)
 
 
 
-
+    const oneMonth = () => {
+        setDateData(dates.slice(61,91))
+        setValData(vals.slice(61,91))
+        setdays(30)
+    }
+    const twoMonth = () => {
+        setDateData(dates.slice(31,91))
+        setValData(vals.slice(31,91))
+        setdays(60)
+    }
+    const threeMonth = () => {
+        setDateData(dates.slice(0,91))
+        setValData(vals.slice(0,91))
+        setdays(90)
+    }
 
 
     const data = {
-        labels: dates,
+        labels: dateData,
         datasets: [
             {
                 label: 'Value',
-                data: findStockValue(user, 1),
+                data: valData,
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: vals[0] < vals[vals.length - 1] ? 'green' : 'red',
+                borderColor: valData[0] < valData[valData.length - 1] ? 'green' : 'red',
                 borderWidth: 1,
             }
         ],
@@ -155,15 +169,57 @@ const LineChart = () => {
 
         scales: {
             y: {
-                beginAtZero: true,
+                // ticks: {
+                //     display: false
+                // },
+                beginAtZero: false,
+                grid: {
+                    drawBorder: false,
+                    display: false
+                }
             },
+            x: {
+                ticks: {
+                    display: false
+                },
+                grid: {
+                    drawBorder: false,
+                    display: false
+                }
+            }
         },
     };
 
+    let oldestPrice = valData[0]
+    let newestPrice = valData[valData.length - 1]
+
+
+    const priceDiff = valData[valData.length - 1] - valData[0];
+    let performanceClassName;
+
+    if (priceDiff >= 0) {
+        performanceClassName = 'stock-positive';
+    } else {
+        performanceClassName = 'stock-negative';
+    }
+
+
     return (
         <div>
-            <h2>Line Chart Example</h2>
-            <Line data={data} options={options} />
+            <div className={performanceClassName}>
+                ${new Intl.NumberFormat('en-IN').format((newestPrice - oldestPrice).toFixed(2))}
+                &nbsp;
+                ({(((newestPrice - oldestPrice) / oldestPrice) * 100).toFixed(2)}%)
+
+
+                &nbsp;Past&nbsp;{days} days
+            </div>
+            <Line data={data} options={options} className='graph'/>
+            <div className='portfolio-view-buttons'>
+                <button className='toggle-view' onClick={oneMonth}>30 Day View</button>
+                <button className='toggle-view' onClick={twoMonth}>60 Day View</button>
+                <button className='toggle-view' onClick={threeMonth}>90 Day View</button>
+            </div>
 
         </div>
     );

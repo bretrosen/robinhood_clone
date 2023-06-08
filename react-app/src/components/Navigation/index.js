@@ -86,6 +86,7 @@ function Navigation({ isLoaded }) {
 										setName={setName}
 										setSymbol={setSymbol}
 										setSearch={setSearch}
+										key={stock.id}
 									/>
 								))}
 								{

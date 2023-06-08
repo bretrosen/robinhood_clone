@@ -11,7 +11,7 @@ TREND = [ASCENDING, DESCENDING]
 def generate_price_history():
     price_history = []
 
-    for stock_id in range(1, 22):  # Generate data for stock_id 1 to 21
+    for stock_id in range(1, 54):  # Generate data for stock_id 1 to 21
         mu = 150  # Mean of 150
         sigma = 100  # Standard deviation of 100
         price = round(gauss(mu, sigma), 2) # Start with a normally distributed random price

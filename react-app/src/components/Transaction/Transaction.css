@@ -1,3 +1,4 @@
+
 .buying-power {
     text-align: center;
     padding: 1rem;
@@ -26,11 +27,14 @@
     color: var(--robin-hood-green)
 }
 
+.stock-owned {
+    text-align: center;
+}
+
 .transact-button {
     margin: 1rem 0;
     padding: 14px 28px;
     font-weight: 600;
-    font-size: 16px;
     background: var(--robin-hood-green);
     color: white;
     border: 0px;
@@ -58,4 +62,37 @@
     justify-content: flex-start;
 }
 
+.transact-form-container {
+    /* position: sticky;
+    top: 5rem;
+    align-self: flex-start; */
+    color: white;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: rgb(25, 25, 25);
+    height: 26rem;
+    border: 1px solid var(--border-grey);
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px var(--border-grey);
+    width: 17rem;
+    font-size: 14px;
+}
 
+
+/* Transactions page */
+
+.transactions-page{
+    color: white;
+    background-color: black;
+    height: fit-content;
+}
+ #purchased-stock{
+    color: red;
+ }
+#sold-stock{
+    color: var(--robin-hood-green);
+}
+
+#stock-emoji{
+    rotate: x -180deg;
+}

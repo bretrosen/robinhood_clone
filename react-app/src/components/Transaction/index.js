@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory, useParams } from 'react-router-dom'
 import { buyStockThunk, sellStockThunk } from '../../store/user'
 
 export const TransactStock = () => {
     const dispatch = useDispatch()
+    const history = useHistory()
 
     const [quantity, setQuantity] = useState('')
     const [transactionType, setTransactionType] = useState('Buy')
@@ -20,12 +22,27 @@ export const TransactStock = () => {
     console.log("market price", marketPrice)
     console.log("buying power", buyingPower)
 
+    //getting the quantity of the stock a user owns to display
+    const transactions = user.transactions
+    const { stockId } = useParams()
+    let stockOwned = 0
+    if (transactions) {
+        for (let i = 0; i < Object.values(transactions).length; i++) {
+            if (transactions[i].stock_id === parseInt(stockId) && transactions[i].purchased) {
+                stockOwned += transactions[i].quantity
+            }
+            if (transactions[i].stock_id === parseInt(stockId) && !transactions[i].purchased) {
+                stockOwned -= transactions[i].quantity
+            }
+        }
+    }
 
     // error handling
     useEffect(() => {
         const newErrors = {}
 
-        // if (!quantity) newErrors['quantity'] = 'Quantity is required'
+        if (!quantity) newErrors['quantity'] = 'Quantity is required'
+        if (transactionType === 'Sell' && quantity > stockOwned) newErrors['funds'] = "You can't sell more stock than you own!"
         if (transactionType === 'Buy' && estimatedCost > buyingPower) newErrors['funds'] = "You don't have enough buying power to place this order."
         console.log("buying power check in useEffect", buyingPower - quantity * marketPrice)
         setErrors(newErrors)
@@ -47,7 +64,7 @@ export const TransactStock = () => {
                 }
                 console.log("dispatching the buy stock thunk from form =>", buyStockObj)
                 await dispatch(buyStockThunk(buyStockObj))
-                setQuantity(0)
+                history.push('/transactions')
             }
 
             if (transactionType === 'Sell') {
@@ -58,7 +75,7 @@ export const TransactStock = () => {
                 }
                 console.log("dispatching the sell stock thunk from form =>", sellStockObj)
                 await dispatch(sellStockThunk(sellStockObj))
-                setQuantity(0)
+                history.push('/transactions')
             }
         }
     }
@@ -84,7 +101,7 @@ export const TransactStock = () => {
                         </select>
                     </label>
                 </div>
-                <input className='transact-field' placeholder="Shares"
+                <input className='transact-field' type='number' placeholder="Shares"
                     value={quantity}
                     onChange={e => setQuantity(e.target.value)} />
                 <div className='market-price'>
@@ -105,8 +122,15 @@ export const TransactStock = () => {
                 </div>
                 <button className='transact-button'>Place Order</button>
                 <div className='buying-power'>
-                    ${buyingPower?.toFixed(2)} buying power available
+                    ${new Intl.NumberFormat('en-IN').format(buyingPower?.toFixed(2))} buying power available
                 </div>
+                {stockOwned !== 0 && <div className='stock-owned'>
+                    You have {stockOwned.toFixed(2)} shares of {stock.symbol}
+                </div>}
+                {stockOwned === 0 && <div className='stock-owned'>
+                    You have no shares of {stock.symbol}
+                </div>}
+
             </form>
         </div>
     )
