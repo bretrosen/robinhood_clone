@@ -31,7 +31,7 @@ export default function CreateList({ type, name, watchlistId }) {
         setListName("")
     }
     console.log(watchlistId);
-    const editList = (watchlistIde, e) => {
+    const editList = (e) => {
         e.preventDefault()
         const id = watchlistId
         console.log(id);
@@ -46,9 +46,9 @@ export default function CreateList({ type, name, watchlistId }) {
                 {type === "create" ? <p>Create list</p> : <p>Edit list</p>}
                 <p onClick={closeModal}>x</p>
             </div>
-            <form onSubmit={type === "create" ? handleSubmit : (e) => editList(watchlistId, e)}>
+            <form onSubmit={type === "create" ? handleSubmit : (e) => editList(e)}>
                 <div>
-                <p>⚡️</p>
+                    <p>⚡️</p>
                     <input placeholder="List Name"
                         value={listName}
                         onChange={e => setListName(e.target.value)}

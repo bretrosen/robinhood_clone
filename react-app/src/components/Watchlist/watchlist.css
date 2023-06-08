@@ -26,9 +26,10 @@
     right: 10px;
 }
 
-.fa-trash:hover{
+.fa-trash:hover {
     color: red;
 }
+
 #watchlist-table th {
     padding-top: 12px;
     padding-bottom: 12px;
@@ -161,7 +162,7 @@
 }
 
 
-.watchlist-page-header{
+.watchlist-page-header {
     color: white;
     background-color: black;
     padding: 30px 0px 0px 20px;
@@ -171,5 +172,12 @@
 }
 
 .fa-plus:hover {
+    cursor: pointer;
+    color: var(--robin-hood-green) !important;
+}
+.fa-ellipsis-h:hover{
+    cursor: pointer;
+}
+#edit-list:hover{
     cursor: pointer;
 }

@@ -23,7 +23,7 @@ function OpenModalButton({
   }
   if (buttonText === "Edit list") {
     return (
-      <div onClick={onClick}>
+      <div onClick={onClick} id='edit-list'>
         <i className='fa fa-cog edit-icon'></i>
         <span>Edit list</span>
       </div>
