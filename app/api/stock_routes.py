@@ -39,6 +39,16 @@ def all_stocks():
     return {'stocks': [stock.to_dict() for stock in all_stocks]}
 
 
+@stock_routes.route('/all_history')
+def all_stock_history():
+    '''
+    Query for all stock history
+    '''
+
+    all_history = StockHistory.query.all()
+    return {'history': [item.to_dict() for item in all_history]}
+
+
 @stock_routes.route('/<int:id>/buy_stock', methods=['POST'])
 @login_required
 def buy_stock(id):

@@ -2,61 +2,42 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Line } from 'react-chartjs-2'
 
+
 const DailyStockChart = () => {
-    const [chartData, setChartData] = useState({})
     const { stock } = useSelector(state => state.stock)
     const priceHistory = stock?.stock_history
     const lastPrice = priceHistory[0].price.toFixed(2)
-    const dailyPrices = [Number(lastPrice)]
-    const labels = [1]
-    let count = 2;
+    const [dailyPrices, setDailyPrices] = useState([Number(lastPrice)])
+    const [labels, setLabels] = useState([new Date()])
 
     const getDelta = async () => {
         const response = await fetch(`/api/stocks/get_price`)
         const delta = await response.json()
-        console.log("price delta from fetch", delta)
-        console.log("delta is of type =>", typeof delta)
-        console.log("last price is of type =>", typeof lastPrice)
-
         const newPrice = Number(dailyPrices[dailyPrices.length - 1]) + delta
         console.log("new price in daily chart", newPrice)
-        dailyPrices.push(newPrice)
-        labels.push(count)
-        count++
+        setDailyPrices(dailyPrices => [...dailyPrices, newPrice])
+        setLabels(labels => [...labels, new Date()])
         console.log("price array", dailyPrices)
-        console.log("labels array", labels)
 
     }
-
-    const chart = () => {
-        setChartData({
-            labels: labels,
-            datasets: [
-                {
-                    label: 'Stock Price',
-                    data: dailyPrices,
-                    borderColor: 'rgba(0,200,5, 1)',
-                    borderWidth: 1,
-                }
-            ]
-        })
-    }
-
 
     useEffect(() => {
-        chart()
-        const timer = setInterval(() => getDelta(), 10000)
+        console.log("use effect in daily stock chart ran")
+        const timer = setInterval(() => getDelta(), 5000)
         return () => clearInterval(timer)
     }, [dailyPrices])
 
-    // setTimeout(() => getDelta(), 10000)
-
-
-    // useEffect(() => {
-    //     chart()
-    // }, [dailyPrices])
-
-
+    const data = {
+        labels: labels,
+        datasets: [
+            {
+                label: 'Stock Price',
+                data: dailyPrices,
+                borderColor: 'rgba(0,200,5, 1)',
+                borderWidth: 1
+            }
+        ]
+    }
 
     const options = {
         responsive: true,
@@ -67,9 +48,9 @@ const DailyStockChart = () => {
         },
         scales: {
             y: {
-                ticks: {
-                    display: false
-                },
+                // ticks: {
+                //     display: false
+                // },
                 beginAtZero: false,
                 grid: {
                     drawBorder: false,
@@ -90,7 +71,7 @@ const DailyStockChart = () => {
 
     return (
         <div>
-            <Line data={chartData} options={options} />
+            <Line data={data} options={options} />
         </div>
     );
 }

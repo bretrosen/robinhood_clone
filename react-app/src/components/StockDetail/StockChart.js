@@ -44,9 +44,9 @@ const StockChart = () => {
         },
         scales: {
             y: {
-                ticks: {
-                    display: false
-                },
+                // ticks: {
+                //     display: false
+                // },
                 beginAtZero: false,
                 grid: {
                     drawBorder: false,
