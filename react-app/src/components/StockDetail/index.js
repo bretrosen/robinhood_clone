@@ -18,7 +18,7 @@ import dailyPrices from './DailyStockChart'
 export default function StockDetails() {
     const dispatch = useDispatch()
     const { stockId } = useParams()
-    const {stock} = useSelector(state => state.stock)
+    const { stock } = useSelector(state => state.stock)
     const sessionUser = useSelector(state => state.session.user);
     const [fullDescription, setFullDescription] = useState(true)
     const [dailyView, setDailyView] = useState(false)
@@ -71,6 +71,7 @@ export default function StockDetails() {
                         <h1>{stock.name}</h1>
                         <>
                             <h1>${newestPrice}</h1>
+                            <h2>{dailyPrices}</h2>
                             <div className={performanceClassName}>
                                 ${(newestPrice - oldestPrice).toFixed(2)}
                                 &nbsp;
@@ -85,33 +86,33 @@ export default function StockDetails() {
                     </div>
                     <div className='stock-chart'>
                         {dailyView &&
-                        <>
-                        <DailyStockChart />
-                        <br></br>
-                        <button className='toggle-view' onClick={toggleView}> Daily View</button>
-                        </>
+                            <>
+                                <DailyStockChart />
+                                <br></br>
+                                <button className='toggle-view' onClick={toggleView}> Daily View</button>
+                            </>
                         }
                         {!dailyView &&
-                        <>
-                        <StockChart />
-                        <br></br>
-                        <button className='toggle-view' onClick={toggleView}> 90 Day View</button>
-                        </>}
+                            <>
+                                <StockChart />
+                                <br></br>
+                                <button className='toggle-view' onClick={toggleView}> 90 Day View</button>
+                            </>}
                     </div>
                 </div>
                 <div className='stock-about'>
                     <h2 className='about-text'>About</h2>
                     <div className='about-block'>
                         {fullDescription &&
-                        <>
-                        <p>{stock.description}</p>
-                        <button className='toggle-description' onClick={toggleDescription}>Show less</button>
-                        </>}
+                            <>
+                                <p>{stock.description}</p>
+                                <button className='toggle-description' onClick={toggleDescription}>Show less</button>
+                            </>}
                         {!fullDescription &&
-                        <>
-                        <p>{stock.description.split('.').slice(0,2)}.</p>
-                        <button className='toggle-description' onClick={toggleDescription}>Show more</button>
-                        </>}
+                            <>
+                                <p>{stock.description.split('.').slice(0, 2)}.</p>
+                                <button className='toggle-description' onClick={toggleDescription}>Show more</button>
+                            </>}
                         <div className='about-fields'>
                             <div>
                                 <div className='stock-label'>CEO</div>
@@ -152,9 +153,8 @@ export default function StockDetails() {
             </div>
             <div className='transactions'>
                 <TransactStock />
-                <OpenModalButton type="watchlist" modalComponent={<AddStockModal stock={stock} />}/>
+                <OpenModalButton type="watchlist" modalComponent={<AddStockModal stock={stock} />} />
             </div>
-
         </div>
     )
 }
