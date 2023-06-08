@@ -1,3 +1,6 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+}
 .about-block {
     margin-top: 1rem;
 }
@@ -25,9 +28,10 @@
 }
 
 .stock-details-page {
+    color: white;
     display: flex;
     flex-direction: column;
-    margin: 3rem;
+    margin: 1rem;
 }
 
 .stock-details-top {
@@ -35,8 +39,9 @@
 }
 
 .stock-details-wrapper {
+    background-color: black;
     display: flex;
-    margin: 2rem;
+    padding: 1rem;
 }
 
 .stock-label {
@@ -68,14 +73,15 @@
 }
 
 .transactions {
+    color: white;
     padding: 1rem;
-    margin-top: 3rem;
-    background-color: white;
+    margin: 1rem;
+    background-color: rgb(25, 25, 25);
     height: 30rem;
-    border: 1px solid lightgray;
+    border: 1px solid var(--border-grey);
     border-radius: 5px;
-    box-shadow: 1px 1px 1px lightgray;
-    width: 22rem;
+    box-shadow: 1px 1px 1px var(--border-grey);
+    width: 17rem;
 }
 
 #add-to-list{
