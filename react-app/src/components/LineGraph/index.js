@@ -228,7 +228,8 @@ const LineChart = ({dates, vals}) => {
 
                 :
                 <div className={performanceClassName}>
-                ${new Intl.NumberFormat('en-IN').format((newestPrice - oldestPrice).toFixed(2))}
+                ${(newestPrice - oldestPrice)?.toLocaleString(undefined, {    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,})}
                 &nbsp;
                 ({(((newestPrice - oldestPrice) / oldestPrice) * 100).toFixed(2)}%)
 
@@ -236,6 +237,7 @@ const LineChart = ({dates, vals}) => {
                 &nbsp;Past&nbsp;{days} days
             </div>
             }
+
             <Line data={data} options={options} className='graph'/>
             <div className='portfolio-view-buttons'>
                 <button className='toggle-view' onClick={oneMonth}>30 Day View</button>

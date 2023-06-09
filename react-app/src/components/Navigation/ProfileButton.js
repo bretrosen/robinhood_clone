@@ -58,7 +58,8 @@ function ProfileButton() {
 
           <>
             <li className="user-menu">{sessionUser.first_name} {sessionUser.last_name}</li>
-            <li className="user-menu user-border">Account Balance: ${ new Intl.NumberFormat('en-IN').format(user.buying_power?.toFixed(2))}</li>
+            <li className="user-menu user-border">Account Balance: ${user.buying_power?.toLocaleString(undefined, {    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,}) }</li>
             <li className="user-menu user-menu-nav"><NavLink exact to="/portfolio" className="user-menu-nav" onClick={closeMenu} id="dropdown-links-">Portfolio</NavLink></li>
             <li className="user-menu user-menu-nav"><NavLink exact to="/transactions" className="user-menu-nav" onClick={closeMenu} id="dropdown-links-">Transactions</NavLink></li>
             <li className="user-menu user-border"  onClick={closeMenu}>
