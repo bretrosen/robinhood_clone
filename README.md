@@ -4,19 +4,27 @@
 
 Hello, thanks for checking out our project! This is our second fullstack web application created as App Academy students. The project is a clone of Robinhood and uses Python, Flask and SQLAlchemy for the backend structure. The front end was created using JavaScript, React, Redux and vanilla CSS to style the site.
 
-Currently the app has functionality to authenticate users, add funds to a user account, buy/sell stock, view stock details, search for a stock, view/create/delete/edit a stock watchlist and view logged in user's transaction history.
+Currently the app has functionality to authenticate users, add funds to a user account, buy/sell stock, view stock details, search for a stock, view/create/delete/edit a stock watchlist, view a user portfolio, and view a user's transaction history. The stock details page shows a graph of the stock's value over time; the user portfolio page shows a graph of the value of the user's stocks over time.
 
-This site is currently live here: https://foxtrot.onrender.com/. You can also clone the repo and run locally by following the instructions below.
 
 ## Frontend screenshots
+The search bar dynamically renders results matching the user input, giving suggestions for a stock based on its ticker symbol or name.
 
 ![img01](screenshots/foxtrot-01.PNG)
 
+The portfolio page shows a graph of the value of the user's stocks over time, and any watchlists they have created.
+
 ![img02](screenshots/foxtrot-02.PNG)
+
+The stock details page shows a graph of the stock's value over time, and renders a form where the user can buy and sell stock.
 
 ![img03](screenshots/foxtrot-03.PNG)
 
+The watchlist shows a list of stocks the user has added to the list. The user can add or delete stocks to a list, create new lists, and delete existing lists.
+
 ![img04](screenshots/foxtrot-04.PNG)
+
+This site is currently live here: https://foxtrot.onrender.com/. You can also clone the repo and run locally by following the instructions below.
 
 ## Getting started
 1. Clone this repository (only this branch)
@@ -66,56 +74,3 @@ This site is currently live here: https://foxtrot.onrender.com/. You can also cl
    ```bash
    npm start
    ```
-
-## Deployment through Render.com
-
-First, refer to your Render.com deployment articles for more detailed
-instructions about getting started with [Render.com], creating a production
-database, and deployment debugging tips.
-
-From the [Dashboard], click on the "New +" button in the navigation bar, and
-click on "Web Service" to create the application that will be deployed.
-
-Look for the name of the application you want to deploy, and click the "Connect"
-button to the right of the name.
-
-Now, fill out the form to configure the build and start commands, as well as add
-the environment variables to properly deploy the application.
-
-### Configure the Start and Build Commands
-
-Start by giving your application a name.
-
-Leave the root directory field blank. By default, Render will run commands from
-the root directory.
-
-Make sure the Environment field is set set to "Python 3", the Region is set to
-the location closest to you, and the Branch is set to "main".
-
-Next, add your Build command. This is a script that should include everything
-that needs to happen _before_ starting the server.
-
-For your Flask project, enter the following command into the Build field, all in
-one line:
-
-```shell
-# build command - enter all in one line
-npm install --prefix react-app &&
-npm run build --prefix react-app &&
-pip install -r requirements.txt &&
-pip install psycopg2 &&
-flask db upgrade &&
-flask seed all
-```
-
-This script will install dependencies for the frontend, and run the build
-command in the __package.json__ file for the frontend, which builds the React
-application. Then, it will install the dependencies needed for the Python
-backend, and run the migration and seed files.
-
-Now, add your start command in the Start field:
-
-```shell
-# start script
-gunicorn app:app
-```
