@@ -164,7 +164,8 @@ return (
                 <div className="portfolio-graph-data">
                     <h2>{user.first_name}'s Portfolio</h2>
                     {vals[vals.length - 1] === undefined? <h5 className="tool-tip-portfolio">The graph below will populate with performance data once you purchase a stock, use the search bar to begin your journey!</h5>
-                    :<h3>${new Intl.NumberFormat('en-IN').format(vals[vals.length - 1]?.toFixed(2))}</h3>}
+                    :<h3>${vals[vals.length - 1]?.toLocaleString(undefined, {    minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,}) }</h3>}
                     <LineChart dates={dates} vals={vals}/>
                 </div>
 
