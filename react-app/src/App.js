@@ -10,6 +10,7 @@ import Portfolio from "./components/Portfolio";
 import StockDetails from './components/StockDetail'
 import Watchlist from "./components/Watchlist";
 import TransactionsPage from "./components/Transaction/TransactionsPage";
+import Footer from "./components/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -46,6 +47,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }

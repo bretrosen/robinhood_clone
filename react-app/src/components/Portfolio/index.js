@@ -16,7 +16,7 @@ export default function Portfolio() {
     const { user } = useSelector(state => state)
     const {history} = useSelector(state => state.history)
     const sessionUser = useSelector(state => state.session.user);
-    const watchlists = user.watch_lists
+    // const watchlists = user.watch_lists
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchPortfolio(sessionUser.id))
@@ -147,8 +147,8 @@ const dates = findAllStockValue(user, false)
 //============================================Function for calculating portfolio value END
 
 return (
-        <div className="portfolio-page">
-            <div className="portfolio">
+        <div className="portfolio-page" id="only-portfolio">
+            <div className="portfolio" id="only-portfolio-">
                 <img src="/static/stock-dice.svg" alt="dice with stocks on the sides" style={{ width: "100%" }}></img>
                 <h1>Welcome to Foxtrot</h1>
 

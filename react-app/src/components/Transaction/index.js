@@ -42,6 +42,7 @@ export const TransactStock = () => {
         const newErrors = {}
 
         if (!quantity) newErrors['quantity'] = 'Quantity is required'
+        if (transactionType === 'Sell' && quantity > stockOwned) newErrors['funds'] = "You can't sell more stock than you own!"
         if (transactionType === 'Buy' && estimatedCost > buyingPower) newErrors['funds'] = "You don't have enough buying power to place this order."
         console.log("buying power check in useEffect", buyingPower - quantity * marketPrice)
         setErrors(newErrors)
@@ -123,10 +124,10 @@ export const TransactStock = () => {
                 <div className='buying-power'>
                     ${new Intl.NumberFormat('en-IN').format(buyingPower?.toFixed(2))} buying power available
                 </div>
-                {stockOwned > 0 && <div className='stock-owned'>
+                {stockOwned !== 0 && <div className='stock-owned'>
                     You have {stockOwned.toFixed(2)} shares of {stock.symbol}
                 </div>}
-                {!stockOwned && <div className='stock-owned'>
+                {stockOwned === 0 && <div className='stock-owned'>
                     You have no shares of {stock.symbol}
                 </div>}
 

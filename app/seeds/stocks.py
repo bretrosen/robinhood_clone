@@ -320,16 +320,380 @@ def seed_stocks():
         name="Eni SpA",
         symbol="E",
         description="Eni SpA engages in the exploration, production, refining, and sale of oil, gas, electricity, and chemicals. It operates through the following segments: Exploration and Production, Global Gas and LNG Portfolio, Refining & Marketing and Chemicals, Power & Renewables, and Corporate and Other Activities. The Exploration and Production segment engages in research, development and production of oil, condensates and natural gas, forestry conservation (REDD+) and CO2 capture and storage projects. The Global Gas and LNG Portfolio segment refers to the supply and sale of wholesale natural gas by pipeline, international transport and purchase and marketing of LNG, which includes gas trading activities finalized to hedging and stabilizing the trade margins, as well as optimizing the gas asset portfolio. The Refining & Marketing and Chemicals segment engages in supply, processing, distribution, and marketing of fuels and chemicals. The Corporate and Other Activities segment includes the main business support functions in particular holding, central treasury, IT, human resources, real estate services, captive insurance activities, research and development, new technologies, business digitalization, and environmental activities. The company was founded on February 10, 1953 and is headquartered in Rome, Italy. The listed name for E is ENI S.p.A. ",
-        market_cap=409800000000,
-        pe_ratio=36.15,
-        dividend=1.51,
-        stock_ceo="C. Douglas McMillon",
-        employees=2100000,
-        headquarters="Bentonville, Arkansas",
-        year_founded=1945
+        market_cap=47570000000,
+        pe_ratio=3.74,
+        dividend=4.56,
+        stock_ceo="Claudio Descalzi",
+        employees=32188,
+        headquarters="Rome, Rome",
+        year_founded=1953
     )
 
-    all_stocks = [apple, tesla, ibm, microsoft, american_airlines, gamestop, ford, nvidia, dish_network, amazon, amd, meta, jpmorgan, alphabet, visa, johnson_johnson, pfizer, pepsico, disney, netflix, alibaba, qualcomm, wells_fargo, walmart]
+    roku = Stock(
+        name="Roku, Inc.",
+        symbol="ROKU",
+        description="Roku, Inc. engages in the provision of a streaming platform for television. It operates through the Platform and Devices segments. The Platform segment includes digital advertising and related services including the demand-side platform and content distribution services such as subscription and transaction revenue shares, media and entertainment promotional spending, the sale of premium subscriptions, and the sale of branded channel buttons on remote controls. The Devices segment is involved in the sale of streaming players, audio products, smart home products, and accessories that are sold through retailers and distributors, as well as directly to customers through the company’s website. The company was founded by Anthony J. Wood in October 2002 and is headquartered in San Jose, CA. The listed name for ROKU is Roku, Inc. Class A Common Stock.",
+        market_cap=9730000000,
+        pe_ratio=-14.23,
+        dividend=0,
+        stock_ceo="Anthony J. Wood",
+        employees=3600,
+        headquarters="San Jose, California",
+        year_founded=2002
+    )
+
+    regeneron = Stock(
+        name="Regeneron Pharmaceuticals, Inc.",
+        symbol="REGN",
+        description="Regeneron Pharmaceuticals, Inc. is a biotechnology company, which engages in the discovery, invention, development, manufacture, and commercialization of medicines. Its product portfolio includes the following brands: EYLEA, Dupixent, Praluent, Kevzara, Libtayo, ARCALYST, and ZALTRAP. The firm accelerates the traditional drug development process through its proprietary VelociSuite technologies such as VelocImmune, which uses unique genetically-humanized mice to produce optimized fully-human antibodies and bispecific antibodies. The company was founded by Alferd G. Gilman, Leonard S. Schleifer, and Eric M. Shooter on January 8, 1988, and is headquartered in Tarrytown, NY. The listed name for REGN is Regeneron Pharmaceuticals, Inc. Common Stock.",
+        market_cap=82260000000,
+        pe_ratio=20.06,
+        dividend=0,
+        stock_ceo="Leonard S. Schleifer",
+        employees=11851,
+        headquarters="Tarrytown, New York",
+        year_founded=1988
+    )
+
+    raytheon_technologies = Stock(
+        name="Raytheon Technologies Corp.",
+        symbol="RTX",
+        description="Raytheon Technologies Corp. is an aerospace and defense company, which engages in the provision of aerospace and defense systems and services for commercial, military, and government customers. It operates through the following segments: Collins Aerospace Systems (Collins), Pratt and Whitney, Raytheon Intelligence and Space (RIS), and Raytheon Missiles and Defense (RMD). The Collins segment manufactures and sells aero structures, avionics, interiors, mechanical systems, mission systems, and power controls. The Pratt and Whitney segment includes the design and manufacture of aircraft engines and auxiliary power systems for commercial, military, and business aircraft. The RIS segment is involved in the development of sensors, training, and cyber and software solutions. The RMD segment offers end-to-end solutions to detect, track, and engage threats. The company was founded in 1922 and is headquartered in Arlington, VA. The listed name for RTX is Raytheon Technologies Corporation.",
+        market_cap=144780000000,
+        pe_ratio=26.34,
+        dividend=2.27,
+        stock_ceo="Gregory J. Hayes",
+        employees=182000,
+        headquarters="Arlington, Virginia",
+        year_founded=1922
+    )
+
+    yum = Stock(
+        name="Yum! Brands, Inc.",
+        symbol="YUM",
+        description="Yum! Brands, Inc. operates as a service restaurant company. The firm engages in the development, operation, franchise, and licenses of a system of restaurants. It operates through the following segments: KFC Division, Pizza Hut Division, Taco Bell Division, and Habit Burger Grill Division. The KFC Division segment consists of all operations of the KFC concept. The Pizza Hut Division segment operates the Pizza Hut concept. The Taco Bell Division segment includes all operations of the Taco Bell concept. The Habit Burger Grill Division segment includes its worldwide operations of the Habit Burger Grill concept. The company was founded in 1997 and is headquartered in Louisville, KY. The listed name for YUM is Yum! Brands, Inc.",
+        market_cap=37310000000,
+        pe_ratio=31.07,
+        dividend=1.77,
+        stock_ceo="David W. Gibbs",
+        employees=36000,
+        headquarters="Louisville, Kentucky",
+        year_founded=1997
+    )
+
+    unity_software = Stock(
+        name="Unity Software, Inc.",
+        symbol="U",
+        description="Unity Software, Inc. engages in the developing video gaming software. It also provides software solutions to create, run and monetize interactive, real-time two-dimensional and three-dimensional content for mobile phones, tablets, consoles, and augmented and virtual reality devices. Its platform is used by developers, artists, and designers to build content for gaming, film, retail, automotive, architecture, engineering, and construction industries. The company was founded by Joachim Ante and David Helgason in 2004 and is headquartered in San Francisco, CA. The listed name for U is Unity Software Inc.",
+        market_cap=13730000000,
+        pe_ratio=-11.49,
+        dividend=0,
+        stock_ceo="John Salvatore Riccitiello",
+        employees=7703,
+        headquarters="San Francisco, California",
+        year_founded=2004
+    )
+
+    unitedhealth = Stock(
+        name="UnitedHealth Group, Inc.",
+        symbol="UNH",
+        description="UnitedHealth Group, Inc. engages in the provision of health care coverage, software, and data consultancy services. It operates through the following segments: UnitedHealthcare, OptumHealth, OptumInsight, and OptumRx. The UnitedHealthcare segment utilizes Optum's capabilities to help coordinate patient care, improve affordability of medical care, analyze cost trends, manage pharmacy benefits, work with care providers more effectively, and create a simpler consumer experience. The OptumHealth segment provides health and wellness care, serving the broad health care marketplace including payers, care providers, employers, government, life sciences companies, and consumers. The OptumInsight segment focuses on data and analytics, technology, and information to help major participants in the healthcare industry. The OptumRx segment offers pharmacy care services. The company was founded by Richard T. Burke in January 1977 and is headquartered in Minnetonka, MN. The listed name for UNH is UNITEDHEALTH GROUP INCORPORATED (Delaware).",
+        market_cap=456440000000,
+        pe_ratio=22.05,
+        dividend=1.37,
+        stock_ceo="Sir Andrew Philip Witty",
+        employees=400000,
+        headquarters="Minnetonka, Minnesota",
+        year_founded=1977
+    )
+
+    uber = Stock(
+        name="Uber Technologies, Inc.",
+        symbol="UBER",
+        description="Uber Technologies, Inc. is a technology platform, which engages in the development and operation of technology applications, network, and product to power movement from point A to point B. The firm offers ride services and merchants delivery service providers for meal preparation, grocery and other delivery services. It operates through the following segments: Mobility, Delivery and Freight. The Mobility segment refers to products that connect consumers with Mobility Drivers who provide rides in a variety of vehicles, such as cars, auto rickshaws, motorbikes, minibuses, or taxis. The Delivery segment offers consumers to search for and discover local restaurants, order a meal, and either pick-up at the restaurant or have the meal delivered and, in certain markets, Delivery also includes offerings for grocery, alcohol and convenience store delivery and other goods. The Freight segment leverages proprietary technology, brand awareness, and experience revolutionizing industries to connect carriers with shippers on Uber’s platform, and gives carriers upfront, transparent pricing and the ability to book a shipment. The company was founded by Oscar Salazar Gaitan, Travis Kalanick and Garrett Camp in 2009 and is headquartered in San Francisco, CA. The listed name for UBER is Uber Technologies, Inc.",
+        market_cap=81480000000,
+        pe_ratio=-22.68,
+        dividend=0,
+        stock_ceo="Dara Khosrowshahi",
+        employees=32800,
+        headquarters="San Francisco, California",
+        year_founded=2009
+    )
+
+    ulta = Stock(
+        name="Ulta Beauty, Inc.",
+        symbol="ULTA",
+        description="Ulta Beauty, Inc. engages in the retail of beauty products. The company has one reportable segment, which includes retail stores, salon services, and e-commerce. Its products include makeup, skin care, tools and brushes, fragrance, and bath and body. Ulta was founded on January 9, 1990, and is headquartered in Bolingbrook, IL. The listed name for ULTA is Ulta Beauty, Inc. Common Stock.",
+        market_cap=20860000000,
+        pe_ratio=16.89,
+        dividend=0,
+        stock_ceo="David C. Kimbell",
+        employees=53000,
+        headquarters="Bolingbrook, Illinois",
+        year_founded=1990
+    )
+
+    oracle = Stock(
+        name="Oracle Corp.",
+        symbol="ORCL",
+        description="Oracle Corp. engages in the provision of products and services that address all aspects of corporate information technology environments. It operates through the following business segments: Cloud and License, Hardware, and Services. The Cloud and License segment markets, sells, and delivers applications, platform, and infrastructure technologies. The Hardware segment provides hardware products and hardware-related software products including Oracle Engineered Systems, servers, storage, industry-specific hardware, operating systems, virtualization, management and other hardware related software, and related hardware support. The Services segment offers consulting, advanced support, and education services. The company was founded by Lawrence Joseph Ellison, Robert Nimrod Miner, and Edward A. Oates on June 16, 1977, and is headquartered in Austin, TX. The listed name for ORCL is Oracle Corp.",
+        market_cap=290120000000,
+        pe_ratio=34.58,
+        dividend=1.29,
+        stock_ceo="Safra Ada Catz",
+        employees=143000,
+        headquarters="Austin, Texas",
+        year_founded=1977
+    )
+
+    occidental_petroleum = Stock(
+        name="Occidental Petroleum Corp.",
+        symbol="OXY",
+        description="Occidental Petroleum Corp. engages in the exploration and production of oil and natural gas. It operates through the following segments: Oil and Gas, Chemical, and Midstream and Marketing. The Oil and Gas segment explores for, develops and produces oil and condensate, natural gas liquids and natural gas. The Chemical segment manufactures and markets basic chemicals and vinyls. The Midstream and Marketing segment purchases, markets, gathers, processes, transports and stores oil, condensate, natural gas liquids, natural gas, carbon dioxide, and power. The company was founded in 1920 and is headquartered in Houston, TX. The listed name for OXY is Occidental Petroleum Corporation.",
+        market_cap=53250000000,
+        pe_ratio=6.88,
+        dividend=0.95,
+        stock_ceo="Vicki A. Hollub",
+        employees=11973,
+        headquarters="Houston, Texas",
+        year_founded=1920
+    )
+
+    oreilly = Stock(
+        name="O'Reilly Automotive, Inc.",
+        symbol="ORLY",
+        description="O'Reilly Automotive, Inc. owns and operates retail outlets in the United States. It engages in the distribution and retailing of automotive aftermarket parts, tools, supplies, equipment, and accessories in the U.S., serving both professional installers and do-it-yourself customers. It provides new and remanufactured automotive hard parts, including alternators, starters, fuel pumps, water pumps, brake system components, batteries, belts, hoses, temperature controls, chassis parts and engine parts, maintenance items consisting of oil, antifreeze products, fluids, filters, lighting products, engine additives, and appearance products, and accessories, such as floor mats, seat covers, and truck accessories. Its stores offer auto body paint and related materials, automotive tools, and professional service provider service equipment. The firm stores also offer enhanced services and programs consisting of used oil, oil filter and battery recycling, battery, wiper, and bulb replacement, battery diagnostic testing, electrical and module testing, check engine light code extraction, a loaner tool program, drum and rotor resurfacing, custom hydraulic hoses, professional paint shop mixing and related materials, and machine shops. O'Reilly Automotive stores provide do-it-yourself and professional service provider customers a selection of brand name, house brands, and private label products for domestic and imported automobiles, vans, and trucks. The company was founded by Charles F. O'Reilly and Charles H. O'Reilly in November 1957 and is headquartered in Springfield, MO. The listed name for ORLY is O'Reilly Automotive, Inc. Common Stock.",
+        market_cap=55200000000,
+        pe_ratio=25.52,
+        dividend=0,
+        stock_ceo="Gregory D. Johnson",
+        employees=87745,
+        headquarters="Springfield, Missouri",
+        year_founded=1957
+    )
+
+    sentinelone = Stock(
+        name="SentinelOne, Inc.",
+        symbol="S",
+        description="SentinelOne, Inc. engages in the provision of endpoint security software that detects, models, and predicts threat behavior to block attacks on any computing device. Its services include vigilance, support, and training. The company was founded by Tomer Weingarten and Almog Cohen in 2013 and is headquartered in Mountain View, CA. The listed name for S is SentinelOne, Inc.",
+        market_cap=4360000000,
+        pe_ratio=-9.77,
+        dividend=0,
+        stock_ceo="Tomer Weingarten",
+        employees=2100,
+        headquarters="Mountain View, California",
+        year_founded=2013
+    )
+
+    shopify = Stock(
+        name="Shopify, Inc.",
+        symbol="SHOP",
+        description="Shopify, Inc. operates a cloud-based commerce platform designed for small and medium-sized businesses. Its software is used by merchants to run business across all sales channels, including web, tablet and mobile storefronts, social media storefronts, and brick-and-mortar and pop-up shops. The firm's platform provides merchants with a single view of business and customers and enables them to manage products and inventory, process orders and payments, build customer relationships and leverage analytics and reporting. It focuses on merchant and subscription solutions. The company was founded on September 28, 2004 and is headquartered in Ottawa, Canada. The listed name for SHOP is Shopify Inc. Class A subordinate voting shares.",
+        market_cap=75840000000,
+        pe_ratio=-39.29,
+        dividend=0,
+        stock_ceo="Tobias Albin Lütke",
+        employees=11600,
+        headquarters="Ottawa, Ontario",
+        year_founded=2004
+    )
+
+    hyatt = Stock(
+        name="Hyatt Hotels Corp.",
+        symbol="H",
+        description="Hyatt Hotels Corp. engages in the development and management of resort and hotel chains. It operates through the following segments: Owned and Leased Hotels, Americas Management and Franchising, ASPAC Management and Franchising, EAME/SW Asia Management and Franchising, and Apple Leisure Group. The Owned and Leased Hotels segment offers hospitality services and hotels. The Americas Management and Franchising segment consists of properties located in the United States, Latin America, Canada, and the Caribbean. The ASPAC Management and Franchising segment consists of the management and franchising of properties located in Southeast Asia, Greater China, Australia, South Korea, Japan, and Micronesia. The EAME/SW Asia Management segment consists of its management and franchising of properties located primarily in Europe, Africa, the Middle East, India, Central Asia, and Nepal. The Apple Leisure Group segment consists of management and marketing of primarily all-inclusive resorts within the AMR Collection in Latin America The company was founded by Thomas Jay Pritzker in 1957 and is headquartered in Chicago, IL. The listed name for H is Hyatt Hotels Corporation.",
+        market_cap=12270000000,
+        pe_ratio=21.94,
+        dividend=0.13,
+        stock_ceo="Mark Samuel Hoplamazian",
+        employees=50000,
+        headquarters="Chicago, Illinois",
+        year_founded=1957
+    )
+
+    home_depot = Stock(
+        name="The Home Depot, Inc.",
+        symbol="HD",
+        description="The Home Depot, Inc. engages in the sale of building materials and home improvement products. Its products include building materials, home improvement products, lawn and garden products and decor products. The firm operates through the following geographical segments: U.S., Canada and Mexico. It offers home improvement installation services, and tool and equipment rental. The company was founded by Bernard Marcus, Arthur M. Blank, Kenneth Gerald Langone and Pat Farrah on June 29, 1978, and is headquartered at Atlanta, GA. The listed name for HD is Home Depot, Inc.",
+        market_cap=302720000000,
+        pe_ratio=18.38,
+        dividend=2.65,
+        stock_ceo="Edward P. Decker",
+        employees=471600,
+        headquarters="Atlanta, Georgia",
+        year_founded=1978
+    )
+
+    horizon_therapeutics = Stock(
+        name="Horizon Therapeutics Plc",
+        symbol="HZNP",
+        description="Horizon Therapeutics Plc is a biopharmaceutical company, which engages in the research, development, and marketing of pharmaceutical products. It operates through the Orphan and Inflammation segments. The Orphan segment consists of medicines KRYSTEXXA, RAVICTI, PROCYSBI, ACTIMMUNE, BUPHENYL, QUINSAIR, and RAYOS. The Inflammation segment comprises medicines PENNSAID 2%, DUEXIS, and VIMOVO. The company was founded in 2008 and is headquartered in Dublin, Ireland. The listed name for HZNP is Horizon Therapeutics Public Limited Company Ordinary Shares.",
+        market_cap=22730000000,
+        pe_ratio=62.70,
+        dividend=0,
+        stock_ceo="Timothy P. Walbert",
+        employees=2115,
+        headquarters="Dublin, Dublin",
+        year_founded=2008
+    )
+
+    kellogg = Stock(
+        name="Kellogg Co.",
+        symbol="K",
+        description="Kellogg Co. engages in the manufacturing, marketing, and distribution of ready-to-eat cereal and convenience foods. It operates through the following segments: North America, Europe, Latin America, and Asia Middle East Africa. The North America segment includes the U.S. businesses and Canada. The Europe segment consists of European countries. The Latin America segment focuses on Central and South America, and Mexico. The Asia Middle East Africa segment is involved in Africa, Middle East, Australia, and Other Asian and Pacific markets. The company was founded by Will Keith Kellogg in 1906 and is headquartered in Battle Creek, MI. The listed name for K is Kellogg Company.",
+        market_cap=22820000000,
+        pe_ratio=27.30,
+        dividend=3.56,
+        stock_ceo="Steven A. Cahillane",
+        employees=30000,
+        headquarters="Battle Creek, Michigan",
+        year_founded=1906
+    )
+
+    kroger = Stock(
+        name="The Kroger Co.",
+        symbol="KR",
+        description="The Kroger Co. engages in the operation of supermarkets and multi-department stores. Its brands include Big K, Check This Out?, Heritage Farm, Simple Truth, and Simple Truth Organic. The company was founded by Barney Kroger in 1883 and is headquartered in Cincinnati, OH. The listed name for KR is The Kroger Co.",
+        market_cap=32830000000,
+        pe_ratio=14.86,
+        dividend=2.29,
+        stock_ceo="W. Rodney McMullen",
+        employees=430000,
+        headquarters="Cincinnati, Ohio",
+        year_founded=1883
+    )
+
+    kohls = Stock(
+        name="Kohl's Corp.",
+        symbol="KSS",
+        description="Kohl's Corp. engages in the operation of family-oriented department stores. Its business line includes apparel, footwear, and accessories for women, men, and children, home products, beauty products, and accessories. The stores generally carry a consistent merchandise assortment with some differences attributable to regional preferences. The company was founded in 1962 and is headquartered in Menomonee Falls, WI. The listed name for KSS is Kohl's Corporation.",
+        market_cap=2440000000,
+        pe_ratio=-51.94,
+        dividend=9.10,
+        stock_ceo="Thomas A. Kingsbury",
+        employees=97000,
+        headquarters="Menomonee Falls, Wisconsin",
+        year_founded=1962
+    )
+
+    lowes = Stock(
+        name="Lowe's Cos., Inc.",
+        symbol="LOW",
+        description="Lowe's Cos., Inc. engages in the retail sale of home improvement products. The firm offers products for maintenance, repair, remodeling, home decorating and property maintenance. It also provides home improvement products in the following categories: appliances, bathroom, building supply, electrical, flooring, hardware, paint, kitchen, plumbing, lighting & fans, outdoor living, windows and doors. The company was founded in 1946 and is headquartered in Mooresville, NC. The listed name for LOW is Lowe's Companies Inc.",
+        market_cap=123340000000,
+        pe_ratio=20.57,
+        dividend=1.99,
+        stock_ceo="Marvin R. Ellison",
+        employees=307000,
+        headquarters="Mooresville, North Carolina",
+        year_founded=1946
+    )
+
+    lam = Stock(
+        name="Lam Research Corp.",
+        symbol="LRCX",
+        description="Lam Research Corp. engages in manufacturing and servicing of wafer processing semiconductor manufacturing equipment. It operates through the following geographical segments: the United States, China, Europe, Japan, Korea, Southeast Asia, and Taiwan. It offers thin film deposition, plasma etch, photoresist strip, and wafer cleaning. The company was founded by David K. Lam on January 21, 1980, and is headquartered in Fremont, CA. The listed name for LRCX is Lam Research Corporation Common Stock.",
+        market_cap=82600000000,
+        pe_ratio=17.01,
+        dividend=1.09,
+        stock_ceo="Timothy M. Archer",
+        employees=17700,
+        headquarters="Fremont, California",
+        year_founded=1980
+    )
+
+    zoom = Stock(
+        name="Zoom Video Communications, Inc.",
+        symbol="ZM",
+        description="Zoom Video Communications, Inc. engages in the provision of video-first communications platform. The firm offers meetings, chat, rooms and workspaces, phone systems, video webinars, marketplace, and developer platform products. It serves the education, finance, government, and healthcare industries. Its platform helps people to connect through voice, chat, content sharing, and face-to-face video experiences. The company was founded by Eric S. Yuan in 2011 and is headquartered in San Jose, CA. The listed name for ZM is Zoom Video Communications, Inc. Class A Common Stock.",
+        market_cap=19860000000,
+        pe_ratio=14150,
+        dividend=0,
+        stock_ceo="Eric S. Yuan",
+        employees=8484,
+        headquarters="San Jose, California",
+        year_founded=2011
+    )
+
+    zillow = Stock(
+        name="Zillow Group, Inc.",
+        symbol="Z",
+        description="Zillow Group, Inc. engages in the provision of real estate and home-related information marketplaces on mobile and the web. It operates through the following segments: Internet, Media, and Technology (IMT), Mortgages, and Homes. The IMT segment includes premier agent, rentals marketplaces, and new construction marketplaces, and sale of other advertising and business technology solutions for real estate professionals. The Mortgages segment is involved in mortgage originations through Zillow Home Loans and advertising sold to mortgage lenders and other mortgage professionals. The Homes segment focuses on providing title and escrow services performed by Zillow Closing Services. The company was founded by Richard N. Barton and Lloyd D. Frink in December 2004 and is headquartered in Seattle, WA. The listed name for Z is Zillow Group, Inc. Class C Capital Stock.",
+        market_cap=10890000000,
+        pe_ratio=-79.33,
+        dividend=0,
+        stock_ceo="Richard N. Barton",
+        employees=5724,
+        headquarters="Seattle, Washington",
+        year_founded=2004
+    )
+
+    us_steel = Stock(
+        name="United States Steel Corp.",
+        symbol="X",
+        description="United States Steel Corp. engages in the manufacturing and selling of steel products. It operates through the following business segments: Flat-Rolled Products, Mini Mill, U.S. Steel Europe, and Tubular Products. The Flat-Rolled Products segment includes managing steel plants and production facilities that manufacture steel slabs, rounds, strip mill plates, sheets, tin mill, iron ore, and coke. The Mini Mill segment produces hot-rolled, cold-rolled and coated sheets. The U.S. Steel Europe segment produces and markets strip mill plates, spiral welded pipe, heating radiators, refractory ceramic materials. The Tubular Products segment manufactures and trades seamless and electric resistance welded steel casing and tubing, line pipe, and mechanical tubing. The company was founded in 1901 and is headquartered in Pittsburgh, PA. The listed name for X is United States Steel Corporation.",
+        market_cap=5150000000,
+        pe_ratio=3.38,
+        dividend=0.88,
+        stock_ceo="David B. Burritt",
+        employees=22740,
+        headquarters="Pittsburgh, Pennsylvania",
+        year_founded=1901
+    )
+
+    xylem = Stock(
+        name="Xylem, Inc.",
+        symbol="XYL",
+        description="Xylem, Inc. engages in the design, manufacture, and application of engineered technologies for the water industry. It operates through the following business segments: Water Infrastructure, Applied Water, and Measurement and Control Solutions. The Water Infrastructure segment focuses on the transportation, treatment and testing of water. The Applied Water segment encompasses the uses of water and focuses on the commercial, residential, and industrial end markets. The Measurement and Control Solutions segment focuses on developing technology solutions that enable intelligent use and conservation of critical water and energy resources as well as analytical instrumentation used in the testing of water. The company was founded in 2011 and is headquartered in Washington, DC. The listed name for XYL is Xylem Inc.",
+        market_cap=26110000000,
+        pe_ratio=52.13,
+        dividend=1.18,
+        stock_ceo="Patrick K. Decker",
+        employees=17800,
+        headquarters="Washington, District of Columbia",
+        year_founded=2011
+    )
+
+    chevron = Stock(
+        name="Chevron Corp.",
+        symbol="CVX",
+        description="Chevron Corp. engages in the provision of administrative, financial management, and technology support for energy and chemical operations. It operates through the Upstream and Downstream segments. The Upstream segment consists of the exploration, development, and production of crude oil and natural gas, the liquefaction, transportation, and regasification associated with liquefied natural gas, the transporting of crude oil by major international oil export pipelines, the processing, transporting, storage, and marketing of natural gas, and a gas-to-liquids plant. The Downstream segment consists of the refining of crude oil into petroleum products, the marketing of crude oil and refined products, the transporting of crude oil and refined products by pipeline, marine vessel, motor equipment, and rail car, and the manufacturing and marketing of commodity petrochemicals and plastics for industrial uses and fuel & lubricant additives. The company was founded in 1906 and is headquartered in San Ramon, CA. The listed name for CVX is Chevron Corporation.",
+        market_cap=301700000000,
+        pe_ratio=8.64,
+        dividend=3.67,
+        stock_ceo="Michael K. Wirth",
+        employees=43846,
+        headquarters="San Ramon, California",
+        year_founded=1906
+    )
+
+    costco = Stock(
+        name="Costco Wholesale Corp.",
+        symbol="COST",
+        description="Costco Wholesale Corp. engages in the operation of membership warehouses through wholly owned subsidiaries. It operates through the following geographical segments: United States, Canada, and Other International Operations. The company was founded by James D. Sinegal and Jeffrey H. Brotman in 1983 and is headquartered in Issaquah, WA. The listed name for COST is Costco Wholesale Corporation Common Stock.",
+        market_cap=230450000000,
+        pe_ratio=37.88,
+        dividend=0.73,
+        stock_ceo="Walter Craig Jelinek",
+        employees=304000,
+        headquarters="Issaquah, Washington",
+        year_founded=1983
+    )
+
+    cisco = Stock(
+        name="Cisco Systems, Inc.",
+        symbol="CSCO",
+        description="Cisco Systems, Inc. engages in the design, manufacture, and sale of Internet Protocol-based networking products and services related to the communications and information technology industry. The firm operates through the following geographical segments: the Americas, EMEA, and APJC. Its products include the following categories: Switches, Routers, Wireless, Network Management Interfaces and Modules, Optical Networking, Access Points, Outdoor and Industrial Access Points, Next-Generation Firewalls, Advanced Malware Protection, VPN Security Clients, Email, and Web Security. The company was founded by Sandra Lerner and Leonard Bosack on December 10, 1984 and is headquartered in San Jose, CA. The listed name for CSCO is Cisco Systems, Inc. Common Stock (DE).",
+        market_cap=202370000000,
+        pe_ratio=17.88,
+        dividend=3.07,
+        stock_ceo="Charles H. Robbins",
+        employees=83300,
+        headquarters="San Jose, California",
+        year_founded=1984
+    )
+
+    all_stocks = [apple, tesla, ibm, microsoft, american_airlines, gamestop, ford, nvidia, dish_network, amazon, amd, meta, jpmorgan, alphabet, visa, johnson_johnson, pfizer, pepsico, disney, netflix, alibaba, qualcomm, wells_fargo, walmart, eni, roku, regeneron, raytheon_technologies, yum, unity_software, unitedhealth, uber, ulta, oracle, occidental_petroleum, oreilly, sentinelone, shopify, hyatt, home_depot, horizon_therapeutics, kellogg, kroger, kohls, lowes, lam, zoom, zillow, us_steel, xylem, chevron, costco, cisco]
 
     [db.session.add(stock) for stock in all_stocks]
     db.session.commit()

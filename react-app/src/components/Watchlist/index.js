@@ -43,7 +43,7 @@ export default function WatchlistList() {
     // console.log(list);
     return (
 
-        <div>
+        <div className="foxtrot-lists">
             <div className="watchlist-page-header">
                 <p style={{fontSize: "40px"}}>
                     ⚡️
@@ -52,6 +52,7 @@ export default function WatchlistList() {
                 <p style={{color: "#898989", fontSize: "13px"}}>{list?.stocks.length} items</p>
             </div>
             <div className="portfolio-page">
+                <div className="table-container">
 
                 <table id="watchlist-table">
                     <thead>
@@ -77,7 +78,9 @@ export default function WatchlistList() {
 
                         })}
                     </tbody>
-                </table>
+                    </table>
+                </div>
+
                 <WatchlistComponent />
             </div>
         </div>
