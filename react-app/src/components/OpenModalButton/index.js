@@ -35,6 +35,15 @@ function OpenModalButton({
   if (type === 'transfer') {
     return (<p className="login-signup watchlist-sm" id="transfer-money-btn" onClick={onClick}>Transer money</p>)
   }
+  if (type === 'legal') {
+    return (<p onClick={onClick} className='disclosure'>Legal Disclosure</p>)
+  }
+  if (type === 'sweep') {
+    return (<p onClick={onClick} className='disclosure' style={{ fontSize: "13px" }}><i className="fa fa-info-circle"></i>Cash sweep Disclosures</p>)
+  }
+  if (type === 'investing') {
+    return (<p onClick={onClick} className='disclosure' style={{ fontSize: "15px" }}><i className="fa fa-info-circle"></i>Investing Disclosures</p>)
+  }
 
   return (
     <button onClick={onClick} className='nav-button'>{buttonText}</button>

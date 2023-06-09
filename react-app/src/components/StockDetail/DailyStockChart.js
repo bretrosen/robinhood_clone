@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Line } from 'react-chartjs-2'
 
-
+// generates random data p
 const DailyStockChart = () => {
     const { stock } = useSelector(state => state.stock)
     const priceHistory = stock?.stock_history
@@ -10,6 +10,8 @@ const DailyStockChart = () => {
     const [dailyPrices, setDailyPrices] = useState([Number(lastPrice)])
     const [labels, setLabels] = useState([new Date()])
 
+    // fetches a random number to concatenate to the last price
+    // generates new timestamps for each datapoint at the time it was created
     const getDelta = async () => {
         const response = await fetch(`/api/stocks/get_price`)
         const delta = await response.json()
@@ -21,6 +23,8 @@ const DailyStockChart = () => {
 
     }
 
+    // the setInterval fetches a random number every 5 seconds
+    // need to clear the interval
     useEffect(() => {
         console.log("use effect in daily stock chart ran")
         const timer = setInterval(() => getDelta(), 5000)

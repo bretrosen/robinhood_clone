@@ -1,4 +1,6 @@
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import OpenModalButton from "../OpenModalButton";
+import Disclosure from "../Modals/Disclosure";
 
 export default function Footer() {
     return (
@@ -7,7 +9,7 @@ export default function Footer() {
                 <p className="footer-headings">About</p>
                 <div className="footer-links">
                     <p>Clone of the website <a href="https://robinhood.com/" id="robin-hood-link">Robinhood</a></p>
-                    
+                    <OpenModalButton type={"legal"} modalComponent={<Disclosure />}/>
                 </div>
             </div>
             <div>
