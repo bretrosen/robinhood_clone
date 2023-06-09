@@ -96,3 +96,15 @@
 #stock-emoji {
     transform: rotateX(-180deg);
 }
+
+#portfolio-btn:hover{
+    cursor: pointer;
+    color: var(--robin-hood-green);
+    text-decoration: underline;
+}
+#portfolio-btn{
+    font-size: 20px;
+    position: absolute;
+    right: 495px;
+    font-weight: 600;
+}

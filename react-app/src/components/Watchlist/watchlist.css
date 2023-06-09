@@ -263,7 +263,7 @@
 
 #user-name{
     font-size: 20px;
-
+    position: relative;
 }
 
 #pos{
