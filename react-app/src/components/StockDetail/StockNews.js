@@ -54,6 +54,8 @@ export default function StockNewsList() {
                 </a>
              ))
             }
+            {Object.values(shortNews).length === 0 &&
+            <p>Loading...</p>}
         </div>
     )
 }
