@@ -39,6 +39,7 @@ footer {
     gap: 90px;
     width: 100%;
     justify-content: space-between;
+    padding-top: 20px;
 }
 
 .footer-links>*,
