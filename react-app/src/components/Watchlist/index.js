@@ -10,6 +10,7 @@ export default function WatchlistList() {
     const watch_lists = user.watch_lists
     // console.log("user slice from watchlist =========>", watch_lists);
     // console.log("user slice from watchlist =========>", stocks);
+
     const history = useHistory()
     function formatLargeNumber(number) {
         const billion = 1000000000;
@@ -41,6 +42,11 @@ export default function WatchlistList() {
         dispatch(removeStockFromList(stockId, watchlistId))
     }
     // console.log(list);
+    function getRandomNumber() {
+        var randomNumber = Math.random() * (30.0 - (-25.0)) + (-25.0);
+        return randomNumber.toFixed(1);
+    }
+
     return (
 
         <div className="foxtrot-lists">
@@ -59,19 +65,23 @@ export default function WatchlistList() {
                         <tr>
                             <th>Name</th>
                             <th>Symbol</th>
-                            <th>Price</th>
+
                             <th>Today</th>
                             <th>Market Cap</th>
                         </tr>
                     </thead>
                     <tbody>
 
-                        {stocks?.map((stock, index) => {
+                            {stocks?.map((stock, index) => {
+                                const percent = getRandomNumber()
+                                const pos = <p id="pos">{percent}%</p>
+                                const neg = <p id="neg">{percent}%</p>
+                                const percentEle = percent >= 0 ? pos : neg
                             return (<tr className="table-row" key={`stock-list-${index}`} onClick={() => viewStockDetial(stock.id)}>
                                 <td>{stock.name}</td>
                                 <td>{stock.symbol}</td>
-                                <td>$15.75</td>
-                                <td>+0.8%</td>
+
+                                <td>{percentEle}</td>
                                 <td>{formatLargeNumber(stock.market_cap)}</td>
                                 <td className="delete-stock" onClick={(e) => deleteStock(stock.id, watchlistId, e)}><i className="fa fa-trash"></i></td>
                             </tr>)

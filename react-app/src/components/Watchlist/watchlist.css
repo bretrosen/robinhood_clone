@@ -265,3 +265,10 @@
     font-size: 20px;
 
 }
+
+#pos{
+    color: var(--robin-hood-green);
+}
+#neg{
+    color: red;
+}
