@@ -55,7 +55,7 @@ export default function StockNewsList() {
              ))
             }
             {Object.values(shortNews).length === 0 &&
-            <p>Loading...</p>}
+            <p>Sorry, the API that fetches these news items doesn't seem to be working. Please try refreshing the page.</p>}
         </div>
     )
 }
