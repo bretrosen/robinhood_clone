@@ -63,9 +63,6 @@ export default function StockDetails() {
         setDailyView(!dailyView)
     }
 
-
-
-
     return (
         <div className='stock-details-wrapper'>
 
@@ -114,7 +111,7 @@ export default function StockDetails() {
                             </>}
                         {!fullDescription &&
                             <>
-                                <p>{stock.description.split('.').slice(0, 2)}.</p>
+                                <p>{stock.description.split(' ').slice(0, 30).join(' ')}...</p>
                                 <button className='toggle-description' onClick={toggleDescription}>Show more</button>
                             </>}
                         <div className='about-fields'>

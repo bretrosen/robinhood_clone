@@ -27,9 +27,17 @@ h2 {
     padding-bottom: 1rem;
 }
 
+.news-headline {
+    font-size: 16px;
+    margin-bottom: 2rem;
+}
 .news-image {
     width: 100px;
     height: 60px;
+}
+
+.news-story {
+    color: white;
 }
 
 .stock-about {

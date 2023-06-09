@@ -39,11 +39,6 @@ export default function StockNewsList() {
 
     const shortNews = stockNews.slice(0,5)
     const timeNow = new Date().getTime()
-    // const timeStory = stockNews[0].datetime
-    // console.log("microseconds now", timeNow)
-    // console.log("seconds story", timeStory)
-    // const hoursAgo = (timeNow / 1000 - timeStory) / 3600
-    // console.log("hours ago story is", Math.round(hoursAgo))
 
     return (
         <div>
@@ -51,11 +46,10 @@ export default function StockNewsList() {
             <br></br>
             {Object.values(shortNews).length > 0 &&
              shortNews.map(story => (
-                <a href={story.url} target="_blank">
+                <a className='news-story' href={story.url} target="_blank">
                     <div>[{story.source}] {Math.round((timeNow / 1000 - story.datetime) / 3600)}h</div>
                     {/* <img className='news-image' src={story.image}></img> */}
-                    <div>{story.headline}</div>
-                    <br></br>
+                    <div className='news-headline'>{story.headline}</div>
                 </a>
              ))
             }
