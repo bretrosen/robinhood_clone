@@ -46,10 +46,11 @@ export default function StockNewsList() {
             <br></br>
             {Object.values(shortNews).length > 0 &&
              shortNews.map(story => (
-                <a className='news-story' href={story.url} target="_blank">
-                    <div>[{story.source}] {Math.round((timeNow / 1000 - story.datetime) / 3600)}h</div>
+                <a className='news-story' href={story.url} target="_blank" rel="noreferrer">
+                    <div className='news-source'>[{story.source}] {Math.round((timeNow / 1000 - story.datetime) / 3600)}h</div>
                     {/* <img className='news-image' src={story.image}></img> */}
                     <div className='news-headline'>{story.headline}</div>
+                    <div className='news-summary'>{story.summary}</div>
                 </a>
              ))
             }

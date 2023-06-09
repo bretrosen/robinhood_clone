@@ -28,16 +28,24 @@ h2 {
 }
 
 .news-headline {
-    font-size: 16px;
-    margin-bottom: 2rem;
+    font-size: 18px;
+    margin-bottom: 5px;
 }
 .news-image {
     width: 100px;
     height: 60px;
 }
 
+.news-source {
+    margin-bottom: 5px;
+}
+
 .news-story {
     color: white;
+}
+
+.news-summary {
+    margin-bottom: 2rem;
 }
 
 .stock-about {
@@ -54,7 +62,8 @@ h2 {
     display: flex;
     flex-direction: column;
     margin: 1rem;
-    width: 640px;
+    width: 55%;
+    gap: 1rem;
 }
 
 .stock-details-top {
@@ -101,7 +110,8 @@ h2 {
 }
 
  .transactions {
-    position: sticky;
+    position: fixed;
+    right: 4rem;
     top: 5rem;
     align-self: flex-start;
     /* color: white; */
