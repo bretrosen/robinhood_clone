@@ -158,7 +158,7 @@ console.log('====> checker', vals)
 return (
         <div className="portfolio-page" id="only-portfolio">
             <div className="portfolio" id="only-portfolio-">
-                <img src="/static/stock-dice.svg" alt="dice with stocks on the sides" style={{ width: "100%" }}></img>
+                <img src="/static/stock-dice.svg" alt="dice with stocks on the sides" style={{ width: "80%", marginLeft: "100px" }}></img>
                 <h1>Welcome to Foxtrot</h1>
 
                 <div className="portfolio-graph-data">
