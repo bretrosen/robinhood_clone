@@ -93,6 +93,6 @@
     color: var(--robin-hood-green);
 }
 
-#stock-emoji{
-    rotate: x -180deg;
+#stock-emoji {
+    transform: rotateX(-180deg);
 }

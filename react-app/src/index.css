@@ -88,3 +88,33 @@ a {
     right: 40px;
 }
 
+.discolsure-modal{
+        width: 500px;
+        height: 200px;
+        overflow: scroll;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+        border: 10px solid var(--saffron);
+        border-radius: 5px;
+    }
+#disclaimers{
+    font-size: 30px;
+    color: #434343;
+    text-decoration: underline;
+}
+
+.creators > a {
+    font-size: 16px;
+}
+.creators > a:hover {
+    color: var(--robin-hood-green);
+    text-decoration: underline;
+}
+
+.disclosure:hover{
+    color: grey;
+    text-decoration: underline;
+    cursor: pointer;
+}
