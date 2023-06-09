@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { deleteWatchlist, fetchPortfolio } from '../../store/user';
 import UserContextHook from '../../context/UserContext';
 
-export default function WatchlistComponent() {
+export default function WatchlistComponent({type}) {
     const { user } = useSelector(state => state)
     const sessionUser = useSelector(state => state.session.user);
 
@@ -38,9 +38,9 @@ export default function WatchlistComponent() {
         dispatch(deleteWatchlist(clicked))
     }
 
-
+    console.log(type);
     return (
-        <div className="portfolio-watchlist">
+        <div className="portfolio-watchlist" style={type === "transactions" ? {height: "fit-content"}: {}}>
             <div id="watchlists-header">
                 <p>Your Watchlists</p>
                 <OpenModalButton
@@ -59,7 +59,7 @@ export default function WatchlistComponent() {
                         <div>
                             <i className="fa fa-ellipsis-h" onClick={() => editList(list.id)}></i>
 
-                           
+
                         </div>
                         <div className={`edit-watchlist ${list.id === clicked ? "watchlist-clicked" : ""}`}>
 

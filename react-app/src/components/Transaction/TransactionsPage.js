@@ -89,7 +89,7 @@ export default function TransactionsPage() {
                     </div>
 
                 </div>
-                <WatchlistComponent />
+                <WatchlistComponent type="transactions"/>
 
 
             </div>

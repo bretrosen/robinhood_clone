@@ -91,7 +91,7 @@ export default function WatchlistList() {
                     </table>
                 </div>
 
-                <WatchlistComponent />
+                <WatchlistComponent type="transactions"/>
             </div>
         </div>
     )
