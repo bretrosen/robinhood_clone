@@ -10,6 +10,7 @@ import LineChart from "../LineGraph";
 import WatchlistComponent from "../Watchlist/WatchlistComponent";
 import OpenModalButton from "../OpenModalButton";
 import TransfersModal from "../Navigation/TransfersModal";
+import UserStocks from "./userstocks";
 
 export default function Portfolio() {
 
@@ -21,7 +22,7 @@ export default function Portfolio() {
     useEffect(() => {
         dispatch(fetchPortfolio(sessionUser.id))
         dispatch(fetchAllHistory())
-    }, [dispatch, sessionUser.id])
+    }, [dispatch, sessionUser.id, user.id])
 
     if (Object.values(user).length === 1) return false
     if (Object.values(history).length === 0) return false
@@ -143,7 +144,14 @@ const findAllStockValue = (user, res) => {
 const vals = findAllStockValue(user, true)
 const dates = findAllStockValue(user, false)
 
-console.log('empty vals?', vals[vals.length - 1])
+const stockItems = transactionSort(user.transactions)
+const quantities = quantityCalc(stockItems)
+
+
+const userStocks = Object.entries(quantities);
+
+// console.log('====> checker quantities', quantities)
+console.log('====> checker', vals)
 
 //============================================Function for calculating portfolio value END
 
@@ -171,6 +179,26 @@ return (
                 </div>
             </div>
             <WatchlistComponent />
+
+            <div className="stock-quantities">
+            <div className="stock-header">
+                <p >Your Stocks</p>
+                <p>Shares</p>
+            </div>
+            <div className="stock-quantities-list">
+
+            {userStocks.map((stock)=>(
+                <UserStocks
+                quantity={stock[1]}
+                id={stock[0]}
+                key={stock}
+                />
+                ))}
+            </div>
+            </div>
+
+
+
         </div>
     )
 }

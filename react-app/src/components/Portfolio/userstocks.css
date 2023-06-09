@@ -1,0 +1,47 @@
+.stock-quantities {
+    border: 1px solid var(--border-grey);
+    padding: 20px;
+    border-radius: 4px;
+    height: 20em;
+    position: fixed;
+    right: 20px;
+    top: 30em;
+    display: flex;
+    flex-direction: column;
+    /* gap: 20px; */
+    width: 30%;
+}
+
+.stock-quantities-list {
+    overflow: hidden;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 20px;
+}
+
+.stocks-on-user-list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.stock-quantities-list::-webkit-scrollbar{
+    display: none;
+  }
+
+.stock-names {
+    color: white;
+    font-size: 13px;;
+}
+
+.stock-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: var(--border-grey) 1px solid;
+    position: sticky;
+    top: 0;
+
+}
