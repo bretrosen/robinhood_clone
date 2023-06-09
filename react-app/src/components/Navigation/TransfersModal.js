@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { fetchAddBuyPower } from "../../store/user";
+// import { fetchAddBuyPower } from "../../store/session";
 import './TransfersModal.css'
 
 
