@@ -27,6 +27,10 @@ h2 {
     padding-bottom: 1rem;
 }
 
+.news-image {
+    width: 100px;
+    height: 60px;
+}
 
 .stock-about {
     padding-top: 1rem;

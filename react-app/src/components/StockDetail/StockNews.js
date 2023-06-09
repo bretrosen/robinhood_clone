@@ -12,6 +12,8 @@ export default function StockNewsList() {
     const { stock } = useSelector(state => state.stock)
     const [stockNews, setStockNews] = useState([])
 
+    console.log("stock news array", Object.values(stockNews).length)
+
     // getting the news feed
     const symbol = stock.symbol
     console.log("stock symbol", symbol)
@@ -33,25 +35,30 @@ export default function StockNewsList() {
     // stockNews.source for source
     // stockNews.summary for summary
     // stockNews.headline for headline
+    // stockNews.datetime for microseconds
+
+    const shortNews = stockNews.slice(0,5)
+    const timeNow = new Date().getTime()
+    // const timeStory = stockNews[0].datetime
+    // console.log("microseconds now", timeNow)
+    // console.log("seconds story", timeStory)
+    // const hoursAgo = (timeNow / 1000 - timeStory) / 3600
+    // console.log("hours ago story is", Math.round(hoursAgo))
 
     return (
         <div>
             <h2 className='stock-news'>Recent Stock News</h2>
             <br></br>
-            <a href={stockNews[0].url} target="_blank">
-                <div>Source: {stockNews[0].source}</div>
-                <h4>{stockNews[0].headline}</h4>
-            </a>
-            <br></br>
-            <a href={stockNews[1].url} target="_blank">
-                <div>Source: {stockNews[1].source}</div>
-                <h4>{stockNews[1].headline}</h4>
-            </a>
-            <br></br>
-            <a href={stockNews[2].url} target="_blank">
-                <div>Source: {stockNews[2].source}</div>
-                <h4>{stockNews[2].headline}</h4>
-            </a>
+            {Object.values(shortNews).length > 0 &&
+             shortNews.map(story => (
+                <a href={story.url} target="_blank">
+                    <div>[{story.source}] {Math.round((timeNow / 1000 - story.datetime) / 3600)}h</div>
+                    {/* <img className='news-image' src={story.image}></img> */}
+                    <div>{story.headline}</div>
+                    <br></br>
+                </a>
+             ))
+            }
         </div>
     )
 }

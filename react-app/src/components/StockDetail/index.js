@@ -12,7 +12,7 @@ import OpenModalButton from '../OpenModalButton'
 import WatchlistComponent from '../Watchlist/WatchlistComponent'
 import AddStockModal from '../Watchlist/AddStockModal'
 import dailyPrices from './DailyStockChart'
-import FetchNews from './StockNews'
+import StockNewsList from './StockNews'
 
 
 export default function StockDetails() {
@@ -155,11 +155,15 @@ export default function StockDetails() {
                     </div>
                 </div>
 
-                <div className='transactions'>
-                    <TransactStock />
-                    <OpenModalButton type="watchlist" modalComponent={<AddStockModal stock={stock} />} />
-                </div>
+                <StockNewsList />
+
+            </div>
+
+            <div className='transactions'>
+                <TransactStock />
+                <OpenModalButton type="watchlist" modalComponent={<AddStockModal stock={stock} />} />
             </div>
         </div>
+
     )
 }
