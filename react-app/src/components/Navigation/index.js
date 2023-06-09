@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 // import { logout } from "../../store/session";
 import { fetchAllStocks } from '../../store/stock';
+import { fetchPortfolio } from '../../store/user';
 import ProfileButton from './ProfileButton';
 import StockList from './StockList';
 import './Navigation.css';
@@ -13,6 +14,7 @@ function Navigation({ isLoaded }) {
 	const dispatch = useDispatch();
 	// const history = useHistory()
 	const sessionUser = useSelector(state => state.session.user);
+	const {user} = useSelector(state => state);
 	const sessionStocksObj = useSelector(state => state.stock.stocks);
 	const [search, setSearch] = useState("");
 	const [symbol, setSymbol] = useState('')
@@ -27,7 +29,11 @@ function Navigation({ isLoaded }) {
 
 	useEffect(() => {
 		dispatch(fetchAllStocks())
-	}, [])
+		if (user.user === null) {
+
+		dispatch(fetchPortfolio(sessionUser?.id))
+		}
+	}, [sessionUser])
 
 
 	const showStockClass = "stock-dropdown" + (search.length > 0 ? "show" : " hidden");

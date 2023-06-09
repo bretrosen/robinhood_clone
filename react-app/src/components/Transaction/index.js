@@ -122,12 +122,13 @@ export const TransactStock = () => {
                 </div>
                 <button className='transact-button'>Place Order</button>
                 <div className='buying-power'>
-                    ${new Intl.NumberFormat('en-IN').format(buyingPower?.toFixed(2))} buying power available
+                    ${buyingPower?.toLocaleString(undefined, {    minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,})} buying power available
                 </div>
-                {stockOwned !== 0 && <div className='stock-owned'>
+                {stockOwned > 0 && <div className='stock-owned'>
                     You have {stockOwned.toFixed(2)} shares of {stock.symbol}
                 </div>}
-                {stockOwned === 0 && <div className='stock-owned'>
+                {stockOwned <= 0 && <div className='stock-owned'>
                     You have no shares of {stock.symbol}
                 </div>}
 

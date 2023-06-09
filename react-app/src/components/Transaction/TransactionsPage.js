@@ -3,7 +3,7 @@ import { fetchPortfolio } from "../../store/user";
 import { useEffect } from "react";
 import WatchlistComponent from "../Watchlist/WatchlistComponent";
 import pawprintImage from '../../static/pawprint.png';
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { NavLink, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
 export default function TransactionsPage() {
@@ -43,7 +43,9 @@ export default function TransactionsPage() {
                     <p style={{ fontSize: "40px" }} id="stock-emoji">
                         📉
                     </p>
-                    <p id="user-name">{user.first_name}'s Transactions</p>
+                    <p id="user-name">{user.first_name}'s Transactions
+                    <NavLink to="/portfolio" id="portfolio-btn">Portfolio</NavLink>
+                    </p>
                     <p style={{ color: "#898989", fontSize: "13px" }}>{transactions?.length} Transactions</p>
                 </div>
                 <div className="portfolio-page">
@@ -87,7 +89,7 @@ export default function TransactionsPage() {
                     </div>
 
                 </div>
-                <WatchlistComponent />
+                <WatchlistComponent type="transactions"/>
 
 
             </div>

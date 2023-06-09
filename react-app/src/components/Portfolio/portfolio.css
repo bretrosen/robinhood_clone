@@ -29,7 +29,8 @@
     border: 1px solid var(--border-grey);
     padding: 20px;
     border-radius: 4px;
-    height: fit-content;
+    height: 250px;
+    overflow: scroll;
     position: fixed;
     right: 20px;
     top: 100px;
@@ -48,6 +49,10 @@
     border-radius: 3px;
     position: relative;
 
+}
+
+.tool-tip-portfolio {
+    width: 65%;
 }
 
 .transfer-left {

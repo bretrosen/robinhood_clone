@@ -1,3 +1,7 @@
+a {
+    color: white;
+}
+
 h1 {
     font-weight: 500;
 }
@@ -23,6 +27,26 @@ h2 {
     padding-bottom: 1rem;
 }
 
+.news-headline {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.news-image {
+    width: 100px;
+    height: 60px;
+}
+
+.news-source {
+    margin-bottom: 5px;
+}
+
+.news-story {
+    color: white;
+}
+
+.news-summary {
+    margin-bottom: 2rem;
+}
 
 .stock-about {
     padding-top: 1rem;
@@ -38,7 +62,8 @@ h2 {
     display: flex;
     flex-direction: column;
     margin: 1rem;
-    width: 640px;
+    width: 55%;
+    gap: 1rem;
 }
 
 .stock-details-top {
@@ -57,6 +82,11 @@ h2 {
 
 .stock-negative {
     color: red;
+}
+
+.stock-news {
+    border-bottom: 1px solid white;
+    margin: 1rem 0;
 }
 
 .stock-positive {
@@ -80,7 +110,8 @@ h2 {
 }
 
  .transactions {
-    position: sticky;
+    position: fixed;
+    right: 4rem;
     top: 5rem;
     align-self: flex-start;
     /* color: white; */

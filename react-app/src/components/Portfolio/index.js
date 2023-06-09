@@ -10,6 +10,7 @@ import LineChart from "../LineGraph";
 import WatchlistComponent from "../Watchlist/WatchlistComponent";
 import OpenModalButton from "../OpenModalButton";
 import TransfersModal from "../Navigation/TransfersModal";
+import UserStocks from "./userstocks";
 
 export default function Portfolio() {
 
@@ -21,7 +22,7 @@ export default function Portfolio() {
     useEffect(() => {
         dispatch(fetchPortfolio(sessionUser.id))
         dispatch(fetchAllHistory())
-    }, [dispatch, sessionUser.id])
+    }, [dispatch, sessionUser.id, user.id])
 
     if (Object.values(user).length === 1) return false
     if (Object.values(history).length === 0) return false
@@ -143,18 +144,28 @@ const findAllStockValue = (user, res) => {
 const vals = findAllStockValue(user, true)
 const dates = findAllStockValue(user, false)
 
+const stockItems = transactionSort(user.transactions)
+const quantities = quantityCalc(stockItems)
+
+
+const userStocks = Object.entries(quantities);
+
+// console.log('====> checker quantities', quantities)
+console.log('====> checker', vals)
 
 //============================================Function for calculating portfolio value END
 
 return (
         <div className="portfolio-page" id="only-portfolio">
             <div className="portfolio" id="only-portfolio-">
-                <img src="/static/stock-dice.svg" alt="dice with stocks on the sides" style={{ width: "100%" }}></img>
+                <img src="/static/stock-dice.svg" alt="dice with stocks on the sides" style={{ width: "80%", marginLeft: "100px" }}></img>
                 <h1>Welcome to Foxtrot</h1>
 
                 <div className="portfolio-graph-data">
                     <h2>{user.first_name}'s Portfolio</h2>
-                    <h3>${new Intl.NumberFormat('en-IN').format(vals[vals.length - 1].toFixed(2))}</h3>
+                    {vals[vals.length - 1] === undefined? <h5 className="tool-tip-portfolio">The graph below will populate with performance data once you purchase a stock, use the search bar to begin your journey!</h5>
+                    :<h3>${vals[vals.length - 1]?.toLocaleString(undefined, {    minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,}) }</h3>}
                     <LineChart dates={dates} vals={vals}/>
                 </div>
 
@@ -169,6 +180,26 @@ return (
                 </div>
             </div>
             <WatchlistComponent />
+
+            <div className="stock-quantities">
+            <div className="stock-header">
+                <p >Your Stocks</p>
+                <p>Shares</p>
+            </div>
+            <div className="stock-quantities-list">
+
+            {userStocks.map((stock)=>(
+                <UserStocks
+                quantity={stock[1]}
+                id={stock[0]}
+                key={stock}
+                />
+                ))}
+            </div>
+            </div>
+
+
+
         </div>
     )
 }

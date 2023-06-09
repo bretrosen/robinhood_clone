@@ -34,6 +34,9 @@
 
 .build-portfolio {
     background-color: var(--light-green);
+    padding-top: 100px;
+    padding-bottom: 100px;
+    padding-left: 100px;
 }
 
 .build-portfolio-top {
@@ -46,6 +49,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding-top: 90px;
 }
 
 .huge-font{

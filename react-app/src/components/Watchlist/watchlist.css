@@ -263,5 +263,12 @@
 
 #user-name{
     font-size: 20px;
+    position: relative;
+}
 
+#pos{
+    color: var(--robin-hood-green);
+}
+#neg{
+    color: red;
 }

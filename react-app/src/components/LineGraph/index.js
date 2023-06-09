@@ -8,14 +8,23 @@ import './linegraph.css'
 const LineChart = ({dates, vals}) => {
     // console.log('valData', data)
 
+
+
     const {stock} = useSelector(state => state.stock)
     const {history} = useSelector(state => state.history)
 
-    const [dateData, setDateData] = useState(dates?.slice(61,91))
-    const [valData, setValData] = useState(vals?.slice(61,91))
+    const [dateData, setDateData] = useState([])
+    const [valData, setValData] = useState([])
     const [days, setdays] = useState(30)
 
 
+    useEffect(() => {
+        setDateData(dates.slice(61,91))
+        setValData(vals.slice(61,91))
+    }, [vals])
+
+    // Could be a future feature to show growth of a single stock owned by the user, would need some work
+    // This was the first draft of the user portfolio graph function
     const findSingleStockValue = (user, stockId) => {
         const transactions = user.transactions
         let filterStockTransactions = []
@@ -75,6 +84,8 @@ const LineChart = ({dates, vals}) => {
     }
 
 
+    // Could be a future feature to show growth of a single stock owned by the user, would need some work
+    // This was the first draft of the user portfolio graph function
     const findSingleStockDates = (user, stockId) => {
         const transactions = user.transactions
         let filterStockTransactions = []
@@ -203,17 +214,30 @@ const LineChart = ({dates, vals}) => {
         performanceClassName = 'stock-negative';
     }
 
+    console.log('newest pirce?', newestPrice)
 
     return (
         <div>
-            <div className={performanceClassName}>
-                ${new Intl.NumberFormat('en-IN').format((newestPrice - oldestPrice).toFixed(2))}
+            {
+                newestPrice === undefined ?
+
+                <div>
+                    {/* $0 (0%)
+                    &nbsp;Past&nbsp;{days} days */}
+                </div>
+
+                :
+                <div className={performanceClassName}>
+                ${(newestPrice - oldestPrice)?.toLocaleString(undefined, {    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,})}
                 &nbsp;
                 ({(((newestPrice - oldestPrice) / oldestPrice) * 100).toFixed(2)}%)
 
 
                 &nbsp;Past&nbsp;{days} days
             </div>
+            }
+
             <Line data={data} options={options} className='graph'/>
             <div className='portfolio-view-buttons'>
                 <button className='toggle-view' onClick={oneMonth}>30 Day View</button>
