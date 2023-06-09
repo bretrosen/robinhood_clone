@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import './LoginForm.css';
 import { NavLink } from "react-router-dom/cjs/react-router-dom";
+import { fetchPortfolio } from "../../store/user";
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -19,13 +20,15 @@ function LoginFormPage() {
     e.preventDefault();
     let email = 'demo@aa.io'
     let password = 'password'
-    await dispatch(login(email, password))
+    const data = await dispatch(login(email, password))
+    const userState = await dispatch(fetchPortfolio(data.id))
     history.push('/portfolio');
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
+    const userState = await dispatch(fetchPortfolio(data.id))
 
     if (data) {
       setErrors(data);

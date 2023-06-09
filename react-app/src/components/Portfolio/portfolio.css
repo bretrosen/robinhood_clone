@@ -50,6 +50,10 @@
 
 }
 
+.tool-tip-portfolio {
+    width: 65%;
+}
+
 .transfer-left {
     display: flex;
     flex-direction: column;
