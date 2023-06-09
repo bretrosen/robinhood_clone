@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
 import './SignupForm.css';
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import { fetchPortfolio } from "../../store/user";
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ function SignupFormPage() {
     e.preventDefault();
     if (password === confirmPassword) {
       const data = await dispatch(signUp(username, email, password, firstName, lastName));
+      const userState = await dispatch(fetchPortfolio(data.id))
       if (data) {
         setErrors(data)
       }

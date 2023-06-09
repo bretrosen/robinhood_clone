@@ -22,7 +22,7 @@ export default function Portfolio() {
     useEffect(() => {
         dispatch(fetchPortfolio(sessionUser.id))
         dispatch(fetchAllHistory())
-    }, [dispatch, sessionUser.id])
+    }, [dispatch, sessionUser.id, user.id])
 
     if (Object.values(user).length === 1) return false
     if (Object.values(history).length === 0) return false
@@ -151,7 +151,7 @@ const quantities = quantityCalc(stockItems)
 const userStocks = Object.entries(quantities);
 
 // console.log('====> checker quantities', quantities)
-// console.log('====> checker', userStocks)
+console.log('====> checker', vals)
 
 //============================================Function for calculating portfolio value END
 
