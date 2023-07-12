@@ -5,17 +5,17 @@
     color: white;
     width: 100%;
     padding-left: 20px;
-    height: 700px;
+    height: 100vh;
 
 
 }
-#only-portfolio{
+/* #only-portfolio{
     height: fit-content;
 }
 #only-portfolio-{
     height: fit-content;
     margin-bottom: 30px;
-}
+} */
 
 .portfolio {
     width: 65%;
