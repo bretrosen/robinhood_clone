@@ -67,7 +67,7 @@ function LoginFormPage() {
               </div>
             <div className="login-inputs">
 
-          <label id="login-password-label">
+          <label>
             Password
             </label>
             <input
