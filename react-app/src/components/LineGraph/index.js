@@ -214,7 +214,7 @@ const LineChart = ({dates, vals}) => {
         performanceClassName = 'stock-negative';
     }
 
-    console.log('newest pirce?', newestPrice)
+    // console.log('newest pirce?', newestPrice)
 
     return (
         <div>

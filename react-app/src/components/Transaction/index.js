@@ -18,9 +18,9 @@ export const TransactStock = () => {
     const marketPrice = stock?.stock_history[0].price.toFixed(2)
     const buyingPower = user?.buying_power
     const estimatedCost = quantity * marketPrice
-    console.log("user", user)
-    console.log("market price", marketPrice)
-    console.log("buying power", buyingPower)
+    // console.log("user", user)
+    // console.log("market price", marketPrice)
+    // console.log("buying power", buyingPower)
 
     //getting the quantity of the stock a user owns to display
     const transactions = user.transactions
@@ -44,7 +44,7 @@ export const TransactStock = () => {
         if (!quantity) newErrors['quantity'] = 'Quantity is required'
         if (transactionType === 'Sell' && quantity > stockOwned) newErrors['funds'] = "You can't sell more stock than you own!"
         if (transactionType === 'Buy' && estimatedCost > buyingPower) newErrors['funds'] = "You don't have enough buying power to place this order."
-        console.log("buying power check in useEffect", buyingPower - quantity * marketPrice)
+        // console.log("buying power check in useEffect", buyingPower - quantity * marketPrice)
         setErrors(newErrors)
     }, [quantity, marketPrice, buyingPower])
 
@@ -62,7 +62,7 @@ export const TransactStock = () => {
                     "quantity": Number(quantity),
                     "price_purchased": marketPrice
                 }
-                console.log("dispatching the buy stock thunk from form =>", buyStockObj)
+                // console.log("dispatching the buy stock thunk from form =>", buyStockObj)
                 await dispatch(buyStockThunk(buyStockObj))
                 history.push('/transactions')
             }
@@ -73,7 +73,7 @@ export const TransactStock = () => {
                     "quantity": Number(quantity),
                     "price_sold": marketPrice
                 }
-                console.log("dispatching the sell stock thunk from form =>", sellStockObj)
+                // console.log("dispatching the sell stock thunk from form =>", sellStockObj)
                 await dispatch(sellStockThunk(sellStockObj))
                 history.push('/transactions')
             }

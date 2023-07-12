@@ -151,7 +151,7 @@ const quantities = quantityCalc(stockItems)
 const userStocks = Object.entries(quantities);
 
 // console.log('====> checker quantities', quantities)
-console.log('====> checker', vals)
+// console.log('====> checker', vals)
 
 //============================================Function for calculating portfolio value END
 

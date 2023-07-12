@@ -32,11 +32,9 @@ export default function CreateList({ type, name, watchlistId }) {
         closeModal()
         setListName("")
     }
-    console.log(watchlistId);
     const editList = (e) => {
         e.preventDefault()
         const id = watchlistId
-        console.log(id);
         dispatch(putWatchlist(listName, id))
         closeModal()
         setListName("")

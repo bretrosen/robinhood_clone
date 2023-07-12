@@ -103,7 +103,7 @@ export const addStockToWatchlist = (watchlistArray, stockId ) => async (dispatch
             return addStock;
         })
     );
-    console.log("this the allStocks post request response =======> ", allStocks);
+    // console.log("this the allStocks post request response =======> ", allStocks);
 }
 export const putWatchlist  = (name, id) => async (dispatch) => {
     const response = await fetch(`/api/watchlists/${id}`, {
@@ -112,7 +112,7 @@ export const putWatchlist  = (name, id) => async (dispatch) => {
         body: JSON.stringify({name})
     })
     const updatedWatchlist = await response.json()
-    console.log("updated watchlist insde the user reducer file ==============> ", updatedWatchlist);
+    // console.log("updated watchlist insde the user reducer file ==============> ", updatedWatchlist);
     dispatch(updateWatchlist(updatedWatchlist.name, id))
 }
 export const removeStockFromList  = (stockId, watchlistId) => async (dispatch) => {
@@ -122,7 +122,7 @@ export const removeStockFromList  = (stockId, watchlistId) => async (dispatch) =
         body: JSON.stringify({stock : stockId})
     })
     const removedStock = await response.json()
-    console.log("updated watchlist insde the user reducer file ==============> ", removedStock);
+    // console.log("updated watchlist insde the user reducer file ==============> ", removedStock);
     dispatch(remove_from_watchlist(stockId, watchlistId))
 }
 
@@ -131,7 +131,7 @@ export const deleteWatchlist = (id) => async (dispatch) => {
         method: "DELETE"
     })
     const listDeleted = await response.json();
-    console.log(listDeleted);
+    // console.log(listDeleted);
     dispatch(removeWatchlist(id))
 
 }
@@ -155,20 +155,20 @@ export const buyStockThunk = (stock) => async (dispatch) => {
             "price_purchased": stock.price_purchased
         })
     })
-    console.log('sending buy stock thunk', response)
+    // console.log('sending buy stock thunk', response)
 
     if (response.ok) {
         const stockBought = await response.json();
-        console.log('returning buy stock thunk', stockBought)
+        // console.log('returning buy stock thunk', stockBought)
         dispatch(buyStock(stockBought))
     } else if (response.status < 500) {
-        console.log("response status", response.status)
+        // console.log("response status", response.status)
         const data = await response.json();
         if (data.errors) {
             return data.errors;
         }
     } else {
-        console.log("An error occured")
+        // console.log("An error occured")
         return ["An error occurred. Please try again."];
     }
 }
@@ -186,20 +186,20 @@ export const sellStockThunk = (stock) => async (dispatch) => {
             "price_sold": stock.price_sold
         })
     })
-    console.log('sending sell stock thunk', response)
+    // console.log('sending sell stock thunk', response)
 
     if (response.ok) {
         const stockSold = await response.json();
-        console.log('returning sell stock thunk', stockSold)
+        // console.log('returning sell stock thunk', stockSold)
         dispatch(sellStock(stockSold))
     } else if (response.status < 500) {
-        console.log("response status", response.status)
+        // console.log("response status", response.status)
         const data = await response.json();
         if (data.errors) {
             return data.errors;
         }
     } else {
-        console.log("An error occured")
+        // console.log("An error occured")
         return ["An error occurred. Please try again."];
     }
 }
@@ -214,7 +214,7 @@ export default function UserReducer(state = initialState, action) {
             return { ...state, watch_lists: updatedWatchlists };
         case DELETE_WATCHLIST:
             const deleteWatchlist = [...state.watch_lists].filter(list => list.id !== action.id)
-            console.log(deleteWatchlist);
+            // console.log(deleteWatchlist);
             return { ...state, watch_lists: deleteWatchlist }
         case PUT_WATCHLIST:
             const putWatchlist = [...state.watch_lists].filter(list => {

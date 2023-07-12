@@ -13,7 +13,7 @@ export default function AddStockModal({stock}) {
     const { closeModal } = useModal();
 
     useEffect(() => {
-        console.log("right before dispatch");
+        // console.log("right before dispatch");
         dispatch(fetchPortfolio(sessionUser.id))
     }, [dispatch, sessionUser.id])
 
@@ -35,7 +35,7 @@ export default function AddStockModal({stock}) {
 
     // console.log(stock);
     const saveChanges = () => {
-        console.log(checkedLists);
+        // console.log(checkedLists);
         dispatch(addStockToWatchlist(checkedLists, stock.id))
         closeModal()
     }

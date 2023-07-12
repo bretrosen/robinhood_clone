@@ -16,7 +16,7 @@ export default function WatchlistComponent({type}) {
     const watchlists = user.watch_lists
     const dispatch = useDispatch();
     useEffect(() => {
-        console.log("right before dispacth");
+        // console.log("right before dispacth");
         dispatch(fetchPortfolio(sessionUser.id))
     }, [dispatch, sessionUser.id])
 
@@ -34,11 +34,11 @@ export default function WatchlistComponent({type}) {
     };
 
     const deleteList = () => {
-        console.log(clicked);
+        // console.log(clicked);
         dispatch(deleteWatchlist(clicked))
     }
 
-    console.log(type);
+    // console.log(type);
     return (
         <div className="portfolio-watchlist" style={type === "transactions" ? {height: "fit-content"}: {}}>
             <div id="watchlists-header">
