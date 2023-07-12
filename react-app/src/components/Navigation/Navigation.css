@@ -106,7 +106,7 @@ a {
   display: flex;
   flex-direction: column;
   padding: 64px;
-  gap: 18px;
+  gap: 5px;
 }
 
 .login-page {
@@ -114,11 +114,11 @@ a {
 }
 
 #login-form {
+  width: 50%;
   display: flex;
   flex-direction: column;
-  width: 40%;
-  margin: 18px auto;
-  gap: 20px;
+  padding: 64px;
+  gap: 5px;
 }
 
 .login-inputs {

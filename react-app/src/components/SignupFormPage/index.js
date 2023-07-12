@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { signUp } from "../../store/session";
+import { login } from '../../store/session'
 import './SignupForm.css';
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import { fetchPortfolio } from "../../store/user";
 
 function SignupFormPage() {
+  const history = useHistory()
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [firstName, setFirstName] = useState("");
@@ -18,6 +20,16 @@ function SignupFormPage() {
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return <Redirect to="/portfolio" />;
+
+
+  const demoOne = async (e) => {
+    e.preventDefault();
+    let email = 'demo@aa.io'
+    let password = 'password'
+    const data = await dispatch(login(email, password))
+    const userState = await dispatch(fetchPortfolio(data.id))
+    history.push('/portfolio');
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,65 +53,77 @@ function SignupFormPage() {
           <p>We'll need your name, email address, and a unique password. You'll use this login to access Robinhood next time.</p>
         </div>
         <form id="signup-form" onSubmit={handleSubmit}>
-          <p>Enter your first and last name as they appear on your government ID.</p>
+          <p className="signup-login-header">Enter your first and last name as they appear on your government ID.</p>
           <ul>
             {errors.map((error, idx) => <li key={idx} style={{color: "red"}}>{error}</li>)}
           </ul>
           <label>
             First name
+          </label>
             <input
               type="text"
+              className="login-input"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               required
             />
-          </label>
           <label>
             Last name
+          </label>
             <input
               type="text"
+              className="login-input"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               required
             />
-          </label>
           <label>
             Email
+          </label>
             <input
               type="email"
+              className="login-input"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-          </label>
           <label>
             Username
+          </label>
             <input
               type="text"
+              className="login-input"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
             />
-          </label>
           <label>
             Password
+          </label>
             <input
               type="password"
+              className="login-input"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-          </label>
           <label>
             Confirm Password
+          </label>
             <input
               type="password"
+              className="login-input"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
-          </label>
-          <button type="submit" className="signUp">Sign Up</button>
+
+          <div className="signup-demo-buttons">
+            <button type="submit" className="logIn">Sign Up</button>
+            <button onClick={demoOne} className="demo-login">Demo Log In</button>
+          </div>
+
+
           <p>Already started?</p>
           <NavLink to="/login">Log in to complete your application</NavLink>
           <p>By continuing, you agree to the

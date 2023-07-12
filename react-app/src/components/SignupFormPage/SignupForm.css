@@ -1,3 +1,13 @@
-.signUp {
+.sign-up {
     cursor: pointer;
+}
+
+.signup-demo-buttons {
+    display: flex;
+    gap: 1em;
+    margin: 1.7em 0 1.7em 0;
+}
+
+.signup-login-header {
+    margin-bottom: 2em;
 }
