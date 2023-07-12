@@ -2,8 +2,11 @@ import { NavLink } from "react-router-dom/cjs/react-router-dom.min"
 import "./LandingPage.css"
 import OpenModalButton from "../OpenModalButton"
 import Disclosure from "../Modals/Disclosure"
+import { useModal } from "../../context/Modal"
 
 export default function LandingPage() {
+    const { setModalContent } = useModal()
+    console.log(setModalContent);
     return (
         <div className="landing-page">
             <header className="landing-header">
@@ -15,7 +18,7 @@ export default function LandingPage() {
                 <p style={{ fontSize: "13px", color: "grey" }}>*Terms apply. Rate subject change.</p>
             </header>
             <div className="free-stock">
-                <p>Get your first stock free. <span className="forgot-info">Limitations Apply</span></p>
+                <p>Get your first stock free. <span className="forgot-info" onClick={() => setModalContent(<Disclosure />)}>Limitations Apply</span></p>
             </div>
             <div className="build-portfolio">
                 <div className="build-portfolio-top">
