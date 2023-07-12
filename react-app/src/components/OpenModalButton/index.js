@@ -48,6 +48,14 @@ function OpenModalButton({
   if (type === 'delete') {
     return (<i className="fa fa-trash" onClick={(e) => onClick(e)}></i>)
   }
+  if (type === 'delete-list') {
+    return (<div className='delete-list' onClick={(e) => onClick(e)}>
+      <i className="fa fa-trash edit-icon" ></i>
+      <span>Delete list</span>
+
+    </div>
+    )
+  }
 
   return (
     <button onClick={onClick} className='nav-button'>{buttonText}</button>

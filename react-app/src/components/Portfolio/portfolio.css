@@ -38,6 +38,7 @@
     flex-direction: column;
     gap: 20px;
     width: 30%;
+    padding-bottom: 45px;
 }
 .portfolio-watchlist::-webkit-scrollbar {
     display: none;
