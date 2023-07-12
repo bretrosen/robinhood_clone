@@ -33,7 +33,7 @@ function OpenModalButton({
     return (<i style={{color: "white"}} className='fa fa-plus' onClick={onClick}></i>)
   }
   if (type === 'transfer') {
-    return (<p className="login-signup watchlist-sm" id="transfer-money-btn" onClick={onClick}>Transer money</p>)
+    return (<p className="login-signup watchlist-sm" id="transfer-money-btn" onClick={onClick}>Transfer money</p>)
   }
   if (type === 'legal') {
     return (<p onClick={onClick} className='disclosure'>Legal Disclosure</p>)
