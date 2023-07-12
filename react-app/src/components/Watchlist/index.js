@@ -3,6 +3,9 @@ import WatchlistComponent from "./WatchlistComponent";
 import './watchlist.css'
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { removeStockFromList } from "../../store/user";
+import OpenModalButton from "../OpenModalButton";
+import DeleteItemModal from "./DeleteItemModal";
+import { useModal } from "../../context/Modal";
 // import { fetchPortfolio } from "../../store/user";
 export default function WatchlistList() {
     const { user } = useSelector(state => state)
@@ -10,7 +13,7 @@ export default function WatchlistList() {
     const watch_lists = user.watch_lists
     // console.log("user slice from watchlist =========>", watch_lists);
     // console.log("user slice from watchlist =========>", stocks);
-
+    const { closeModal } = useModal()
     const history = useHistory()
     function formatLargeNumber(number) {
         const billion = 1000000000;
@@ -40,6 +43,7 @@ export default function WatchlistList() {
     const deleteStock = (stockId, watchlistId, e) => {
         e.stopPropagation()
         dispatch(removeStockFromList(stockId, watchlistId))
+        closeModal()
     }
     // console.log(list);
     function getRandomNumber() {
@@ -83,7 +87,7 @@ export default function WatchlistList() {
 
                                 <td>{percentEle}</td>
                                 <td>{formatLargeNumber(stock.market_cap)}</td>
-                                <td className="delete-stock" onClick={(e) => deleteStock(stock.id, watchlistId, e)}><i className="fa fa-trash"></i></td>
+                                <td className="delete-stock" > <OpenModalButton type='delete' modalComponent={<DeleteItemModal stockId={stock.id} deleteStock={deleteStock} watchlistId={parseInt(watchlistId)} name={stock.name}/>} /> </td>
                             </tr>)
 
                         })}
@@ -96,7 +100,7 @@ export default function WatchlistList() {
         </div>
     )
 }
-
+// (e) => deleteStock(stock.id, watchlistId, e)
 // description
 // :
 // "JPMorgan Chase & Co. is an American multinational investment bank and financial services holding company headquartered in New York City. JPMorgan Chase is incorporated in Delaware. As a Bulge Bracket bank, it is a major provider of various investment banking and financial services. It is one of America's Big Four banks, along with Bank of America, Citigroup, and Wells Fargo. JPMorgan Chase is considered to be a universal bank and a custodian bank. The J.P. Morgan brand is used by the investment banking, asset management, private banking, private wealth management, and treasury services divisions."

@@ -10,7 +10,8 @@ function OpenModalButton({
 }) {
   const { setModalContent, setOnModalClose } = useModal();
 
-  const onClick = () => {
+  const onClick = (e) => {
+    e.stopPropagation()
     if (onModalClose) setOnModalClose(onModalClose);
     setModalContent(modalComponent);
     if (onButtonClick) onButtonClick();
@@ -43,6 +44,9 @@ function OpenModalButton({
   }
   if (type === 'investing') {
     return (<p onClick={onClick} className='disclosure' style={{ fontSize: "15px" }}><i className="fa fa-info-circle"></i>Investing Disclosures</p>)
+  }
+  if (type === 'delete') {
+    return (<i className="fa fa-trash" onClick={(e) => onClick(e)}></i>)
   }
 
   return (

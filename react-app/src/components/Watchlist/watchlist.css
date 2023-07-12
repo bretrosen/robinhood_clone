@@ -277,3 +277,7 @@
 #neg{
     color: red;
 }
+
+#delete-item{
+    background-color: var(--rufous);
+}
