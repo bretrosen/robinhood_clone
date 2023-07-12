@@ -17,7 +17,7 @@ function SignupFormPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to="/portfolio" />;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -99,7 +99,7 @@ function SignupFormPage() {
               required
             />
           </label>
-          <button type="submit">Sign Up</button>
+          <button type="submit" className="signUp">Sign Up</button>
           <p>Already started?</p>
           <NavLink to="/login">Log in to complete your application</NavLink>
           <p>By continuing, you agree to the

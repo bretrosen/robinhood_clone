@@ -27,12 +27,18 @@ function LoginFormPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const data = await dispatch(login(email, password));
-    const userState = await dispatch(fetchPortfolio(data.id))
 
     if (data) {
-      setErrors(data);
+      const errors = {}
+      errors.login = "Invalid credentials, please try again";
+      setErrors(errors);
     }
+
+
+
+    const userState = await dispatch(fetchPortfolio(data.id))
   };
 
   return (
@@ -75,11 +81,11 @@ function LoginFormPage() {
           <label>Keep me logged in for up to 30 days</label>
           </div>
 
-          <div>
+          {/* <div>
             <p className="forgot-info">Forgot your password?</p>
             <p className="forgot-info">Forgot your email address?</p>
-          </div>
-          <button type="submit">Log In</button>
+          </div> */}
+          <button type="submit" className="logIn">Log In</button>
           <p >Not on Foxtrot? <NavLink to="/signup" className="forgot-info">Create an account</NavLink ></p>
           <p onClick={demoOne} className="demo-login">Log in as Demo User 01</p>
         </form>

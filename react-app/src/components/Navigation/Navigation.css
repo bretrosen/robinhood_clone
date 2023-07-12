@@ -132,10 +132,6 @@ a {
   text-decoration: underline;
 }
 
-.forgot-info:hover{
-  cursor: pointer;
-}
-
 .stockSearch {
   height: 3em;
   width: 30em;
