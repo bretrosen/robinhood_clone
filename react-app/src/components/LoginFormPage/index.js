@@ -41,7 +41,7 @@ function LoginFormPage() {
         <img src="/static/login-image.jpeg" alt="sci-fi world" style={{width: "50%"}}></img>
         <form id="login-form" onSubmit={handleSubmit}>
           <p>Log in to Foxtrot</p>
-          <ul>
+          <ul className='login-errors'>
             {errors.map((error, idx) => (
               <li key={idx}>{error}</li>
             ))}
@@ -75,10 +75,10 @@ function LoginFormPage() {
           <label>Keep me logged in for up to 30 days</label>
           </div>
 
-          <div>
+          {/* <div>
             <p className="forgot-info">Forgot your password?</p>
             <p className="forgot-info">Forgot your email address?</p>
-          </div>
+          </div> */}
           <button type="submit">Log In</button>
           <p >Not on Foxtrot? <NavLink to="/signup" className="forgot-info">Create an account</NavLink ></p>
           <p onClick={demoOne} className="demo-login">Log in as Demo User 01</p>
