@@ -84,7 +84,8 @@
 .transactions-page{
     color: white;
     background-color: black;
-    height: fit-content;
+    /* height: fit-content; */
+    height: 88vh;
 }
  #purchased-stock{
     color: red;
@@ -105,6 +106,6 @@
 #portfolio-btn{
     font-size: 20px;
     position: absolute;
-    right: 495px;
+    right: 0;
     font-weight: 600;
 }
