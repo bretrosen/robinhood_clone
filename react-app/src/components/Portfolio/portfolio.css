@@ -86,5 +86,6 @@
     height: 600px;
     overflow: scroll;
     width: 65%;
+    border: 1px solid var(--border-grey);
     /* scroll-behavior: smooth; */
 }

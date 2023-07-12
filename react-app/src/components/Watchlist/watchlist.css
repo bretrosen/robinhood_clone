@@ -18,6 +18,10 @@
     cursor: pointer;
 }
 
+
+.table-container::-webkit-scrollbar {
+    display: none;
+}
 .table-row {
     position: relative;
 }
