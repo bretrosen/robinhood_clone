@@ -88,7 +88,7 @@ function LoginFormPage() {
             <p className="forgot-info">Forgot your email address?</p>
           </div> */}
           <div className="signup-demo-buttons">
-            <button type="submit" className="logIn">Sign Up</button>
+            <button type="submit" className="logIn">Log In</button>
             <button onClick={demoOne} className="demo-login">Demo Log In</button>
           </div>
           <p >Not on Foxtrot? <NavLink to="/signup" className="forgot-info">Create an account</NavLink ></p>
