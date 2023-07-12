@@ -27,6 +27,10 @@
     color: var(--robin-hood-green)
 }
 
+.select-field {
+    cursor: pointer;
+}
+
 .stock-owned {
     text-align: center;
 }

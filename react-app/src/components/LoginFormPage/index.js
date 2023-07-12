@@ -27,12 +27,18 @@ function LoginFormPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const data = await dispatch(login(email, password));
-    const userState = await dispatch(fetchPortfolio(data.id))
 
     if (data) {
-      setErrors(data);
+      const errors = {}
+      errors.login = "Invalid credentials, please try again";
+      setErrors(errors);
     }
+
+
+
+    const userState = await dispatch(fetchPortfolio(data.id))
   };
 
   return (
@@ -40,11 +46,11 @@ function LoginFormPage() {
       <div className="login-page">
         <img src="/static/login-image.jpeg" alt="sci-fi world" style={{width: "50%"}}></img>
         <form id="login-form" onSubmit={handleSubmit}>
-          <p>Log in to Foxtrot</p>
+          <p className="signup-login-header">Log in to Foxtrot</p>
           <ul>
-            {errors.map((error, idx) => (
-              <li key={idx}>{error}</li>
-            ))}
+          {errors.login && (
+            <div className="createTransferErrors">* {errors.login}</div>
+          )}
           </ul>
           <div className="login-inputs">
 
@@ -53,6 +59,7 @@ function LoginFormPage() {
             </label>
             <input
               type="text"
+              className="login-input"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -60,28 +67,31 @@ function LoginFormPage() {
               </div>
             <div className="login-inputs">
 
-          <label>
+          <label id="login-password-label">
             Password
             </label>
             <input
               type="password"
+              className="login-input"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
               />
           </div>
-          <div>
+          <div className="check-box-div">
           <input type="checkbox"></input>
           <label>Keep me logged in for up to 30 days</label>
           </div>
 
-          <div>
+          {/* <div>
             <p className="forgot-info">Forgot your password?</p>
             <p className="forgot-info">Forgot your email address?</p>
+          </div> */}
+          <div className="login-demo-buttons">
+            <button type="submit" className="logIn">Log In</button>
+            <button onClick={demoOne} className="demo-login">Demo Log In</button>
           </div>
-          <button type="submit">Log In</button>
           <p >Not on Foxtrot? <NavLink to="/signup" className="forgot-info">Create an account</NavLink ></p>
-          <p onClick={demoOne} className="demo-login">Log in as Demo User 01</p>
         </form>
       </div>
     </>
