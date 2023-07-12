@@ -39,7 +39,9 @@
     gap: 20px;
     width: 30%;
 }
-
+.portfolio-watchlist::-webkit-scrollbar {
+    display: none;
+}
 
 .transfer {
     display: flex;
