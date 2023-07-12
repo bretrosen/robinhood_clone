@@ -101,7 +101,7 @@ export const TransactStock = () => {
                         </select>
                     </label>
                 </div>
-                <input className='transact-field' type='number' placeholder="Shares"
+                <input className='transact-field' type='number' min='0.1' step='0.1' placeholder="Shares"
                     value={quantity}
                     onChange={e => setQuantity(e.target.value)} />
                 <div className='market-price'>
