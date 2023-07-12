@@ -52,6 +52,9 @@ export default function WatchlistComponent({type}) {
                     type="create"
                     modalComponent={<CreateList type='create'/>} />
             </div>
+
+        <div className='watch-List-Items'>
+
             {watchlists.map((list, index) => {
 
                 return (
@@ -76,6 +79,9 @@ export default function WatchlistComponent({type}) {
                     </div>)
 
             })}
+        </div>
+
+
         </div>
     )
 }

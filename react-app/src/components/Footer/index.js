@@ -28,53 +28,19 @@ export default function Footer() {
             <div>
                 <p className="footer-headings">Github</p>
                 <div className="footer-links">
-                    <a
-                        href="https://github.com/bretrosen"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Bret's Github
-                    </a>
-                    <a
-                        href="https://github.com/michael-carvajal"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Michael's Github
-                    </a>
-                    <a
-                        href="https://github.com/snydernb1"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Nick's Github
-                    </a>
+                    <a target="_blank" href="https://github.com/bretrosen">Bret's Github</a>
+                    <a target="_blank" href="https://github.com/michael-carvajal">Michael's Github</a>
+                    <a target="_blank" href="https://github.com/snydernb1">Nick's Github</a>
+
                 </div>
             </div>
             <div>
                 <p className="footer-headings">Linkin</p>
                 <div className="footer-links">
-                    <a
-                        href="https://www.linkedin.com/in/bret-rosen-147a281b7/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Bret's Linkedin
-                    </a>
-                    <a
-                        href="https://www.linkedin.com/in/michael-carvajal-326683203/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Michael's Linkedin
-                    </a>
-                    <a
-                        href="https://www.linkedin.com/in/nicholas-snyder-2714a5a1/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Nick's Linkedin
-                    </a>
+                    <a target="_blank" href="https://www.linkedin.com/in/bret-rosen-147a281b7/">Bret's Linkedin</a>
+                    <a target="_blank" href="https://www.linkedin.com/in/michael-carvajal-326683203/">Michael's Linkedin</a>
+                    <a target="_blank" href="https://www.linkedin.com/in/nicholas-snyder-2714a5a1/">Nick's Linkedin</a>
+
                 </div>
             </div>
             <div>
