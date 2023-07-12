@@ -36,6 +36,7 @@
     align-self: center;
     color: white;
     border-radius: 5px;
+    cursor: not-allowed;
 }
 
 .transfer-form {

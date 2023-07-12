@@ -94,6 +94,7 @@ export const TransactStock = () => {
                         Order Type &nbsp;
                         <select
                             value={transactionType}
+                            className='select-field'
                             onChange={e => setTransactionType(e.target.value)}
                         >
                             <option value='Buy'>Buy</option>

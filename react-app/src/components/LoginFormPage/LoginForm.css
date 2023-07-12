@@ -1,6 +1,39 @@
+.check-box-div {
+    margin: 1.7em 0 1.7em 0;
+}
+
 .demo-login {
-    text-decoration: underline;
+    height: 3em;
+    width: 10em;
     cursor: pointer;
+    background-color: var(--saffron);
+    border-radius: 3em;
+    border: none;
+}
+
+.logIn {
+    cursor: pointer;
+    width: 10em;
+    height: 3em;
+    border-radius: 3em;
+    border: none;
+    background-color: black;
+    color: white;
+}
+
+.login-demo-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+
+
+.login-input {
+    height: 3em;
+    padding-left: 7px;
+    border-radius: 5px;
+    border: 1px solid rgba(128, 128, 128, 0.363);
 }
 
 .login-errors {
