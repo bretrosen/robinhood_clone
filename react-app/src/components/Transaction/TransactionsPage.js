@@ -37,9 +37,9 @@ export default function TransactionsPage() {
     }
 
     return (
-        <div className="transactions-page">
+        <div className="portfolio-page">
             <div>
-                <div className="watchlist-page-header">
+                <div className="watchlist-page-header" style={{marginBottom: '15px'}}>
                     <p style={{ fontSize: "40px" }} id="stock-emoji">
                         📉
                     </p>
@@ -52,8 +52,8 @@ export default function TransactionsPage() {
                     </p>
                     <p style={{ color: "#898989", fontSize: "13px" }}>{transactions?.length} Transactions</p>
                 </div>
-                <div className="portfolio-page">
-                    <div className="table-container" style={{height: "700px"}}>
+                <div className="">
+                    <div className="table-container" style={{height: "700px", padding: '10px'}}>
 
                         <table id="watchlist-table">
                             <thead>

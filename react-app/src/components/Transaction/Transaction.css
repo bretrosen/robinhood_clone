@@ -85,12 +85,12 @@
 
 /* Transactions page */
 
-.transactions-page{
+/* .transactions-page{
     color: white;
     background-color: black;
-    /* height: fit-content; */
+    height: fit-content;
     height: 88vh;
-}
+} */
  #purchased-stock{
     color: red;
  }

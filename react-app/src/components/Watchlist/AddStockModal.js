@@ -40,7 +40,7 @@ export default function AddStockModal({stock}) {
         closeModal()
     }
     return (
-        <div className="portfolio-watchlist lists-modal">
+        <div className="portfolio-watchlist lists-modal" style={{overflow: 'scroll'}}>
             <div className='list-modal-title'>
                 <div className='watchlist-lrg'>
                     Add {stock.name} to your list
