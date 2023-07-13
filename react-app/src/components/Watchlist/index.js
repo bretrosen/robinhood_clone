@@ -40,6 +40,9 @@ export default function WatchlistList() {
     const list = watch_lists?.find(list => list.id === parseInt(watchlistId))
     const stocks = list?.stocks
     const dispatch = useDispatch()
+    if (!user) {
+        return (<h1>Loading...</h1>)
+    }
     const deleteStock = (stockId, watchlistId, e) => {
         e.stopPropagation()
         dispatch(removeStockFromList(stockId, watchlistId))
@@ -51,7 +54,7 @@ export default function WatchlistList() {
         return randomNumber.toFixed(1);
     }
     let isEmpty = null
-    if (list === undefined ||list?.stocks?.length === 0) {
+    if (!list.stocks||list?.stocks?.length === 0) {
         isEmpty = (
             <div className="empty-list">
                 <h1 style={{color: 'white'}}>Search for stocks to add to list!</h1>
@@ -59,7 +62,7 @@ export default function WatchlistList() {
             </div>
         )
     }
-    // console.log(isEmpty);
+    console.log(list);
     return (
 
         <div className="foxtrot-lists">
@@ -68,7 +71,7 @@ export default function WatchlistList() {
                     ⚡️
                 </p>
                 <p>{list?.name}</p>
-                <p style={{ color: "#898989", fontSize: "13px" }}>{list?.stocks.length} items</p>
+                <p style={{ color: "#898989", fontSize: "13px" }}>{list?.stocks?.length} items</p>
             </div>
                 <div className="portfolio-page">
             {isEmpty ? isEmpty :
