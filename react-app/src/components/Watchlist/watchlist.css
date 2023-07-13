@@ -294,3 +294,15 @@
 #delete-item{
     background-color: var(--rufous);
 }
+
+.empty-list{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 40px;
+}
+.empty-list img{
+    position: relative;
+    left: -100px;
+    width: 90%;
+}

@@ -50,53 +50,64 @@ export default function WatchlistList() {
         var randomNumber = Math.random() * (30.0 - (-25.0)) + (-25.0);
         return randomNumber.toFixed(1);
     }
-
+    let isEmpty = null
+    if (list === undefined ||list?.stocks?.length === 0) {
+        isEmpty = (
+            <div className="empty-list">
+                <h1 style={{color: 'white'}}>Search for stocks to add to list!</h1>
+                <img src="/static/ufos.png" alt="ufo"></img>
+            </div>
+        )
+    }
+    // console.log(isEmpty);
     return (
 
         <div className="foxtrot-lists">
             <div className="watchlist-page-header">
-                <p style={{fontSize: "40px"}}>
+                <p style={{ fontSize: "40px" }}>
                     ⚡️
                 </p>
                 <p>{list?.name}</p>
-                <p style={{color: "#898989", fontSize: "13px"}}>{list?.stocks.length} items</p>
+                <p style={{ color: "#898989", fontSize: "13px" }}>{list?.stocks.length} items</p>
             </div>
-            <div className="portfolio-page">
-                <div className="table-container">
+                <div className="portfolio-page">
+            {isEmpty ? isEmpty :
+                    <div className="table-container">
 
-                <table id="watchlist-table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Symbol</th>
+                        <table id="watchlist-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Symbol</th>
 
-                            <th>Today</th>
-                            <th>Market Cap</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                                    <th>Today</th>
+                                    <th>Market Cap</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                            {stocks?.map((stock, index) => {
-                                const percent = getRandomNumber()
-                                const pos = <p id="pos">{percent}%</p>
-                                const neg = <p id="neg">{percent}%</p>
-                                const percentEle = percent >= 0 ? pos : neg
-                            return (<tr className="table-row" key={`stock-list-${index}`} onClick={() => viewStockDetial(stock.id)}>
-                                <td>{stock.name}</td>
-                                <td>{stock.symbol}</td>
+                                {stocks?.map((stock, index) => {
+                                    const percent = getRandomNumber()
+                                    const pos = <p id="pos">{percent}%</p>
+                                    const neg = <p id="neg">{percent}%</p>
+                                    const percentEle = percent >= 0 ? pos : neg
+                                    return (<tr className="table-row" key={`stock-list-${index}`} onClick={() => viewStockDetial(stock.id)}>
+                                        <td>{stock.name}</td>
+                                        <td>{stock.symbol}</td>
 
-                                <td>{percentEle}</td>
-                                <td>{formatLargeNumber(stock.market_cap)}</td>
-                                <td className="delete-stock" > <OpenModalButton type='delete' modalComponent={<DeleteItemModal stockId={stock.id} deleteStock={deleteStock} watchlistId={parseInt(watchlistId)} name={stock.name}/>} /> </td>
-                            </tr>)
+                                        <td>{percentEle}</td>
+                                        <td>{formatLargeNumber(stock.market_cap)}</td>
+                                        <td className="delete-stock" > <OpenModalButton type='delete' modalComponent={<DeleteItemModal stockId={stock.id} deleteStock={deleteStock} watchlistId={parseInt(watchlistId)} name={stock.name} />} /> </td>
+                                    </tr>)
 
-                        })}
-                    </tbody>
-                    </table>
+                                })}
+                            </tbody>
+                        </table>
+                    </div>
+}
+
+                    <WatchlistComponent type="transactions" />
                 </div>
-
-                <WatchlistComponent type="transactions"/>
-            </div>
         </div>
     )
 }
