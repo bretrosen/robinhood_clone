@@ -6,7 +6,7 @@ import { useModal } from "../../context/Modal"
 
 export default function LandingPage() {
     const { setModalContent } = useModal()
-    console.log(setModalContent);
+    // console.log(setModalContent);
     return (
         <div className="landing-page">
             <header className="landing-header">
