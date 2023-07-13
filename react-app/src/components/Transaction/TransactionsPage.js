@@ -53,7 +53,7 @@ export default function TransactionsPage() {
                     <p style={{ color: "#898989", fontSize: "13px" }}>{transactions?.length} Transactions</p>
                 </div>
                 <div className="portfolio-page">
-                    <div className="table-container" style={{height: "700px"}}>
+                    <div className="table-container" style={{height: "600px"}}>
 
                         <table id="watchlist-table">
                             <thead>
