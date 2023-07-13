@@ -43,13 +43,17 @@ export default function TransactionsPage() {
                     <p style={{ fontSize: "40px" }} id="stock-emoji">
                         📉
                     </p>
-                    <p id="user-name">{user.first_name}'s Transactions
+                    <p id="user-name">
+                        <span style={{paddingRight: "250px"}}>
+
+                        {user.first_name}'s Transactions
+                        </span>
+                    <NavLink to="/portfolio" id="portfolio-btn">Portfolio</NavLink>
                     </p>
                     <p style={{ color: "#898989", fontSize: "13px" }}>{transactions?.length} Transactions</p>
                 </div>
                 <div className="portfolio-page">
                     <div className="table-container" style={{height: "700px"}}>
-                    <NavLink to="/portfolio" id="portfolio-btn">Portfolio</NavLink>
 
                         <table id="watchlist-table">
                             <thead>
