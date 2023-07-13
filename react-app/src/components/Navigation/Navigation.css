@@ -111,6 +111,8 @@ a {
 
 .login-page {
   display: flex;
+  background: rgb(128, 128, 128);
+    background: linear-gradient(180deg, rgba(128, 128, 128, 1) 0%, rgba(173, 173, 173, 1) 55%, rgb(255, 199, 87) 100%);
 }
 
 #login-form {
@@ -119,6 +121,8 @@ a {
   flex-direction: column;
   padding: 64px;
   gap: 5px;
+  height: 87vh;
+
 }
 
 .login-inputs {

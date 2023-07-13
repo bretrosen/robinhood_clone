@@ -3,7 +3,7 @@
     --dark-moss-green: #47632dff;
         --black-olive: #30341dff;
         --rufous: #a12d1aff;
-        --saffron: #ffc757ff;
+        --saffron: rgb(255, 199, 87);
         --lawn-green: #86ff44ff;
         --light-blue: #82c8d2;
         --light-green: #c3f53c;
@@ -127,4 +127,9 @@ a {
 #root{
     height: 100vh;
     background-color: black;
+}
+
+.off-white{
+    color: rgb(212, 212, 212);
+    font-weight: 600;
 }

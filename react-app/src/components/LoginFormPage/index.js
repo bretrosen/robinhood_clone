@@ -44,9 +44,9 @@ function LoginFormPage() {
   return (
     <>
       <div className="login-page">
-        <img src="/static/login-image.jpeg" alt="sci-fi world" style={{width: "50%"}}></img>
+        <img src="/static/login-image.jpeg" alt="sci-fi world" style={{width: "54%"}}></img>
         <form id="login-form" onSubmit={handleSubmit}>
-          <p className="signup-login-header">Log in to Foxtrot</p>
+          <p className="signup-login-header huge-font off-white" >Log in to Foxtrot</p>
           <ul>
           {errors.login && (
             <div className="createTransferErrors">* {errors.login}</div>
@@ -91,7 +91,12 @@ function LoginFormPage() {
             <button type="submit" className="logIn">Log In</button>
             <button onClick={demoOne} className="demo-login">Demo Log In</button>
           </div>
-          <p >Not on Foxtrot? <NavLink to="/signup" className="forgot-info">Create an account</NavLink ></p>
+          <p >Not on Foxtrot?
+            <span style={{fontSize: '20px'}}>
+
+            <NavLink to="/signup" className="forgot-info off-white">Create an account</NavLink >
+            </span>
+          </p>
         </form>
       </div>
     </>
