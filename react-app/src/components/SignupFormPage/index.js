@@ -51,7 +51,7 @@ function SignupFormPage() {
 
           <p className="huge-font off-blue" >Foxtrot</p>
           <h1>Create your login</h1>
-          <p style={{marginTop: '100px'}}>We'll need your name, email address, and a unique password. You'll use this login to access Robinhood next time.</p>
+          <p style={{marginTop: '100px'}}>We'll need your name, email address, and a unique password. You'll use this login to access Foxtrot next time.</p>
         </div>
         <form id="signup-form" onSubmit={handleSubmit}>
           <p className="signup-login-header " style={{fontSize: '20px', fontWeight: '500'}}>Enter your first and last name as they appear on your government ID.</p>
@@ -127,11 +127,11 @@ function SignupFormPage() {
 
           <p>Already started?</p>
           <NavLink to="/login" className='off-white'>Log in to complete your application</NavLink>
-          <p style={{marginTop : '20px'}}>By continuing, you agree to the
+          {/* <p style={{marginTop : '20px'}}>By continuing, you agree to the
             Robinhood User Account Agreement
             and
             Privacy Policy
-            .</p>
+            .</p> */}
         </form>
       </div>
 
