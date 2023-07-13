@@ -18,7 +18,7 @@ export default function LandingPage() {
                 <p style={{ fontSize: "13px", color: "grey" }}>*Terms apply. Rate subject change.</p>
             </header>
             <div className="free-stock">
-                <p>Get your first stock free. <span className="forgot-info" onClick={() => setModalContent(<Disclosure />)}>Limitations Apply</span></p>
+                <p>Get your first stock free. <span className="forgot-info" id="limitations" onClick={() => setModalContent(<Disclosure />)}>Limitations Apply</span></p>
             </div>
             <div className="build-portfolio">
                 <div className="build-portfolio-top">
