@@ -137,3 +137,6 @@ a {
     color: rgb(96, 119, 145);
     font-weight: 600;
 }
+.form-errors{
+    color: var(--rufous);
+}

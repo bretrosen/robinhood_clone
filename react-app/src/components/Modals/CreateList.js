@@ -13,12 +13,12 @@ export default function CreateList({ type, name, watchlistId }) {
         e.preventDefault()
         const newErrors = {}
         // console.log('hello world');
-        if (listName.length === 0) {
+        if (listName.length < 5) {
 
-            newErrors.length = "List name cannot be empty"
+            newErrors.length = "List name must be greater than 5 characters"
         }
 
-        if (listName.length > 50) {
+        if (listName.length > 30) {
             newErrors.length = "List name must be less than 50 characters"
 
         }
@@ -42,7 +42,7 @@ export default function CreateList({ type, name, watchlistId }) {
     }
     return (
         <div className="create-list-container">
-            {errors.length && <p>{errors.length}</p>}
+            {errors.length && <p className="form-errors">{errors.length}</p>}
             <div id="create-list">
                 {type === "create" ? <p style={{fontWeight: "500"}}>Create list</p> : <p style={{fontWeight: "500"}}>Edit list</p>}
                 <p onClick={closeModal}><i className="fa fa-times"></i></p>
