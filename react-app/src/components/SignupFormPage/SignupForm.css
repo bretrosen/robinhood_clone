@@ -11,3 +11,25 @@
 .signup-login-header {
     margin-bottom: 2em;
 }
+
+.custom-shape-divider-top-1689212557 {
+    z-index: -100;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1689212557 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 127px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-top-1689212557 .shape-fill {
+    fill: #e81f1f;
+}

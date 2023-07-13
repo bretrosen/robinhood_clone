@@ -48,12 +48,13 @@ function SignupFormPage() {
     <>
       <div className="signup-page">
         <div className="signup-left">
-          <p>Foxtrot</p>
+
+          <p className="huge-font off-blue" >Foxtrot</p>
           <h1>Create your login</h1>
-          <p>We'll need your name, email address, and a unique password. You'll use this login to access Robinhood next time.</p>
+          <p style={{marginTop: '100px'}}>We'll need your name, email address, and a unique password. You'll use this login to access Robinhood next time.</p>
         </div>
         <form id="signup-form" onSubmit={handleSubmit}>
-          <p className="signup-login-header">Enter your first and last name as they appear on your government ID.</p>
+          <p className="signup-login-header " style={{fontSize: '20px', fontWeight: '500'}}>Enter your first and last name as they appear on your government ID.</p>
           <ul>
             {errors.map((error, idx) => <li key={idx} style={{color: "red"}}>{error}</li>)}
           </ul>
@@ -125,8 +126,8 @@ function SignupFormPage() {
 
 
           <p>Already started?</p>
-          <NavLink to="/login">Log in to complete your application</NavLink>
-          <p>By continuing, you agree to the
+          <NavLink to="/login" className='off-white'>Log in to complete your application</NavLink>
+          <p style={{marginTop : '20px'}}>By continuing, you agree to the
             Robinhood User Account Agreement
             and
             Privacy Policy
