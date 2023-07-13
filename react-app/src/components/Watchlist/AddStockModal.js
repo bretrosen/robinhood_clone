@@ -40,7 +40,7 @@ export default function AddStockModal({stock}) {
         closeModal()
     }
     return (
-        <div className="portfolio-watchlist lists-modal" style={{overflow: 'scroll'}}>
+        <div className="portfolio-watchlist lists-modal" style={{ overflow: 'scroll', minHeight: '600px'}}>
             <div className='list-modal-title'>
                 <div className='watchlist-lrg'>
                     Add {stock.name} to your list
@@ -49,9 +49,7 @@ export default function AddStockModal({stock}) {
             </div>
 
             <div className='all-watchlists-modal'>
-                <div className='create-new-list'>
-                    <span>+</span> <span className='watchlist-med'>Add to List</span>
-                </div>
+
 
                 {watchlists.map((list, index) => {
                     const isChecked = checkedLists.includes(list.id);

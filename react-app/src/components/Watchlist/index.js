@@ -54,7 +54,7 @@ export default function WatchlistList() {
         return randomNumber.toFixed(1);
     }
     let isEmpty = null
-    if (!list.stocks||list?.stocks?.length === 0) {
+    if (!list?.stocks||list?.stocks?.length === 0) {
         isEmpty = (
             <div className="empty-list">
                 <h1 style={{color: 'white'}}>Search for stocks to add to list!</h1>

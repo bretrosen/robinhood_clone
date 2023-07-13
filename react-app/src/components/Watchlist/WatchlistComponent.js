@@ -29,6 +29,7 @@ export default function WatchlistComponent({type}) {
         )
     }
     const editList = (id) => {
+        console.log('hello', id);
         if (clicked === id) {
             setClicked(null);
         } else {
