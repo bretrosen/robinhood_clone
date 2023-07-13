@@ -44,12 +44,12 @@ export default function TransactionsPage() {
                         📉
                     </p>
                     <p id="user-name">{user.first_name}'s Transactions
-                    <NavLink to="/portfolio" id="portfolio-btn">Portfolio</NavLink>
                     </p>
                     <p style={{ color: "#898989", fontSize: "13px" }}>{transactions?.length} Transactions</p>
                 </div>
                 <div className="portfolio-page">
                     <div className="table-container" style={{height: "700px"}}>
+                    <NavLink to="/portfolio" id="portfolio-btn">Portfolio</NavLink>
 
                         <table id="watchlist-table">
                             <thead>

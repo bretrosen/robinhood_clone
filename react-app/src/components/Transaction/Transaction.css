@@ -110,6 +110,7 @@
 #portfolio-btn{
     font-size: 20px;
     position: absolute;
-    right: 0;
+    right: 0px;
     font-weight: 600;
+    top: -10px;
 }
