@@ -5,17 +5,17 @@
     color: white;
     width: 100%;
     padding-left: 20px;
-    height: 700px;
+    height: 1050px;
 
 
 }
-#only-portfolio{
+/* #only-portfolio{
     height: fit-content;
 }
 #only-portfolio-{
     height: fit-content;
     margin-bottom: 30px;
-}
+} */
 
 .portfolio {
     width: 65%;
@@ -30,7 +30,7 @@
     padding: 20px;
     border-radius: 4px;
     height: 250px;
-    overflow: scroll;
+    /* overflow: scroll; */
     position: fixed;
     right: 20px;
     top: 100px;
@@ -38,8 +38,11 @@
     flex-direction: column;
     gap: 20px;
     width: 30%;
+    padding-bottom: 45px;
 }
-
+.portfolio-watchlist::-webkit-scrollbar {
+    display: none;
+}
 
 .transfer {
     display: flex;
@@ -84,5 +87,7 @@
     height: 600px;
     overflow: scroll;
     width: 65%;
+    border: 1px solid var(--border-grey);
+    position: relative;
     /* scroll-behavior: smooth; */
 }

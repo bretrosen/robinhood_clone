@@ -22,21 +22,21 @@ const allStocks = (stocks) => {
 // thunk action creators
 export const stockDetailsThunk = (stockId) => async (dispatch) => {
     const response = await fetch(`/api/stocks/${stockId}`)
-    console.log('sending stock details thunk')
+    // console.log('sending stock details thunk')
 
     if (response.ok) {
         const stockDetails = await response.json()
-        console.log("returning stock details thunk =>", stockDetails)
+        // console.log("returning stock details thunk =>", stockDetails)
         dispatch(stockDetail(stockDetails))
         return null;
     } else if (response.status < 500) {
-        console.log("response status", response.status)
+        // console.log("response status", response.status)
         const data = await response.json();
         if (data.errors) {
             return data.errors;
         }
     } else {
-        console.log("An error occured")
+        // console.log("An error occured")
         return ["An error occurred. Please try again."];
     }
 }

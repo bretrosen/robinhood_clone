@@ -10,7 +10,8 @@ function OpenModalButton({
 }) {
   const { setModalContent, setOnModalClose } = useModal();
 
-  const onClick = () => {
+  const onClick = (e) => {
+    e.stopPropagation()
     if (onModalClose) setOnModalClose(onModalClose);
     setModalContent(modalComponent);
     if (onButtonClick) onButtonClick();
@@ -33,7 +34,7 @@ function OpenModalButton({
     return (<i style={{color: "white"}} className='fa fa-plus' onClick={onClick}></i>)
   }
   if (type === 'transfer') {
-    return (<p className="login-signup watchlist-sm" id="transfer-money-btn" onClick={onClick}>Transer money</p>)
+    return (<p className="login-signup watchlist-sm" id="transfer-money-btn" onClick={onClick}>Transfer money</p>)
   }
   if (type === 'legal') {
     return (<p onClick={onClick} className='disclosure'>Legal Disclosure</p>)
@@ -43,6 +44,17 @@ function OpenModalButton({
   }
   if (type === 'investing') {
     return (<p onClick={onClick} className='disclosure' style={{ fontSize: "15px" }}><i className="fa fa-info-circle"></i>Investing Disclosures</p>)
+  }
+  if (type === 'delete') {
+    return (<i className="fa fa-trash" onClick={(e) => onClick(e)}></i>)
+  }
+  if (type === 'delete-list') {
+    return (<div className='delete-list' onClick={(e) => onClick(e)}>
+      <i className="fa fa-trash edit-icon" ></i>
+      <span>Delete list</span>
+
+    </div>
+    )
   }
 
   return (

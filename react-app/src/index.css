@@ -3,7 +3,7 @@
     --dark-moss-green: #47632dff;
         --black-olive: #30341dff;
         --rufous: #a12d1aff;
-        --saffron: #ffc757ff;
+        --saffron: rgb(255, 199, 87);
         --lawn-green: #86ff44ff;
         --light-blue: #82c8d2;
         --light-green: #c3f53c;
@@ -91,7 +91,7 @@ a {
 
 .discolsure-modal{
         width: 500px;
-        height: 200px;
+        height: 280px;
         overflow: scroll;
         display: flex;
         flex-direction: column;
@@ -100,6 +100,10 @@ a {
         border: 10px solid var(--saffron);
         border-radius: 5px;
     }
+
+        .discolsure-modal::-webkit-scrollbar {
+            display: none;
+        }
 #disclaimers{
     font-size: 30px;
     color: #434343;
@@ -118,4 +122,21 @@ a {
     color: grey;
     text-decoration: underline;
     cursor: pointer;
+}
+
+#root{
+    height: 100vh;
+    background-color: black;
+}
+
+.off-white{
+    color: rgb(212, 212, 212);
+    font-weight: 600;
+}
+.off-blue {
+    color: rgb(96, 119, 145);
+    font-weight: 600;
+}
+.form-errors{
+    color: var(--rufous);
 }

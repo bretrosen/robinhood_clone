@@ -13,7 +13,7 @@ export default function AddStockModal({stock}) {
     const { closeModal } = useModal();
 
     useEffect(() => {
-        console.log("right before dispatch");
+        // console.log("right before dispatch");
         dispatch(fetchPortfolio(sessionUser.id))
     }, [dispatch, sessionUser.id])
 
@@ -35,12 +35,12 @@ export default function AddStockModal({stock}) {
 
     // console.log(stock);
     const saveChanges = () => {
-        console.log(checkedLists);
+        // console.log(checkedLists);
         dispatch(addStockToWatchlist(checkedLists, stock.id))
         closeModal()
     }
     return (
-        <div className="portfolio-watchlist lists-modal">
+        <div className="portfolio-watchlist lists-modal" style={{ overflow: 'scroll', minHeight: '600px'}}>
             <div className='list-modal-title'>
                 <div className='watchlist-lrg'>
                     Add {stock.name} to your list
@@ -49,9 +49,7 @@ export default function AddStockModal({stock}) {
             </div>
 
             <div className='all-watchlists-modal'>
-                <div className='create-new-list'>
-                    <span>+</span> <span className='watchlist-med'>Add to List</span>
-                </div>
+
 
                 {watchlists.map((list, index) => {
                     const isChecked = checkedLists.includes(list.id);

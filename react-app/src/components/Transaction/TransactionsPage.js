@@ -37,19 +37,23 @@ export default function TransactionsPage() {
     }
 
     return (
-        <div className="transactions-page">
+        <div className="portfolio-page">
             <div>
-                <div className="watchlist-page-header">
+                <div className="watchlist-page-header" style={{marginBottom: '15px'}}>
                     <p style={{ fontSize: "40px" }} id="stock-emoji">
                         📉
                     </p>
-                    <p id="user-name">{user.first_name}'s Transactions
+                    <p id="user-name">
+                        <span style={{paddingRight: "250px"}}>
+
+                        {user.first_name}'s Transactions
+                        </span>
                     <NavLink to="/portfolio" id="portfolio-btn">Portfolio</NavLink>
                     </p>
                     <p style={{ color: "#898989", fontSize: "13px" }}>{transactions?.length} Transactions</p>
                 </div>
-                <div className="portfolio-page">
-                    <div className="table-container">
+                <div className="">
+                    <div className="table-container" style={{height: "700px", padding: '10px'}}>
 
                         <table id="watchlist-table">
                             <thead>

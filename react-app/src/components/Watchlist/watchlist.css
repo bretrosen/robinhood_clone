@@ -6,6 +6,19 @@
 }
 
 
+.watch-List-Items::-webkit-scrollbar{
+    display: none;
+  }
+
+.watch-List-Items {
+    overflow: hidden;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 20px;
+    gap: 20px;
+    padding-top: 20px;
+}
 
 #watchlist-table td,
 #watchlist-table th {
@@ -18,6 +31,10 @@
     cursor: pointer;
 }
 
+
+.table-container::-webkit-scrollbar {
+    display: none;
+}
 .table-row {
     position: relative;
 }
@@ -184,6 +201,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 900px;
 
 }
 
@@ -271,4 +289,20 @@
 }
 #neg{
     color: red;
+}
+
+#delete-item{
+    background-color: var(--rufous);
+}
+
+.empty-list{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 40px;
+}
+.empty-list img{
+    position: relative;
+    left: -100px;
+    width: 90%;
 }

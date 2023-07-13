@@ -30,21 +30,21 @@ export default function StockDetails() {
         dispatch(fetchPortfolio(sessionUser.id))
     }, [dispatch, stockId, sessionUser.id])
 
-    console.log('====>this is stock from stock details', stock)
+    // console.log('====>this is stock from stock details', stock)
 
     const prices = stock?.stock_history
-    console.log('====>this is prices from stock details', prices)
+    // console.log('====>this is prices from stock details', prices)
     if (!prices) {
         return <h1>Loading...</h1>
     }
 
-    console.log("price object", prices)
+    // console.log("price object", prices)
     let newestPrice = prices[0].price.toFixed(2);
 
     const oldestPrice = prices[prices.length - 1].price.toFixed(2);
     const priceDiff = newestPrice - oldestPrice;
-    console.log("newest price", newestPrice)
-    console.log("oldest price", oldestPrice)
+    // console.log("newest price", newestPrice)
+    // console.log("oldest price", oldestPrice)
     let performanceClassName
 
     if (priceDiff >= 0) {

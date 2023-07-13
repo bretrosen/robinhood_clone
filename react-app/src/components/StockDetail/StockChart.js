@@ -5,7 +5,7 @@ import { Line } from 'react-chartjs-2';
 const StockChart = () => {
     const { stock } = useSelector(state => state.stock)
     const priceArray = stock?.stock_history
-    console.log("priceArray from chart ==>", priceArray)
+    // console.log("priceArray from chart ==>", priceArray)
 
     const prices = []
     for (let i = 0; i < priceArray.length; i++) {

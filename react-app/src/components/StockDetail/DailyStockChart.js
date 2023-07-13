@@ -16,17 +16,17 @@ const DailyStockChart = () => {
         const response = await fetch(`/api/stocks/get_price`)
         const delta = await response.json()
         const newPrice = Number(dailyPrices[dailyPrices.length - 1]) + delta
-        console.log("new price in daily chart", newPrice)
+        // console.log("new price in daily chart", newPrice)
         setDailyPrices(dailyPrices => [...dailyPrices, newPrice])
         setLabels(labels => [...labels, new Date()])
-        console.log("price array", dailyPrices)
+        // console.log("price array", dailyPrices)
 
     }
 
     // the setInterval fetches a random number every 5 seconds
     // need to clear the interval
     useEffect(() => {
-        console.log("use effect in daily stock chart ran")
+        // console.log("use effect in daily stock chart ran")
         const timer = setInterval(() => getDelta(), 5000)
         return () => clearInterval(timer)
     }, [dailyPrices])

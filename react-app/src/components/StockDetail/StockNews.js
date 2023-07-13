@@ -12,15 +12,15 @@ export default function StockNewsList() {
     const { stock } = useSelector(state => state.stock)
     const [stockNews, setStockNews] = useState([])
 
-    console.log("stock news array", Object.values(stockNews).length)
+    // console.log("stock news array", Object.values(stockNews).length)
 
     // getting the news feed
     const symbol = stock.symbol
-    console.log("stock symbol", symbol)
+    // console.log("stock symbol", symbol)
     const today = new Date()
-    console.log("today's date format", today.toISOString().split('T')[0])
+    // console.log("today's date format", today.toISOString().split('T')[0])
     const yesterday = new Date(new Date() - 86400000)
-    console.log("yesterday's date format", yesterday.toISOString().split('T')[0])
+    // console.log("yesterday's date format", yesterday.toISOString().split('T')[0])
     const API_KEY = 'ci139b1r01qikcusfrt0ci139b1r01qikcusfrtg'
 
     useEffect(() => {

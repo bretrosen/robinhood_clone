@@ -106,19 +106,25 @@ a {
   display: flex;
   flex-direction: column;
   padding: 64px;
-  gap: 18px;
+  gap: 5px;
+    background: rgb(128, 128, 128);
+      background: linear-gradient(180deg, rgba(128, 128, 128, 1) 0%, rgba(173, 173, 173, 1) 55%, rgb(255, 199, 87) 100%);
 }
 
 .login-page {
   display: flex;
+  background: rgb(128, 128, 128);
+    background: linear-gradient(180deg, rgba(128, 128, 128, 1) 0%, rgba(173, 173, 173, 1) 55%, rgb(255, 199, 87) 100%);
 }
 
 #login-form {
+  width: 50%;
   display: flex;
   flex-direction: column;
-  width: 40%;
-  margin: 18px auto;
-  gap: 20px;
+  padding: 64px;
+  gap: 5px;
+  height: 87vh;
+
 }
 
 .login-inputs {
@@ -130,10 +136,6 @@ a {
 .forgot-info{
   font-weight: 500;
   text-decoration: underline;
-}
-
-.forgot-info:hover{
-  cursor: pointer;
 }
 
 .stockSearch {
